@@ -21,25 +21,32 @@ namespace AspnAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var filter = Builders<BsonDocument>.Filter.Empty;
-            var bsonUsers = await MongoStatics.collection.Find(filter).ToListAsync();
-            var userList = bsonUsers.Select(bsonDoc => BsonSerializer.Deserialize<User>(bsonDoc)).ToList();
+            List<User> userList = await MongoStatics.GetAll();
             return Ok(userList);
+        }
+
+        [HttpGet("Other/{id}",Name ="OtherGet")]
+
+         public async Task<IActionResult> OtherGet(Guid id)
+        {
+            User? user = await MongoStatics.GetUserByID(id);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            else { 
+            return NotFound(id);
+            }
+
         }
 
         // GET api/<MongoController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
+            List<User> userFind = await MongoStatics.GetUserList(id);
 
-            List<User> UserList = new List<User>();
-          //  FilterDefinition<BsonDocument> filter = MongoStatics.Mongofilter(id);
-            var filter = Builders<BsonDocument>.Filter.Empty;
-            var bsonUsers = await MongoStatics.collection.Find(filter).ToListAsync();
-            Console.WriteLine(bsonUsers.ToJson());
-            UserList = bsonUsers.Select(bsonDoc => BsonSerializer.Deserialize<User>(bsonDoc)).ToList();
-            List<User> userFind = UserList.Where(user => user.Id.ToString().Contains(id.ToString())).ToList();
-            if (userFind!=null)
+            if (userFind.Any())
             {
 
                 return Ok(userFind);
@@ -48,28 +55,48 @@ namespace AspnAPI.Controllers
             {
                 return NotFound(id);
             }
-            
+
         }
 
 
         // POST api/<MongoController>
         [HttpPost]
-        public async void Post([FromBody] dUser user)
+        public async Task<IActionResult> Post([FromBody] dUser user)
         {
-            User user1 = new User(user);
-            MongoStatics.collection.InsertOneAsync(MongoStatics.UserToBsonDocument(user1));
+            return Ok(await MongoStatics.Post(user));
         }
 
         // PUT api/<MongoController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody] dUser user)
         {
+
+            var updateResult = await MongoStatics.Put(id, user);
+            if (updateResult != null && updateResult.ModifiedCount>0) {
+
+                return Ok(user);
+            }
+            else
+            {
+                return NotFound(id);
+            }
         }
 
         // DELETE api/<MongoController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            User? user = await MongoStatics.GetUserByID(id);
+            var deleteResult = MongoStatics.collection.DeleteOne(MongoStatics.Mongofilter(id));
+            if (deleteResult != null && deleteResult.DeletedCount > 0)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return NotFound(id);
+            }
+
         }
     }
 }

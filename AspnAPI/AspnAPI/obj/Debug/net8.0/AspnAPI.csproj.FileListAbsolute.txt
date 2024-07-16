@@ -43,3 +43,4 @@ C:\Users\tomer\Documents\Dot_Net course\API\AspnAPI\AspnAPI\bin\Debug\net8.0\Zst
 C:\Users\tomer\Documents\Dot_Net course\API\AspnAPI\AspnAPI\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\tomer\Documents\Dot_Net course\API\AspnAPI\AspnAPI\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\tomer\Documents\Dot_Net course\API\AspnAPI\AspnAPI\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
+C:\Users\tomer\Documents\Dot_Net course\API\AspnAPI\AspnAPI\obj\Debug\net8.0\AspnAPI.sourcelink.json

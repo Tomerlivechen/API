@@ -11,12 +11,20 @@
       "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\staticclasses\\mongostatics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\models\\dto\\duser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\models\\dto\\duser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\models\\dto\\duser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\models\\dto\\duser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,14 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|solutionrelative:aspnapi\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA4CAE55-229A-442B-B639-5A7BA542D65F}|AspnAPI\\AspnAPI.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspnapi\\aspnapi\\models\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,13 +78,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "dUser.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Models\\DTO\\dUser.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Models\\DTO\\dUser.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Models\\DTO\\dUser.cs",
               "RelativeToolTip": "AspnAPI\\Models\\DTO\\dUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-14T19:40:50.285Z",
               "EditorCaption": ""
@@ -97,20 +97,20 @@
               "RelativeDocumentMoniker": "AspnAPI\\StaticClasses\\MongoStatics.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\StaticClasses\\MongoStatics.cs",
               "RelativeToolTip": "AspnAPI\\StaticClasses\\MongoStatics.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAWAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAgwFIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-14T19:15:24.416Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Models\\User.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Models\\User.cs",
               "RelativeToolTip": "AspnAPI\\Models\\User.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACIAAAAAAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAkwB8AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-14T19:12:24.459Z",
               "EditorCaption": ""
@@ -123,14 +123,14 @@
               "RelativeDocumentMoniker": "AspnAPI\\Controllers\\MongoController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Controllers\\MongoController.cs",
               "RelativeToolTip": "AspnAPI\\Controllers\\MongoController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAIwDMAAAAJAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAmwC8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-14T19:11:43.464Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "NoIdProduct.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Models\\NoIdProduct.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Models\\NoIdProduct.cs",
@@ -142,7 +142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Models\\Product.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Models\\Product.cs",
@@ -154,27 +154,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Controllers\\ProductController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Controllers\\ProductController.cs",
               "RelativeToolTip": "AspnAPI\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACgAAAAMAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACgAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T17:30:23.875Z"
+              "WhenOpened": "2024-07-14T17:30:23.875Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "PeopleController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Controllers\\PeopleController.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Controllers\\PeopleController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Controllers\\PeopleController.cs",
               "RelativeToolTip": "AspnAPI\\Controllers\\PeopleController.cs",
-              "ViewState": "AQIAAF8AAAAAAAAAAAAmwHIAAAALAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAcwHIAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T15:47:21.878Z"
+              "WhenOpened": "2024-07-14T15:47:21.878Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -190,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspnAPI\\AspnAPI\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "AspnAPI\\Controllers\\WeatherForecastController.cs",

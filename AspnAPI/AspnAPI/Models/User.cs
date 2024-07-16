@@ -50,5 +50,18 @@ namespace AspnAPI.Models
             Email = duser.Email;
             Password = duser.Password;
         }
+
+        public static User replceUser(User user, dUser duser)
+        {
+            User newUser = new User();
+            newUser.Id = user.Id;
+            newUser.FirstName = duser.FirstName;
+            newUser.LastName = duser.LastName;
+            newUser.Age = duser.Age;
+            newUser.Email = duser.Email;
+            newUser.Password = duser.Password;
+
+            return user;
+        }
     }
 }
