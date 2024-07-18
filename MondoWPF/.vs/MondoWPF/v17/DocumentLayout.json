@@ -1,0 +1,136 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\mondostatics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\mondostatics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\foolproofing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\foolproofing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|c:\\users\\tomer\\source\\repos\\mondowpf\\mondowpf\\mondowpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B1B68022-DFBB-446F-94D1-9C0960C2448B}|MondoWPF\\MondoWPF.csproj|solutionrelative:mondowpf\\mondowpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MondoWPF.csproj",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoWPF.csproj",
+              "RelativeDocumentMoniker": "MondoWPF\\MondoWPF.csproj",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoWPF.csproj",
+              "RelativeToolTip": "MondoWPF\\MondoWPF.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-10T18:17:11.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\Customer.cs",
+              "RelativeDocumentMoniker": "MondoWPF\\Customer.cs",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\Customer.cs",
+              "RelativeToolTip": "MondoWPF\\Customer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T18:13:47.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MondoStatics.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoStatics.cs",
+              "RelativeDocumentMoniker": "MondoWPF\\MondoStatics.cs",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoStatics.cs",
+              "RelativeToolTip": "MondoWPF\\MondoStatics.cs",
+              "ViewState": "AQIAAA4AAAAwMzMzMzMJwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T17:46:56.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MondoWPF\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MondoWPF\\MainWindow.xaml.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAgwDkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T17:46:10.195Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "MondoWPF\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\AssemblyInfo.cs",
+              "RelativeToolTip": "MondoWPF\\AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T18:30:09.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FoolProofing.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\FoolProofing.cs",
+              "RelativeDocumentMoniker": "MondoWPF\\FoolProofing.cs",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\FoolProofing.cs",
+              "RelativeToolTip": "MondoWPF\\FoolProofing.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAkwCMAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T18:38:00.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MondoWPF\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MainWindow.xaml",
+              "RelativeToolTip": "MondoWPF\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-10T17:46:15.798Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

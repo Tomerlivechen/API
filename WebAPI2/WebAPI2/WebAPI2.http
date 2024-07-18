@@ -1,0 +1,32 @@
+@BaseAddress = http://localhost:5254
+
+GET {{BaseAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{BaseAddress}}/Demo/
+
+### Add a Persom ###
+
+POST {{BaseAddress}}/Demo/
+Content-Type : application/json
+
+{
+  "name" : "Jill"
+}
+### Get a Persom ###
+GET {{BaseAddress}}/Demo/6697fc17002ece67c4194721
+
+### Delete a Persom ###
+
+DELETE {{BaseAddress}}/Demo/6697fc22002ece67c4194723
+
+### edit a Persom ###
+
+PUT {{BaseAddress}}/Demo/6697fc1e002ece67c4194722
+Content-Type : application/json
+
+{
+  "name" : "jack"
+}
