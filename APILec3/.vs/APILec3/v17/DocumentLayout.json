@@ -1,0 +1,194 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\repository\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\repository\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\repository\\imovierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\repository\\imovierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\sevices\\mongoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\sevices\\mongoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\sevices\\imongoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\sevices\\imongoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\apilec3\\apilec3\\apilec3.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{D254878A-C976-40A3-AED3-A71857E1277E}|APILec3\\APILec3.csproj|solutionrelative:apilec3\\apilec3.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MoviesController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Controllers\\MoviesController.cs",
+              "RelativeDocumentMoniker": "APILec3\\Controllers\\MoviesController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Controllers\\MoviesController.cs",
+              "RelativeToolTip": "APILec3\\Controllers\\MoviesController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAwwCUAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T17:27:01.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "APILec3\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\WeatherForecast.cs",
+              "RelativeToolTip": "APILec3\\WeatherForecast.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T17:26:07.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MovieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Repository\\MovieRepository.cs",
+              "RelativeDocumentMoniker": "APILec3\\Repository\\MovieRepository.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Repository\\MovieRepository.cs",
+              "RelativeToolTip": "APILec3\\Repository\\MovieRepository.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T17:08:39.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IMovieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Repository\\IMovieRepository.cs",
+              "RelativeDocumentMoniker": "APILec3\\Repository\\IMovieRepository.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Repository\\IMovieRepository.cs",
+              "RelativeToolTip": "APILec3\\Repository\\IMovieRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T17:04:19.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Models\\Movie.cs",
+              "RelativeDocumentMoniker": "APILec3\\Models\\Movie.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Models\\Movie.cs",
+              "RelativeToolTip": "APILec3\\Models\\Movie.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T16:51:10.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Program.cs",
+              "RelativeDocumentMoniker": "APILec3\\Program.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Program.cs",
+              "RelativeToolTip": "APILec3\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T16:03:45.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IMongoService.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Sevices\\IMongoService.cs",
+              "RelativeDocumentMoniker": "APILec3\\Sevices\\IMongoService.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Sevices\\IMongoService.cs",
+              "RelativeToolTip": "APILec3\\Sevices\\IMongoService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T16:01:09.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "APILec3.http",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\APILec3.http",
+              "RelativeDocumentMoniker": "APILec3\\APILec3.http",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\APILec3.http",
+              "RelativeToolTip": "APILec3\\APILec3.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-07-21T15:57:24.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MongoService.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Sevices\\MongoService.cs",
+              "RelativeDocumentMoniker": "APILec3\\Sevices\\MongoService.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\Sevices\\MongoService.cs",
+              "RelativeToolTip": "APILec3\\Sevices\\MongoService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T15:51:52.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\appsettings.json",
+              "RelativeDocumentMoniker": "APILec3\\appsettings.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\APILec3\\APILec3\\appsettings.json",
+              "RelativeToolTip": "APILec3\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-21T15:47:39.106Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

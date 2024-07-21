@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u1PlpSU1RvY=",
+  "dgSpecHash": "zU3iFyKPjsw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tomer\\Source\\Repos\\WebAPI2\\WebAPI2\\WebAPI2.csproj",
+  "projectFilePath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\WebAPI2\\WebAPI2\\WebAPI2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tomer\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\tomer\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
