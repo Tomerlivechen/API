@@ -1,4 +1,5 @@
 
+using APILec3.Models;
 using APILec3.Repository;
 using APILec3.Sevices;
 
@@ -11,8 +12,12 @@ namespace APILec3
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddSingleton<IMongoService , MongoService>();
-            builder.Services.AddSingleton<IMovieRepository , MovieRepository>();
+            builder.Services.AddSingleton<IMongoService, MongoService>();
+            builder.Services.AddSingleton<IMovieRepository, MovieRepository>();
+            builder.Services.AddSingleton<IMongoService, ToDoService>();
+            builder.Services.AddSingleton<IRepository<T>, ToDoRepository<To_Do>>();
+            builder.Services.AddSingleton < IRepository<T>, GeneralRepository<T>();
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APILec3", "APILec3\APILec3.csproj", "{D254878A-C976-40A3-AED3-A71857E1277E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APILec3", "APILec3\APILec3.csproj", "{D254878A-C976-40A3-AED3-A71857E1277E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{59DF9BB1-922B-4A9E-A99C-C1FCA4E8F826}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
