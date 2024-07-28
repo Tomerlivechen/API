@@ -39,7 +39,7 @@ namespace APILec3.Repository
             return toDoList;
         }
 
-        virtual public async Task<T> PutAsync(string id, T databaseItem)
+        virtual public async Task<T?> PutAsync(string id, T databaseItem)
         {
             databaseItem.Id = id;
            var newToDo =  await DataDaseList.ReplaceOneAsync((f => f.Id == id), databaseItem);
@@ -47,7 +47,7 @@ namespace APILec3.Repository
                 return databaseItem;
             }
             else {
-                return default(T); }
+                return default; }
 
 
         }

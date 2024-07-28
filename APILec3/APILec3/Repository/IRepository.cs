@@ -13,6 +13,6 @@ namespace APILec3.Repository
 
         Task<bool> DeleteByIdAsync(string id);
 
-        Task<T> PutAsync(string id, IDatabaseItem databaseItem);
+        Task<T> PutAsync(string id, T databaseItem);
     }
 }
