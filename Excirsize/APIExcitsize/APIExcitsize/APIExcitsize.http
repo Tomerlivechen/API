@@ -1,0 +1,7 @@
+@APIExcitsize_HostAddress = http://localhost:5239
+
+GET {{APIExcitsize_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{APIExcitsize_HostAddress}}/Product/
