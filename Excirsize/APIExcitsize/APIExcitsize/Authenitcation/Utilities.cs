@@ -9,7 +9,7 @@ namespace APIExcitsize.Authenitcation
 {
     public static class Utilities
     {
-        // Setup JWT Authentication
+
         public static void setupJWT(WebApplicationBuilder builder)
         {
             var jwtSettings = JWTSettings.NewInstance(); 
@@ -35,7 +35,6 @@ namespace APIExcitsize.Authenitcation
             });
         }
 
-        // Setup Identity with MongoDB
         public static void setupIdentity(WebApplicationBuilder builder)
         {
             var connectionString = builder.Configuration.GetConnectionString("MongoDBConnectionStrings"); 
