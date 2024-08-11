@@ -3,40 +3,72 @@
   "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\authenitcation\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\authenitcation\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\wwwroot\\stat.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\wwwroot\\stat.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\authenitcation\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\authenitcation\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\wwwroot\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\wwwroot\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\extensions\\appuserregisterextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\extensions\\appuserregisterextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\authenitcation\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\authenitcation\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\apiexcitsize.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\apiexcitsize.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\extensions\\stringextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\extensions\\stringextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\appsettings.test.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\appsettings.test.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\appsettings.product.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\appsettings.product.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\authenitcation\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\authenitcation\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\extensions\\appuserregisterextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\extensions\\appuserregisterextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\apiexcitsize.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|solutionrelative:apiexcitsize\\apiexcitsize.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C0B9AF15-0FEE-4F85-91F1-FCC500A93E6B}|APIExcitsize\\APIExcitsize.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\excirsize\\apiexcitsize\\apiexcitsize\\extensions\\productextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,7 +134,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,56 +142,119 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "APIExcitsize.http",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\APIExcitsize.http",
-              "RelativeDocumentMoniker": "APIExcitsize\\APIExcitsize.http",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\APIExcitsize.http",
-              "RelativeToolTip": "APIExcitsize\\APIExcitsize.http",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2024-08-04T18:02:04.369Z"
+              "DocumentIndex": 2,
+              "Title": "Script.js",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\js\\Script.js",
+              "RelativeDocumentMoniker": "APIExcitsize\\wwwroot\\js\\Script.js",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\js\\Script.js",
+              "RelativeToolTip": "APIExcitsize\\wwwroot\\js\\Script.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-11T14:58:50.054Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
+              "Title": "Style.css",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\css\\Style.css",
+              "RelativeDocumentMoniker": "APIExcitsize\\wwwroot\\css\\Style.css",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\css\\Style.css",
+              "RelativeToolTip": "APIExcitsize\\wwwroot\\css\\Style.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-11T14:57:13.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Stat.html",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\Stat.html",
+              "RelativeDocumentMoniker": "APIExcitsize\\wwwroot\\Stat.html",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\Stat.html",
+              "RelativeToolTip": "APIExcitsize\\wwwroot\\Stat.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-08-11T14:56:06.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StringExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Extensions\\StringExtensions.cs",
+              "RelativeDocumentMoniker": "APIExcitsize\\Extensions\\StringExtensions.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Extensions\\StringExtensions.cs",
+              "RelativeToolTip": "APIExcitsize\\Extensions\\StringExtensions.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAgwBwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T15:54:56.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.Test.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.Test.json",
+              "RelativeDocumentMoniker": "APIExcitsize\\appsettings.Test.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.Test.json",
+              "RelativeToolTip": "APIExcitsize\\appsettings.Test.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T15:27:17.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "APIExcitsize\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.Development.json",
+              "RelativeToolTip": "APIExcitsize\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T15:15:58.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Program.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Program.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Program.cs",
               "RelativeToolTip": "APIExcitsize\\Program.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAcwEAAAAAKAAAA",
+              "ViewState": "AQIAACkAAAAAAAAAAAAqwEYAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T15:50:34.872Z"
+              "WhenOpened": "2024-08-04T15:50:34.872Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.json",
               "RelativeDocumentMoniker": "APIExcitsize\\appsettings.json",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.json",
               "RelativeToolTip": "APIExcitsize\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-08-04T15:12:47.981Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "JWTTokenService.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Authenitcation\\JWTTokenService.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Authenitcation\\JWTTokenService.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Authenitcation\\JWTTokenService.cs",
               "RelativeToolTip": "APIExcitsize\\Authenitcation\\JWTTokenService.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBoAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T16:13:01.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-04T16:13:01.107Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 14,
               "Title": "IJWTTokenService.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Authenitcation\\IJWTTokenService.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Authenitcation\\IJWTTokenService.cs",
@@ -171,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 13,
               "Title": "JWTSettings.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Models\\JWTSettings.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Models\\JWTSettings.cs",
@@ -179,20 +274,7 @@
               "RelativeToolTip": "APIExcitsize\\Models\\JWTSettings.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T16:23:09.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "APIExcitsize\\Controllers\\AuthenticationController.cs",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "APIExcitsize\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAACwAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T16:26:10.853Z"
+              "WhenOpened": "2024-08-04T16:23:09.819Z"
             },
             {
               "$type": "Document",
@@ -202,13 +284,61 @@
               "RelativeDocumentMoniker": "APIExcitsize\\Controllers\\ProductController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Controllers\\ProductController.cs",
               "RelativeToolTip": "APIExcitsize\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAgwCgAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T15:01:50.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "APIExcitsize\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "APIExcitsize\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T16:26:10.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "APIExcitsize\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Properties\\launchSettings.json",
+              "RelativeToolTip": "APIExcitsize\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T15:32:16.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.Product.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.Product.json",
+              "RelativeDocumentMoniker": "APIExcitsize\\appsettings.Product.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\appsettings.Product.json",
+              "RelativeToolTip": "APIExcitsize\\appsettings.Product.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T15:34:38.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "APIExcitsize.http",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\APIExcitsize.http",
+              "RelativeDocumentMoniker": "APIExcitsize\\APIExcitsize.http",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\APIExcitsize.http",
+              "RelativeToolTip": "APIExcitsize\\APIExcitsize.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-08-04T18:02:04.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "AppUserRegisterExtensions.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Extensions\\AppUserRegisterExtensions.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Extensions\\AppUserRegisterExtensions.cs",
@@ -220,7 +350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 17,
               "Title": "ProductExtensions.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Extensions\\ProductExtensions.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Extensions\\ProductExtensions.cs",
@@ -232,7 +362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "InputProduct.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\DTOs\\Product\\InputProduct.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\DTOs\\Product\\InputProduct.cs",
@@ -244,7 +374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "AppUserLogin.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\DTOs\\AppUser\\AppUserLogin.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\DTOs\\AppUser\\AppUserLogin.cs",
@@ -256,7 +386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "AppUserRegister.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\DTOs\\AppUser\\AppUserRegister.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\DTOs\\AppUser\\AppUserRegister.cs",
@@ -268,7 +398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 21,
               "Title": "AppRole.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Models\\AppRole.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Models\\AppRole.cs",
@@ -280,7 +410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Models\\AppUser.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Models\\AppUser.cs",
@@ -292,7 +422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "IDataBaseItem.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Models\\IDataBaseItem.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Models\\IDataBaseItem.cs",
@@ -304,7 +434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Repositories\\ProductRepository.cs",
@@ -316,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Repositories\\GenericRepository.cs",
@@ -328,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Repositories\\IRepository.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Repositories\\IRepository.cs",
@@ -340,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "MongoService.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Services\\MongoService.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Services\\MongoService.cs",
@@ -352,7 +482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Models\\Product.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Models\\Product.cs",
@@ -364,7 +494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "IMongoService.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Services\\IMongoService.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Services\\IMongoService.cs",
@@ -376,7 +506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "APIExcitsize\\Controllers\\WeatherForecastController.cs",

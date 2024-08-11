@@ -1,11 +1,13 @@
 
 using APIExcitsize.Authenitcation;
+using APIExcitsize.Extensions;
 using APIExcitsize.Models;
 using APIExcitsize.Repositories;
 using APIExcitsize.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Security.Cryptography.Xml;
+using System.Text;
 
 namespace APIExcitsize
 {
@@ -52,8 +54,46 @@ namespace APIExcitsize
         }
     });
             });
-
+            var allowdOrogins = "allowdOrogins";
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: allowdOrogins, policy => {
+                    policy.WithOrigins("http://localhost:5173", "http://localhost:3000");
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                    policy.AllowCredentials();
+                });
+            });
             var app = builder.Build();
+
+            app.UseCors(allowdOrogins);
+            app.UseStaticFiles();
+            //middlewere loggers
+            //app.Use( (context, Next) => { 
+            //    var logger = context.RequestServices.GetService<ILogger<Program>>();
+            //    logger?.LogInformation("Logged the request");
+            //    logger?.LogInformation($"{context.Request.Path}");
+            //    logger?.LogInformation($"{context.Request.Method}");
+
+
+            //    return Next(context); });
+
+
+            //app.Use(async(context, Next) =>
+            //{
+            //    StringBuilder sBuilder = new StringBuilder();
+            //    sBuilder.Append(context.Request.Method).Append("&").Append(context.Request.Path);
+            //    await Next();
+            //    sBuilder.Append(';').Append(context.Response.StatusCode);
+            //    Console.WriteLine((sBuilder.ToString()).BGMagenta().Cyan());
+            //} );
+
+
+            //app.Use(async (context, next) =>
+            //{
+            //    context.Response.Headers.AccessControlAllowOrigin = "http://localhost:5173";
+            //    await next(context);
+            //});
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

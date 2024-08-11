@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\Stat.html",
+      "PackagePath": "staticwebassets\\Stat.html"
+    },
+    {
+      "Id": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\css\\Style.css",
+      "PackagePath": "staticwebassets\\css\\Style.css"
+    },
+    {
+      "Id": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\js\\Script.js",
+      "PackagePath": "staticwebassets\\js\\Script.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.APIExcitsize.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.APIExcitsize.props",
+      "PackagePath": "build\\APIExcitsize.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.APIExcitsize.props",
+      "PackagePath": "buildMultiTargeting\\APIExcitsize.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.APIExcitsize.props",
+      "PackagePath": "buildTransitive\\APIExcitsize.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -53,3 +53,6 @@ C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\
 C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\obj\Debug\net8.0\APIExcitsize.pdb
 C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\obj\Debug\net8.0\APIExcitsize.genruntimeconfig.cache
 C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\obj\Debug\net8.0\ref\APIExcitsize.dll
+C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\bin\Debug\net8.0\appsettings.Product.json
+C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\bin\Debug\net8.0\appsettings.Test.json
+C:\Users\tomer\Documents\Dot_Net course\API\Excirsize\APIExcitsize\APIExcitsize\bin\Debug\net8.0\APIExcitsize.staticwebassets.runtime.json

@@ -1,11 +1,77 @@
 {
   "Version": 1,
-  "Hash": "nfIDXD+aPgNBw+K/nDgLDNi/U825oFA9oVDzj0kgk1o=",
+  "Hash": "6Q3bgFqwg7Uscb6KNH1ncLtT3ZiucjBky+ybh6SX8Gg=",
   "Source": "APIExcitsize",
   "BasePath": "_content/APIExcitsize",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "APIExcitsize\\wwwroot",
+      "Source": "APIExcitsize",
+      "ContentRoot": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\",
+      "BasePath": "_content/APIExcitsize",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\css\\Style.css",
+      "SourceId": "APIExcitsize",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\",
+      "BasePath": "_content/APIExcitsize",
+      "RelativePath": "css/Style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Style.css"
+    },
+    {
+      "Identity": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\js\\Script.js",
+      "SourceId": "APIExcitsize",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\",
+      "BasePath": "_content/APIExcitsize",
+      "RelativePath": "js/Script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Script.js"
+    },
+    {
+      "Identity": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\Stat.html",
+      "SourceId": "APIExcitsize",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Excirsize\\APIExcitsize\\APIExcitsize\\wwwroot\\",
+      "BasePath": "_content/APIExcitsize",
+      "RelativePath": "Stat.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Stat.html"
+    }
+  ]
 }

@@ -4,6 +4,7 @@ using APIExcitsize.Models;
 using APIExcitsize.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.WebRequestMethods;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,12 +12,14 @@ namespace APIExcitsize.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController(IRepository<Product> ProductRep) : ControllerBase
+    public class ProductController(IRepository<Product> ProductRep , ILogger<ProductController> logger) : ControllerBase
     {
         // GET: api/<ProductController>
         [HttpGet]
         public async Task<ActionResult> Get()
         {
+            
+
             var productList = await ProductRep.GetAllAsync();
 
             return Ok(productList);
