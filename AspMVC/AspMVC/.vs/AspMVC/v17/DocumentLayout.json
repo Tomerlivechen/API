@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc\\aspmvc\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|solutionrelative:aspmvc\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc\\aspmvc\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|solutionrelative:aspmvc\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc\\aspmvc\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|solutionrelative:aspmvc\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B9CE0B58-2B05-4C3B-80C2-5FABFAF44BB1}|AspMVC\\AspMVC.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc\\aspmvc\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,13 +82,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC\\AspMVC\\Views\\Books\\Details.cshtml",
               "RelativeDocumentMoniker": "AspMVC\\Views\\Books\\Details.cshtml",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC\\AspMVC\\Views\\Books\\Details.cshtml",
               "RelativeToolTip": "AspMVC\\Views\\Books\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAxAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-11T17:59:40.069Z",
               "EditorCaption": ""
@@ -101,20 +101,20 @@
               "RelativeDocumentMoniker": "AspMVC\\Views\\Books\\Index.cshtml",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC\\AspMVC\\Views\\Books\\Index.cshtml",
               "RelativeToolTip": "AspMVC\\Views\\Books\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAjAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-11T17:33:45.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "BooksController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC\\AspMVC\\Controllers\\BooksController.cs",
               "RelativeDocumentMoniker": "AspMVC\\Controllers\\BooksController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC\\AspMVC\\Controllers\\BooksController.cs",
               "RelativeToolTip": "AspMVC\\Controllers\\BooksController.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAQwCsAAAADAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAQwDEAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-11T17:11:37.742Z",
               "EditorCaption": ""
@@ -189,8 +189,7 @@
               "RelativeToolTip": "AspMVC\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAABIAAAAAAAAAAAAAACIAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-11T16:46:51.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-11T16:46:51.927Z"
             },
             {
               "$type": "Document",
@@ -202,8 +201,7 @@
               "RelativeToolTip": "AspMVC\\Controllers\\HomeController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-11T15:25:40.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-11T15:25:40.543Z"
             },
             {
               "$type": "Document",
@@ -227,8 +225,7 @@
               "RelativeToolTip": "AspMVC\\Program.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAA1wBoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-11T15:25:25.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-11T15:25:25.186Z"
             },
             {
               "$type": "Document",
