@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIExcitsize")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dd65af150cf3c4d6d05f09404e2f70bcc642a32")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9b08dfa33c9cf95db43f14c72beade6860b3e7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIExcitsize")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIExcitsize")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

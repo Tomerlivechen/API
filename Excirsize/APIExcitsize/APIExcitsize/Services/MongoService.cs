@@ -10,7 +10,7 @@ namespace APIExcitsize.Services
             {
                 var connectionString = config.GetConnectionString("MongoDBConnectionStrings");
                 var client = new MongoClient(connectionString);
-            Database = client.GetDatabase(config["DataBaseName"]);
+                 Database = client.GetDatabase(config["DataBaseName"]);
             }
 
             public IMongoCollection<T> GetCollection<T>(string name)

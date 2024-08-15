@@ -1,0 +1,23 @@
+﻿@model Movie
+<div class="bg-dark">
+<div class="row text-light">
+    <div class="col-5"></div>
+    <div class="col-6">
+            <h1 class="m-2"><b>@Model.Title</b></h1>
+    </div>
+</div>
+<div class="row text-light">
+    <div class="col-6 m-5">
+
+            <p style="font-size:24px; font-family:'Times New Roman', Times, serif" ><strong>Description</strong><br /> @Model.Description</p>
+            <p style="font-size:20px; font-family:'Times New Roman', Times, serif" ><strong>Overview</strong><br /> @Model.Overview</p>
+    </div>
+    <div class="col-5">
+        <p> <img src="@Model.GetBigImage()" /></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-5 "></div>
+    <button class="btn btn-outline-success col-3 m-3" onclick="window.location.href='/Movie/';">Back</button>
+</div>
+</div>

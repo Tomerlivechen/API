@@ -1,3 +1,6 @@
+using AspNet_L2_HW.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AspNet_L2_HW
 {
     public class Program
@@ -8,6 +11,8 @@ namespace AspNet_L2_HW
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var connectionString = builder.Configuration.GetConnectionString("MSSQL");
+            builder.Services.AddDbContext<MovieDBContext>(options => options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
