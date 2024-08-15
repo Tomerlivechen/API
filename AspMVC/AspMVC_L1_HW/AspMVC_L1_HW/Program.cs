@@ -1,3 +1,6 @@
+using AspMVC_L1_HW.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AspMVC_L1_HW
 {
     public class Program
@@ -8,6 +11,8 @@ namespace AspMVC_L1_HW
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var connectionString = builder.Configuration.GetConnectionString("MSSQL");
+            builder.Services.AddDbContext<Lect2DBContext>(options => options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 

@@ -30,8 +30,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Movie/First_Index_.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRmlyc3RfSW5kZXhfLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/People/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/People/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Shared/Error.cshtml]

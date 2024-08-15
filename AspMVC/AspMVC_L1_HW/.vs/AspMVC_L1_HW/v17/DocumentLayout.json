@@ -3,40 +3,88 @@
   "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\people\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\people\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\people\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\people\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\models\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\models\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\models\\iidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\models\\iidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\movie\\first_index_.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\movie\\first_index_.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\migrations\\20240814172753_addpeopletable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\migrations\\20240814172753_addpeopletable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\data\\lect2dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\data\\lect2dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\viewmodel\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\viewmodel\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\viewmodel\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\viewmodel\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\viewmodel\\iidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\viewmodel\\iidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\viewmodel\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|solutionrelative:aspmvc_l1_hw\\viewmodel\\movieviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0CE0E065-7DE5-4273-AF4D-0DF44DD0FE9F}|AspMVC_L1_HW\\AspMVC_L1_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspmvc_l1_hw\\aspmvc_l1_hw\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,124 +106,267 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "AspMVC_L1_HW\\Models\\ErrorViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T16:49:10.828Z",
+              "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\People\\Details.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\People\\Details.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\People\\Details.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\People\\Details.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T17:58:50.8Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\People\\Index.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\People\\Index.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\People\\Index.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\People\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T17:37:54.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Lect2DBContext.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Data\\Lect2DBContext.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Data\\Lect2DBContext.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Data\\Lect2DBContext.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\Data\\Lect2DBContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T16:38:22.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\appsettings.json",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\appsettings.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\appsettings.json",
+              "RelativeToolTip": "AspMVC_L1_HW\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-14T15:56:56.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\Person.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Models\\Person.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\Person.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\Models\\Person.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T15:44:49.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T15:35:19.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\Details.cshtml",
               "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Movie\\Details.cshtml",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\Details.cshtml",
               "RelativeToolTip": "AspMVC_L1_HW\\Views\\Movie\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAbAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-12T16:43:43.831Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
-              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
-              "RelativeToolTip": "AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAAC0AAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "First_Index_.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\First_Index_.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Movie\\First_Index_.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\First_Index_.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\Movie\\First_Index_.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-12T16:37:34.877Z",
+              "WhenOpened": "2024-08-14T15:06:33.143Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "AspMVC_L1_HW\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAB3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-12T16:36:21.726Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Statc_Models.cs",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\Statc_Models.cs",
-              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Models\\Statc_Models.cs",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\Statc_Models.cs",
-              "RelativeToolTip": "AspMVC_L1_HW\\Models\\Statc_Models.cs",
-              "ViewState": "AQIAAJEAAAAAAAAAAAAcwK0AAAA4AAAA",
+              "DocumentIndex": 2,
+              "Title": "PeopleController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\PeopleController.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Controllers\\PeopleController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\PeopleController.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\Controllers\\PeopleController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T16:23:12.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "AspMVC_L1_HW\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T16:19:08.032Z",
+              "WhenOpened": "2024-08-14T17:28:34.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Movie.cs",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\Movie.cs",
-              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Models\\Movie.cs",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\Movie.cs",
-              "RelativeToolTip": "AspMVC_L1_HW\\Models\\Movie.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T16:16:44.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IIdentity.cs",
-              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\IIdentity.cs",
-              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Models\\IIdentity.cs",
-              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Models\\IIdentity.cs",
-              "RelativeToolTip": "AspMVC_L1_HW\\Models\\IIdentity.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T16:16:24.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "MovieController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\MovieController.cs",
               "RelativeDocumentMoniker": "AspMVC_L1_HW\\Controllers\\MovieController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\MovieController.cs",
               "RelativeToolTip": "AspMVC_L1_HW\\Controllers\\MovieController.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAhwBEAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-12T16:15:31.718Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Program.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Program.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Program.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T16:46:41.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "20240814172753_AddPeopleTable.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Migrations\\20240814172753_AddPeopleTable.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Migrations\\20240814172753_AddPeopleTable.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Migrations\\20240814172753_AddPeopleTable.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\Migrations\\20240814172753_AddPeopleTable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T17:27:53.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T15:35:43.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T15:35:50.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\ViewModel\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\ErrorViewModel.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\ViewModel\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T16:49:10.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
+              "RelativeToolTip": "AspMVC_L1_HW\\Views\\Movie\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-12T16:37:34.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Statc_Models.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\Statc_Models.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\ViewModel\\Statc_Models.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\Statc_Models.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\ViewModel\\Statc_Models.cs",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAQwK4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T16:23:12.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T16:19:08.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MovieViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\MovieViewModel.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\ViewModel\\MovieViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\MovieViewModel.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\ViewModel\\MovieViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T16:16:44.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "AspMVC_L1_HW\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -184,6 +375,19 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-12T16:45:47.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IIdentity.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\IIdentity.cs",
+              "RelativeDocumentMoniker": "AspMVC_L1_HW\\ViewModel\\IIdentity.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspMVC_L1_HW\\AspMVC_L1_HW\\ViewModel\\IIdentity.cs",
+              "RelativeToolTip": "AspMVC_L1_HW\\ViewModel\\IIdentity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T16:16:24.523Z",
               "EditorCaption": ""
             }
           ]

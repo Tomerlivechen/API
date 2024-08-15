@@ -1,46 +1,25 @@
-﻿@model List<Movie>
+﻿@model List<MovieViewModel>
 
 
-<h1> Movie List</h1>
+<h1 class="text-light"> Movie List</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Overview
-            </th>
-            <th>
-                Poster
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="row">
         @foreach (var item in Model)
         {
-            <tr onclick="window.location.href='/Movie/Details/@item.Id';" style="cursor: copy;">
-                
-                <td>
-                    @item.Title
-                </td>
-                <td>
-                    @item.Description
+            <div class="col-3 " onclick="window.location.href='/Movie/Details/@item.Id';">
+            <div class="card m-2 bg-secondary" style="width: 20rem ">
+                <img class="card-img-top p-1" style="width: 20rem ; height: 30rem" src="@item.GetBigImage()" alt="@item.Title image">
+                <div class="card-body">
+                    <h5 class="card-title text-black">@item.Title</h5>
+                    <p class="card-text text-black">@item.GetSubstring(32)</p>
 
-                </td>
-                <td>
-                    @item.Overview
-                </td>
-                <td>
-                    <img src="@item.GetSmallImage()" />
-                </td>
-                
-            </tr>
+                </div>
+            </div>
+        </div>
+
         }
-    </tbody>
-</table>
+        </div>
+
+
+
 

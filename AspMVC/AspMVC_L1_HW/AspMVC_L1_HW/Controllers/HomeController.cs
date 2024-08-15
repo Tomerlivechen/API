@@ -1,4 +1,4 @@
-using AspMVC_L1_HW.Models;
+using AspMVC_L1_HW.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
