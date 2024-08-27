@@ -57,7 +57,7 @@ namespace Lesson5_HW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,DirectorId,ActorId,AwardId")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,DirectorId,Actors,AwardId")] Movie movie)
         {
             if (ModelState.IsValid)
             {
