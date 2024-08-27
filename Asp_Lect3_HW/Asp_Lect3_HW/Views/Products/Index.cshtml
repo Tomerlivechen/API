@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Asp_Lect3_HW.Models.Product>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="row">
+    <div class="col-5"></div>
+<h1 class="col-4" >Products</h1>
+</div>
+<p>
+    <a aria-label="Create New" class="bi bi-plus-square-dotted link-success" style="font-size:30px" asp-action="Create"></a>
+</p>
+<table class="table table-dark table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+Name
+            </th>
+            <th>
+Price
+            </th>
+            <th>
+Image
+            </th>
+            <th>
+                Actions
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+@item.Name
+            </td>
+
+            <td>
+@item.Price
+            </td>
+            <td>
+                    <img src=@item.ImageURL height="80"/>
+            </td>
+            <td>
+
+                    <a aria-label="Edit" class="bi bi-pencil-square " style="color:lightseagreen; font-size:30px" asp-action="Edit" asp-route-id="@item.Id"></a>
+                    <a aria-label="Details" class="bi bi-search m-2" style="color:green; font-size:30px" asp-action="Details" asp-route-id="@item.Id"></a>
+                    <a aria-label="Delete" class="bi bi-trash" style="color:red; font-size:30px" asp-action="Delete" asp-route-id="@item.Id"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

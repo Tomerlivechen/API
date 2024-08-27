@@ -1,0 +1,48 @@
+﻿@model Asp_Lect3_HW.Models.Product
+
+@{
+    ViewData["Title"] = "Delete";
+    bool varification = true;
+}
+
+<h1 style="color : red">Are you sure you want to delete this item?</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+        <dd class="col-sm-9">
+            <img src=@Model.ImageURL height="300" />
+        </dd>
+    </dl>
+</div>
+<div class="d-flex flex-row gap-4">
+    <a aria-label="Back" class="bi bi-arrow-left-square-fill " style="color:white; font-size:30px" asp-action="Index"></a>
+    <form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" name="varification" value="true" />
+        <button class=" bg-transparent bi bi-trash " style="color: red; font-size:30px" asp-action="Delete" asp-route-id="@Model?.Id" asp-route-varification="@varification"><i class=" "></button>
+    </form>
+
+</div>

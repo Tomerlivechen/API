@@ -1,0 +1,20 @@
+﻿@model Dog
+
+<div class="row text-light">
+    <div class="col-3"></div>
+    <div class="col-8">
+        <h1>Dog Details</h1>
+    </div>
+</div>
+<div class="row text-light">
+    <div class="col-5">
+        <h1><b>@Model.Name</b></h1>
+        <p><strong>Description:</strong> @Model.Breed</p>
+    </div>
+    <div class="col-5">
+    </div>
+</div>
+<div class="row">
+    <div class="col-3"></div>
+    <button class="btn btn-outline-success col-3" onclick="window.location.href='/Dogs/';">Back</button>
+</div>

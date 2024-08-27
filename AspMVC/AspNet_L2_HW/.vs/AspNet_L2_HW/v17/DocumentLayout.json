@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\models\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\models\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\views\\movie\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,12 +15,40 @@
       "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\migrations\\moviedbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\migrations\\moviedbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\migrations\\20240815173233_creattablemovies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\migrations\\20240815173233_creattablemovies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\models\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\models\\statc_models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|solutionrelative:aspnet_l2_hw\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB7E5C70-CEFA-45B6-B899-5973BD800673}|AspNet_L2_HW\\AspNet_L2_HW.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\aspmvc\\aspnet_l2_hw\\aspnet_l2_hw\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +70,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "AspNet_L2_HW\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "AspNet_L2_HW\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T14:53:22.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "AspNet_L2_HW\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "AspNet_L2_HW\\Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T14:53:17.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Views\\Shared\\_Layout.cshtml",
@@ -66,25 +104,24 @@
               "RelativeToolTip": "AspNet_L2_HW\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAABgAAAAAAAAAAAAAACMAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-15T19:05:08.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T19:05:08.764Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "20240815173233_CreatTableMovies.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Migrations\\20240815173233_CreatTableMovies.cs",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Migrations\\20240815173233_CreatTableMovies.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Migrations\\20240815173233_CreatTableMovies.cs",
               "RelativeToolTip": "AspNet_L2_HW\\Migrations\\20240815173233_CreatTableMovies.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAA1wBcAAAAlAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBcAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-15T17:32:33.493Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Program.cs",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Program.cs",
@@ -96,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Views\\Movie\\Details.cshtml",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Views\\Movie\\Details.cshtml",
@@ -109,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Views\\Movie\\Index.cshtml",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Views\\Movie\\Index.cshtml",
@@ -122,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "MovieDBContext.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Data\\MovieDBContext.cs",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Data\\MovieDBContext.cs",
@@ -135,20 +172,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "MovieController.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Controllers\\MovieController.cs",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Controllers\\MovieController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Controllers\\MovieController.cs",
               "RelativeToolTip": "AspNet_L2_HW\\Controllers\\MovieController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-15T16:18:39.46Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "MovieDBContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Migrations\\MovieDBContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "AspNet_L2_HW\\Migrations\\MovieDBContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Migrations\\MovieDBContextModelSnapshot.cs",
+              "RelativeToolTip": "AspNet_L2_HW\\Migrations\\MovieDBContextModelSnapshot.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T14:56:15.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Statc_Models.cs",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Models\\Statc_Models.cs",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Models\\Statc_Models.cs",
@@ -174,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\appsettings.json",
               "RelativeDocumentMoniker": "AspNet_L2_HW\\appsettings.json",
@@ -182,8 +232,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-15T16:09:22.233Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T16:09:22.233Z"
             }
           ]
         }

@@ -1,0 +1,38 @@
+﻿@model List<Dog>
+<div class="bg-secondary">
+<h1> Dog List</h1>
+
+<table class="table table-striped p-4 m-4 w-75">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Breed
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr onclick="window.location.href='/Dogs/Details/@item.Id';" style="cursor: copy;">
+
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Breed
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<hr/>
+
+<a class="btn btn-outline-primary m-4" asp-controller="dogs" asp-action="Add"> Add a Dog</a>
+
+
+</div>

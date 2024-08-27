@@ -18,6 +18,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\tomer\Documents\Dot_Net course\API\AspMVC\AspMVC_L1_HW\AspMVC_L1_HW
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Dogs/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Dogs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Dogs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tomer/Documents/Dot_Net course/API/AspMVC/AspMVC_L1_HW/AspMVC_L1_HW/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

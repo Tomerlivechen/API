@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Asp_Lect3_HW.props" />
+</Project>

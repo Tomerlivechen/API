@@ -10,5 +10,6 @@ namespace AspMVC_L1_HW.Data
     {
         public DbSet<Person> People { get; set; }
 
+        public DbSet<Dog> Dogs { get; set; }
     }
 }
