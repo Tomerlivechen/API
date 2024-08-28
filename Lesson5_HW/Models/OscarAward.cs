@@ -9,11 +9,9 @@ namespace Lesson5_HW.Models
         [Required]
         public required string Type { get; set; }
         [Required]
-        public int year { get; set; }
-        [Required]
-        public required int MovieId { get; set; }
-        [Required]
-        public required Movie Movie { get; set; }
+        public int Year { get; set; }
+
+        public Movie? Movie { get; set; }
 
 
     }

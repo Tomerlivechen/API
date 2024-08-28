@@ -12,8 +12,6 @@ namespace Lesson5_HW.Models
         [Required]
         public required string LastName { get; set; }
 
-        public List<int>? MovieId { get; set; }
-
-        public List<Movie>? Movies { get; set; }
+        public List<Movie>? Movies { get; set; } = new List<Movie>();
     }
 }

@@ -9,16 +9,16 @@ namespace Lesson5_HW.Models
         [Required]
         public required string Title { get; set; }
 
-        [Required]
-        public int DirectorId { get; set; }
-        [Required]
-        public Director Director { get; set; }
+        public Director? Director { get; set; }
 
-        public  List<int>?  ActorId { get; set; }
-        public  List<Actor>? Actors { get; set; }
+        public int? DirectorId { get; set; }
 
-        public List<OscarAward>? Awards { get; set; }
+        public List<int>? ActorId { get; set; } = new List<int>();
 
-        public List<int>? AwardId { get; set; }
+        public  List<Actor>? Actors { get; set; } = new List<Actor>();
+
+        public List<int>? AwardId { get; set; } = new List<int>();
+
+        public List<OscarAward>? Awards { get; set; } = new List<OscarAward>();
     }
 }

@@ -2,51 +2,93 @@
 
 @{
     ViewData["Title"] = "Details";
+    List<Director> Directorlist = ViewBag.DirectorList;
+    List<Actor> Actorlist = ViewBag.Actors;
+    List<OscarAward> Awardlist = ViewBag.Awards;
+
 }
 
-<h1>Details</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div>
     <h4>Movie</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <!-- Title -->
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Director)
+
+        <!-- Director -->
+        <dt class="col-sm-2">
+            Director
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Director.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Actors)
-        </dt>
-        <dd class = "col-sm-10">
-            @foreach (Actor actor in Model.Actors)
+        <dd class="col-sm-10">
+            @if (Model.DirectorId != null)
             {
-                <ul>
-                    <li> @actor.FirstName @actor.LastName  </li>
-                </ul>
+                var Director = Directorlist.FirstOrDefault(d => d.Id == @Model.DirectorId);
+                @Director?.Name;
+            }
+            else
+            {
+                <em>Not assigned</em>
             }
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Awards)
+
+        <!-- Actors -->
+        <dt class="col-sm-2">
+            Actors
         </dt>
-        <dd class = "col-sm-10">
-            @foreach (OscarAward award in Model.Awards)
+        <dd class="col-sm-10">
+            @if (Model.ActorId != null && Model.ActorId.Any())
             {
                 <ul>
-                    <li> @award.Type @award.year  </li>
+                    @foreach (var actorId in Model.ActorId)
+                    {
+                        var thisActor = Actorlist?.FirstOrDefault(a => a.Id == actorId);
+                        if (thisActor != null)
+                        {
+                            <li>@thisActor.FirstName @thisActor.LastName</li>
+                        }
+                        else
+                        {
+                            <li>Unknown Actor</li>
+                        }
+                    }
                 </ul>
+            }
+            else
+            {
+                <em>No actors assigned</em>
+            }
+        </dd>
+
+        <!-- Awards -->
+        <dt class="col-sm-2">
+            Awards
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Awards != null && Model.Awards.Any())
+            {
+                <ul>
+                    @foreach (var award in Model.Awards)
+                    {
+                        <li>@award.Type</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <em>No awards assigned</em>
             }
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

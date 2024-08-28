@@ -16,10 +16,7 @@
                 @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.year)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie)
+                @Html.DisplayNameFor(model => model.Year)
             </th>
             <th></th>
         </tr>
@@ -31,10 +28,7 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Movie.Title)
+                @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

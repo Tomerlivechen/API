@@ -22,8 +22,7 @@ namespace Lesson5_HW.Controllers
         // GET: OscarAwards
         public async Task<IActionResult> Index()
         {
-            var context = _context.OscarAward.Include(o => o.Movie);
-            return View(await context.ToListAsync());
+            return View(await _context.OscarAward.ToListAsync());
         }
 
         // GET: OscarAwards/Details/5
@@ -35,7 +34,6 @@ namespace Lesson5_HW.Controllers
             }
 
             var oscarAward = await _context.OscarAward
-                .Include(o => o.Movie)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (oscarAward == null)
             {
@@ -48,7 +46,6 @@ namespace Lesson5_HW.Controllers
         // GET: OscarAwards/Create
         public IActionResult Create()
         {
-            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Title");
             return View();
         }
 
@@ -57,7 +54,7 @@ namespace Lesson5_HW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Type,year,MovieId")] OscarAward oscarAward)
+        public async Task<IActionResult> Create([Bind("Id,Type,Year")] OscarAward oscarAward)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +62,6 @@ namespace Lesson5_HW.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Title", oscarAward.MovieId);
             return View(oscarAward);
         }
 
@@ -82,7 +78,6 @@ namespace Lesson5_HW.Controllers
             {
                 return NotFound();
             }
-            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Title", oscarAward.MovieId);
             return View(oscarAward);
         }
 
@@ -91,7 +86,7 @@ namespace Lesson5_HW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Type,year,MovieId")] OscarAward oscarAward)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Type,Year")] OscarAward oscarAward)
         {
             if (id != oscarAward.Id)
             {
@@ -118,7 +113,6 @@ namespace Lesson5_HW.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Title", oscarAward.MovieId);
             return View(oscarAward);
         }
 
@@ -131,7 +125,6 @@ namespace Lesson5_HW.Controllers
             }
 
             var oscarAward = await _context.OscarAward
-                .Include(o => o.Movie)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (oscarAward == null)
             {

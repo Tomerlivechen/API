@@ -4,6 +4,7 @@ using Lesson5_HW.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lesson5_HW.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240827200845_UpdatingMovieObject")]
+    partial class UpdatingMovieObject
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,9 +89,6 @@ namespace Lesson5_HW.Migrations
                     b.Property<string>("ActorId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AwardId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("DirectorId")
                         .HasColumnType("int");
 
@@ -111,7 +111,7 @@ namespace Lesson5_HW.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("MovieId")
+                    b.Property<int>("MovieId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -156,7 +156,9 @@ namespace Lesson5_HW.Migrations
                 {
                     b.HasOne("Lesson5_HW.Models.Movie", "Movie")
                         .WithMany("Awards")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Movie");
                 });
