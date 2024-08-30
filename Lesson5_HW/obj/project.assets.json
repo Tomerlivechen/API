@@ -7853,28 +7853,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tomer\\.nuget\\packages\\": {},
-    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\tomer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Lesson5_HW\\Lesson5_HW.csproj",
+      "projectUniqueName": "C:\\Users\\tomer\\Desktop\\Projects\\Programming\\C#\\API\\Lesson5_HW\\Lesson5_HW.csproj",
       "projectName": "Lesson5_HW",
-      "projectPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Lesson5_HW\\Lesson5_HW.csproj",
+      "projectPath": "C:\\Users\\tomer\\Desktop\\Projects\\Programming\\C#\\API\\Lesson5_HW\\Lesson5_HW.csproj",
       "packagesPath": "C:\\Users\\tomer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Lesson5_HW\\obj\\",
+      "outputPath": "C:\\Users\\tomer\\Desktop\\Projects\\Programming\\C#\\API\\Lesson5_HW\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\tomer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -7943,7 +7935,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
