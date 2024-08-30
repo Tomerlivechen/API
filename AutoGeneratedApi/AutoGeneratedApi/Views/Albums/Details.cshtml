@@ -16,6 +16,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Songs)
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+            @foreach (Song song in Model.Songs)
+            {
+                    <li> @song.Name  </li>
+                }
+            </ul>
+        </dd>
     </dl>
 </div>
 <div>
