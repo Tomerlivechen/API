@@ -9,9 +9,7 @@ namespace HW_Lesson_6.Models
         [Required] 
         public required string CommentText { get; set; }
 
-        [Required]
         public required Post Post { get; set; }
-        [Required]
         public required User User { get; set; }
     }
 }

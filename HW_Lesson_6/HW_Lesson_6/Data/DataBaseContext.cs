@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using HW_Lesson_6.Models;
+using HW_Lesson_6.ViewModels;
 
 namespace HW_Lesson_6.Data
 {
@@ -19,5 +20,6 @@ namespace HW_Lesson_6.Data
         public DbSet<HW_Lesson_6.Models.Role> Role { get; set; } = default!;
         public DbSet<HW_Lesson_6.Models.User> User { get; set; } = default!;
         public DbSet<HW_Lesson_6.Models.UserRoles> UserRoles { get; set; } = default!;
+        public DbSet<HW_Lesson_6.ViewModels.CommentView> CommentView { get; set; } = default!;
     }
 }

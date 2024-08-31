@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    List<Comment> comments = ViewBag.Comments;
 }
 
 <h1>Details</h1>
@@ -22,7 +23,24 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dt class="col-sm-2">
+            Comments:
+        </dt>
+        <dd class="col-sm-10">
+            <ul>
+            @foreach (var comment in comments)
+            {
+
+                    <li><b>@comment.User.Username :</b> @comment.CommentText</li>
+                    <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
+ 
+                
+            }
+            </ul>
+        </dd>
+        <a asp-action="AddComment" asp-route-id="@Model?.Id">Add Comment</a> 
     </dl>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

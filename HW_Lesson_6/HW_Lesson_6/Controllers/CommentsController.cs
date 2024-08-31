@@ -7,17 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HW_Lesson_6.Data;
 using HW_Lesson_6.Models;
+using HW_Lesson_6.ViewModels;
+using HW_Lesson_6.Extensions;
 
 namespace HW_Lesson_6.Controllers
 {
-    public class CommentsController : Controller
+    public class CommentsController(DataBaseContext context) : Controller
     {
-        private readonly DataBaseContext _context;
-
-        public CommentsController(DataBaseContext context)
-        {
-            _context = context;
-        }
+        private readonly DataBaseContext _context = context;
 
         // GET: Comments
         public async Task<IActionResult> Index()
@@ -44,8 +41,12 @@ namespace HW_Lesson_6.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var posts = await _context.Post.ToListAsync();
+            ViewBag.Posts = posts;
+            var users = await _context.User.ToListAsync();
+            ViewBag.Users = users;
             return View();
         }
 
@@ -54,15 +55,20 @@ namespace HW_Lesson_6.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CommentText")] Comment comment)
+        public async Task<IActionResult> Create([Bind("Id,CommentText,PostId,UserId")] CommentView commentView)
         {
             if (ModelState.IsValid)
             {
+                Comment comment=  commentView.toComment(_context);
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(comment);
+            var posts = await _context.Post.ToListAsync();
+            ViewBag.Posts = posts;
+            var users = await _context.User.ToListAsync();
+            ViewBag.Users = users;
+            return View(commentView);
         }
 
         // GET: Comments/Edit/5
@@ -73,7 +79,12 @@ namespace HW_Lesson_6.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comment.FindAsync(id);
+            Comment? comment = await _context.Comment.Include(c => c.User).Include(c => c.Post).FirstOrDefaultAsync(c => c.Id == id);
+            if (comment != null)
+            {
+                CommentView commentView = new CommentView(comment);
+                return View(commentView);
+            }
             if (comment == null)
             {
                 return NotFound();
@@ -86,13 +97,14 @@ namespace HW_Lesson_6.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CommentText")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CommentText,PostId,UserId")] CommentView commentView)
         {
-            if (id != comment.Id)
+            if (id != commentView.Id)
             {
                 return NotFound();
             }
 
+            Comment comment = commentView.toComment(_context);
             if (ModelState.IsValid)
             {
                 try
@@ -113,7 +125,7 @@ namespace HW_Lesson_6.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(comment);
+            return View(commentView);
         }
 
         // GET: Comments/Delete/5

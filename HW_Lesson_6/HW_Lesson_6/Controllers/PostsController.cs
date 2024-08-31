@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HW_Lesson_6.Data;
 using HW_Lesson_6.Models;
+using HW_Lesson_6.ViewModels;
+using HW_Lesson_6.Extensions;
 
 namespace HW_Lesson_6.Controllers
 {
@@ -32,9 +34,10 @@ namespace HW_Lesson_6.Controllers
             {
                 return NotFound();
             }
-
+            List <Comment> comments = await _context.Comment.Where(c => c.Post.Id == id).Include(p=> p.User).ToListAsync();
             var post = await _context.Post
                 .FirstOrDefaultAsync(m => m.Id == id);
+            ViewBag.Comments = comments;
             if (post == null)
             {
                 return NotFound();
@@ -46,8 +49,7 @@ namespace HW_Lesson_6.Controllers
         // GET: Posts/Create
         public async Task<IActionResult> Create()
         {
-            var posts = await _context.Post.ToListAsync();
-            ViewBag.Posts = posts;
+
             return View();
         }
 
@@ -65,6 +67,31 @@ namespace HW_Lesson_6.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(post);
+        }
+        public async Task<IActionResult> AddComment(int? id)
+        {
+            ViewBag.Id = id;
+            ViewBag.Users = await _context.User.ToListAsync();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddComment([Bind("Id,CommentText,PostId,UserId")] CommentView commentView)
+        {
+            if (ModelState.IsValid)
+            {
+                Comment comment = commentView.toComment(_context);
+                comment.Id = 0;
+                _context.Add(comment);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", new { id = commentView.PostId });
+            }
+            var posts = await _context.Post.ToListAsync();
+            ViewBag.Posts = posts;
+            var users = await _context.User.ToListAsync();
+            ViewBag.Users = users;
+            return View(commentView);
         }
 
         // GET: Posts/Edit/5
