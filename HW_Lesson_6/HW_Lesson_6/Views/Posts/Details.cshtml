@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Details";
     List<Comment> comments = ViewBag.Comments;
+    @using Microsoft.AspNetCore.Identity
+    @inject UserManager<User> userManager
+    @inject SignInManager<User> signInManager
 }
 
 <h1>Details</h1>
@@ -31,11 +34,14 @@
             @foreach (var comment in comments)
             {
 
-                    <li><b>@comment.User.Username :</b> @comment.CommentText</li>
-                    <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
- 
-                
-            }
+                    <li><b>@comment.User.UserName :</b> @comment.CommentText</li>
+                    @if (@userManager.GetUserId(User) == comment.User.Id)
+                    {
+                        <a asp-controller="Comments" asp-action="Edit" asp-route-id="@comment.Id">Edit</a>
+                    }
+
+
+                }
             </ul>
         </dd>
         <a asp-action="AddComment" asp-route-id="@Model?.Id">Add Comment</a> 

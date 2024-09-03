@@ -251,3 +251,9 @@ C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\obj\Debug\ne
 C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\obj\Debug\net8.0\HW_Lesson_6.pdb
 C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\obj\Debug\net8.0\HW_Lesson_6.genruntimeconfig.cache
 C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\obj\Debug\net8.0\ref\HW_Lesson_6.dll
+C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\tomer\Documents\Dot_Net course\API\HW_Lesson_6\HW_Lesson_6\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

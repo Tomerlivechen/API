@@ -3,6 +3,8 @@ using HW_Lesson_6.Data;
 using HW_Lesson_6.Models;
 using HW_Lesson_6.ViewModels;
 
+
+
 namespace HW_Lesson_6.Extensions
 {
     public static class ExtensionMetohds

@@ -45,8 +45,6 @@ namespace HW_Lesson_6.Controllers
         {
             var posts = await _context.Post.ToListAsync();
             ViewBag.Posts = posts;
-            var users = await _context.User.ToListAsync();
-            ViewBag.Users = users;
             return View();
         }
 
@@ -66,8 +64,6 @@ namespace HW_Lesson_6.Controllers
             }
             var posts = await _context.Post.ToListAsync();
             ViewBag.Posts = posts;
-            var users = await _context.User.ToListAsync();
-            ViewBag.Users = users;
             return View(commentView);
         }
 

@@ -11,7 +11,7 @@ namespace HW_Lesson_6.ViewModels
         public  string CommentText { get; set; }
 
         public  int PostId { get; set; }
-        public  int UserId { get; set; }
+        public  string? UserId { get; set; }
 
         public CommentView(Comment comment) : this()
         {

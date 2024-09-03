@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using HW_Lesson_6.Data;
+using Microsoft.AspNetCore.Identity;
+using HW_Lesson_6.Models;
 namespace HW_Lesson_6
 {
     public class Program
@@ -10,6 +12,18 @@ namespace HW_Lesson_6
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<DataBaseContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DataBaseContext") ?? throw new InvalidOperationException("Connection string 'DataBaseContext' not found.")));
+
+
+
+            builder.Services.AddIdentity<User, IdentityRole>(options => {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            })
+.AddEntityFrameworkStores<DataBaseContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -28,7 +42,7 @@ namespace HW_Lesson_6
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
