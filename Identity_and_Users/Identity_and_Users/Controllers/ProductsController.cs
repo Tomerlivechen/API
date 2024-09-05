@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Identity_and_Users.Data;
 using Identity_and_Users.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Identity_and_Users.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly DatabaseContext _context;
@@ -42,7 +44,7 @@ namespace Identity_and_Users.Controllers
 
             return View(product);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public IActionResult Create()
         {

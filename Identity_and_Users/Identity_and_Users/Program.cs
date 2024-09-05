@@ -9,19 +9,32 @@ namespace Identity_and_Users
     {
         public static void Main(string[] args)
         {
+            var lockoutOptions = new LockoutOptions()
+            {
+                AllowedForNewUsers = false,
+                DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5),
+                MaxFailedAccessAttempts = 5
+            };
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseContext") ?? throw new InvalidOperationException("Connection string 'DatabaseContext' not found.")));
 
             builder.Services.AddIdentity<AppUser, IdentityRole>(options => {
+
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
+                options.Lockout = lockoutOptions;
             })
       .AddEntityFrameworkStores<DatabaseContext>();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Auth/Login";
+            });
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

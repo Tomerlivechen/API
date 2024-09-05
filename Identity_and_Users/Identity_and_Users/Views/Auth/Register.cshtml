@@ -6,6 +6,7 @@
 
 <div class="row">
     <form asp-action="Register" method="post" class="form-control">
+       
         <div class="form-group">
             <label asp-for="Email" class="form-label">Email </label>
             <input  asp-for="Email" type="email" class="form-control" />
@@ -26,6 +27,7 @@
             <input asp-for="ConfirmPassword" type="password" class="form-control" />
             <span asp-validation-for="ConfirmPassword" class="text-danger" />
         </div>
+        <div asp-validation-summary="All" class="alert-danger list-unstyled"></div>
         <hr />
         <div class="form-group">
             <input type="submit" value="Register" class="btn btn-primary form-control" />

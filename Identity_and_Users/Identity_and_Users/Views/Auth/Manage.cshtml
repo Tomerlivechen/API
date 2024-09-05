@@ -1,5 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ManageViewModel
+
 @{
+    ViewData["Title"] = "Manage";
+}
+
+<h1>@ViewData["Title"] your info </h1>
+<div class="row">
+    <form asp-action="Manage" method="post" class="form-control">
+
+        <div class="form-group">
+            <label asp-for="Username" class="form-label">Username </label>
+            <input asp-for="Username" type="text" class="form-control" readonly />
+            <span asp-validation-for="Username" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Property" class="form-label">Property </label>
+            <input asp-for="Property" type="text" class="form-control" />
+            <span asp-validation-for="Property" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="form-label">Old Password </label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPassword" class="form-label">New Password </label>
+            <input asp-for="NewPassword" type="password" class="form-control" />
+            <span asp-validation-for="NewPassword" class="text-danger" />
+        </div>
+        <div asp-validation-summary="All" class="alert-danger list-unstyled"></div>
+        <hr />
+        <div class="form-group">
+            <input type="submit" value="Manage" class="btn btn-primary form-control" />
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

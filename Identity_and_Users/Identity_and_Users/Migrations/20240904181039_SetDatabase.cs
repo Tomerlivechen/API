@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Identity_and_Users.Migrations
 {
     /// <inheritdoc />
-    public partial class Authentication : Migration
+    public partial class SetDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,6 +51,19 @@ namespace Identity_and_Users.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,6 +172,27 @@ namespace Identity_and_Users.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "1", null, "Admin", null },
+                    { "2", null, "PowerUser", null },
+                    { "3", null, "User", null },
+                    { "4", null, "Guest", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Property", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "a516310e-09bc-4219-b576-f132e08acaf2", 0, "21366bec-5340-4aeb-9b83-b088994c2380", "eee@eee.eee", false, false, null, null, null, "AQAAAAIAAYagAAAAEDXnWnjp5OpiqqOEL1TpaGRCK5zdM1etppv/soEIEEKQrGiJ9SaOZ5t3kjpE/BbLsQ==", null, false, "this Property", "3502fdc6-7219-4bd6-9f2f-0e19eecb00d1", false, "eee@eee.eee" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "1", "a516310e-09bc-4219-b576-f132e08acaf2" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -214,6 +250,9 @@ namespace Identity_and_Users.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

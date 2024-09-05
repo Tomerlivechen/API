@@ -90,6 +90,23 @@ namespace Identity_and_Users.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a516310e-09bc-4219-b576-f132e08acaf2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "21366bec-5340-4aeb-9b83-b088994c2380",
+                            Email = "eee@eee.eee",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "AQAAAAIAAYagAAAAEDXnWnjp5OpiqqOEL1TpaGRCK5zdM1etppv/soEIEEKQrGiJ9SaOZ5t3kjpE/BbLsQ==",
+                            PhoneNumberConfirmed = false,
+                            Property = "this Property",
+                            SecurityStamp = "3502fdc6-7219-4bd6-9f2f-0e19eecb00d1",
+                            TwoFactorEnabled = false,
+                            UserName = "eee@eee.eee"
+                        });
                 });
 
             modelBuilder.Entity("Identity_and_Users.Models.Product", b =>
@@ -134,6 +151,28 @@ namespace Identity_and_Users.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Name = "PowerUser"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            Name = "User"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            Name = "Guest"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -221,6 +260,13 @@ namespace Identity_and_Users.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a516310e-09bc-4219-b576-f132e08acaf2",
+                            RoleId = "1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
