@@ -1,0 +1,15 @@
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\bin\Debug\net8.0\APIClassLibraryDAL.deps.json
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\bin\Debug\net8.0\APIClassLibraryDAL.runtimeconfig.json
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\bin\Debug\net8.0\APIClassLibraryDAL.dll
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\bin\Debug\net8.0\APIClassLibraryDAL.pdb
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.csproj.AssemblyReference.cache
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.AssemblyInfoInputs.cache
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.AssemblyInfo.cs
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.csproj.CoreCompileInputs.cache
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.sourcelink.json
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.dll
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\refint\APIClassLibraryDAL.dll
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.pdb
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\APIClassLibraryDAL.genruntimeconfig.cache
+C:\Users\tomer\Documents\Dot_Net course\API\FinalProject\FinalProject2\APIClassLibraryDAL\obj\Debug\net8.0\ref\APIClassLibraryDAL.dll
