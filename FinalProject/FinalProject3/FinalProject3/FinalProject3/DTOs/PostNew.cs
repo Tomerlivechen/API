@@ -18,7 +18,7 @@ namespace FinalProject3.DTOs
 
         public Category? Category { get; set; }
 
-        public string[] KeyWords { get; set; } = [];
+        public string KeyWords { get; set; } = string.Empty;
 
     }
 }

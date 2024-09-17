@@ -24,7 +24,6 @@ namespace FinalProject3.Mapping
                 TotalVotes = post.TotalVotes,
 
             };
-
             foreach (Comment com in post.Comments)
             {
                 setPost.Comments.Add(com.ToDisplay());
@@ -34,13 +33,14 @@ namespace FinalProject3.Mapping
 
         public async static Task<Post> NewPostToPost(this PostNew Newpost, UserManager<User> userManager)
         {
+            char[] delimiters = { ',', ';', '|',' ' };
             var setPost = new Post()
             {
                 Id = Newpost.Id,
                 Title = Newpost.Title,
                 Text = Newpost.Text,
                 Category = Newpost.Category,
-                KeyWords = Newpost.KeyWords,
+                KeyWords = Newpost.KeyWords.Split(delimiters).Select(x => x.Trim()).ToList(),
                 Link = Newpost.Link,
                 ImageURL = Newpost.ImageURL,
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId)

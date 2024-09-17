@@ -1,5 +1,6 @@
 ﻿using FinalProject3.DTOs;
 using FinalProject3.Models;
+using Microsoft.AspNetCore.Identity;
 using System.Xml.Linq;
 
 namespace FinalProject3.Mapping
@@ -12,7 +13,6 @@ namespace FinalProject3.Mapping
             {
 
                 Id = comment.Id,
-
                 Text = comment.Text,
                 Link = comment.Link,
                 ImageURL = comment.ImageURL,
@@ -31,5 +31,19 @@ namespace FinalProject3.Mapping
             }
             return setcomment;
         }
+        public async static Task<Comment> NewCommentToComment(this CommentNew NewComment, UserManager<User> userManager)
+        {
+            Comment comment = new Comment()
+            {
+                Id = NewComment.Id,
+                Text = NewComment.Text,
+                Link = NewComment.Link,
+                ImageURL = NewComment.ImageURL,
+                Author = await userManager.FindByIdAsync(NewComment.AuthorId)
+
+            };
+            return comment;
+        }
+
     }
 }

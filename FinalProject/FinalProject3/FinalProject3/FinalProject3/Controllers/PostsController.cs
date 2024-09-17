@@ -18,13 +18,14 @@ namespace FinalProject3.Controllers
 
         // GET: api/Posts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PostDisplay>>> GetPost()
+        public async Task<ActionResult<IEnumerable<PostDisplay>>> GetPosts()
         {
             return await _context.Post.Select(p => p.ToDisplay()).ToListAsync();
         }
 
+
         // GET: api/Posts/5
-        [HttpGet("{id}")]
+        [HttpGet("ById/{id}")]
         public async Task<ActionResult<PostDisplay>> GetPost(string id)
         {
             var post = await _context.Post.FindAsync(id);
@@ -36,6 +37,21 @@ namespace FinalProject3.Controllers
 
             return post.ToDisplay();
         }
+
+        // GET: api/Posts/5
+        [HttpGet("ByKeyword/{KeyWord}")]
+        public async Task<ActionResult<List<PostDisplay>>> GetPostByKeyWord(string KeyWord)
+        {
+            var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).Select(p => p.ToDisplay()).ToListAsync();
+
+            if (posts == null)
+            {
+                return NotFound();
+            }
+
+            return posts;
+        }
+
 
         // PUT: api/Posts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -96,6 +112,7 @@ namespace FinalProject3.Controllers
                     }
                 }
             }
+            else { return BadRequest(ModelState); }
 
             return CreatedAtAction("GetPost", new { id = post.Id }, post);
         }

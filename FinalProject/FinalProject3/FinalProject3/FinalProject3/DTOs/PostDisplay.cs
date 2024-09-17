@@ -20,7 +20,7 @@ namespace FinalProject3.DTOs
     public required string Title { get; set; }
         public Category? Category { get; set; }
 
-        public string[] KeyWords { get; set; } = [];
+        public List<string> KeyWords { get; set; } = [];
 
         public List<CommentDisplay>? Comments { get; set; } = new List<CommentDisplay>();
     }
