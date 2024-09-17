@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MondoWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e2133be945b050876b3dbcce56f2194c8f372e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MondoWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MondoWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoWPF.csproj": {}
+    "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\MondoWPF\\MondoWPF\\MondoWPF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoWPF.csproj": {
+    "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\MondoWPF\\MondoWPF\\MondoWPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoWPF.csproj",
+        "projectUniqueName": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\MondoWPF\\MondoWPF\\MondoWPF.csproj",
         "projectName": "MondoWPF",
-        "projectPath": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\MondoWPF.csproj",
+        "projectPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\MondoWPF\\MondoWPF\\MondoWPF.csproj",
         "packagesPath": "C:\\Users\\tomer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tomer\\Source\\Repos\\MondoWPF\\MondoWPF\\obj\\",
+        "outputPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\MondoWPF\\MondoWPF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\tomer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -82,7 +84,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

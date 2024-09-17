@@ -1,0 +1,473 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\viewmodels\\manageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\viewmodels\\manageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904180802_SeedDatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Identity_and_Users\\Migrations\\20240904180802_SeedDatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904180652_SeedDatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Identity_and_Users\\Migrations\\20240904180652_SeedDatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\auth\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\auth\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\shared\\_layoutuserconsole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\shared\\_layoutuserconsole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\auth\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\auth\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\products\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\products\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\identity_and_users\\identity_and_users\\migrations\\20240904181039_setdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117AAA44-557E-4180-A2C7-994F70785F39}|Identity_and_Users\\Identity_and_Users.csproj|solutionrelative:identity_and_users\\migrations\\20240904181039_setdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 21,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Identity_and_Users\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T19:06:48.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "20240904181039_SetDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904181039_SetDatabase.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Migrations\\20240904181039_SetDatabase.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904181039_SetDatabase.cs",
+              "RelativeToolTip": "Identity_and_Users\\Migrations\\20240904181039_SetDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T18:10:40.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20240904180802_SeedDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904180802_SeedDatabase.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Migrations\\20240904180802_SeedDatabase.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904180802_SeedDatabase.cs",
+              "RelativeToolTip": "Identity_and_Users\\Migrations\\20240904180802_SeedDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T18:08:02.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20240904180652_SeedDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904180652_SeedDatabase.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Migrations\\20240904180652_SeedDatabase.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Migrations\\20240904180652_SeedDatabase.cs",
+              "RelativeToolTip": "Identity_and_Users\\Migrations\\20240904180652_SeedDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T18:06:52.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Products\\Index.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T15:58:13.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ManageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\ViewModels\\ManageViewModel.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\ViewModels\\ManageViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\ViewModels\\ManageViewModel.cs",
+              "RelativeToolTip": "Identity_and_Users\\ViewModels\\ManageViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T15:36:32.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Products\\Create.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Products\\Create.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Products\\Create.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Products\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T18:15:49.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T18:15:45.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T18:15:44.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T17:43:51.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T17:43:40.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T17:20:14.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_LayoutUserConsole.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T17:08:15.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T16:43:16.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Manage.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\Manage.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Auth\\Manage.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\Manage.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Auth\\Manage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T16:41:19.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LogOut.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\LogOut.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Auth\\LogOut.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\LogOut.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Auth\\LogOut.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T16:41:01.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LogIn.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\LogIn.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Auth\\LogIn.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\LogIn.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Auth\\LogIn.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T16:40:40.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Identity_and_Users\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:40:14.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Views\\Auth\\Register.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "Identity_and_Users\\Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-01T16:40:08.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Identity_and_Users\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T16:37:02.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Program.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Program.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Program.cs",
+              "RelativeToolTip": "Identity_and_Users\\Program.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:41:24.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Data\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Data\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Data\\DatabaseContext.cs",
+              "RelativeToolTip": "Identity_and_Users\\Data\\DatabaseContext.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:30:46.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "Identity_and_Users\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:25:58.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "Identity_and_Users\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:14:26.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Models\\AppUser.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Models\\AppUser.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Models\\AppUser.cs",
+              "RelativeToolTip": "Identity_and_Users\\Models\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:00:19.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\appsettings.json",
+              "RelativeDocumentMoniker": "Identity_and_Users\\appsettings.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\appsettings.json",
+              "RelativeToolTip": "Identity_and_Users\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-01T14:44:38.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Identity_and_Users\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAgwDwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:42:34.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Identity_and_Users\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\Identity_and_Users\\Identity_and_Users\\Models\\Product.cs",
+              "RelativeToolTip": "Identity_and_Users\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:37:21.892Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

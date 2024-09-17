@@ -1,0 +1,41 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <form asp-action="Register" method="post" class="form-control">
+       
+        <div class="form-group">
+            <label asp-for="Email" class="form-label">Email </label>
+            <input  asp-for="Email" type="email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Property" class="form-label">Property </label>
+            <input asp-for="Property" type="text" class="form-control" />
+            <span asp-validation-for="Property" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="form-label">Password </label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="form-label">Confirm Password </label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger" />
+        </div>
+        <div asp-validation-summary="All" class="alert-danger list-unstyled"></div>
+        <hr />
+        <div class="form-group">
+            <input type="submit" value="Register" class="btn btn-primary form-control" />
+        </div>
+    </form>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

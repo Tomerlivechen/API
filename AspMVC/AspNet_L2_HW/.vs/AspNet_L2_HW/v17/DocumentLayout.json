@@ -78,8 +78,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Controllers\\HomeController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:53:22.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-18T14:53:22.197Z"
             },
             {
               "$type": "Document",
@@ -91,8 +90,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Models\\ErrorViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:53:17.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-18T14:53:17.92Z"
             },
             {
               "$type": "Document",
@@ -116,8 +114,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Migrations\\20240815173233_CreatTableMovies.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAQwBcAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T17:32:33.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T17:32:33.493Z"
             },
             {
               "$type": "Document",
@@ -141,8 +138,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Views\\Movie\\Details.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-15T16:23:34.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T16:23:34.717Z"
             },
             {
               "$type": "Document",
@@ -152,7 +148,7 @@
               "RelativeDocumentMoniker": "AspNet_L2_HW\\Views\\Movie\\Index.cshtml",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\AspMVC\\AspNet_L2_HW\\AspNet_L2_HW\\Views\\Movie\\Index.cshtml",
               "RelativeToolTip": "AspNet_L2_HW\\Views\\Movie\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-15T16:23:21.526Z",
               "EditorCaption": ""
@@ -167,8 +163,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Data\\MovieDBContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T16:20:46.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T16:20:46.717Z"
             },
             {
               "$type": "Document",
@@ -180,8 +175,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Controllers\\MovieController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T16:18:39.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T16:18:39.46Z"
             },
             {
               "$type": "Document",
@@ -193,8 +187,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Migrations\\MovieDBContextModelSnapshot.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:56:15.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-18T14:56:15.552Z"
             },
             {
               "$type": "Document",
@@ -206,8 +199,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Models\\Statc_Models.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T16:10:51.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T16:10:51.382Z"
             },
             {
               "$type": "Document",
@@ -219,8 +211,7 @@
               "RelativeToolTip": "AspNet_L2_HW\\Models\\Movie.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T16:09:57.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T16:09:57.282Z"
             },
             {
               "$type": "Document",

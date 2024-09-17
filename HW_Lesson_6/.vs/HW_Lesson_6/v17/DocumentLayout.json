@@ -1,0 +1,633 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\viewmodels\\commentview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\viewmodels\\commentview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\posts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\posts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\posts\\addcomment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\posts\\addcomment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\extensions\\extensionmetohds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\extensions\\extensionmetohds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\controllers\\userrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\controllers\\userrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\users\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\users\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\users\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\users\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\users\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\users\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\shared\\_layoutuserconsole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\shared\\_layoutuserconsole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\models\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\models\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903174802_AddingIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HW_Lesson_6\\Migrations\\20240903174802_AddingIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\comments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\comments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\comments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\comments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\posts\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\posts\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\posts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\posts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\comments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\comments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\posts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\posts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\migrations\\20240903193120_rebuilddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\migrations\\20240903193120_rebuilddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|c:\\users\\tomer\\documents\\dot_net course\\api\\hw_lesson_6\\hw_lesson_6\\migrations\\20240903180145_builddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E09E749-36E9-4ED0-82D7-E4111BBBAB68}|HW_Lesson_6\\HW_Lesson_6.csproj|solutionrelative:hw_lesson_6\\migrations\\20240903180145_builddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 27,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "20240903193120_ReBuildDataBase.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903193120_ReBuildDataBase.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Migrations\\20240903193120_ReBuildDataBase.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903193120_ReBuildDataBase.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Migrations\\20240903193120_ReBuildDataBase.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T19:31:20.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\Register.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Users\\Register.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\Register.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Users\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-03T18:14:45.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Manage.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\Manage.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Users\\Manage.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\Manage.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Users\\Manage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-03T18:14:44.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LogOut.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\LogOut.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Users\\LogOut.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\LogOut.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Users\\LogOut.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-03T18:14:43.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LogIn.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\LogIn.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Users\\LogIn.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Users\\LogIn.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Users\\LogIn.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-03T18:14:43.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "20240903180145_BuildDataBase.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903180145_BuildDataBase.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Migrations\\20240903180145_BuildDataBase.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903180145_BuildDataBase.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Migrations\\20240903180145_BuildDataBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:01:45.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20240903174802_AddingIdentity.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903174802_AddingIdentity.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Migrations\\20240903174802_AddingIdentity.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Migrations\\20240903174802_AddingIdentity.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Migrations\\20240903174802_AddingIdentity.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T17:48:02.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-03T17:35:33.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_LayoutUserConsole.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Shared\\_LayoutUserConsole.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-03T17:34:01.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "HW_Lesson_6\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T17:30:17.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "HW_Lesson_6\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T17:29:45.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T22:32:55.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Comments\\Edit.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Comments\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Comments\\Edit.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Comments\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T21:54:12.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Create.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Posts\\Create.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Create.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Posts\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T21:25:13.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Edit.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Posts\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Edit.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Posts\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T21:11:08.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddComment.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\AddComment.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Posts\\AddComment.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\AddComment.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Posts\\AddComment.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T21:02:36.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Comments\\Details.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Comments\\Details.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Comments\\Details.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Comments\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T20:54:40.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Details.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Posts\\Details.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Details.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Posts\\Details.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T20:50:31.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Delete.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Posts\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Posts\\Delete.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Posts\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T20:49:22.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-31T20:41:21.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ExtensionMetohds.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Extensions\\ExtensionMetohds.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Extensions\\ExtensionMetohds.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Extensions\\ExtensionMetohds.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Extensions\\ExtensionMetohds.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T20:24:34.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CommentView.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\ViewModels\\CommentView.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\ViewModels\\CommentView.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\ViewModels\\CommentView.cs",
+              "RelativeToolTip": "HW_Lesson_6\\ViewModels\\CommentView.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAIAwwA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T20:16:18.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Comments\\Create.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Comments\\Create.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Comments\\Create.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Comments\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-30T21:33:14.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "HW_Lesson_6\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-30T21:26:15.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Program.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Program.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Program.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:23:19.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserRolesController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\UserRolesController.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Controllers\\UserRolesController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\UserRolesController.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Controllers\\UserRolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:22:27.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAiwBgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:22:02.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:21:38.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Controllers\\PostsController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Controllers\\PostsController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAcwFkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:20:55.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\appsettings.json",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\appsettings.json",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\appsettings.json",
+              "RelativeToolTip": "HW_Lesson_6\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-30T21:14:56.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DataBaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Data\\DataBaseContext.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Data\\DataBaseContext.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Data\\DataBaseContext.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Data\\DataBaseContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:14:49.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CommentsController.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\CommentsController.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Controllers\\CommentsController.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Controllers\\CommentsController.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Controllers\\CommentsController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAD4v2sAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:14:40.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserRoles.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\UserRoles.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Models\\UserRoles.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\UserRoles.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Models\\UserRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:12:31.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\User.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\User.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:12:27.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Models\\Role.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\Role.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Models\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:12:24.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Models\\Comment.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\Comment.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:12:17.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:12:13.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\Post.cs",
+              "RelativeDocumentMoniker": "HW_Lesson_6\\Models\\Post.cs",
+              "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\HW_Lesson_6\\HW_Lesson_6\\Models\\Post.cs",
+              "RelativeToolTip": "HW_Lesson_6\\Models\\Post.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T21:12:07.433Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
