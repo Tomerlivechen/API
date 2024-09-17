@@ -20,5 +20,7 @@ namespace FinalProject3.Models
         public int DownVotes { get; set; }
 
         public int TotalVotes { get; set; }
+
+        public string Datetime { get; set; } = string.Empty;
     }
 }

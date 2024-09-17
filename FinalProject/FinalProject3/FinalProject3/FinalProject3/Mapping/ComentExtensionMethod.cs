@@ -23,6 +23,7 @@ namespace FinalProject3.Mapping
                 TotalVotes = comment.TotalVotes,
                 ParentCommentId = comment.ParentComment?.Id,
                 ParentPostId = comment.ParentPost?.Id,
+                Datetime = comment.Datetime,
             };
 
             foreach (Comment com in comment.Comments)
@@ -40,6 +41,7 @@ namespace FinalProject3.Mapping
                 Link = NewComment.Link,
                 ImageURL = NewComment.ImageURL,
                 Author = await userManager.FindByIdAsync(NewComment.AuthorId)
+                Datetime = NewComment.Datetime,
 
             };
             return comment;

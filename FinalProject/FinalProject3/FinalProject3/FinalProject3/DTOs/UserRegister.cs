@@ -9,7 +9,7 @@ namespace FinalProject3.DTOs
         [Required, EmailAddress]
         public required string Email { get; set; }
 
-        [Required, EmailAddress]
+        [Required]
         public required string UserName { get; set; }
 
         [Required, PasswordPropertyText]

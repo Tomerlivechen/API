@@ -18,6 +18,7 @@ namespace FinalProject3.DTOs
         public string ParentPostId { get; set; } = string.Empty;
 
         public string ParentCommentId { get; set; } = string.Empty;
+        public string Datetime { get; set; } = string.Empty;
 
         public List<CommentDisplay>? Comments { get; set; } = new List<CommentDisplay>();
     }

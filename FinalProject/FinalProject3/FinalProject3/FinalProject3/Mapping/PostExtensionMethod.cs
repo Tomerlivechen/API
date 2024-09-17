@@ -1,6 +1,7 @@
 ﻿using FinalProject3.DTOs;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Hosting;
 
 namespace FinalProject3.Mapping
 {
@@ -22,6 +23,7 @@ namespace FinalProject3.Mapping
                 UpVotes = post.UpVotes,
                 DownVotes = post.DownVotes,
                 TotalVotes = post.TotalVotes,
+                Datetime = post.Datetime,
 
             };
             foreach (Comment com in post.Comments)
@@ -43,7 +45,8 @@ namespace FinalProject3.Mapping
                 KeyWords = Newpost.KeyWords.Split(delimiters).Select(x => x.Trim()).ToList(),
                 Link = Newpost.Link,
                 ImageURL = Newpost.ImageURL,
-                Author = await userManager.FindByIdAsync(Newpost.AuthorId)
+                Author = await userManager.FindByIdAsync(Newpost.AuthorId),
+                Datetime = Newpost.Datetime,
             };
             return setPost;
         }
