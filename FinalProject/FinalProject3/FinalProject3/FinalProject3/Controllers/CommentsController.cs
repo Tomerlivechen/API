@@ -71,7 +71,7 @@ namespace FinalProject3.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Comment>> PostComment(CommentNew comment,string id, bool post )
+        public async Task<ActionResult<Comment>> PostComment(CommentNew comment,string parentId, bool isPost)
         {
             if (!ModelState.IsValid)
             {
@@ -79,25 +79,21 @@ namespace FinalProject3.Controllers
             }
                 var newComment = await comment.NewCommentToComment(userManager);
                 _context.Comment.Add(newComment);
-                if (post)
-                {
-                    var updatepost = await _context.Post.FindAsync(id);
-                    if (updatepost is null)
-                    {
-                        return BadRequest("Post not found");
-                    }
-                    updatepost?.Comments?.Add(newComment);
-
-                }
-                if (!post)
-                {
-                var updatecomment = await _context.Comment.FindAsync(id);
-                if (updatecomment is null)
-                {
-                    return BadRequest("comment not found");
-                }
-                updatecomment?.Comments?.Add(newComment);
-                }
+            Interaction? parent;
+            if (isPost)
+            {
+                parent = await _context.Post.FindAsync(parentId);
+            }
+            else
+            {
+                parent = await _context.Comment.FindAsync(parentId);
+            }
+            if (parent is null)
+            {
+                return BadRequest(isPost ? "Post not found" : "Comment not found");
+            }
+            parent.Comments.Add(newComment);
+                
                 try
                 {
                     await _context.SaveChangesAsync();
@@ -170,6 +166,47 @@ namespace FinalProject3.Controllers
 
 
 
+            return NoContent();
+        }
+
+        [HttpPut("VoteById/{id}")]
+        public async Task<IActionResult> VoteOnComment([FromQuery] string UserId, [FromRoute] string CommentId, [FromQuery] int vote)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var fullComment = (await GetFullCommentByCommentID(CommentId)).Value;
+            if (fullComment is null)
+            {
+                return NotFound();
+            }
+            var user =await userManager.FindByIdAsync(UserId);
+            if (user == null)
+            {
+                return BadRequest("User Not Found");
+            }
+            Votes addedVote = new Votes();
+            addedVote.CreatVote(user, vote);
+            fullComment.Votes.Add(addedVote);
+            fullComment.calcVotes();
+            _context.Update(fullComment);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CommentExists(fullComment.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
             return NoContent();
         }
 

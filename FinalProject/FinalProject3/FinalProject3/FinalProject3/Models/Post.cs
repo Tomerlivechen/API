@@ -10,7 +10,7 @@ namespace FinalProject3.Models
 
         public List<string> KeyWords { get; set; } = [];
 
-        public List<Comment>? Comments { get; set; } = new List<Comment>();
+        
 
         
 
