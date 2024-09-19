@@ -22,5 +22,25 @@ namespace FinalProject3.Models
         public int TotalVotes { get; set; }
 
         public string Datetime { get; set; } = string.Empty;
+
+        public List<Comment> Comments { get; set; } = new List<Comment>();
+        public void calcVotes()
+        {
+            int UpVotes = 0;
+            int DownVotes = 0;
+            int TotalVotes = 0;
+            foreach (var vote in Votes)
+            {
+                if (vote.Voted == 1)
+                {
+                    UpVotes++;
+                }
+                if (vote.Voted == -1)
+                {
+                    DownVotes++;
+                }
+            }
+            TotalVotes = UpVotes + DownVotes;
+        }
     }
 }

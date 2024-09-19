@@ -11,7 +11,6 @@ namespace FinalProject3.Mapping
         {
             CommentDisplay setcomment =  new CommentDisplay()
             {
-
                 Id = comment.Id,
                 Text = comment.Text,
                 Link = comment.Link,
@@ -21,10 +20,16 @@ namespace FinalProject3.Mapping
                 UpVotes = comment.UpVotes,
                 DownVotes = comment.DownVotes,
                 TotalVotes = comment.TotalVotes,
-                ParentCommentId = comment.ParentComment?.Id,
-                ParentPostId = comment.ParentPost?.Id,
                 Datetime = comment.Datetime,
             };
+            if (comment.ParentComment is not null)
+            {
+                setcomment.ParentCommentId = comment.ParentComment.Id;
+            }
+            if (comment.ParentPost is not null)
+            {
+                setcomment.ParentCommentId = comment.ParentPost.Id;
+            }
 
             foreach (Comment com in comment.Comments)
             {
@@ -40,7 +45,7 @@ namespace FinalProject3.Mapping
                 Text = NewComment.Text,
                 Link = NewComment.Link,
                 ImageURL = NewComment.ImageURL,
-                Author = await userManager.FindByIdAsync(NewComment.AuthorId)
+                Author = await userManager.FindByIdAsync(NewComment.AuthorId),
                 Datetime = NewComment.Datetime,
 
             };

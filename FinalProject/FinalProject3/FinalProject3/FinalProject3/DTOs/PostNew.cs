@@ -9,8 +9,8 @@ namespace FinalProject3.DTOs
         public required string Id { get; set; }
         [Required, MinLength(2), MaxLength(55)]
         public required string Title { get; set; }
-        public string? Link { get; set; } = string.Empty;
-        public string? ImageURL { get; set; } = string.Empty;
+        public string Link { get; set; } = string.Empty;
+        public string ImageURL { get; set; } = string.Empty;
         [Required, MinLength(2)]
         public string Text { get; set; } = string.Empty;
         [Required]
