@@ -47,9 +47,10 @@ namespace FinalProject3.Data
                 PremissionLevel = "Admin",
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 SecurityStamp = Guid.NewGuid().ToString(),
+                PasswordHash = hasher.HashPassword(null, "qwerty"),
 
             };
-            user.PasswordHash = hasher.HashPassword(user, "qwerty");
+            
             builder.Entity<User>().HasData(user);
 
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { RoleId = "1", UserId = user.Id });
