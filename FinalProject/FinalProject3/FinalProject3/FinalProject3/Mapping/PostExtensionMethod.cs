@@ -48,6 +48,8 @@ namespace FinalProject3.Mapping
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId),
                 Datetime = Newpost.Datetime,
             };
+            var user = await userManager.FindByIdAsync(Newpost.AuthorId);
+            user?.Posts.Add(setPost);
             return setPost;
         }
     }

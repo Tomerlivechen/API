@@ -5,6 +5,7 @@ using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject3.Controllers
 {
@@ -141,5 +142,23 @@ namespace FinalProject3.Controllers
             ModelState.AddModelError("No Changes", "No changes made");
             return View(manageView);
         }
-    }
+
+        [HttpPut("follow")]
+        public async Task<IActionResult> Follow(string userId, string followId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await userManager.FindByIdAsync(userId);
+            var follow = await userManager.FindByIdAsync(followId);
+
+            if (user is null || follow is null)
+            {
+                return BadRequest("User not found");
+            }
+            user.Following.Add(follow);
+            return Ok(user.Following);
+        }
 }

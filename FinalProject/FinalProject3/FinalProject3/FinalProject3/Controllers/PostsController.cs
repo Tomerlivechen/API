@@ -113,6 +113,7 @@ namespace FinalProject3.Controllers
                 return BadRequest(ModelState);
             }
             _context.Post.Add(await post.NewPostToPost(userManager));
+            
                 try
                 {
                     await _context.SaveChangesAsync();
