@@ -27,7 +27,9 @@ namespace FinalProject3.Models
 
         public int VoteScore { get; set; } = 0;
 
+        public List<Chat> Chats { get; set; } = new List<Chat>();
 
+        public List<Notification> Notifications { get; set; } = new List<Notification>();
 
     }
 }

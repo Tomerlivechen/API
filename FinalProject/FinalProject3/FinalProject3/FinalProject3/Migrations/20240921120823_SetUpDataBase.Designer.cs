@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject3.Migrations
 {
     [DbContext(typeof(FP3Context))]
-    [Migration("20240916223733_SetUpDatabase")]
-    partial class SetUpDatabase
+    [Migration("20240921120823_SetUpDataBase")]
+    partial class SetUpDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,37 @@ namespace FinalProject3.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("FinalProject3.Models.Chat", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("User1Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User1Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User2Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User2Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Chat");
+                });
+
             modelBuilder.Entity("FinalProject3.Models.Comment", b =>
                 {
                     b.Property<string>("Id")
@@ -50,6 +81,10 @@ namespace FinalProject3.Migrations
                     b.Property<string>("AuthorId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Datetime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DownVotes")
                         .HasColumnType("int");
@@ -89,6 +124,68 @@ namespace FinalProject3.Migrations
                     b.ToTable("Comment");
                 });
 
+            modelBuilder.Entity("FinalProject3.Models.Message", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ChatId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChatId");
+
+                    b.ToTable("Message");
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.Notification", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ReferenceId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Seen")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("userId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Notification");
+                });
+
             modelBuilder.Entity("FinalProject3.Models.Post", b =>
                 {
                     b.Property<string>("Id")
@@ -100,6 +197,10 @@ namespace FinalProject3.Migrations
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Datetime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DownVotes")
                         .HasColumnType("int");
@@ -142,11 +243,8 @@ namespace FinalProject3.Migrations
 
             modelBuilder.Entity("FinalProject3.Models.Votes", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CommentId")
                         .HasColumnType("nvarchar(450)");
@@ -202,7 +300,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "111de2d8-fba3-4c72-b539-cbb2d23994a3",
+                            ConcurrencyStamp = "9575d010-df4f-4a1f-b794-d6d1e4561a84",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -371,7 +469,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ee06df02-4053-4e57-b081-a8e98eabc693",
+                            UserId = "2b2d457a-cc25-4682-8a1e-fe47e3993a83",
                             RoleId = "1"
                         });
                 });
@@ -440,17 +538,17 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ee06df02-4053-4e57-b081-a8e98eabc693",
+                            Id = "2b2d457a-cc25-4682-8a1e-fe47e3993a83",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bc37e74d-df46-4091-a95e-e96c6825b4c6",
+                            ConcurrencyStamp = "2b758d9a-228c-4ffd-8438-323521a378d3",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAx0JCTnUw5H1VzXOEIOIZkgwHprOyg+X2YHgIlBknLdCs2IsO4BHfE9ppUfmBil/Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIxATRvig1CzZva/Xq/H6JVhhkGZybGSEGzT4FIV5FOsfrXIRMue4x4cb2lI+TyQ+g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "09e1605a-92f9-4d57-a0e3-a81541df230d",
+                            SecurityStamp = "097ec3e2-577c-4c06-aa61-af196eaaea61",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             First_Name = "Tomer",
@@ -462,6 +560,13 @@ namespace FinalProject3.Migrations
                             Pronouns = "They",
                             VoteScore = 0
                         });
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.Chat", b =>
+                {
+                    b.HasOne("FinalProject3.Models.User", null)
+                        .WithMany("Chats")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Comment", b =>
@@ -485,6 +590,26 @@ namespace FinalProject3.Migrations
                     b.Navigation("ParentComment");
 
                     b.Navigation("ParentPost");
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.Message", b =>
+                {
+                    b.HasOne("FinalProject3.Models.Chat", null)
+                        .WithMany("messages")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.Notification", b =>
+                {
+                    b.HasOne("FinalProject3.Models.User", "user")
+                        .WithMany("Notifications")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Post", b =>
@@ -581,6 +706,11 @@ namespace FinalProject3.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("FinalProject3.Models.Chat", b =>
+                {
+                    b.Navigation("messages");
+                });
+
             modelBuilder.Entity("FinalProject3.Models.Comment", b =>
                 {
                     b.Navigation("Comments");
@@ -597,7 +727,11 @@ namespace FinalProject3.Migrations
 
             modelBuilder.Entity("FinalProject3.Models.User", b =>
                 {
+                    b.Navigation("Chats");
+
                     b.Navigation("Following");
+
+                    b.Navigation("Notifications");
 
                     b.Navigation("Posts");
                 });

@@ -27,7 +27,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return comments;
+            return Ok(comments);
         }
 
         [HttpGet("ByPCommentId/{CommentID}")]
@@ -93,7 +93,6 @@ namespace FinalProject3.Controllers
                 return BadRequest(isPost ? "Post not found" : "Comment not found");
             }
             parent.Comments.Add(newComment);
-                
                 try
                 {
                     await _context.SaveChangesAsync();

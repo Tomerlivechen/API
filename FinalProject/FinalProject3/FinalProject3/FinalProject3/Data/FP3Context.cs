@@ -11,6 +11,12 @@ namespace FinalProject3.Data
         public DbSet<Post> Post { get; set; } = default!;
 
         public DbSet<Comment> Comment { get; set; } = default!;
+
+        public DbSet<Chat> Chat { get; set; } = default!;
+
+        public DbSet<Notification> Notification { get; set; } = default!;
+
+        public DbSet<Message> Message { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
