@@ -21,7 +21,7 @@ namespace FinalProject2.Auth
                 MaxFailedAccessAttempts = 5
             };
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 {
                     options.User.RequireUniqueEmail = true;

@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace FinalProject3.DTOs
 {
-    public class UserLogin()
+    public class AppUserLogin()
     {
         [Required]
         [EmailAddress]
@@ -13,7 +13,7 @@ namespace FinalProject3.DTOs
         [Required, PasswordPropertyText, DataType(DataType.Password)]
         public  string Password { get; set; } = string.Empty;
 
-        public UserLogin(string email, string password) : this ()
+        public AppUserLogin(string email, string password) : this ()
         {
             
             Email = email;

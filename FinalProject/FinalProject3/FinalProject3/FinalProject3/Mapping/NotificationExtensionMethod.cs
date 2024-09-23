@@ -6,7 +6,7 @@ namespace FinalProject3.Mapping
 {
     public static class NotificationExtensionMethod
     {
-        public static Notification AddNotification(this Notification notification,string type, string ActionId, User user)
+        public static Notification AddNotification(this Notification notification,string type, string ActionId, AppUser user)
         {
             notification.Id = Guid.NewGuid().ToString();
             notification.ReferenceId = ActionId;

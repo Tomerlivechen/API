@@ -5,7 +5,7 @@ namespace FinalProject3.Mapping
 {
     public static class VotesExtensionMethod
     {
-        public static Votes CreatVote(this Votes vote, User user, int value)
+        public static Votes CreatVote(this Votes vote, AppUser user, int value)
         {
             vote.Voter = user;
             if (value == 1)

@@ -15,7 +15,7 @@
 
         public string ReferenceId {  get; set; } = string.Empty;
 
-        public User user { get; set; } = null;
+        public AppUser user { get; set; } = null;
 
         public void Viewed()
         {

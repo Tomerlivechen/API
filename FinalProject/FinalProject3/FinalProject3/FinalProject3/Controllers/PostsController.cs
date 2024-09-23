@@ -12,7 +12,7 @@ namespace FinalProject3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostsController(FP3Context context, UserManager<User> userManager) : ControllerBase
+    public class PostsController(FP3Context context, UserManager<AppUser> userManager) : ControllerBase
     {
         private readonly FP3Context _context = context;
 
@@ -38,11 +38,58 @@ namespace FinalProject3.Controllers
             return post.ToDisplay();
         }
 
+
+
         // GET: api/Posts/5
         [HttpGet("ByKeyword/{KeyWord}")]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByKeyWord(string KeyWord)
         {
             var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).Select(p => p.ToDisplay()).ToListAsync();
+
+            if (posts == null)
+            {
+                return NotFound();
+            }
+
+            return posts;
+        }
+
+        [HttpGet("ByGroup/{GroupId}")]
+        public async Task<ActionResult<List<PostDisplay>>> GetPostByGroupd(string GroupId)
+        {
+            var posts = await _context.Post.Where(p => p.Group.Id == GroupId).Select(p => p.ToDisplay()).ToListAsync();
+
+            if (posts == null)
+            {
+                return NotFound();
+            }
+
+            return posts;
+        }
+
+        [HttpGet("ByUpVote/{UserID}")]
+        public async Task<ActionResult<List<PostDisplay>>> GetPostByUpVote(string UserID)
+        {
+            var posts = await _context.Post
+            .Where(p => p.Votes.Any(v => v.Voter.Id == UserID && v.Voted > 0))
+            .Select(p => p.ToDisplay())
+            .ToListAsync();
+
+            if (posts == null)
+            {
+                return NotFound();
+            }
+
+            return posts;
+        }
+
+        [HttpGet("ByDownVote/{UserID}")]
+        public async Task<ActionResult<List<PostDisplay>>> GetPostByDownVote(string UserID)
+        {
+            var posts = await _context.Post
+            .Where(p => p.Votes.Any(v => v.Voter.Id == UserID && v.Voted < 0))
+            .Select(p => p.ToDisplay())
+            .ToListAsync();
 
             if (posts == null)
             {
@@ -64,6 +111,8 @@ namespace FinalProject3.Controllers
 
             return post;
         }
+
+
 
         // PUT: api/Posts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -106,14 +155,20 @@ namespace FinalProject3.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Post>> PostPost(PostNew post)
+        public async Task<ActionResult<Post>> PostPost(PostNew newPost)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            _context.Post.Add(await post.NewPostToPost(userManager));
-            
+            var post = await newPost.NewPostToPost(userManager);
+            _context.Post.Add(post);
+            if (post.Group is not null)
+            {
+                var group = await _context.Group.FindAsync(post.Group.Id);
+                group?.Posts.Add(post);
+
+            }
                 try
                 {
                     await _context.SaveChangesAsync();

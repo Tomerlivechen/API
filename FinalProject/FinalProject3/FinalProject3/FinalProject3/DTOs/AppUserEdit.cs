@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace FinalProject3.DTOs
 {
-    public class UserEdit
+    public class AppUserEdit
     {
 
 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FinalProject3.Models
 {
-    public class User : IdentityUser
+    public class AppUser : IdentityUser
     {
 
         public string Prefix { get; set; } = string.Empty;
@@ -21,9 +21,12 @@ namespace FinalProject3.Models
         [Required]
         public required string PremissionLevel { get; set; }
 
-        public List<User> Following { get; set; } = [];
+        public List<AppUser> Following { get; set; } = [];
+        public List<AppUser> Blocked { get; set; } = [];
 
         public List<Post> Posts { get; set; } = [];
+
+        public List<SocialGroup> SocialGroups { get; set; } = [];
 
         public int VoteScore { get; set; } = 0;
 

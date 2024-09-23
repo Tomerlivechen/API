@@ -11,20 +11,20 @@ namespace FinalProject3.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController(SignInManager<User> signInManager, UserManager<User> userManager, IJwtTokenService jwtTokenService) : Controller
+public class AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService) : Controller
 {
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] UserRegister register)
+    public async Task<IActionResult> Register([FromBody] AppUserRegister register)
     {
 
         if (ModelState.IsValid)
         {
-            User user = register.RegisterToUser();
+            AppUser user = register.RegisterToUser();
             var result = await userManager.CreateAsync(user, register.Password);
             if (result.Succeeded)
             {
                 await signInManager.SignInAsync(user, isPersistent: true);
-                UserLogin userLogin = new UserLogin(register.Email, register.Password);
+                AppUserLogin userLogin = new AppUserLogin(register.Email, register.Password);
                 await LogIn(userLogin);
                 return Ok(result);
             }
@@ -38,7 +38,7 @@ public class AuthController(SignInManager<User> signInManager, UserManager<User>
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> LogIn([FromBody] UserLogin login, string ReturnUrl = "/")
+    public async Task<IActionResult> LogIn([FromBody] AppUserLogin login, string ReturnUrl = "/")
     {
         if (ModelState.IsValid)
         {
@@ -70,7 +70,7 @@ public class AuthController(SignInManager<User> signInManager, UserManager<User>
     }
 
     [HttpPut("manage")]
-    public async Task<IActionResult> Manage(UserEdit manageView)
+    public async Task<IActionResult> Manage(AppUserEdit manageView)
     {
         var user = await userManager.GetUserAsync(User);
         bool changed = false;
@@ -155,6 +155,25 @@ public class AuthController(SignInManager<User> signInManager, UserManager<User>
         }
         user.Following.Add(follow);
         return Ok(user.Following);
+    }
+
+    [HttpPut("block")]
+    public async Task<IActionResult> Block(string userId, string blockId)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var user = await userManager.FindByIdAsync(userId);
+        var block = await userManager.FindByIdAsync(blockId);
+
+        if (user is null || block is null)
+        {
+            return BadRequest("User not found");
+        }
+        user.Blocked.Add(block);
+        return Ok(user.Blocked);
     }
 }
 

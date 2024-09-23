@@ -12,7 +12,7 @@ namespace FinalProject3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NotificationController(FP3Context context, UserManager<User> userManager) : ControllerBase
+    public class NotificationController(FP3Context context, UserManager<AppUser> userManager) : ControllerBase
     {
         private readonly FP3Context _context = context;
         [HttpPost]
@@ -23,7 +23,7 @@ namespace FinalProject3.Controllers
                 return BadRequest(ModelState);
             }
             Notification notification = new Notification();
-            User? notified = null;
+            AppUser? notified = null;
             Interaction? interaction = null;
             interaction = await _context.Comment.FindAsync(ActionId);
             if (interaction is null)

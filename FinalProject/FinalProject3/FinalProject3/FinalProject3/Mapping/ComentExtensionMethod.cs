@@ -37,7 +37,7 @@ namespace FinalProject3.Mapping
             }
             return setcomment;
         }
-        public async static Task<Comment> NewCommentToComment(this CommentNew NewComment, UserManager<User> userManager)
+        public async static Task<Comment> NewCommentToComment(this CommentNew NewComment, UserManager<AppUser> userManager)
         {
             Comment comment = new Comment()
             {

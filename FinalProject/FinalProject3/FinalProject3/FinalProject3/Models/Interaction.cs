@@ -11,7 +11,7 @@ namespace FinalProject3.Models
         [Required, MinLength(2)]
         public string Text { get; set; } = string.Empty;
         [Required]
-        public required User Author { get; set; }
+        public required AppUser Author { get; set; }
 
         public List<Votes> Votes { get; set; } = [];
 

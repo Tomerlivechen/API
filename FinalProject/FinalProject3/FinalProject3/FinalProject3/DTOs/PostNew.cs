@@ -18,6 +18,8 @@ namespace FinalProject3.DTOs
 
         public Category? Category { get; set; }
 
+        public SocialGroup? Group { get; set; }
+
         public string KeyWords { get; set; } = string.Empty;
         public string Datetime = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
 

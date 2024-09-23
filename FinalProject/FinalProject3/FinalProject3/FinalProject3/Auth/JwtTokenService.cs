@@ -8,11 +8,11 @@ using System.Text;
 
 namespace FinalProject3.Auth
 {
-    public class JwtTokenService(IOptions<JWTSettings> options , UserManager<User> userManager) : IJwtTokenService
+    public class JwtTokenService(IOptions<JWTSettings> options , UserManager<AppUser> userManager) : IJwtTokenService
     {
         JWTSettings jwtSettings = options.Value;
 
-        public async Task<string> CreateToken(User user)
+        public async Task<string> CreateToken(AppUser user)
         {
 
             if (user is null || user.UserName is null)

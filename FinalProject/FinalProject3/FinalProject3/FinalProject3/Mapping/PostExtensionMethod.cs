@@ -33,7 +33,7 @@ namespace FinalProject3.Mapping
             return setPost;
         }
 
-        public async static Task<Post> NewPostToPost(this PostNew Newpost, UserManager<User> userManager)
+        public async static Task<Post> NewPostToPost(this PostNew Newpost, UserManager<AppUser> userManager)
         {
             char[] delimiters = { ',', ';', '|',' ' };
             var setPost = new Post()
@@ -47,6 +47,7 @@ namespace FinalProject3.Mapping
                 ImageURL = Newpost.ImageURL,
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId),
                 Datetime = Newpost.Datetime,
+                Group = Newpost.Group,
             };
             var user = await userManager.FindByIdAsync(Newpost.AuthorId);
             user?.Posts.Add(setPost);

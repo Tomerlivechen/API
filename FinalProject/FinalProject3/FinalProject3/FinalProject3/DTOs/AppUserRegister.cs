@@ -4,7 +4,7 @@ using APIClassLibraryDAL.Models;
 
 namespace FinalProject3.DTOs
 {
-    public class UserRegister
+    public class AppUserRegister
     {
         [Required, EmailAddress]
         public required string Email { get; set; }

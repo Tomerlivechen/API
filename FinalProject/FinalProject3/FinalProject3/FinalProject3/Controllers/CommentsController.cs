@@ -12,7 +12,7 @@ namespace FinalProject3.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentsController(FP3Context context, UserManager<User> userManager) : ControllerBase
+    public class CommentsController(FP3Context context, UserManager<AppUser> userManager) : ControllerBase
     {
 
 

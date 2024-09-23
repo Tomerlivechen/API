@@ -6,9 +6,9 @@ namespace FinalProject32.Mapping
 {
     public static class UserExtensionMethodcs
     {
-        public static User RegisterToUser(this UserRegister register)
+        public static AppUser RegisterToUser(this AppUserRegister register)
         {
-            var user = new User()
+            var user = new AppUser()
             {
                 Email = register.Email,
                 UserName = register.UserName,

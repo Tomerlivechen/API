@@ -8,6 +8,8 @@ namespace FinalProject3.Models
         public required string Title { get; set; }
         public Category? Category { get; set; }
 
+        public SocialGroup? Group { get; set; }
+
         public List<string> KeyWords { get; set; } = [];
 
         

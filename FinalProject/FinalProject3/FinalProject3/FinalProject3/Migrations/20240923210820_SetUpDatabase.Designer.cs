@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject3.Migrations
 {
     [DbContext(typeof(FP3Context))]
-    [Migration("20240921120823_SetUpDataBase")]
-    partial class SetUpDataBase
+    [Migration("20240923210820_SetUpDatabase")]
+    partial class SetUpDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,36 @@ namespace FinalProject3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AppUserAppUser", b =>
+                {
+                    b.Property<string>("BlockedId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FollowingId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("BlockedId", "FollowingId");
+
+                    b.HasIndex("FollowingId");
+
+                    b.ToTable("AppUserAppUser");
+                });
+
+            modelBuilder.Entity("AppUserSocialGroup", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SocialGroupId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AppUserId", "SocialGroupId");
+
+                    b.HasIndex("SocialGroupId");
+
+                    b.ToTable("AppUserSocialGroup");
+                });
 
             modelBuilder.Entity("FinalProject3.Models.Category", b =>
                 {
@@ -47,6 +77,9 @@ namespace FinalProject3.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("User1Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -63,12 +96,9 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Chat");
                 });
@@ -205,6 +235,9 @@ namespace FinalProject3.Migrations
                     b.Property<int>("DownVotes")
                         .HasColumnType("int");
 
+                    b.Property<string>("GroupId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -238,7 +271,39 @@ namespace FinalProject3.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("GroupId");
+
                     b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.SocialGroup", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AdminId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GroupCreatorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
+
+                    b.HasIndex("GroupCreatorId");
+
+                    b.ToTable("Group");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Votes", b =>
@@ -300,7 +365,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "9575d010-df4f-4a1f-b794-d6d1e4561a84",
+                            ConcurrencyStamp = "434b4977-033f-40e7-ac63-54e97becd38d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -469,7 +534,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2b2d457a-cc25-4682-8a1e-fe47e3993a83",
+                            UserId = "3ecaa759-4f09-4a4f-beb5-e679375b0a2e",
                             RoleId = "1"
                         });
                 });
@@ -493,7 +558,7 @@ namespace FinalProject3.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("FinalProject3.Models.User", b =>
+            modelBuilder.Entity("FinalProject3.Models.AppUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -525,30 +590,25 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("VoteScore")
                         .HasColumnType("int");
 
-                    b.HasIndex("UserId");
-
-                    b.HasDiscriminator().HasValue("User");
+                    b.HasDiscriminator().HasValue("AppUser");
 
                     b.HasData(
                         new
                         {
-                            Id = "2b2d457a-cc25-4682-8a1e-fe47e3993a83",
+                            Id = "3ecaa759-4f09-4a4f-beb5-e679375b0a2e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2b758d9a-228c-4ffd-8438-323521a378d3",
+                            ConcurrencyStamp = "5148980c-5465-40be-b280-fc6fc09acf97",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIxATRvig1CzZva/Xq/H6JVhhkGZybGSEGzT4FIV5FOsfrXIRMue4x4cb2lI+TyQ+g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJt6ofgdxBYIlFRbqIdUUtwrdY7EydOLtUe+ckgGwXOsq8UQu4Jo3MDpgr3hJ8JsxA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "097ec3e2-577c-4c06-aa61-af196eaaea61",
+                            SecurityStamp = "7208f70a-a108-498c-87c7-54c2e6132bdc",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             First_Name = "Tomer",
@@ -562,16 +622,46 @@ namespace FinalProject3.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AppUserAppUser", b =>
+                {
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("BlockedId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("FollowingId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AppUserSocialGroup", b =>
+                {
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FinalProject3.Models.SocialGroup", null)
+                        .WithMany()
+                        .HasForeignKey("SocialGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("FinalProject3.Models.Chat", b =>
                 {
-                    b.HasOne("FinalProject3.Models.User", null)
+                    b.HasOne("FinalProject3.Models.AppUser", null)
                         .WithMany("Chats")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Comment", b =>
                 {
-                    b.HasOne("FinalProject3.Models.User", "Author")
+                    b.HasOne("FinalProject3.Models.AppUser", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -603,7 +693,7 @@ namespace FinalProject3.Migrations
 
             modelBuilder.Entity("FinalProject3.Models.Notification", b =>
                 {
-                    b.HasOne("FinalProject3.Models.User", "user")
+                    b.HasOne("FinalProject3.Models.AppUser", "user")
                         .WithMany("Notifications")
                         .HasForeignKey("userId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -614,7 +704,7 @@ namespace FinalProject3.Migrations
 
             modelBuilder.Entity("FinalProject3.Models.Post", b =>
                 {
-                    b.HasOne("FinalProject3.Models.User", "Author")
+                    b.HasOne("FinalProject3.Models.AppUser", "Author")
                         .WithMany("Posts")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -624,9 +714,34 @@ namespace FinalProject3.Migrations
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("FinalProject3.Models.SocialGroup", "Group")
+                        .WithMany("Posts")
+                        .HasForeignKey("GroupId");
+
                     b.Navigation("Author");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.SocialGroup", b =>
+                {
+                    b.HasOne("FinalProject3.Models.AppUser", "groupAdmin")
+                        .WithMany()
+                        .HasForeignKey("AdminId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FinalProject3.Models.AppUser", "GroupCreator")
+                        .WithMany()
+                        .HasForeignKey("GroupCreatorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("GroupCreator");
+
+                    b.Navigation("groupAdmin");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Votes", b =>
@@ -639,7 +754,7 @@ namespace FinalProject3.Migrations
                         .WithMany("Votes")
                         .HasForeignKey("PostId");
 
-                    b.HasOne("FinalProject3.Models.User", "Voter")
+                    b.HasOne("FinalProject3.Models.AppUser", "Voter")
                         .WithMany()
                         .HasForeignKey("VoterId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -699,13 +814,6 @@ namespace FinalProject3.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FinalProject3.Models.User", b =>
-                {
-                    b.HasOne("FinalProject3.Models.User", null)
-                        .WithMany("Following")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("FinalProject3.Models.Chat", b =>
                 {
                     b.Navigation("messages");
@@ -725,11 +833,14 @@ namespace FinalProject3.Migrations
                     b.Navigation("Votes");
                 });
 
-            modelBuilder.Entity("FinalProject3.Models.User", b =>
+            modelBuilder.Entity("FinalProject3.Models.SocialGroup", b =>
+                {
+                    b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("FinalProject3.Models.AppUser", b =>
                 {
                     b.Navigation("Chats");
-
-                    b.Navigation("Following");
 
                     b.Navigation("Notifications");
 

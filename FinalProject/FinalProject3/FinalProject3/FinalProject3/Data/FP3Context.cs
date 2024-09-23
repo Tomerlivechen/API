@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Reflection.Emit;
 
 namespace FinalProject3.Data
 {
@@ -17,15 +18,37 @@ namespace FinalProject3.Data
         public DbSet<Notification> Notification { get; set; } = default!;
 
         public DbSet<Message> Message { get; set; } = default!;
+
+        public DbSet<SocialGroup> Group { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
+
+            builder.Entity<AppUser>()
+    .HasMany(a => a.SocialGroups)
+    .WithMany(s => s.Members)
+    .UsingEntity<Dictionary<string, object>>(
+        "AppUserSocialGroup",
+        j => j.HasOne<SocialGroup>().WithMany().HasForeignKey("SocialGroupId"),
+        j => j.HasOne<AppUser>().WithMany().HasForeignKey("AppUserId"));
             builder.Entity<IdentityUserRole<string>>()
              .HasOne<IdentityUser>()
               .WithMany()
              .HasForeignKey(ur => ur.UserId)
              .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<SocialGroup>()
+    .HasOne(s => s.groupAdmin)
+    .WithMany()  
+    .HasForeignKey(s => s.AdminId)
+    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<SocialGroup>()
+.HasOne(s => s.GroupCreator)
+.WithMany()
+.HasForeignKey(s => s.GroupCreatorId)
+.OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<IdentityUserRole<string>>()
                 .HasOne<IdentityRole>()
@@ -37,8 +60,8 @@ namespace FinalProject3.Data
             builder.Entity<IdentityRole>().HasData(
     new IdentityRole() { Id = "1", Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString() }
     );
-            var hasher = new PasswordHasher<User>();
-            var user = new User()
+            var hasher = new PasswordHasher<AppUser>();
+            var user = new AppUser()
             {
                 Id = Guid.NewGuid().ToString(),
                 Email = "TomerLiveChen@gmail.com",
@@ -57,7 +80,7 @@ namespace FinalProject3.Data
 
             };
             
-            builder.Entity<User>().HasData(user);
+            builder.Entity<AppUser>().HasData(user);
 
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { RoleId = "1", UserId = user.Id });
 

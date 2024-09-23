@@ -12,7 +12,7 @@ namespace FinalProject3.Mapping
             return ToNotify;
         }
 
-        public static Message MakeMessage(this Message message, string ChatId, User user, string script) 
+        public static Message MakeMessage(this Message message, string ChatId, AppUser user, string script) 
         {
             message.ChatId = ChatId;
             message.message = script;
@@ -23,7 +23,7 @@ namespace FinalProject3.Mapping
 
         }
 
-        public static Chat MakeNewChat(this Chat chat, User user1, User user2)
+        public static Chat MakeNewChat(this Chat chat, AppUser user1, AppUser user2)
         {
             chat.User2Id = user2.Id;
             chat.User1Id = user1.Id;
