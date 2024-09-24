@@ -22,7 +22,7 @@ namespace FinalProject3
 
 
         //    builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
-         //   builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+            builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
             //jwt setup
         //    var jwtsettings = builder.Configuration.GetSection("JwtSettings");
             // auth setup

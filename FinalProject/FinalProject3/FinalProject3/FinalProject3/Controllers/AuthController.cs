@@ -2,6 +2,7 @@
 using FinalProject3.DTOs;
 using FinalProject3.Models;
 using FinalProject32.Mapping;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,24 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
 
         return BadRequest(register);
     }
+
+    [HttpGet("Get Users")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetUsers()
+    {
+        var user = await userManager.GetUserAsync(User);
+        var users = await userManager.Users.Select(u => u.UsertoDisplay()).ToListAsync();
+        foreach (AppUserDisplay userDisplay in users)
+        {
+            var isFollowed = user.Following.Find(u => u.Email == userDisplay.Email);
+            if (isFollowed is not null)
+            {
+                userDisplay.Following = true;
+            }
+        }
+        return Ok(users);
+    }
+
 
     [HttpPost("login")]
     public async Task<IActionResult> LogIn([FromBody] AppUserLogin login, string ReturnUrl = "/")

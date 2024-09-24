@@ -22,5 +22,21 @@ namespace FinalProject32.Mapping
             return user;
 
         }
+
+        public static AppUserDisplay UsertoDisplay(this AppUser user)
+        {
+            var display = new AppUserDisplay()
+            {
+                Email = user.Email?? string.Empty,
+                UserName = user.UserName ?? string.Empty,
+                Prefix = user.Prefix,
+                First_Name = user.First_Name,
+                Last_Name = user.Last_Name,
+                ImageURL= user.ImageURL,
+            };
+            return display;
+        }
     }
+
+    
 }

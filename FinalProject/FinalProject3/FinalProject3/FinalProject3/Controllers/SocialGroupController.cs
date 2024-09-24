@@ -2,6 +2,7 @@
 using FinalProject3.DTOs;
 using FinalProject3.Mapping;
 using FinalProject3.Models;
+using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,20 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<SocialGroup>> GetGroupbyId(string GroupId)
         {
             return await _context.Group.Include(g => g.Members).FirstOrDefaultAsync(g => g.Id == GroupId);
+        }
+
+        [HttpGet("GetMembers/{GroupId}")]
+        public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetMembersByGroupbyId(string GroupId)
+        {
+            var group = await _context.Group.Include(g => g.Members).FirstOrDefaultAsync(g => g.Id == GroupId);
+            if (group is null)
+            {
+                return NotFound("Gruop not found");
+            }
+                var members = group.Members.Select(u => u.UsertoDisplay()).ToList();
+                return members;
+            
+                
         }
 
         [HttpPost]
