@@ -35,7 +35,7 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             }
         }
 
-        return BadRequest(register);
+        return BadRequest(ModelState);
     }
 
     [HttpGet("Get Users")]
@@ -143,9 +143,9 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             user.ImageURL = manageView.ImageURL;
             changed = true;
         }
-        if (manageView.PremissionLevel is not null)
+        if (manageView.PermissionLevel is not null)
         {
-            user.PremissionLevel = manageView.PremissionLevel;
+            user.PermissionLevel = manageView.PermissionLevel;
             changed = true;
         }
         if (changed)

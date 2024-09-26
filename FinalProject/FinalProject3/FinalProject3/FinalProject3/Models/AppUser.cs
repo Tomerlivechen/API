@@ -19,7 +19,7 @@ namespace FinalProject3.Models
         public string ImageAlt { get; set; } = string.Empty;
 
         [Required]
-        public required string PremissionLevel { get; set; }
+        public required string PermissionLevel { get; set; }
 
         public List<AppUser> Following { get; set; } = [];
         public List<AppUser> Blocked { get; set; } = [];

@@ -15,9 +15,6 @@ namespace FinalProject3.DTOs
         [Required, PasswordPropertyText]
         public required string Password { get; set; }
 
-        [Required, PasswordPropertyText]
-        [Compare("Password", ErrorMessage = "Confirmation does not match password")]
-        public required string ConfirmPassword { get; set; }
         [Required]
         public required string Prefix { get; set; } 
         [Required]
@@ -29,6 +26,6 @@ namespace FinalProject3.DTOs
         [Required]
         public required string ImageURL { get; set; }
         [Required]
-        public required string PremissionLevel { get; set; }
+        public required string PermissionLevel { get; set; }
     }
 }

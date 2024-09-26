@@ -73,7 +73,7 @@ namespace FinalProject3.Data
                 Last_Name = "Chen",
                 Pronouns = "They",
                 ImageURL = "https://i.imgur.com/1nKIWjB.gif",
-                PremissionLevel = "Admin",
+                PermissionLevel = "Admin",
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 SecurityStamp = Guid.NewGuid().ToString(),
                 PasswordHash = hasher.HashPassword(null, "qwerty"),

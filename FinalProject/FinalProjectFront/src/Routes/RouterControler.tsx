@@ -6,6 +6,8 @@ import UsersPage from "./UsersPage";
 import Feed from "./Feed";
 import Profile from "./Profile";
 import NavBar from "../Bars/NavBar";
+import Register from "./Register";
+import Login from "./Login";
 
 function RouterControler() {
   return (
@@ -18,6 +20,8 @@ function RouterControler() {
           <Route path="Feed" element={<Feed />} />
           <Route path="UsersPage" element={<UsersPage />} />
           <Route path="Profile" element={<Profile />} />
+          <Route path="Register" element={<Register />} />
+          <Route path="Login" element={<Login />} />
         </Routes>
       </Router>
     </>

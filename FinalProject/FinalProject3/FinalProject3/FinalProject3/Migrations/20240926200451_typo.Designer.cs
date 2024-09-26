@@ -4,6 +4,7 @@ using FinalProject3.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject3.Migrations
 {
     [DbContext(typeof(FP3Context))]
-    partial class FP3ContextModelSnapshot : ModelSnapshot
+    [Migration("20240926200451_typo")]
+    partial class typo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -362,7 +365,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "389aa663-c474-4fb5-ac4c-0201ceb320f0",
+                            ConcurrencyStamp = "038aafee-a5b2-4d9f-a227-25d493ed4a80",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -531,7 +534,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "9f85da63-d589-4a78-bc9c-b94b452f4d7e",
+                            UserId = "4d0e99d1-02a8-403f-90c6-b48f33234d49",
                             RoleId = "1"
                         });
                 });
@@ -595,17 +598,17 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9f85da63-d589-4a78-bc9c-b94b452f4d7e",
+                            Id = "4d0e99d1-02a8-403f-90c6-b48f33234d49",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5f3a273c-9901-4ea8-8889-c3dbbcf49c65",
+                            ConcurrencyStamp = "d0b6b326-bad8-4f67-bcef-4d4649c8b9a5",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM41uKJRuerMlf/9Czb88gcCidsZzHY3TXB4YMQN7MJ3Vp7Icp8RQBe0LLk3OAM5pA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGnSuNeX4jqjTnbl6etSS2C1N45WCjOrqNc9h9+1EDnf2FaXg2wY8h+ut5BPIcCKJQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "02fc7042-90dc-4946-a44c-7a4ca26747e8",
+                            SecurityStamp = "90667c7a-2b6a-4770-9e64-57c196d165a4",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             First_Name = "Tomer",

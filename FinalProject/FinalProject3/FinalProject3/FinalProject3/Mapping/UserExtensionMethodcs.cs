@@ -17,7 +17,7 @@ namespace FinalProject32.Mapping
                 Last_Name = register.Last_Name,
                 Pronouns = register.Pronouns,
                 ImageURL = register.ImageURL,
-                PremissionLevel = register.PremissionLevel,
+                PermissionLevel = register.PermissionLevel,
             };
             return user;
 

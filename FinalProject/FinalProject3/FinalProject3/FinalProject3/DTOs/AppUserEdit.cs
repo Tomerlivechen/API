@@ -24,6 +24,6 @@ namespace FinalProject3.DTOs
 
         public required string ImageURL { get; set; }
 
-        public required string PremissionLevel { get; set; }
+        public required string PermissionLevel { get; set; }
     }
 }

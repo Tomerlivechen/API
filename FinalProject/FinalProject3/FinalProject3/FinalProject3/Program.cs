@@ -21,7 +21,7 @@ namespace FinalProject3
             Utils.setupJwt(builder);
 
 
-        //    builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
+           builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
             builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
             //jwt setup
         //    var jwtsettings = builder.Configuration.GetSection("JwtSettings");
