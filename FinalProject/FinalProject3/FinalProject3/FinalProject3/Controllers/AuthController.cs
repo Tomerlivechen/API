@@ -7,13 +7,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace FinalProject3.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService) : Controller
+public class AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService, IOptions<JWTSettings> options) : Controller
 {
+
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] AppUserRegister register)
     {
@@ -38,7 +43,7 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
         return BadRequest(ModelState);
     }
 
-    [HttpGet("Get Users")]
+    [HttpGet("GetUsers")]
     [Authorize]
     public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetUsers()
     {
@@ -53,6 +58,43 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             }
         }
         return Ok(users);
+    }
+
+
+    [HttpPost("GetUser")]
+    [Authorize]
+    public async Task<ActionResult<AppUserDisplay>> GetUser([FromBody] AppUserIdRequest id)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+            var user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == id.Id);
+        if (user is not null)
+        {
+            return Ok(user.UsertoDisplay());
+        }
+
+            return NotFound("User Not Found");
+        
+    }
+
+    [HttpPost("GetFullUser")]
+    [Authorize]
+    public async Task<ActionResult<AppUser>> GetFullUser([FromBody] string id)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        var user = await userManager.Users.Include(u => u.Following).Include(u => u.Posts).FirstOrDefaultAsync(u => u.Id == id);
+        if (user is not null)
+        {
+            return Ok(user);
+        }
+
+        return NotFound("User Not Found");
+
     }
 
 
@@ -81,7 +123,17 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
         return Unauthorized();
     }
 
-    [HttpGet("Logout")]
+    [HttpGet("validateToken")]
+    [Authorize]
+    public IActionResult ValidateToken()
+    {
+            return Ok();
+    }
+
+
+
+
+        [HttpGet("Logout")]
     public async Task<IActionResult> LogOut()
     {
         await signInManager.SignOutAsync();

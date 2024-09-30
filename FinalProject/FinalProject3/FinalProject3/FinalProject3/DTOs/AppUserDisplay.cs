@@ -12,7 +12,7 @@ namespace FinalProject3.DTOs
         public string Email {  get; set; } = string.Empty;
 
         public string ImageURL { get; set; } = string.Empty;
-
+        public string Pronouns { get; set; } = string.Empty;
         public bool Following { get; set; } = false;
 
     }

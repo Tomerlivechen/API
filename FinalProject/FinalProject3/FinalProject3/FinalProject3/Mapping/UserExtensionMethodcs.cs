@@ -33,6 +33,7 @@ namespace FinalProject32.Mapping
                 First_Name = user.First_Name,
                 Last_Name = user.Last_Name,
                 ImageURL= user.ImageURL,
+                Pronouns = user.Pronouns,
             };
             return display;
         }

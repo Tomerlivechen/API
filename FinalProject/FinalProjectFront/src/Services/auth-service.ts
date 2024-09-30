@@ -1,7 +1,6 @@
 import axios from "axios";
-import { AppUserRegister, IAppUserRegister } from "../Medels/AuthModels";
 
-const baseURL = "https://localhost:7006/api/Auth";
+const baseURL = import.meta.env.VITE_BASE_URL + "/Auth";
 
 const register = (
   email: string,
@@ -32,6 +31,30 @@ const login = (email: string, password: string) =>
     }
     return response;
   });
-export { register, login };
 
-export const auth = { register, login };
+const validate = (token: string) => {
+  return axios.get(`${baseURL}/validateToken`, {
+    headers: {
+      Authorization: `Bearer ${token.replace(/"/g, "")}`,
+    },
+  });
+};
+
+const getUser = (token: string, id: string) =>
+  axios
+    .post(
+      `${baseURL}/GetUser`,
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${token.replace(/"/g, "")}`,
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+export { register, login, validate, getUser };
+
+export const auth = { register, login, validate, getUser };

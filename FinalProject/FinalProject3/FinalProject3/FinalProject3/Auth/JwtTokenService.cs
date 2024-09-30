@@ -25,7 +25,7 @@ namespace FinalProject3.Auth
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim("UserId", user.Id.ToString()),
                 new Claim("UserName", user.UserName),
-                new Claim("PremissionLevel", user.PermissionLevel)
+                new Claim("PermissionLevel", user.PermissionLevel)
             ];
             var isAdmin = await userManager.IsInRoleAsync(user, "Admin");
 

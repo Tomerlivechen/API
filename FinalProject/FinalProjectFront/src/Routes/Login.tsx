@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye } from "react-icons/fa";
@@ -6,10 +6,12 @@ import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
+import { LoggedInContext } from "../ContextAPI/LoggedinContext";
 
-function login() {
+function LoginPage() {
   const [viewPassword, setviewPassword] = useState("password");
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useContext(LoggedInContext);
   const navigate = useNavigate();
   const viewPass = () => {
     setviewPassword((prevviewPassword) =>
@@ -43,13 +45,14 @@ function login() {
           auth
             .login(o.email, o.password)
             .then((response) => {
-              dialogs.success("Register Succefull").then(() => {
+              dialogs.success("Login Succefull").then(() => {
+                login(response.data.token);
                 navigate("/");
               });
             })
             .catch((error) => {
               if (error && error.response && error.response.data) {
-                const errorMessages = error.response.data["Register Failed"];
+                const errorMessages = error.response.data["Login Failed"];
                 if (Array.isArray(errorMessages)) {
                   const message = errorMessages.join(" & ");
                   dialogs.error(message);
@@ -124,4 +127,4 @@ function login() {
   );
 }
 
-export default login;
+export default LoginPage;
