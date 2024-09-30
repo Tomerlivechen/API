@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./MainPage";
 import About from "./About";
+import TestSpace from "./TestSpace";
 import UsersPage from "./UsersPage";
 import Feed from "./Feed";
 import Profile from "./Profile";
@@ -25,7 +26,7 @@ function RouterControler() {
               <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="About" element={<About />} />
-
+				<Route path="Test" element={<TestSpace />} />
                 <Route
                   path="Feed"
                   element={
@@ -50,6 +51,7 @@ function RouterControler() {
                     </ProtectedRoute>
                   }
                 />
+				
                 <Route
                   path="Register"
                   element={
