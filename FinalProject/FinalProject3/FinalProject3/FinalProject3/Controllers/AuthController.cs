@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace FinalProject3.Controllers;
@@ -47,11 +48,17 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
     [Authorize]
     public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetUsers()
     {
-        var user = await userManager.GetUserAsync(User);
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
         var users = await userManager.Users.Select(u => u.UsertoDisplay()).ToListAsync();
         foreach (AppUserDisplay userDisplay in users)
         {
-            var isFollowed = user.Following.Find(u => u.Email == userDisplay.Email);
+            var isFollowed = user.FollowingId.Find(u => u == userDisplay.Id);
             if (isFollowed is not null)
             {
                 userDisplay.Following = true;
@@ -210,22 +217,63 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
     }
 
     [HttpPut("follow")]
-    public async Task<IActionResult> Follow(string userId, string followId)
+    [Authorize]
+    public async Task<IActionResult> Follow([FromBody] AppUserIdRequest followId)
     {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        Console.WriteLine(ClaimTypes.NameIdentifier, userId);
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            return BadRequest(new { ModelState, userId });
         }
 
         var user = await userManager.FindByIdAsync(userId);
-        var follow = await userManager.FindByIdAsync(followId);
+        var follow = await userManager.FindByIdAsync(followId.Id);
 
         if (user is null || follow is null)
         {
             return BadRequest("User not found");
         }
         user.Following.Add(follow);
-        return Ok(user.Following);
+        if (user.FollowingId is null)
+        {
+            user.FollowingId = new List<string>();
+        }
+        user.FollowingId.Add(follow.Id.ToString());
+        var result = await userManager.UpdateAsync(user);
+        if (!result.Succeeded)
+        {
+            return BadRequest("Failed to update user following list.");
+        }
+        return Ok(user.FollowingId);
+    }
+
+    [HttpPut("unfollow")]
+    [Authorize]
+    public async Task<IActionResult> unFollow([FromBody] AppUserIdRequest followId)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var user = await userManager.FindByIdAsync(userId);
+        var follow = await userManager.FindByIdAsync(followId.Id);
+
+        if (user is null || follow is null)
+        {
+            return BadRequest("User not found");
+        }
+        user.Following.Remove(follow);
+        user.FollowingId.Remove(follow.Id.ToString());
+        var result = await userManager.UpdateAsync(user);
+        if (!result.Succeeded)
+        {
+            return BadRequest("Failed to update user following list.");
+        }
+        return Ok(user.FollowingId);
     }
 
     [HttpPut("block")]
@@ -244,6 +292,11 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             return BadRequest("User not found");
         }
         user.Blocked.Add(block);
+        var result = await userManager.UpdateAsync(user);
+        if (!result.Succeeded)
+        {
+            return BadRequest("Failed to update user following list.");
+        }
         return Ok(user.Blocked);
     }
 }

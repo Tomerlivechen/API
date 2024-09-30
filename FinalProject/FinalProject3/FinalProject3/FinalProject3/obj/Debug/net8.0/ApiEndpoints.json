@@ -29,14 +29,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "followId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Type": "FinalProject3.DTOs.AppUserIdRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -171,6 +166,22 @@
       {
         "Name": "register",
         "Type": "FinalProject3.DTOs.AppUserRegister",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "unFollow",
+    "RelativePath": "api/Auth/unfollow",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "followId",
+        "Type": "FinalProject3.DTOs.AppUserIdRequest",
         "IsRequired": true
       }
     ],

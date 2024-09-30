@@ -9,7 +9,7 @@ import Profile from "./Profile";
 import NavBar from "../Bars/NavBar";
 import Register from "./Register";
 import { ThemeProvider } from "../ContextAPI/ThemeContext";
-import { LoggedInProvider } from "../ContextAPI/LoggedinContext";
+import { LoggedInProvider } from "../ContextAPI/LoggedInContext";
 import { UserProvider } from "../ContextAPI/UserContext";
 import LoginPage from "./Login";
 import ProtectedRoute from "../Constants/RoutrProtection/ProtectedRoute";
@@ -26,7 +26,7 @@ function RouterControler() {
               <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="About" element={<About />} />
-				<Route path="Test" element={<TestSpace />} />
+                <Route path="Test" element={<TestSpace />} />
                 <Route
                   path="Feed"
                   element={
@@ -51,7 +51,7 @@ function RouterControler() {
                     </ProtectedRoute>
                   }
                 />
-				
+
                 <Route
                   path="Register"
                   element={

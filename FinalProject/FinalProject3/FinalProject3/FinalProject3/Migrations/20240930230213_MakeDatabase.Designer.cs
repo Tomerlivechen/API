@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject3.Migrations
 {
     [DbContext(typeof(FP3Context))]
-    [Migration("20240926200451_typo")]
-    partial class typo
+    [Migration("20240930230213_MakeDatabase")]
+    partial class MakeDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace FinalProject3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("AppUserAppUser", b =>
-                {
-                    b.Property<string>("BlockedId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FollowingId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("BlockedId", "FollowingId");
-
-                    b.HasIndex("FollowingId");
-
-                    b.ToTable("AppUserAppUser");
-                });
 
             modelBuilder.Entity("AppUserSocialGroup", b =>
                 {
@@ -365,7 +350,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "038aafee-a5b2-4d9f-a227-25d493ed4a80",
+                            ConcurrencyStamp = "ab0aac35-96cd-45b6-bfcc-b516d876a21a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -534,7 +519,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "4d0e99d1-02a8-403f-90c6-b48f33234d49",
+                            UserId = "84431fea-b734-4e91-a3a6-3590147124c2",
                             RoleId = "1"
                         });
                 });
@@ -558,11 +543,49 @@ namespace FinalProject3.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("UserBlock", b =>
+                {
+                    b.Property<string>("BlockedId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BlockerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("BlockedId", "BlockerId");
+
+                    b.HasIndex("BlockerId");
+
+                    b.ToTable("UserBlock");
+                });
+
+            modelBuilder.Entity("UserFollow", b =>
+                {
+                    b.Property<string>("FollowerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FollowingId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FollowerId", "FollowingId");
+
+                    b.HasIndex("FollowingId");
+
+                    b.ToTable("UserFollow");
+                });
+
             modelBuilder.Entity("FinalProject3.Models.AppUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("BlockedId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("First_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FollowingId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -598,20 +621,22 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4d0e99d1-02a8-403f-90c6-b48f33234d49",
+                            Id = "84431fea-b734-4e91-a3a6-3590147124c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d0b6b326-bad8-4f67-bcef-4d4649c8b9a5",
+                            ConcurrencyStamp = "3080fc6a-7ca1-4aa8-a909-91fd4a03fc46",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGnSuNeX4jqjTnbl6etSS2C1N45WCjOrqNc9h9+1EDnf2FaXg2wY8h+ut5BPIcCKJQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJRqjvSWlkfPOjvvol5E1zULsaa+9GwaoBDW9fmPgLztHFK3ezWFMrwMjsEygVsNog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "90667c7a-2b6a-4770-9e64-57c196d165a4",
+                            SecurityStamp = "f28f96af-96d2-4824-b85a-d304d4da4d10",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
+                            BlockedId = "[]",
                             First_Name = "Tomer",
+                            FollowingId = "[]",
                             ImageAlt = "",
                             ImageURL = "https://i.imgur.com/1nKIWjB.gif",
                             Last_Name = "Chen",
@@ -620,21 +645,6 @@ namespace FinalProject3.Migrations
                             Pronouns = "They",
                             VoteScore = 0
                         });
-                });
-
-            modelBuilder.Entity("AppUserAppUser", b =>
-                {
-                    b.HasOne("FinalProject3.Models.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("BlockedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FinalProject3.Models.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("FollowingId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("AppUserSocialGroup", b =>
@@ -811,6 +821,36 @@ namespace FinalProject3.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserBlock", b =>
+                {
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("BlockedId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("BlockerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserFollow", b =>
+                {
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("FollowingId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

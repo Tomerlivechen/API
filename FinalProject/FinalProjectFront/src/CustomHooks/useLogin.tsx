@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LoggedInContext } from "../ContextAPI/LoggedinContext";
+import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 
 const useLogin = () => {
   const loggedInContext = useContext(LoggedInContext);

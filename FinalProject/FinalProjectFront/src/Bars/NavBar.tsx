@@ -24,6 +24,10 @@ function NavBar() {
   const { Theme, toggleTheme } = useContext(ThemeContext);
   const { isLoggedin, token, logout } = useContext(LoggedInContext);
   const { userInfo } = useContext(UserContext);
+  const handelLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <>
@@ -39,6 +43,9 @@ function NavBar() {
         </NavLink>
         <NavLink className="p-3" to="Profile">
           Profile
+        </NavLink>
+        <NavLink className="p-3" to="Test">
+          Test Space
         </NavLink>
         {isLoggedin && (
           <NavLink className="p-3" to="UsersPage">
@@ -58,7 +65,7 @@ function NavBar() {
           </>
         )}
         {isLoggedin && (
-          <button className="p-3" onClick={logout}>
+          <button className="p-3" onClick={handelLogout}>
             Logout
           </button>
         )}

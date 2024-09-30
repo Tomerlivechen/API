@@ -4,7 +4,6 @@ import { auth } from "../Services/auth-service";
 import { UserContext } from "../ContextAPI/UserContext";
 import { useLogin } from "../CustomHooks/useLogin";
 import ElementFrame from "../Constants/Objects/ElementFrame";
-import UserCard from "../Constants/Objects/UserCard";
 
 function Profile() {
   const { userInfo } = useContext(UserContext);
@@ -24,7 +23,6 @@ function Profile() {
       <ElementFrame height="300" width="800">
         {UserDisplay && <ProfileUserSection UserDisplay={UserDisplay} />}
       </ElementFrame>
-      <UserCard UserDisplay={UserDisplay ?? ""} />
     </>
   );
 }

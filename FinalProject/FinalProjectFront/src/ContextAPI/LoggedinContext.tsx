@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { useLogin } from "../CustomHooks/useLogin";
 import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
+import { useNavigate } from "react-router-dom";
 
 export interface IAuthinitalValues {
   isLoggedin: boolean;
@@ -18,7 +18,6 @@ const initialValues: IAuthinitalValues = {
 };
 
 const LoggedInContext = createContext(initialValues);
-
 function LoggedInProvider({ children }) {
   const [isLoggedin, setIsLoggedIn] = useState(initialValues.isLoggedin);
   const [token, setToken] = useState(initialValues.token);

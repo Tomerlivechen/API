@@ -57,6 +57,45 @@ namespace FinalProject3.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
 
+            // Configure the following relationship
+            builder.Entity<AppUser>()
+                .HasMany(u => u.Following)
+                .WithMany()
+                .UsingEntity<Dictionary<string, object>>(
+                    "UserFollow",
+                    j => j
+                        .HasOne<AppUser>()
+                        .WithMany()
+                        .HasForeignKey("FollowingId")
+                        .OnDelete(DeleteBehavior.Restrict), // Change to Restrict
+                    j => j
+                        .HasOne<AppUser>()
+                        .WithMany()
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Cascade)); // Keep as Cascade
+
+            // Configure the blocking relationship
+            builder.Entity<AppUser>()
+                .HasMany(u => u.Blocked)
+                .WithMany()
+                .UsingEntity<Dictionary<string, object>>(
+                    "UserBlock",
+                    j => j
+                        .HasOne<AppUser>()
+                        .WithMany()
+                        .HasForeignKey("BlockedId")
+                        .OnDelete(DeleteBehavior.Restrict), // Keep as Restrict
+                    j => j
+                        .HasOne<AppUser>()
+                        .WithMany()
+                        .HasForeignKey("BlockerId")
+                        .OnDelete(DeleteBehavior.Cascade)); // Keep as Cascade
+
+
+
+
+
+
             builder.Entity<IdentityRole>().HasData(
     new IdentityRole() { Id = "1", Name = "Admin", NormalizedName = "ADMIN", ConcurrencyStamp = Guid.NewGuid().ToString() }
     );
@@ -76,10 +115,9 @@ namespace FinalProject3.Data
                 PermissionLevel = "Admin",
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 SecurityStamp = Guid.NewGuid().ToString(),
-                PasswordHash = hasher.HashPassword(null, "qwerty"),
+                PasswordHash = hasher.HashPassword(null, "qwertyU1!"),
 
             };
-            
             builder.Entity<AppUser>().HasData(user);
 
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { RoleId = "1", UserId = user.Id });

@@ -24,6 +24,9 @@ namespace FinalProject3.Models
         public List<AppUser> Following { get; set; } = [];
         public List<AppUser> Blocked { get; set; } = [];
 
+        public List<string> FollowingId { get; set; } = [];
+        public List<string> BlockedId { get; set; } = [];
+
         public List<Post> Posts { get; set; } = [];
 
         public List<SocialGroup> SocialGroups { get; set; } = [];

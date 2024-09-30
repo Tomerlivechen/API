@@ -54,7 +54,55 @@ const getUser = (token: string, id: string) =>
     .then((response) => {
       return response.data;
     });
+const getUsers = (token: string) =>
+  axios
+    .get(`${baseURL}/GetUsers`, {
+      headers: {
+        Authorization: `Bearer ${token.replace(/"/g, "")}`,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export { register, login, validate, getUser };
+const follow = (token: string, id: string) =>
+  axios
+    .put(
+      `${baseURL}/follow`,
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${token.replace(/"/g, "")}`,
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    });
 
-export const auth = { register, login, validate, getUser };
+const unfollow = (token: string, id: string) =>
+  axios
+    .put(
+      `${baseURL}/unfollow`,
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${token.replace(/"/g, "")}`,
+        },
+      }
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+export { register, login, validate, getUser, follow, unfollow };
+
+export const auth = {
+  register,
+  login,
+  validate,
+  getUser,
+  getUsers,
+  follow,
+  unfollow,
+};

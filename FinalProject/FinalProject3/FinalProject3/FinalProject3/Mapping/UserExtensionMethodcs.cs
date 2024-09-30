@@ -27,12 +27,13 @@ namespace FinalProject32.Mapping
         {
             var display = new AppUserDisplay()
             {
-                Email = user.Email?? string.Empty,
+                Id = user.Id,
+                Email = user.Email ?? string.Empty,
                 UserName = user.UserName ?? string.Empty,
                 Prefix = user.Prefix,
                 First_Name = user.First_Name,
                 Last_Name = user.Last_Name,
-                ImageURL= user.ImageURL,
+                ImageURL = user.ImageURL,
                 Pronouns = user.Pronouns,
             };
             return display;

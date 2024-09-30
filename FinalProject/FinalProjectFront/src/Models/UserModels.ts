@@ -1,4 +1,9 @@
+import { IChat } from "./ChatModels";
+import { IPost } from "./Interaction";
+import { ISocialGroup } from "./SocialGroup";
+
 interface IAppUserDisplay {
+  id: string;
   prefix: string;
   first_Name: string;
   last_Name: string;
@@ -10,6 +15,7 @@ interface IAppUserDisplay {
 }
 
 const AppUserDisplay = {
+  id: "",
   prefix: "",
   first_Name: "",
   last_Name: "",
@@ -20,5 +26,22 @@ const AppUserDisplay = {
   pronouns: "",
 };
 
-export type { IAppUserDisplay };
+interface IAppUserFull {
+  prefix: string;
+  firstName: string;
+  lastName: string;
+  pronouns: string;
+  imageUrl: string;
+  imageAlt: string;
+  permissionLevel: string;
+  following: IAppUserDisplay[];
+  blocked: IAppUserDisplay[];
+  posts: IPost[];
+  socialGroups: ISocialGroup[];
+  voteScore: number;
+  chats: IChat[];
+  notifications: Notification[];
+}
+
+export type { IAppUserDisplay, IAppUserFull };
 export { AppUserDisplay };
