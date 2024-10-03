@@ -13,6 +13,7 @@ namespace FinalProject3.Data
 
         public DbSet<Comment> Comment { get; set; } = default!;
 
+        public new DbSet<AppUser> Users { get; set; } = default!;
         public DbSet<Chat> Chat { get; set; } = default!;
 
         public DbSet<Notification> Notification { get; set; } = default!;

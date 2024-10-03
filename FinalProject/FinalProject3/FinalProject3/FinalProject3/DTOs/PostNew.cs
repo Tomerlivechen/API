@@ -13,12 +13,11 @@ namespace FinalProject3.DTOs
         public string ImageURL { get; set; } = string.Empty;
         [Required, MinLength(2)]
         public string Text { get; set; } = string.Empty;
-        [Required]
-        public required string AuthorId { get; set; }
+        public string AuthorId { get; set; } = string.Empty;
 
         public Category? Category { get; set; }
 
-        public SocialGroup? Group { get; set; }
+        public string? GroupId { get; set; }
 
         public string KeyWords { get; set; } = string.Empty;
         public string Datetime = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");

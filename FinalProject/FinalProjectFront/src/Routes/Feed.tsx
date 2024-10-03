@@ -1,7 +1,12 @@
 import React from "react";
+import SendPostCompinent from "../Components/SendPostCompinent";
 
 function Feed() {
-  return <div>Feed</div>;
+  return (
+    <>
+      <SendPostCompinent />
+    </>
+  );
 }
 
 export default Feed;

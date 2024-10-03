@@ -8,14 +8,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "blockId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "toBlock",
+        "Type": "FinalProject3.DTOs.AppUserIdRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -173,6 +168,22 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "UnBlock",
+    "RelativePath": "api/Auth/unblock",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "unBlock",
+        "Type": "FinalProject3.DTOs.AppUserIdRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
     "Method": "unFollow",
     "RelativePath": "api/Auth/unfollow",
     "HttpMethod": "PUT",
@@ -180,7 +191,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "followId",
+        "Name": "unfollowId",
         "Type": "FinalProject3.DTOs.AppUserIdRequest",
         "IsRequired": true
       }

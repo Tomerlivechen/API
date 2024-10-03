@@ -1,4 +1,5 @@
 ﻿using FinalProject3.Auth;
+using FinalProject3.Data;
 using FinalProject3.DTOs;
 using FinalProject3.Models;
 using FinalProject32.Mapping;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -17,9 +19,9 @@ namespace FinalProject3.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService, IOptions<JWTSettings> options) : Controller
+public class AuthController(FP3Context context, ILogger<AuthController> logger, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService, IOptions<JWTSettings> options) : Controller
 {
-
+    private readonly FP3Context _context = context;
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] AppUserRegister register)
     {
@@ -56,6 +58,7 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
         }
 
         var users = await userManager.Users.Select(u => u.UsertoDisplay()).ToListAsync();
+        var usersFull = await _context.Users.Include(u => u.Blocked).ToListAsync();
         foreach (AppUserDisplay userDisplay in users)
         {
             var isFollowed = user.FollowingId.Find(u => u == userDisplay.Id);
@@ -63,7 +66,22 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             {
                 userDisplay.Following = true;
             }
+            var Blocked = user.BlockedId.Find(u => u == userDisplay.Id);
+            if (Blocked is not null)
+            {
+                userDisplay.Blocked = true;
+            }
+            var setUser = usersFull.FirstOrDefault(u => u.Id == userDisplay.Id);
+            if (setUser is not null) 
+            {
+                var isBlocked = setUser.Blocked.Find(u => u.Id == user.Id);
+                if (isBlocked is not null)
+                {
+                    userDisplay.BlockedYou = true;
+                }
+            }
         }
+        
         return Ok(users);
     }
 
@@ -240,6 +258,7 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             user.FollowingId = new List<string>();
         }
         user.FollowingId.Add(follow.Id.ToString());
+
         var result = await userManager.UpdateAsync(user);
         if (!result.Succeeded)
         {
@@ -250,7 +269,7 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
 
     [HttpPut("unfollow")]
     [Authorize]
-    public async Task<IActionResult> unFollow([FromBody] AppUserIdRequest followId)
+    public async Task<IActionResult> unFollow([FromBody] AppUserIdRequest unfollowId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         
@@ -259,16 +278,17 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
             return BadRequest(ModelState);
         }
 
-        var user = await userManager.FindByIdAsync(userId);
-        var follow = await userManager.FindByIdAsync(followId.Id);
+        var user = await _context.Users.Include(u => u.Following).FirstOrDefaultAsync(u => u.Id == userId);
+        var unfollow = await userManager.FindByIdAsync(unfollowId.Id);
 
-        if (user is null || follow is null)
+        if (user is null || unfollow is null)
         {
             return BadRequest("User not found");
         }
-        user.Following.Remove(follow);
-        user.FollowingId.Remove(follow.Id.ToString());
+        user.FollowingId.Remove(unfollow.Id);
+        user.Following.Remove(unfollow);
         var result = await userManager.UpdateAsync(user);
+        await _context.SaveChangesAsync();
         if (!result.Succeeded)
         {
             return BadRequest("Failed to update user following list.");
@@ -276,28 +296,64 @@ public class AuthController(SignInManager<AppUser> signInManager, UserManager<Ap
         return Ok(user.FollowingId);
     }
 
+
     [HttpPut("block")]
-    public async Task<IActionResult> Block(string userId, string blockId)
+    [Authorize]
+    public async Task<IActionResult> Block([FromBody] AppUserIdRequest toBlock)
     {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
-        var user = await userManager.FindByIdAsync(userId);
-        var block = await userManager.FindByIdAsync(blockId);
+        var user = await _context.Users.Include(u => u.Blocked).FirstOrDefaultAsync(u => u.Id == userId);
+        var BlockUser = await userManager.FindByIdAsync(toBlock.Id);
 
-        if (user is null || block is null)
+        if (user is null || BlockUser is null)
         {
             return BadRequest("User not found");
         }
-        user.Blocked.Add(block);
+        user.BlockedId.Add(toBlock.Id);
+        user.Blocked.Add(BlockUser);
         var result = await userManager.UpdateAsync(user);
+        await _context.SaveChangesAsync();
         if (!result.Succeeded)
         {
-            return BadRequest("Failed to update user following list.");
+            return BadRequest("Failed to update user block list.");
         }
-        return Ok(user.Blocked);
+        return Ok(user.BlockedId);
     }
+    [HttpPut("unblock")]
+    [Authorize]
+    public async Task<IActionResult> UnBlock([FromBody] AppUserIdRequest unBlock)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var user = await _context.Users.Include(u => u.Blocked).FirstOrDefaultAsync(u => u.Id == userId);
+        var BlockedUser = await userManager.FindByIdAsync(unBlock.Id);
+
+        if (user is null || BlockedUser is null)
+        {
+            return BadRequest("User not found");
+        }
+        var deleteBlockedId = user.BlockedId.Remove(unBlock.Id);
+        var deleteBlocked = user.Blocked.Remove(BlockedUser);
+        var result = await userManager.UpdateAsync(user);
+        await _context.SaveChangesAsync();
+        if (!result.Succeeded && deleteBlockedId && deleteBlocked)
+        {
+            return BadRequest("Failed to update user block list.");
+        }
+        return Ok(user.BlockedId);
+    }
+
+
 }
 

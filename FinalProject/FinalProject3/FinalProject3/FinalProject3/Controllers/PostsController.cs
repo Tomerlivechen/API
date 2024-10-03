@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace FinalProject3.Controllers
 {
@@ -18,9 +19,10 @@ namespace FinalProject3.Controllers
 
         // GET: api/Posts
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<PostDisplay>>> GetPosts()
         {
-            return await _context.Post.Select(p => p.ToDisplay()).ToListAsync();
+            return await _context.Post.Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay()).ToListAsync();
         }
 
 
@@ -155,13 +157,15 @@ namespace FinalProject3.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Post>> PostPost(PostNew newPost)
+        public async Task<ActionResult<Post>> PostPost([FromBody] PostNew newPost)
         {
-            if (!ModelState.IsValid)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!ModelState.IsValid || userId is null)
             {
                 return BadRequest(ModelState);
             }
-            var post = await newPost.NewPostToPost(userManager);
+            newPost.AuthorId = userId;
+            var post = await newPost.NewPostToPost(userManager , _context);
             _context.Post.Add(post);
             if (post.Group is not null)
             {

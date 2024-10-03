@@ -14,6 +14,8 @@ import { UserProvider } from "../ContextAPI/UserContext";
 import LoginPage from "./Login";
 import ProtectedRoute from "../Constants/RoutrProtection/ProtectedRoute";
 import NoAuthRoute from "../Constants/RoutrProtection/NoAuthRoute";
+import { SearchProvider } from "../ContextAPI/SearchContext";
+import { SearchPage } from "./SearchPage";
 
 function RouterControler() {
   return (
@@ -21,55 +23,65 @@ function RouterControler() {
       <ThemeProvider>
         <LoggedInProvider>
           <UserProvider>
-            <Router>
-              <NavBar />
-              <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="About" element={<About />} />
-                <Route path="Test" element={<TestSpace />} />
-                <Route
-                  path="Feed"
-                  element={
-                    <ProtectedRoute>
-                      <Feed />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="UsersPage"
-                  element={
-                    <ProtectedRoute>
-                      <UsersPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="Profile"
-                  element={
-                    <ProtectedRoute>
-                      <Profile />
-                    </ProtectedRoute>
-                  }
-                />
+            <SearchProvider>
+              <Router>
+                <NavBar />
+                <Routes>
+                  <Route path="/" element={<MainPage />} />
+                  <Route path="About" element={<About />} />
+                  <Route path="Test" element={<TestSpace />} />
+                  <Route
+                    path="Feed"
+                    element={
+                      <ProtectedRoute>
+                        <Feed />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="UsersPage"
+                    element={
+                      <ProtectedRoute>
+                        <UsersPage />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="search"
+                    element={
+                      <ProtectedRoute>
+                        <SearchPage />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="Profile"
+                    element={
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    }
+                  />
 
-                <Route
-                  path="Register"
-                  element={
-                    <NoAuthRoute>
-                      <Register />
-                    </NoAuthRoute>
-                  }
-                />
-                <Route
-                  path="Login"
-                  element={
-                    <NoAuthRoute>
-                      <LoginPage />
-                    </NoAuthRoute>
-                  }
-                />
-              </Routes>
-            </Router>
+                  <Route
+                    path="Register"
+                    element={
+                      <NoAuthRoute>
+                        <Register />
+                      </NoAuthRoute>
+                    }
+                  />
+                  <Route
+                    path="Login"
+                    element={
+                      <NoAuthRoute>
+                        <LoginPage />
+                      </NoAuthRoute>
+                    }
+                  />
+                </Routes>
+              </Router>
+            </SearchProvider>
           </UserProvider>
         </LoggedInProvider>
       </ThemeProvider>

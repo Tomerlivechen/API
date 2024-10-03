@@ -53,7 +53,7 @@ namespace FinalProject3.Controllers
                 return BadRequest(ModelState);
             }
             SocialGroup group = new SocialGroup();
-            group.CreateGroup(groupId, groupName, userManager);
+            await group.CreateGroup(groupId, groupName, userManager);
             await _context.Group.AddAsync(group);
             return group;
         }
@@ -144,7 +144,7 @@ namespace FinalProject3.Controllers
             {
                 return NotFound("Group Not Found");
             }
-            group.UpdateGroup(editGroup, userManager);
+            await group.UpdateGroup(editGroup, userManager);
 
             try
             {

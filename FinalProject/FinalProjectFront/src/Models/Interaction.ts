@@ -29,6 +29,52 @@ interface IPost extends IInteraction {
   keyWords: string[];
 }
 
+interface INewPost {
+  id: string;
+  title: string;
+  link: string;
+  imageURL: string;
+  text: string;
+  authorId: string;
+  category: ICategory;
+  group: string;
+  keyWords: string;
+  datetime: string;
+}
+
+interface IPostDisplay {
+  id: string;
+  link?: string;
+  imageUrl?: string;
+  text?: string;
+  authorName: string;
+  authorId?: string;
+  upVotes?: number;
+  downVotes?: number;
+  totalVotes?: number;
+  title: string;
+  category?: ICategory | null;
+  keyWords?: string[];
+  datetime?: string;
+  comments?: ICommentDisplay[] | null;
+}
+
+interface ICommentDisplay {
+  id: string;
+  link?: string;
+  imageUrl?: string;
+  text?: string;
+  authorName?: string;
+  authorId?: string;
+  upVotes?: number;
+  downVotes?: number;
+  totalVotes?: number;
+  parentPostId?: string;
+  parentCommentId?: string;
+  datetime?: string;
+  comments?: ICommentDisplay[] | null;
+}
+
 interface IComment extends IInteraction {
   parentPost?: IPost;
   parentComment?: IComment;
@@ -39,4 +85,13 @@ interface ICategory {
   name: string;
 }
 
-export type { IInteraction, Vote, IPost, IComment, ICategory };
+export type {
+  IInteraction,
+  Vote,
+  IPost,
+  IComment,
+  ICategory,
+  ICommentDisplay,
+  IPostDisplay,
+  INewPost,
+};

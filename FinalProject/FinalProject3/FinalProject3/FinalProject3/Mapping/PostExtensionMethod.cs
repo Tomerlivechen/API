@@ -1,7 +1,9 @@
-﻿using FinalProject3.DTOs;
+﻿using FinalProject3.Data;
+using FinalProject3.DTOs;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Hosting;
+using System.Text.RegularExpressions;
 
 namespace FinalProject3.Mapping
 {
@@ -33,12 +35,12 @@ namespace FinalProject3.Mapping
             return setPost;
         }
 
-        public async static Task<Post> NewPostToPost(this PostNew Newpost, UserManager<AppUser> userManager)
+        public async static Task<Post> NewPostToPost(this PostNew Newpost, UserManager<AppUser> userManager, FP3Context context)
         {
             char[] delimiters = { ',', ';', '|',' ' };
             var setPost = new Post()
             {
-                Id = Newpost.Id,
+                Id = Guid.NewGuid().ToString(),
                 Title = Newpost.Title,
                 Text = Newpost.Text,
                 Category = Newpost.Category,
@@ -47,7 +49,7 @@ namespace FinalProject3.Mapping
                 ImageURL = Newpost.ImageURL,
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId),
                 Datetime = Newpost.Datetime,
-                Group = Newpost.Group,
+                Group = await context.Group.FindAsync(Newpost.GroupId)
             };
             var user = await userManager.FindByIdAsync(Newpost.AuthorId);
             user?.Posts.Add(setPost);

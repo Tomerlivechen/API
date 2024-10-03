@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IAppUserDisplay } from "../../Models/UserModels";
 
 import ElementFrame from "./ElementFrame";
@@ -13,6 +13,8 @@ interface UserCardProps {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
+  const [following, setFollowings] = useState(UserDisplay.following);
+  const [blocking, setblocking] = useState(UserDisplay.blocked);
   const loginContext = useLogin();
   const userContext = useUser();
   const handleFollow = () => {
@@ -20,8 +22,15 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
     auth
       .follow(loginContext.token ?? "", UserDisplay.id.toString())
       .then((response) => {
-        if (response.status === 200)
-          dialogs.success(`Following ${UserDisplay.userName}`).then(() => {});
+        console.log(response);
+        if (response.status == 200)
+          dialogs
+            .success(`Following ${UserDisplay.userName}`)
+            .then((response) => {
+              console.log(response);
+              UserDisplay.following = true;
+              setFollowings(UserDisplay.following);
+            });
       })
       .catch((error) => {
         catchError(error, "Following");
@@ -32,16 +41,58 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
     auth
       .unfollow(loginContext.token ?? "", UserDisplay.id.toString())
       .then((response) => {
-        if (response.status === 200)
-          dialogs.success(`Unfollowing ${UserDisplay.userName}`).then(() => {});
+        if (response.status == 200)
+          dialogs
+            .success(`Unfollowing ${UserDisplay.userName}`)
+            .then((response) => {
+              console.log(response);
+              UserDisplay.following = false;
+              setFollowings(UserDisplay.following);
+            });
       })
       .catch((error) => {
         catchError(error, "Unfollowing");
       });
   };
+  const handleBlock = () => {
+    console.log(loginContext.token ?? "", UserDisplay.id);
+    auth
+      .block(loginContext.token ?? "", UserDisplay.id.toString())
+      .then((response) => {
+        if (response.status == 200)
+          dialogs
+            .success(`Blocked ${UserDisplay.userName}`)
+            .then((response) => {
+              console.log(response);
+              UserDisplay.blocked = true;
+              setblocking(UserDisplay.blocked);
+            });
+      })
+      .catch((error) => {
+        catchError(error, "Blocking");
+      });
+  };
+  const handleUnBlock = () => {
+    console.log(loginContext.token ?? "", UserDisplay.id);
+    auth
+      .unBlock(loginContext.token ?? "", UserDisplay.id.toString())
+      .then((response) => {
+        if (response.status == 200)
+          dialogs
+            .success(`Unblocked ${UserDisplay.userName}`)
+            .then((response) => {
+              console.log(response);
+              UserDisplay.blocked = false;
+              setblocking(UserDisplay.blocked);
+            });
+      })
+      .catch((error) => {
+        catchError(error, "Unblocking");
+      });
+  };
   return (
     <>
-      <ElementFrame height="100" width="550">
+      <ElementFrame height="100" width="650">
         <div className="flex">
           <div className=" col-span-2">
             <img
@@ -59,14 +110,25 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
             {`${UserDisplay.prefix}. ${UserDisplay.first_Name} 
           ${UserDisplay.last_Name} (${UserDisplay.pronouns})`}
           </div>
-          <div className=" ml-auto col-span-4 font-extrabold p-3">
-            {userContext.userInfo.UserId !== UserDisplay.id ? (
-              UserDisplay.following ? (
-                <button onClick={handleUnfollow}>Unfollow</button>
-              ) : (
-                <button onClick={handleFollow}>Follow</button>
-              )
-            ) : null}
+          <div className=" ml-auto col-span-4 font-extrabold p-3 flex gap-3">
+            {!UserDisplay.blockedYou &&
+              userContext.userInfo.UserId !== UserDisplay.id && (
+                <>
+                  {following ? (
+                    <button onClick={handleUnfollow}>Unfollow</button>
+                  ) : (
+                    <button onClick={handleFollow}>Follow</button>
+                  )}
+                  {blocking ? (
+                    <button onClick={handleUnBlock}>Unblock</button>
+                  ) : (
+                    <button onClick={handleBlock}>Block</button>
+                  )}
+                </>
+              )}
+            {UserDisplay.blockedYou && (
+              <div className="text-sm text-zinc-600">You Have been blocked</div>
+            )}
           </div>
         </div>
       </ElementFrame>

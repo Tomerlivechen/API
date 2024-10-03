@@ -41,7 +41,7 @@ namespace FinalProject3.Mapping
         {
             Comment comment = new Comment()
             {
-                Id = NewComment.Id,
+                Id = Guid.NewGuid().ToString(),
                 Text = NewComment.Text,
                 Link = NewComment.Link,
                 ImageURL = NewComment.ImageURL,

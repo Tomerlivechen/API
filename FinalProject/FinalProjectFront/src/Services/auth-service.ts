@@ -77,7 +77,7 @@ const follow = (token: string, id: string) =>
       }
     )
     .then((response) => {
-      return response.data;
+      return response;
     });
 
 const unfollow = (token: string, id: string) =>
@@ -92,10 +92,40 @@ const unfollow = (token: string, id: string) =>
       }
     )
     .then((response) => {
-      return response.data;
+      return response;
     });
 
-export { register, login, validate, getUser, follow, unfollow };
+const block = (token: string, id: string) =>
+  axios
+    .put(
+      `${baseURL}/block`,
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${token.replace(/"/g, "")}`,
+        },
+      }
+    )
+    .then((response) => {
+      return response;
+    });
+
+const unBlock = (token: string, id: string) =>
+  axios
+    .put(
+      `${baseURL}/unblock`,
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${token.replace(/"/g, "")}`,
+        },
+      }
+    )
+    .then((response) => {
+      return response;
+    });
+
+export { register, login, validate, getUser, follow, unfollow, block, unBlock };
 
 export const auth = {
   register,
@@ -105,4 +135,6 @@ export const auth = {
   getUsers,
   follow,
   unfollow,
+  block,
+  unBlock,
 };

@@ -11,6 +11,8 @@ interface IAppUserDisplay {
   email: string;
   imageURL: string;
   following: boolean;
+  blocked: boolean;
+  blockedYou: boolean;
   pronouns: string;
 }
 
@@ -23,6 +25,8 @@ const AppUserDisplay = {
   email: "",
   imageURL: "",
   following: false,
+  blocked: false,
+  blockedYou: false,
   pronouns: "",
 };
 
