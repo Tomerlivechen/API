@@ -65,23 +65,12 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
               <div
                 style={{
                   position: "relative",
-                  right: "0px",
-                  left: "null",
-                  top: "35px",
-                  overflowY: "scroll",
+                  left: "30px",
+                  top: "10px",
                 }}
               >
                 {next20Comments.map((comment) => (
-                  <div
-                    style={{
-                      top: `${40 + index * 150}px`,
-                      right: "0px",
-                      zIndex: `${5 - index}`,
-                      overflowY: "scroll",
-                    }}
-                  >
-                    <CommentView key={comment.id} {...comment} />
-                  </div>
+                  <CommentView key={comment.id} {...comment} />
                 ))}
                 <button
                   className={`rounded-lg dark:bg-emerald-800 w-40 ml-6 mb-3 mt-3 bg-emerald-300 h-auto}`}
