@@ -12,10 +12,10 @@ namespace FinalProject3.DTOs
         public string Text { get; set; } = string.Empty;
         public string AuthorName { get; set; } = string.Empty;
         public string AuthorId { get; set; } = string.Empty;
-        public int UpVotes { get; set; }
-        public int DownVotes { get; set; }
         public int TotalVotes { get; set; }
         public string ParentPostId { get; set; } = string.Empty;
+
+        public bool hasVoted { get; set; } = false;
 
         public string ParentCommentId { get; set; } = string.Empty;
         public string Datetime { get; set; } = string.Empty;

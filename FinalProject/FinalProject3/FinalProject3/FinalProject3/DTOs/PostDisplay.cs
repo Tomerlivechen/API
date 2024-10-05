@@ -11,13 +11,11 @@ namespace FinalProject3.DTOs
         public string Text { get; set; } = string.Empty;
         public string AuthorName { get; set; } = string.Empty;
         public string AuthorId { get; set; } = string.Empty;
-        public int UpVotes { get; set; }
-
-        public int DownVotes { get; set; }
 
         public int TotalVotes { get; set; }
-    
-    public required string Title { get; set; }
+        public bool hasVoted { get; set; }
+
+        public required string Title { get; set; }
         public Category? Category { get; set; }
 
         public List<string> KeyWords { get; set; } = [];

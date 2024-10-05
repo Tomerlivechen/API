@@ -14,5 +14,30 @@ const showSuccessDialog = (message: string) =>
     text: message,
     timer: 2000,
   });
-export { showErrorDialog, showSuccessDialog };
-export const dialogs = { error: showErrorDialog, success: showSuccessDialog };
+
+const getText = async (title: string) => {
+  const { value: url } = await Swal.fire({
+    input: "url",
+    inputLabel: `Submit ${title}`,
+    inputPlaceholder: "Enter the URL",
+  });
+  if (url) {
+    Swal.fire(`Entered URL: ${url}`);
+  }
+  return url;
+};
+
+const showImage = (title: string, image: string) =>
+  Swal.fire({
+    title: title,
+    imageUrl: image,
+    imageAlt: "your image",
+  });
+
+export { showErrorDialog, showSuccessDialog, getText, showImage };
+export const dialogs = {
+  error: showErrorDialog,
+  success: showSuccessDialog,
+  getText,
+  showImage,
+};

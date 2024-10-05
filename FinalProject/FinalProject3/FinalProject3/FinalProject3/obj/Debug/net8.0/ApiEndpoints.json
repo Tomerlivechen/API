@@ -277,21 +277,11 @@
         "Name": "comment",
         "Type": "FinalProject3.DTOs.CommentNew",
         "IsRequired": true
-      },
-      {
-        "Name": "parentId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "isPost",
-        "Type": "System.Boolean",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FinalProject3.Models.Comment",
+        "Type": "FinalProject3.DTOs.CommentDisplay",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -445,29 +435,19 @@
   {
     "ContainingType": "FinalProject3.Controllers.CommentsController",
     "Method": "VoteOnComment",
-    "RelativePath": "api/Comments/VoteById/{id}",
+    "RelativePath": "api/Comments/VoteById/{commentId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "UserId",
+        "Name": "commentId",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
-        "Name": "CommentId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "vote",
+        "Name": "Vote",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -556,7 +536,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FinalProject3.Models.Post",
+        "Type": "FinalProject3.DTOs.PostDisplay",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -761,17 +741,12 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.PostsController",
-    "Method": "VoteOnComment",
+    "Method": "VoteOnPost",
     "RelativePath": "api/Posts/VoteById/{PostId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "UserId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
       {
         "Name": "PostId",
         "Type": "System.String",
@@ -780,7 +755,7 @@
       {
         "Name": "vote",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

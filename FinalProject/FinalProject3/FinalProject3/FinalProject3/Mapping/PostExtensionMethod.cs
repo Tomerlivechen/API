@@ -9,7 +9,7 @@ namespace FinalProject3.Mapping
 {
     public static class PostExtensionMethod 
     {
-        public static PostDisplay ToDisplay (this Post post)
+        public static PostDisplay ToDisplay (this Post post, string userID)
         {
             var setPost = new PostDisplay()
             {
@@ -22,15 +22,20 @@ namespace FinalProject3.Mapping
                 ImageURL = post.ImageURL,
                 AuthorName = post.Author.UserName,
                 AuthorId = post.Author.Id,
-                UpVotes = post.UpVotes,
-                DownVotes = post.DownVotes,
                 TotalVotes = post.TotalVotes,
                 Datetime = post.Datetime,
 
             };
+            foreach (Votes vote in post.Votes)
+            {
+                if (vote.Voter.Id == userID)
+                {
+                    setPost.hasVoted = true;
+                }
+            }
             foreach (Comment com in post.Comments)
             {
-                setPost.Comments.Add(com.ToDisplay());
+                setPost.Comments.Add(com.ToDisplay(userID));
             }
             return setPost;
         }

@@ -44,35 +44,33 @@ interface INewPost {
 
 interface IPostDisplay {
   id: string;
-  link?: string;
-  imageUrl?: string;
-  text?: string;
+  link: string;
+  imageUrl: string;
+  text: string;
   authorName: string;
-  authorId?: string;
-  upVotes?: number;
-  downVotes?: number;
-  totalVotes?: number;
+  authorId: string;
+  totalVotes: number;
   title: string;
-  category?: ICategory | null;
-  keyWords?: string[];
-  datetime?: string;
-  comments?: ICommentDisplay[] | null;
+  hasVoted: boolean;
+  category: ICategory | null;
+  keyWords: string[];
+  datetime: string;
+  comments: ICommentDisplay[] | null;
 }
 
 interface ICommentDisplay {
   id: string;
-  link?: string;
-  imageUrl?: string;
-  text?: string;
-  authorName?: string;
-  authorId?: string;
-  upVotes?: number;
-  downVotes?: number;
-  totalVotes?: number;
-  parentPostId?: string;
-  parentCommentId?: string;
-  datetime?: string;
-  comments?: ICommentDisplay[] | null;
+  link: string;
+  imageUrl: string;
+  text: string;
+  authorName: string;
+  authorId: string;
+  totalVotes: number;
+  parentPostId: string;
+  parentCommentId: string;
+  hasVoted: boolean;
+  datetime: string;
+  comments: ICommentDisplay[] | null;
 }
 
 interface IComment extends IInteraction {

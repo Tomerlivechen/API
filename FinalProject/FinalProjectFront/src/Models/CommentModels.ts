@@ -1,17 +1,12 @@
-interface ICommentDisplay {
-  Id: string;
-  Link: string | null;
-  ImageURL: string | null;
-  Text: string | null;
-  AuthorName: string;
-  AuthorId: string;
-  UpVotes: number;
-  DownVotes: number;
-  TotalVotes: number;
+interface INewComment {
+  id: string;
+  link: string | null;
+  imageURL: string | null;
+  text: string | null;
+  authorId: string;
   ParentPostId: string;
   ParentCommentId: string;
   Datetime: string;
-  Comments: Array<ICommentDisplay> | null;
 }
 
-export type { ICommentDisplay };
+export type { INewComment };

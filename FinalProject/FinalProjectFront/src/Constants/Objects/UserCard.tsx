@@ -92,7 +92,7 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
   };
   return (
     <>
-      <ElementFrame height="100" width="650">
+      <ElementFrame height="100px" width="650px" padding="5">
         <div className="flex">
           <div className=" col-span-2">
             <img

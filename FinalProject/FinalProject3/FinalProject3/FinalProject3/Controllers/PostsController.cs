@@ -22,14 +22,17 @@ namespace FinalProject3.Controllers
         [Authorize]
         public async Task<ActionResult<IEnumerable<PostDisplay>>> GetPosts()
         {
-            return await _context.Post.Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay()).ToListAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return await _context.Post.Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
         }
 
 
         // GET: api/Posts/5
         [HttpGet("ById/{id}")]
+        [Authorize]
         public async Task<ActionResult<PostDisplay>> GetPost(string id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var post = await _context.Post.FindAsync(id);
 
             if (post == null)
@@ -37,16 +40,18 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return post.ToDisplay();
+            return post.ToDisplay(userId);
         }
 
 
 
         // GET: api/Posts/5
         [HttpGet("ByKeyword/{KeyWord}")]
+        [Authorize]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByKeyWord(string KeyWord)
         {
-            var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).Select(p => p.ToDisplay()).ToListAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).Select(p => p.ToDisplay(userId)).ToListAsync();
 
             if (posts == null)
             {
@@ -59,7 +64,8 @@ namespace FinalProject3.Controllers
         [HttpGet("ByGroup/{GroupId}")]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByGroupd(string GroupId)
         {
-            var posts = await _context.Post.Where(p => p.Group.Id == GroupId).Select(p => p.ToDisplay()).ToListAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var posts = await _context.Post.Where(p => p.Group.Id == GroupId).Select(p => p.ToDisplay(userId)).ToListAsync();
 
             if (posts == null)
             {
@@ -72,9 +78,10 @@ namespace FinalProject3.Controllers
         [HttpGet("ByUpVote/{UserID}")]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByUpVote(string UserID)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var posts = await _context.Post
             .Where(p => p.Votes.Any(v => v.Voter.Id == UserID && v.Voted > 0))
-            .Select(p => p.ToDisplay())
+            .Select(p => p.ToDisplay(userId))
             .ToListAsync();
 
             if (posts == null)
@@ -88,9 +95,10 @@ namespace FinalProject3.Controllers
         [HttpGet("ByDownVote/{UserID}")]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByDownVote(string UserID)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var posts = await _context.Post
             .Where(p => p.Votes.Any(v => v.Voter.Id == UserID && v.Voted < 0))
-            .Select(p => p.ToDisplay())
+            .Select(p => p.ToDisplay(userId))
             .ToListAsync();
 
             if (posts == null)
@@ -102,6 +110,7 @@ namespace FinalProject3.Controllers
         }
 
         [HttpGet("FullById/{PostID}")]
+        [Authorize]
         public async Task<ActionResult<Post>> GetFullPostByPostID(string PostId)
         {
             var post = await _context.Post.FindAsync(PostId);
@@ -120,7 +129,7 @@ namespace FinalProject3.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutPost(string id, Post post)
+        public async Task<IActionResult> PutPost(string id, [FromBody] Post post)
         {
             if (!ModelState.IsValid)
             {
@@ -157,7 +166,7 @@ namespace FinalProject3.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Post>> PostPost([FromBody] PostNew newPost)
+        public async Task<ActionResult<PostDisplay>> PostPost([FromBody] PostNew newPost)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!ModelState.IsValid || userId is null)
@@ -189,7 +198,7 @@ namespace FinalProject3.Controllers
                     }
                 }
 
-            return CreatedAtAction("GetPost", new { id = post.Id }, post);
+            return Created("Success",post.ToDisplay(userId));
         }
 
         // DELETE: api/Posts/5
@@ -209,8 +218,10 @@ namespace FinalProject3.Controllers
             return NoContent();
         }
         [HttpPut("VoteById/{PostId}")]
-        public async Task<IActionResult> VoteOnComment([FromQuery] string UserId, [FromRoute] string PostId, [FromQuery] int vote)
+        [Authorize]
+        public async Task<IActionResult> VoteOnPost(string PostId, [FromBody] int vote)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (!ModelState.IsValid)
             {
@@ -221,7 +232,7 @@ namespace FinalProject3.Controllers
             {
                 return NotFound();
             }
-            var user = await userManager.FindByIdAsync(UserId);
+            var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return BadRequest("User Not Found");

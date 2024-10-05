@@ -25,6 +25,19 @@ const postPost = (token: string, Post: INewPost) =>
     .then((response) => {
       return response;
     });
-export { getPosts, postPost };
 
-export const Posts = { getPosts, postPost };
+const VoteOnPost = (token: string, Id: string, vote: number) => {
+  axios
+    .put(`${baseURL}/VoteById/${Id}`, vote, {
+      headers: {
+        Authorization: `Bearer ${token.replace(/"/g, "")}`,
+      },
+    })
+    .then((response) => {
+      return response;
+    });
+};
+
+export { getPosts, postPost, VoteOnPost };
+
+export const Posts = { getPosts, postPost, VoteOnPost };

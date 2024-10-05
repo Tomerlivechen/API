@@ -1,10 +1,10 @@
 import React from "react";
-import SendPostCompinent from "../Components/SendPostCompinent";
+import SendPostComponent from "../Components/SendPostComponent";
 
 function Feed() {
   return (
     <>
-      <SendPostCompinent />
+      <SendPostComponent />
     </>
   );
 }

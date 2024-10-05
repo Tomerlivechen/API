@@ -1,62 +1,235 @@
 import React, { useEffect, useState } from "react";
-import { useLogin } from "../CustomHooks/useLogin";
-import { auth } from "../Services/auth-service";
-import { useUser } from "../CustomHooks/useUser";
-import { IAppUserDisplay } from "../Models/UserModels";
-import { dialogs } from "../Constants/AlertsConstant";
-import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import UserCard from "../Constants/Objects/UserCard";
-import { stringToAppUserDisplay } from "../Constants/Patterns";
+import ImageUpload from "../Constants/ImageUploading";
+import SendPostComponent from "../Components/SendPostComponent";
+import CommentView from "../Constants/Objects/CommentView";
+import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
+import PostView from "../Constants/Objects/PostView";
+
+const commentsArray2: ICommentDisplay[] = [
+  {
+    id: "1",
+    link: "https://example.com/1",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a1",
+    authorName: "Author 1",
+    authorId: "author1",
+    totalVotes: 5,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:00:00Z",
+    comments: null,
+  },
+  {
+    id: "2",
+    link: "https://example.com/2",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a2",
+    authorName: "Author 2",
+    authorId: "author2",
+    totalVotes: 3,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:05:00Z",
+    comments: null,
+  },
+  {
+    id: "3",
+    link: "https://example.com/3",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a3a",
+    authorName: "Author 3",
+    authorId: "author3",
+    totalVotes: 0,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:10:00Z",
+    comments: null,
+  },
+  {
+    id: "4",
+    link: "https://example.com/4",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a4",
+    authorName: "Author 4",
+    authorId: "author4",
+    totalVotes: 2,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:15:00Z",
+    comments: null,
+  },
+];
+
+const commentsArray: ICommentDisplay[] = [
+  {
+    id: "1",
+    link: "https://example.com/1",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 1",
+    authorName: "Author 1",
+    authorId: "author1",
+    totalVotes: 5,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:00:00Z",
+    comments: null,
+  },
+  {
+    id: "2",
+    link: "https://example.com/2",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 2",
+    authorName: "Author 2",
+    authorId: "author2",
+    totalVotes: 3,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:05:00Z",
+    comments: commentsArray2,
+  },
+  {
+    id: "3",
+    link: "https://example.com/3",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 3",
+    authorName: "Author 3",
+    authorId: "author3",
+    totalVotes: 0,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:10:00Z",
+    comments: null,
+  },
+  {
+    id: "4",
+    link: "https://example.com/4",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 4",
+    authorName: "Author 4",
+    authorId: "author4",
+    totalVotes: 2,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:15:00Z",
+    comments: null,
+  },
+  {
+    id: "5",
+    link: "https://example.com/5",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 5",
+    authorName: "Author 5",
+    authorId: "author5",
+    totalVotes: 1,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:20:00Z",
+    comments: null,
+  },
+  {
+    id: "6",
+    link: "https://example.com/6",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 6",
+    authorName: "Author 6",
+    authorId: "author6",
+    totalVotes: 4,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:25:00Z",
+    comments: null,
+  },
+  {
+    id: "7",
+    link: "https://example.com/7",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 7",
+    authorName: "Author 7",
+    authorId: "author7",
+    totalVotes: 5,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:30:00Z",
+    comments: null,
+  },
+  {
+    id: "8",
+    link: "https://example.com/8",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 8",
+    authorName: "Author 8",
+    authorId: "author8",
+    totalVotes: 3,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:35:00Z",
+    comments: null,
+  },
+  {
+    id: "9",
+    link: "https://example.com/9",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 9",
+    authorName: "Author 9",
+    authorId: "author9",
+    totalVotes: 2,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:40:00Z",
+    comments: null,
+  },
+  {
+    id: "10",
+    link: "https://example.com/10",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment 10",
+    authorName: "Author 10",
+    authorId: "author10",
+    totalVotes: 0,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:45:00Z",
+    comments: null,
+  },
+];
+
+const comment1: IPostDisplay = {
+  id: "post1",
+  link: "https://react-icons.github.io/react-icons/",
+  imageUrl:
+    "https://res.cloudinary.com/dhle9hj3n/image/upload/v1728074215/ucdbrgjng0fssqqot8ue.jpg",
+  text: "This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.",
+  authorName: "John Doe",
+  authorId: "auth1",
+  totalVotes: 8,
+  datetime: "2024-10-04T10:30:00Z",
+  comments: commentsArray,
+  hasVoted: false,
+  title: "This is the first post",
+  category: null,
+  keyWords: [],
+};
 
 function TestSpace() {
-  const loggedInContext = useLogin();
-  const [isLoading, setIsLoading] = useState(false);
-  const [userList, setUserList] = useState<IAppUserDisplay[]>([]);
-  useEffect(() => {
-    console.log(loggedInContext.token);
-    if (!userList?.length) {
-      setIsLoading(true);
-      auth
-        .getUsers(loggedInContext.token ?? "")
-        .then((response) => {
-          console.log("respons", response);
-          const parsedUsers = stringToAppUserDisplay(response);
-          setUserList(Array.isArray(parsedUsers) ? parsedUsers : [parsedUsers]);
-        })
-        .catch((error) => {
-          console.log("error", error);
-          if (error && error.response && error.response.data) {
-            const errorMessages = error.response.data["Getting users failed"];
-            if (Array.isArray(errorMessages)) {
-              const message = errorMessages.join(" & ");
-              dialogs.error(message);
-            } else {
-              dialogs.error("An unknown error occurred.");
-            }
-          } else {
-            dialogs.error("An error occurred. Please try again.");
-          }
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, []);
-
   return (
     <>
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
-      {isLoading && (
-        <>
-          <div className=" flex flex-col items-center">
-            <ClimbBoxSpinner /> <br />
-          </div>
-        </>
-      )}
-      {userList.map((user) => (
-        <UserCard key={user.id} UserDisplay={user} />
-      ))}
+      <PostView {...comment1} />
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>

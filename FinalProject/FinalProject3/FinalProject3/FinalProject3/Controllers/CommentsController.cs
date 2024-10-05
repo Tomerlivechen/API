@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace FinalProject3.Controllers
 {
@@ -18,9 +19,11 @@ namespace FinalProject3.Controllers
 
         private readonly FP3Context _context = context;
         [HttpGet("ByPPostId/{PostID}")]
+        [Authorize]
         public async Task<ActionResult<List<CommentDisplay>>> GetCommentByPPostID(string PostID)
         {
-            var comments = await _context.Comment.Where(c => c.ParentPost.Id== PostID).Select(c => c.ToDisplay()).ToListAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var comments = await _context.Comment.Where(c => c.ParentPost.Id== PostID).Select(c => c.ToDisplay(userId)).ToListAsync();
 
             if (comments == null)
             {
@@ -31,9 +34,11 @@ namespace FinalProject3.Controllers
         }
 
         [HttpGet("ByPCommentId/{CommentID}")]
+        [Authorize]
         public async Task<ActionResult<List<CommentDisplay>>> GetCommentByPCommentID(string CommentID)
         {
-            var comments = await _context.Comment.Where(c => c.ParentComment.Id == CommentID).Select(c => c.ToDisplay()).ToListAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var comments = await _context.Comment.Where(c => c.ParentComment.Id == CommentID).Select(c => c.ToDisplay(userId)).ToListAsync();
 
             if (comments == null)
             {
@@ -44,8 +49,10 @@ namespace FinalProject3.Controllers
         }
 
         [HttpGet("ByCommentId/{CommentID}")]
+        [Authorize]
         public async Task<ActionResult<CommentDisplay>> GetCommentByCommentID(string CommentID)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var comment = await _context.Comment.FindAsync(CommentID);
 
             if (comment == null)
@@ -53,7 +60,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return comment.ToDisplay();
+            return comment.ToDisplay(userId);
         }
 
         [HttpGet("ById/{CommentID}")]
@@ -71,8 +78,9 @@ namespace FinalProject3.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Comment>> PostComment(CommentNew comment,string parentId, bool isPost)
+        public async Task<ActionResult<CommentDisplay>> PostComment([FromBody] CommentNew comment)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -80,17 +88,17 @@ namespace FinalProject3.Controllers
                 var newComment = await comment.NewCommentToComment(userManager);
                 _context.Comment.Add(newComment);
             Interaction? parent;
-            if (isPost)
+            if (!string.IsNullOrEmpty(comment.ParentPostId))
             {
-                parent = await _context.Post.FindAsync(parentId);
+                parent = await _context.Post.FindAsync(comment.ParentPostId);
             }
             else
             {
-                parent = await _context.Comment.FindAsync(parentId);
+                parent = await _context.Comment.FindAsync(comment.ParentCommentId);
             }
             if (parent is null)
             {
-                return BadRequest(isPost ? "Post not found" : "Comment not found");
+                return BadRequest(!string.IsNullOrEmpty(comment.ParentPostId) ? "Post not found" : "Comment not found");
             }
             parent.Comments.Add(newComment);
                 try
@@ -103,12 +111,12 @@ namespace FinalProject3.Controllers
                 }
             
 
-            return CreatedAtAction("GetCommentByCommentID", new { CommentID = newComment.Id }, newComment);
+            return Created("Success",newComment.ToDisplay(userId));
         }
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutComment(string id, Comment comment)
+        public async Task<IActionResult> PutComment(string id, [FromBody] Comment comment)
         {
 
             if (!ModelState.IsValid)
@@ -168,26 +176,29 @@ namespace FinalProject3.Controllers
             return NoContent();
         }
 
-        [HttpPut("VoteById/{id}")]
-        public async Task<IActionResult> VoteOnComment([FromQuery] string UserId, [FromRoute] string CommentId, [FromQuery] int vote)
+        [HttpPut("VoteById/{commentId}")]
+        [Authorize]
+        public async Task<IActionResult> VoteOnComment(string commentId,[FromBody]  int Vote )
         {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var fullComment = (await GetFullCommentByCommentID(CommentId)).Value;
+            var fullComment = (await GetFullCommentByCommentID(commentId)).Value;
             if (fullComment is null)
             {
                 return NotFound();
             }
-            var user =await userManager.FindByIdAsync(UserId);
+            var user =await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return BadRequest("User Not Found");
             }
             Votes addedVote = new Votes();
-            addedVote.CreatVote(user, vote);
+            addedVote.CreatVote(user, Vote);
             fullComment.Votes.Add(addedVote);
             fullComment.calcVotes();
             _context.Update(fullComment);

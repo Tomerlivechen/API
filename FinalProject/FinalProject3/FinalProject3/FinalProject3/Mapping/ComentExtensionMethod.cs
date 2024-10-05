@@ -1,13 +1,14 @@
 ﻿using FinalProject3.DTOs;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Hosting;
 using System.Xml.Linq;
 
 namespace FinalProject3.Mapping
 {
     public static class ComentExtensionMethod
     {
-        public static CommentDisplay ToDisplay(this Comment comment)
+        public static CommentDisplay ToDisplay(this Comment comment, string userID)
         {
             CommentDisplay setcomment =  new CommentDisplay()
             {
@@ -17,8 +18,6 @@ namespace FinalProject3.Mapping
                 ImageURL = comment.ImageURL,
                 AuthorName = comment.Author.UserName,
                 AuthorId = comment.Author.Id,
-                UpVotes = comment.UpVotes,
-                DownVotes = comment.DownVotes,
                 TotalVotes = comment.TotalVotes,
                 Datetime = comment.Datetime,
             };
@@ -30,10 +29,17 @@ namespace FinalProject3.Mapping
             {
                 setcomment.ParentCommentId = comment.ParentPost.Id;
             }
+            foreach (Votes vote in comment.Votes)
+            {
+                if (vote.Voter.Id == userID)
+                {
+                    setcomment.hasVoted = true;
+                }
+            }
 
             foreach (Comment com in comment.Comments)
             {
-                setcomment.Comments.Add(com.ToDisplay());
+                setcomment.Comments.Add(com.ToDisplay(userID));
             }
             return setcomment;
         }

@@ -4,7 +4,7 @@ import { SearchContext } from "../ContextAPI/SearchContext";
 const useSearch = () => {
   const searchContext = useContext(SearchContext);
   if (!searchContext) {
-    throw new Error("userAuth must be within AuthProvider");
+    throw new Error("search must be within searchProvider");
   }
   return searchContext;
 };
