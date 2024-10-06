@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { colors } from "../Patterns";
 
 type Position =
   | "absolute"
@@ -21,13 +22,14 @@ interface basicElements {
   right?: string;
   overflowY?: overflowYtype;
   zindex?: number;
+  margin?: string;
 }
 
 const ElementFrame = (props: basicElements) => {
   return (
     <>
       <div
-        className={`bg-emerald-200 p-${props.padding} shadow-lg  rounded-lg m-3 dark:bg-teal-950 dark:text-amber-400`}
+        className={` p-${props.padding} shadow-lg  rounded-lg m${props.margin || "-3"} ${colors.ElementFrame}`}
         style={{
           left: props.left,
           zIndex: props.zindex || 0,

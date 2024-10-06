@@ -20,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
   const handleFollow = () => {
     console.log(loginContext.token ?? "", UserDisplay.id);
     auth
-      .follow(loginContext.token ?? "", UserDisplay.id.toString())
+      .follow(UserDisplay.id.toString())
       .then((response) => {
         console.log(response);
         if (response.status == 200)
@@ -37,9 +37,9 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
       });
   };
   const handleUnfollow = () => {
-    console.log(loginContext.token ?? "", UserDisplay.id);
+    console.log(UserDisplay.id);
     auth
-      .unfollow(loginContext.token ?? "", UserDisplay.id.toString())
+      .unfollow(UserDisplay.id.toString())
       .then((response) => {
         if (response.status == 200)
           dialogs
@@ -55,9 +55,9 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
       });
   };
   const handleBlock = () => {
-    console.log(loginContext.token ?? "", UserDisplay.id);
+    console.log(UserDisplay.id);
     auth
-      .block(loginContext.token ?? "", UserDisplay.id.toString())
+      .block(UserDisplay.id.toString())
       .then((response) => {
         if (response.status == 200)
           dialogs
@@ -75,7 +75,7 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
   const handleUnBlock = () => {
     console.log(loginContext.token ?? "", UserDisplay.id);
     auth
-      .unBlock(loginContext.token ?? "", UserDisplay.id.toString())
+      .unBlock(UserDisplay.id.toString())
       .then((response) => {
         if (response.status == 200)
           dialogs

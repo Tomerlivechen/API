@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye } from "react-icons/fa";
@@ -6,6 +6,8 @@ import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
+import ElementFrame from "../Constants/Objects/ElementFrame";
+import { colors } from "../Constants/Patterns";
 
 function Register() {
   const [viewPassword, setviewPassword] = useState("password");
@@ -55,6 +57,11 @@ function Register() {
   };
   return (
     <>
+    <div className="flex justify-center">
+    <ElementFrame height="1100px" width="700px" overflowY="auto" padding="0 pb-4">
+    <div className={`text-4xl font-bold  text-center ${colors.ButtonFont}`}>
+                        Register
+      </div>
       <Formik
         initialValues={initalValues}
         validationSchema={validationScheme}
@@ -267,6 +274,8 @@ function Register() {
           </div>
         </Form>
       </Formik>
+      </ElementFrame>
+      </div>
     </>
   );
 }

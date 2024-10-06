@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye } from "react-icons/fa";
@@ -6,7 +6,9 @@ import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import { LoggedInContext } from "../ContextAPI/LoggedinContext";
+import { LoggedInContext } from "../ContextAPI/LoggedInContext";
+import { colors } from "../Constants/Patterns";
+import ElementFrame from "../Constants/Objects/ElementFrame";
 
 function LoginPage() {
   const [viewPassword, setviewPassword] = useState("password");
@@ -37,6 +39,11 @@ function LoginPage() {
   };
   return (
     <>
+        <div className="flex justify-center">
+    <ElementFrame height="400px" width="700px" overflowY="auto" padding="0 pb-4">
+    <div className={`text-4xl font-bold  text-center ${colors.ButtonFont}`}>
+                        Login
+      </div>
       <Formik
         initialValues={initalValues}
         validationSchema={validationScheme}
@@ -123,6 +130,8 @@ function LoginPage() {
           </div>
         </Form>
       </Formik>
+      </ElementFrame>
+      </div>
     </>
   );
 }

@@ -14,6 +14,8 @@ import { useLogin } from "../../CustomHooks/useLogin";
 
 import { CommentList } from "../../Components/CommentList";
 import AddCommentCommentModal from "../../Modals/AddCommentCommentModal";
+import { FaCommentMedical } from "react-icons/fa";
+import { colors } from "../Patterns";
 
 const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
   const [showModal, setShowModal] = useState(false);
@@ -29,11 +31,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
 
   const handleVote = async (vote: number) => {
     if (loginContex.token) {
-      await CommentAPI.VoteOnComment(
-        loginContex.token,
-        commentDisplay.id,
-        vote
-      );
+      await CommentAPI.VoteOnComment(commentDisplay.id, vote);
       commentDisplay.hasVoted = true;
       commentDisplay.totalVotes += vote;
     }
@@ -42,14 +40,15 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
   return (
     <>
       <ElementFrame
-        height="150px"
+        height="190px"
         width="400px"
         padding="2"
         position="relative"
+        margin="t-2"
       >
         <div>
           <div className="flex">
-            <button className=" text-sm font-bold">
+            <button className=" text-sm font-bold ">
               {commentDisplay.authorName}
             </button>
             {commentDisplay.authorId == userContext.userInfo.UserId && (
@@ -59,7 +58,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             )}
           </div>
           <div
-            className="bg-teal-200 dark:bg-teal-900"
+            className={`${colors.TextBox}`}
             style={{
               height: "80px",
               overflowY: "auto",
@@ -86,10 +85,10 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             </div>
             <div className="flex items-center pl-4">
               <button
-                className="rounded-md dark:bg-emerald-800 m-1 p-1 bg-emerald-300"
+                className={`rounded-md  m-1 p-1 ${colors.ButtonFont}`}
                 onClick={handleShow}
               >
-                Reply
+                <FaCommentMedical size={21} aria-description="add comment" />
               </button>
               <AddCommentCommentModal
                 Mshow={showModal}
@@ -124,17 +123,14 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             </div>
           </div>
         </div>
+        <div className="flex justify-end">
+        {commentDisplay.datetime}
+        </div>
       </ElementFrame>
 
-      <span
-        className="-mt-16 "
-        style={{
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+      <div className="-mt-9 -ml-1" style={{position: "relative",zIndex: 100}}>
         <CommentList index={0} commmentList={commentDisplay.comments} />
-      </span>
+      </div>
     </>
   );
 };

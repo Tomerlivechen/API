@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError } from "../Constants/Patterns";
+import { catchError, colors } from "../Constants/Patterns";
 import { HiLink } from "react-icons/hi2";
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
@@ -91,7 +91,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
       try {
         values.link = Url;
         values.imageURL = postsContext.imageURL;
-        const response = await Posts.postPost(loggedInContext.token, values);
+        const response = await Posts.postPost(values);
         console.log(response);
         dialogs.success("Sending Post Successful");
         navigate("/Feed");
@@ -130,7 +130,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                     </div>
                     <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1 ">
                       <Field
-                        className="rounded-md hover:border-2 border-2 px-2 py-2 dark:bg-teal-900 bg-emerald-300"
+                        className={`rounded-md hover:border-2 border-2 px-2 py-2 ${colors.TextBox} `}
                         id="text"
                         name="text"
                         type="text"
@@ -215,7 +215,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                       <button
                         disabled={isLoading}
                         type="submit"
-                        className="text-red-300 bg-green-700 font-bold "
+                        className={` font-bold ${colors.Buttons}`}
                       >
                         Submit
                       </button>
@@ -223,7 +223,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                         disabled={isLoading}
                         type="button"
                         onClick={handleclose}
-                        className="text-red-300 bg-green-700 font-bold "
+                        className={` font-bold ${colors.Buttons}`}
                       >
                         Close
                       </button>

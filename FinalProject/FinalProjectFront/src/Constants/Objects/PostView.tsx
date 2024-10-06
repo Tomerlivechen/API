@@ -13,7 +13,9 @@ import { useLogin } from "../../CustomHooks/useLogin";
 
 import { IPostDisplay } from "../../Models/Interaction";
 import { CommentList } from "../../Components/CommentList";
-import AddPostCommentModal from "../../Modals/AddPostCommentModal copy";
+import AddPostCommentModal from "../../Modals/AddPostCommentModal";
+import { FaCommentMedical } from "react-icons/fa";
+import { colors } from "../Patterns";
 
 const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const [showModal, setShowModal] = useState(false);
@@ -29,7 +31,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
 
   const handleVote = async (vote: number) => {
     if (loginContex.token) {
-      await CommentAPI.VoteOnComment(loginContex.token, postDisplay.id, vote);
+      await CommentAPI.VoteOnComment(postDisplay.id, vote);
       postDisplay.hasVoted = true;
       postDisplay.totalVotes += vote;
     }
@@ -37,7 +39,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
 
   return (
     <>
-      <ElementFrame height="420px" width="400px" padding="2">
+      <ElementFrame height="450px" width="400px" padding="2">
         <div>
           <div className="flex">
             <button className=" text-sm font-bold">
@@ -77,7 +79,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
           )}
           <div className="p-0.5" />
           <div
-            className="bg-teal-200 dark:bg-teal-900"
+            className={`${colors.TextBox}`}
             style={{
               height: "80px",
               overflowY: "auto",
@@ -96,16 +98,16 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
                   className="pl-3"
                   onClick={() => window.open(postDisplay.link, "_blank")}
                 >
-                  <HiLink size={20} />
+                  <HiLink size={22} />
                 </button>
               )}
             </div>
             <div className="flex items-center pl-4">
               <button
-                className="rounded-md dark:bg-emerald-800 m-1 p-1 bg-emerald-300"
+                className={`{rounded-md m-1 p-1 }`}
                 onClick={handleShow}
               >
-                Reply
+                <FaCommentMedical size={21} aria-description="add comment" />
               </button>
 
               <AddPostCommentModal
@@ -141,8 +143,12 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
             </div>
           </div>
         </div>
+        <div className="flex justify-end">
+        {postDisplay.datetime}</div>
       </ElementFrame>
+              <div className="-mt-12" style={{position: "relative",zIndex: 100}}>
       <CommentList index={0} commmentList={postDisplay.comments} />
+</div>
     </>
   );
 };

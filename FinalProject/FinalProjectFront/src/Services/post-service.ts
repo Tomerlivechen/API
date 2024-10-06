@@ -1,42 +1,32 @@
-import { Post } from "routing-controllers";
-import axios from "axios";
+
 import { INewPost } from "../Models/Interaction";
+import { request } from "../Utils/Axios-Interceptor";
 
-const baseURL = import.meta.env.VITE_BASE_URL + "/posts";
+const postURL = "/posts";
 
-const getPosts = (token: string) =>
-  axios
-    .get(`${baseURL}/`, {
-      headers: {
-        Authorization: `Bearer ${token.replace(/"/g, "")}`,
-      },
-    })
-    .then((response) => {
-      return response.data;
+
+const getPosts = () =>
+  request({
+    url: `${postURL}`,
+    method: "GET",
+    data: null,
+  });
+
+  const postPost = (Post: INewPost) =>
+    request({
+      url: `${postURL}`,
+      method: "POST",
+      data: Post,
     });
 
-const postPost = (token: string, Post: INewPost) =>
-  axios
-    .post(`${baseURL}/`, Post, {
-      headers: {
-        Authorization: `Bearer ${token.replace(/"/g, "")}`,
-      },
-    })
-    .then((response) => {
-      return response;
-    });
 
-const VoteOnPost = (token: string, Id: string, vote: number) => {
-  axios
-    .put(`${baseURL}/VoteById/${Id}`, vote, {
-      headers: {
-        Authorization: `Bearer ${token.replace(/"/g, "")}`,
-      },
-    })
-    .then((response) => {
-      return response;
-    });
-};
+    const VoteOnPost = (Id: string, vote: number) =>
+      request({
+        url: `${postURL}/VoteById/${Id}`,
+        method: "PUT",
+        data: vote,
+      });
+  
 
 export { getPosts, postPost, VoteOnPost };
 

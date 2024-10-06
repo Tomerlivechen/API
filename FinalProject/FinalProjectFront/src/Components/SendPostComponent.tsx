@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -8,7 +8,7 @@ import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { ICategory, INewPost } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError } from "../Constants/Patterns";
+import { catchError, colors } from "../Constants/Patterns";
 import { HiLink } from "react-icons/hi2";
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
@@ -82,7 +82,7 @@ function SendPostComponent() {
       try {
         values.link = Url;
         values.imageURL = postsContext.imageURL;
-        const response = await Posts.postPost(loggedInContext.token, values);
+        const response = await Posts.postPost(values);
         console.log(response);
         dialogs.success("Sending Post Successful");
         navigate("/Feed");
@@ -114,14 +114,14 @@ function SendPostComponent() {
                         New Post
                       </label>
                       <button
-                        className="rounded-md dark:bg-emerald-800 m-1 p-1 bg-emerald-300"
+                        className={`rounded-md  m-1 p-1 ${colors.Buttons}`}
                         onClick={toggelOpen}
                       >
                         {open ? "Close" : "Write"}
                       </button>
                     </div>
                     <Field
-                      className="rounded-md hover:border-2 border-2 px-2 py-2  dark:bg-teal-900 bg-emerald-300"
+                      className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
                       id="title"
                       name="title"
                       type="text"
@@ -136,7 +136,7 @@ function SendPostComponent() {
                   </div>
                   <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1">
                     <Field
-                      className="rounded-md hover:border-2 border-2 px-2 py-2  dark:bg-teal-900 bg-emerald-300"
+                      className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
                       id="text"
                       name="text"
                       type="text"
@@ -159,7 +159,7 @@ function SendPostComponent() {
 
                   <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1">
                     <Field
-                      className="rounded-md hover:border-2 border-2 px-2 py-2  dark:bg-teal-900 bg-emerald-300"
+                      className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
                       id="keyWords"
                       name="keyWords"
                       type="text"
@@ -233,7 +233,7 @@ function SendPostComponent() {
                     <button
                       disabled={isLoading}
                       type="submit"
-                      className="text-red-300 bg-green-700 font-bold p-1"
+                      className={`${colors.Buttons} font-bold p-1`}
                     >
                       Post
                     </button>
@@ -249,7 +249,7 @@ function SendPostComponent() {
             <div className="flex justify-evenly">
               <label className="text-4xl font-bold  mb-1 ">New Post</label>
               <button
-                className="rounded-md dark:bg-emerald-800 m-1 p-1 bg-emerald-300"
+                className={`rounded-md  m-1 p-1  ${colors.Buttons}`}
                 onClick={toggelOpen}
               >
                 {open ? "Close" : "Write"}

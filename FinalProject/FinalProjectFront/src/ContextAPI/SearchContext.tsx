@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { IPostDisplay } from "../Models/Interaction";
 import { auth } from "../Services/auth-service";
@@ -8,7 +8,6 @@ import {
   stringToAppUserDisplay,
   stringToPostDisplay,
 } from "../Constants/Patterns";
-import { useLogin } from "../CustomHooks/useLogin";
 import { Posts } from "../Services/post-service";
 
 interface IUserSelector {
@@ -68,7 +67,6 @@ const SearchContext = createContext({
 });
 
 function SearchProvider({ children }) {
-  const loggedInContext = useLogin();
   const [postSearch, setPostSearch] = useState(ValuesPost);
   const [userSearch, setUserSearch] = useState(ValuesUser);
   const [searchValue, setSearchValue] = useState(searchTermBase);
@@ -78,22 +76,28 @@ function SearchProvider({ children }) {
   const [filterUserList, setFilterUserList] = useState<IAppUserDisplay[]>([]);
   const [filterPostList, setFilterPostList] = useState<IPostDisplay[]>([]);
 
+useEffect(() => {
+
+  setFilterUserList([])
+  setFilterPostList([])
+;},[userSearch,postSearch])
+
   const fillLists = () => {
     auth
-      .getUsers(loggedInContext.token ?? "")
+      .getUsers()
       .then((response) => {
         console.log("respons", response);
-        const parsedUsers = stringToAppUserDisplay(response);
+        const parsedUsers = stringToAppUserDisplay(response.data);
         setUserList(Array.isArray(parsedUsers) ? parsedUsers : [parsedUsers]);
       })
       .catch((error) => {
         catchError(error, "Getting users");
       });
 
-    Posts.getPosts(loggedInContext.token ?? "")
+    Posts.getPosts()
       .then((response) => {
         console.log("respons", response);
-        const parsedPosts = stringToPostDisplay(response);
+        const parsedPosts = stringToPostDisplay(response.data);
         setPostList(Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]);
       })
       .catch((error) => {

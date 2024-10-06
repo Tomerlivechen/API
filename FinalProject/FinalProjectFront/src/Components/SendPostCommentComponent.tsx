@@ -78,7 +78,7 @@ const SendPostCommentComponent: React.FC<initialValues> = ({ postId }) => {
       try {
         values.link = Url;
         values.imageURL = postsContext.imageURL;
-        const response = await Posts.postPost(loggedInContext.token, values);
+        const response = await Posts.postPost(values);
         console.log(response);
         dialogs.success("Sending Post Successful");
         navigate("/Feed");

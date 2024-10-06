@@ -1,30 +1,24 @@
-import axios from "axios";
+
 import { INewComment } from "../Models/CommentModels";
+import { request } from "../Utils/Axios-Interceptor";
 
-const baseURL = import.meta.env.VITE_BASE_URL + "/Comments";
+const CommentURL = "/Comments";
 
-const VoteOnComment = (token: string, Id: string, vote: number) => {
-  axios
-    .put(`${baseURL}/VoteById/${Id}`, vote, {
-      headers: {
-        Authorization: `Bearer ${token.replace(/"/g, "")}`,
-      },
-    })
-    .then((response) => {
-      return response;
+
+const VoteOnComment = (Id: string, vote: number) =>
+  request({
+    url: `${CommentURL}/VoteById/${Id}`,
+    method: "PUT",
+    data: vote,
+  });
+
+  const PostComment = (newcomment: INewComment) =>
+    request({
+      url: `${CommentURL}`,
+      method: "POST",
+      data: newcomment,
     });
-};
 
-const PostComment = (token: string, newcomment: INewComment) => {
-  axios
-    .post(`${baseURL}`, newcomment, {
-      headers: {
-        Authorization: `Bearer ${token.replace(/"/g, "")}`,
-      },
-    })
-    .then((response) => {
-      return response;
-    });
-};
+
 
 export const CommentService = { VoteOnComment, PostComment };

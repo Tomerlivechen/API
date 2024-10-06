@@ -53,7 +53,7 @@ namespace FinalProject3.Auth
                 audience: jwtSettings.Audience,
                 claims: claims,
                 notBefore: DateTime.Now,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddDays(2),
                 signingCredentials: creds
                 );
 

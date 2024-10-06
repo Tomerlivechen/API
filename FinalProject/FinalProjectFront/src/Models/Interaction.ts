@@ -70,7 +70,7 @@ interface ICommentDisplay {
   parentCommentId: string;
   hasVoted: boolean;
   datetime: string;
-  comments: ICommentDisplay[] | null;
+  comments: ICommentDisplay[] ;
 }
 
 interface IComment extends IInteraction {

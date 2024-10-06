@@ -1,6 +1,11 @@
 import axios from "axios";
+import { request } from "../Utils/Axios-Interceptor";
 
-const baseURL = import.meta.env.VITE_BASE_URL + "/Auth";
+const baseURL = import.meta.env.VITE_BASE_URL;
+
+const AuthURL = "/Auth";
+
+
 
 const register = (
   email: string,
@@ -13,7 +18,7 @@ const register = (
   imageURL: string,
   permissionLevel: string
 ) =>
-  axios.post(`${baseURL}/register`, {
+  axios.post(`${baseURL}${AuthURL}/register`, {
     email: email,
     userName: userName,
     password: password,
@@ -25,105 +30,66 @@ const register = (
     permissionLevel: permissionLevel,
   });
 const login = (email: string, password: string) =>
-  axios.post(`${baseURL}/login`, { email, password }).then((response) => {
+  axios.post(`${baseURL}${AuthURL}/login`, { email, password }).then((response) => {
     if (response.data.token) {
-      localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem("token", response.data.token);
     }
     return response;
   });
 
-const validate = (token: string) => {
-  return axios.get(`${baseURL}/validateToken`, {
-    headers: {
-      Authorization: `Bearer ${token.replace(/"/g, "")}`,
-    },
-  });
-};
-
-const getUser = (token: string, id: string) =>
-  axios
-    .post(
-      `${baseURL}/GetUser`,
-      { id },
-      {
-        headers: {
-          Authorization: `Bearer ${token.replace(/"/g, "")}`,
-        },
-      }
-    )
-    .then((response) => {
-      return response.data;
-    });
-const getUsers = (token: string) =>
-  axios
-    .get(`${baseURL}/GetUsers`, {
-      headers: {
-        Authorization: `Bearer ${token.replace(/"/g, "")}`,
-      },
-    })
-    .then((response) => {
-      return response.data;
+  const validate = () =>
+    request({
+      url: `${AuthURL}/validateToken`,
+      method: "GET",
+      data: null,
     });
 
-const follow = (token: string, id: string) =>
-  axios
-    .put(
-      `${baseURL}/follow`,
-      { id },
-      {
-        headers: {
-          Authorization: `Bearer ${token.replace(/"/g, "")}`,
-        },
-      }
-    )
-    .then((response) => {
-      return response;
-    });
 
-const unfollow = (token: string, id: string) =>
-  axios
-    .put(
-      `${baseURL}/unfollow`,
-      { id },
-      {
-        headers: {
-          Authorization: `Bearer ${token.replace(/"/g, "")}`,
-        },
-      }
-    )
-    .then((response) => {
-      return response;
-    });
+    const getUser = (id: string) =>
+      request({
+        url: `${AuthURL}/GetUser`,
+        method: "POST",
+        data: {id},
+      });
 
-const block = (token: string, id: string) =>
-  axios
-    .put(
-      `${baseURL}/block`,
-      { id },
-      {
-        headers: {
-          Authorization: `Bearer ${token.replace(/"/g, "")}`,
-        },
-      }
-    )
-    .then((response) => {
-      return response;
-    });
 
-const unBlock = (token: string, id: string) =>
-  axios
-    .put(
-      `${baseURL}/unblock`,
-      { id },
-      {
-        headers: {
-          Authorization: `Bearer ${token.replace(/"/g, "")}`,
-        },
-      }
-    )
-    .then((response) => {
-      return response;
-    });
+    const getUsers = () =>
+      request({
+        url: `${AuthURL}/GetUsers`,
+        method: "GET",
+        data: null,
+      });
+    
+      const follow = (id: string) =>
+        request({
+          url: `${AuthURL}/follow`,
+          method: "PUT",
+          data: {id},
+        });
+
+    
+        const unfollow = (id: string) =>
+          request({
+            url: `${AuthURL}/unfollow`,
+            method: "PUT",
+            data: {id},
+          });
+
+          const block = (id: string) =>
+            request({
+              url: `${AuthURL}/block`,
+              method: "PUT",
+              data: {id},
+            });
+
+            const unBlock = (id: string) =>
+              request({
+                url: `${AuthURL}/unblock`,
+                method: "PUT",
+                data: {id},
+              });
+
+
 
 export { register, login, validate, getUser, follow, unfollow, block, unBlock };
 
