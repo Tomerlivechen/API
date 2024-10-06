@@ -230,6 +230,7 @@ function TestSpace() {
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
       <PostView {...comment1} />
+      <PostView {...comment1} />
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>

@@ -30,7 +30,7 @@ const ElementFrame = (props: basicElements) => {
         className={`bg-emerald-200 p-${props.padding} shadow-lg  rounded-lg m-3 dark:bg-teal-950 dark:text-amber-400`}
         style={{
           left: props.left,
-          zIndex: props.zindex || 2,
+          zIndex: props.zindex || 0,
           right: props.right || "auto",
           top: props.top,
           position: props.position || "relative",

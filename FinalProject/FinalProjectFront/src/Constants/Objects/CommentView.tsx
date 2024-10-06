@@ -41,7 +41,12 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
 
   return (
     <>
-      <ElementFrame height="150px" width="400px" padding="2">
+      <ElementFrame
+        height="150px"
+        width="400px"
+        padding="2"
+        position="relative"
+      >
         <div>
           <div className="flex">
             <button className=" text-sm font-bold">
@@ -120,7 +125,16 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
           </div>
         </div>
       </ElementFrame>
-      <CommentList index={0} commmentList={commentDisplay.comments} />
+
+      <span
+        className="-mt-16 "
+        style={{
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <CommentList index={0} commmentList={commentDisplay.comments} />
+      </span>
     </>
   );
 };
