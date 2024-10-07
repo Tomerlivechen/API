@@ -9,9 +9,9 @@ import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 import { colors } from "../Constants/Patterns";
 import ElementFrame from "../Constants/Objects/ElementFrame";
-import { FormikElementBuilder, FormikValues } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElementBuilder";
 
-const emailValues : FormikValues ={
+const emailValues : MYFormikValues ={
   Title: "Email Address",
   element: "email",
   type: "text",
@@ -20,7 +20,7 @@ const emailValues : FormikValues ={
   hidden: false
 }
 
-const passwordValues : FormikValues ={
+const passwordValues : MYFormikValues ={
   Title: "Password",
   element: "password",
   type: "text",

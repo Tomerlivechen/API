@@ -63,8 +63,7 @@
               "RelativeToolTip": "FinalProject3\\Auth\\IJwtTokenService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T21:45:13.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-06T21:45:13.74Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "FinalProject3\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAnwFsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T19:30:10.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-06T19:30:10.443Z"
             },
             {
               "$type": "Document",
@@ -113,8 +111,7 @@
               "RelativeToolTip": "FinalProject3\\Controllers\\CommentsController.cs",
               "ViewState": "AgIAAK0AAAAAAAAAAAAuwNAAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T13:57:17.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T13:57:17.272Z"
             }
           ]
         }

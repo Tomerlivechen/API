@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiLink } from "react-icons/hi2";
 
 import { BiSolidUpvote } from "react-icons/bi";
@@ -21,6 +21,8 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShow = () => setShowModal((prevshowModal) => !prevshowModal);
+
+
   const handleClose = () => setShowModal(false);
   const userContext = useUser();
   const loginContex = useLogin();

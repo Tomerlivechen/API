@@ -9,12 +9,14 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError, colors } from "../Constants/Patterns";
+import { catchError, colors, imageFieldValues, linkFieldValues } from "../Constants/Patterns";
 import { HiLink } from "react-icons/hi2";
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
+import { CommentService } from "../Services/comment-service";
+import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
 
 interface AddPostCommentModalProps {
   postId: string;
@@ -27,15 +29,19 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   Mshow,
   onHide,
 }) => {
+  const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
   const [Url, setUrl] = useState("");
   const postsContext = usePosts();
   const navigate = useNavigate();
+  const linkValues = linkFieldValues
+  const imageValues = imageFieldValues
 
   const handleclose = () => {
     onHide();
   };
+
 
   const validationScheme = Yup.object({
     link: Yup.string().url(),
@@ -57,58 +63,56 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
     ParentCommentId: "",
     Datetime: "",
   };
-  const [postValues, setpostValues] = useState<INewComment>(NewComment);
+
+  
+  const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
   const handleSubmit = async (values) => {
-    setpostValues(values);
+    setCommentValues(values);
     if (postsContext.selectedFile != null) {
       await postsContext.handleUpload();
       setIsLoading(true);
     } else {
-      await postPost(values);
+      await postComment(values);
     }
   };
-
+  
   useEffect(() => {
-    const submitPost = async () => {
-      if (postsContext.imageURL) {
-        await postPost(postValues);
+    const submitComment = async () => {
+      if (postsContext.imageURL && commentValues.text?.length && commentValues.text?.length>2) {
+        await postComment(commentValues);
       }
     };
-    submitPost();
+    submitComment();
   }, [postsContext.imageURL]);
 
-  const postPost = async (values) => {
+  const postComment = async (values) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
       try {
-        values.link = Url;
         values.imageURL = postsContext.imageURL;
-        const response = await Posts.postPost(values);
-        console.log(response);
-        dialogs.success("Sending Post Successful");
-        navigate("/Feed");
-        handleclose();
-      } catch (error) {
-        catchError(error, "Sending Post");
-      } finally {
         postsContext.clearImage();
+        const response = await CommentService.PostComment(values);
+        console.log(response);
+        dialogs.success("Comment Sent");
+      } catch (error) {
+        catchError(error, "Commenting");
+      } finally {
+        setCommentValues(NewComment)
         handleclose();
         setIsLoading(false);
       }
     }
   };
   useEffect(() => {
-    if (!Mshow) {
-      setpostValues(NewComment);
-    }
+    setShow(Mshow);
   }, [Mshow]);
   return (
     <>
       <Modal show={Mshow} onHide={handleclose} className="comment-modal">
         <>
-          <ElementFrame height="300px" width="300px" padding="1">
+          <ElementFrame height="390px" width="300px" padding="1">
             <>
               <Formik
                 initialValues={NewComment}
@@ -147,54 +151,14 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
                       />
                     </div>
 
-                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
-                      <Field
-                        className="rounded-md hover:border-2 border-2 px-2 py-2"
-                        id="link"
-                        name="link"
-                        type="hidden"
-                        value={Url}
-                        placeholder="Link"
-                      />
+                    
+                    <FormikElementBuilder {...linkValues}/>
+                    <FormikElementBuilder {...imageValues}/>
+                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-6">
 
-                      <ErrorMessage
-                        name="link"
-                        component="div"
-                        className="text-red-500"
-                      />
-                    </div>
-                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
-                      <Field
-                        className="rounded-md hover:border-2 border-2 px-2 py-2"
-                        id="imageURL"
-                        name="imageURL"
-                        type="hidden"
-                        value={postsContext.imageURL}
-                        placeholder="imageURL"
-                      />
-
-                      <ErrorMessage
-                        name="imageURL"
-                        component="div"
-                        className="text-red-500"
-                      />
-                    </div>
-                    <div className="font-semibold ml-3 flex justify-evenly items-center w-full mx-auto text-lg -m-2">
-
-
-                        <button
-                        
-                          type="button"
-                          className="pl-6 -mt-2"
-                          onClick={handelAddUrl}
-                        ><div className="flex flex-col items-center">
-                          Add Link
-                          <div className="p-2"></div>
-                          <HiLink style={{ fontSize: "35px" }} /></div>
-                        </button>
                         
 
-                      <div className="pl-7 pb-4 pt-3">
+                      <div className=" pb-4 pt-3">
                         
                           <ImageUpload />
                         

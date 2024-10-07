@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { colors } from "../Constants/Patterns";
-import { FormikElementBuilder, FormikValues } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElementBuilder";
 
-const emailValues : FormikValues ={
+const emailValues : MYFormikValues ={
   Title: "Email Address",
   element: "email",
   type: "text",
@@ -19,7 +19,7 @@ const emailValues : FormikValues ={
   hidden: false
 }
 
-const userNameValues : FormikValues ={
+const userNameValues : MYFormikValues ={
   Title: "User Name",
   element: "userName",
   type: "text",
@@ -28,7 +28,7 @@ const userNameValues : FormikValues ={
   hidden: false
 }
 
-const confirmPasswordValues : FormikValues ={
+const confirmPasswordValues : MYFormikValues ={
   Title: "Confirm Password",
   element: "confirmPassword",
   type: "text",
@@ -37,7 +37,7 @@ const confirmPasswordValues : FormikValues ={
   hidden: false
 }
 
-const passwordValues : FormikValues ={
+const passwordValues : MYFormikValues ={
   Title: "Password",
   element: "password",
   type: "text",
@@ -46,7 +46,7 @@ const passwordValues : FormikValues ={
   hidden: false
 }
 
-const prefixValues : FormikValues ={
+const prefixValues : MYFormikValues ={
   Title: "Prefix",
   element: "prefix",
   type: "text",
@@ -55,7 +55,7 @@ const prefixValues : FormikValues ={
   hidden: false
 }
 
-const firstNameValues : FormikValues ={
+const firstNameValues : MYFormikValues ={
   Title: "First Name",
   element: "first_Name",
   type: "text",
@@ -63,7 +63,7 @@ const firstNameValues : FormikValues ={
   required: true,
   hidden: false
 }
-const lastNameValues : FormikValues ={
+const lastNameValues : MYFormikValues ={
   Title: "Last Name",
   element: "last_Name",
   type: "text",
@@ -72,7 +72,7 @@ const lastNameValues : FormikValues ={
   hidden: false
 }
 
-const pronounsValues : FormikValues ={
+const pronounsValues : MYFormikValues ={
   Title: "Pronouns",
   element: "pronouns",
   type: "text",

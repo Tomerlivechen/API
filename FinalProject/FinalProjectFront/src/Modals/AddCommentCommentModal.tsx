@@ -9,13 +9,14 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError, colors } from "../Constants/Patterns";
-import { HiLink } from "react-icons/hi2";
+import { catchError, colors, imageFieldValues, linkFieldValues } from "../Constants/Patterns";
+
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
-import { FormikElementBuilder, FormikValues } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElementBuilder";
+import { CommentService } from "../Services/comment-service";
 
 interface AddCommentCommentModalProps {
   commentId: string;
@@ -25,22 +26,7 @@ interface AddCommentCommentModalProps {
 
 
 
-const linkValues : FormikValues = {
-  element  : "link",
-  type : "hidden",
-  placeholder : "Link",
-  required : false,
-  hidden : true,
-  value : ""
-  }
-  const imageValues : FormikValues = {
-    element  : "imageURL",
-    type : "hidden",
-    placeholder : "",
-    required : false,
-    hidden : true,
-    value : ""
-    }
+
 
 const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   commentId,
@@ -50,11 +36,13 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
-  const [Url, setUrl] = useState("");
-  linkValues.value = Url
-  const postsContext = usePosts();
+   const postsContext = usePosts(); 
+   const navigate = useNavigate();  
+  const linkValues = linkFieldValues
+  const imageValues = imageFieldValues
+
   imageValues.value = postsContext.imageURL;
-  const navigate = useNavigate();
+
 
   const handleclose = () => {
     setShow(false);
@@ -70,10 +58,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     text: Yup.string().min(2).required("Must have some text"),
   });
 
-  const handelAddUrl = async () => {
-    const getUrl = await dialogs.getText("Link");
-    setUrl(getUrl);
-  };
+
 
   const NewComment: INewComment = {
     id: "",
@@ -84,47 +69,47 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     ParentPostId: "",
     ParentCommentId: commentId,
     Datetime: "",
+    
   };
 
 
   
-  const [postValues, setpostValues] = useState<INewComment>(NewComment);
+  const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
   const handleSubmit = async (values) => {
-    setpostValues(values);
+    setCommentValues(values);
     if (postsContext.selectedFile != null) {
       await postsContext.handleUpload();
       setIsLoading(true);
     } else {
-      await postPost(values);
+      await postComment(values);
     }
   };
-
+  
   useEffect(() => {
-    const submitPost = async () => {
-      if (postsContext.imageURL) {
-        await postPost(postValues);
+    const submitComment = async () => {
+      if (postsContext.imageURL && commentValues.text?.length && commentValues.text?.length>2) {
+        await postComment(commentValues);
       }
     };
-    submitPost();
+    submitComment();
   }, [postsContext.imageURL]);
 
-  const postPost = async (values) => {
+  const postComment = async (values) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
       try {
-        values.link = Url;
         values.imageURL = postsContext.imageURL;
-        const response = await Posts.postPost(values);
+        postsContext.clearImage();
+        const response = await CommentService.PostComment(values);
         console.log(response);
-        dialogs.success("Sending Post Successful");
-        navigate("/Feed");
+        dialogs.success("Comment Sent");
         toggelShow();
       } catch (error) {
-        catchError(error, "Sending Post");
+        catchError(error, "Commenting");
       } finally {
-        postsContext.clearImage();
+        setCommentValues(NewComment)
         handleclose();
         setIsLoading(false);
       }
@@ -137,7 +122,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     <>
       <Modal show={show} onHide={onHide} className="comment-modal">
         <>
-          <ElementFrame height="300px" width="300px" padding="1">
+          <ElementFrame height="390px" width="300px" padding="1">
             <>
               <Formik
                 initialValues={NewComment}
@@ -175,23 +160,13 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                         className="text-red-500"
                       />
                     </div>
-                    <div className="-mt-10">
+                    
                     <FormikElementBuilder {...linkValues}/>
-                    <FormikElementBuilder {...imageValues}/></div>
-                    <div className="font-semibold ml-3 flex justify-evenly items-center w-full mx-auto text-lg -m-2">
-                    <button
-                        
-                        type="button"
-                        className="pl-6 -mt-2"
-                        onClick={handelAddUrl}
-                      ><div className="flex flex-col items-center">
-                        Add Link
-                        <div className="p-2"></div>
-                        <HiLink style={{ fontSize: "35px" }} /></div>
-                      </button>
-                      
+                    <FormikElementBuilder {...imageValues}/>
+                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-6">
 
-                    <div className="pl-7 pb-4 pt-3">
+
+                    <div className="pb-4 pt-3">
                       
                         <ImageUpload />
                       

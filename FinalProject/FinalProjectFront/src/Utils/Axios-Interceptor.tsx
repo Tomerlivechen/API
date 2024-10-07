@@ -1,11 +1,10 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
-const token = localStorage.getItem("token");
 const client = axios.create({
   baseURL: baseUrl,
   headers: {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 });
 

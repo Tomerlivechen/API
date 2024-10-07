@@ -2,7 +2,7 @@ import { ErrorMessage, Field } from "formik"
 import { colors } from "./Patterns"
 import { CSSProperties } from "react";
 
-export interface FormikValues {
+export interface MYFormikValues {
 Title? : string,
 element: string,
 type: string,
@@ -13,17 +13,18 @@ value?: string,
 style?: CSSProperties,
 as? : string,
 textbox?: boolean,
+width?: string,
 }
 
 
-const FormikElementBuilder =(initalValues :FormikValues)=> {
+const FormikElementBuilder =(initalValues :MYFormikValues)=> {
 const divClassName = colors.FormikDiv;
 const fieldClassName =colors.ForkikField;
 const textboxParams = colors.TextBox;
 
     return (
         <>
-<div className={divClassName}>
+<div className={`${divClassName} ${initalValues.width ? initalValues.width : "w-1/2"}`}>
     {initalValues.Title &&
 <label htmlFor={initalValues.element}>{initalValues.Title}</label>}
 <Field

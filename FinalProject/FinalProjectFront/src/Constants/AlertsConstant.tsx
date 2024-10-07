@@ -20,6 +20,12 @@ const getText = async (title: string) => {
     input: "url",
     inputLabel: `Submit ${title}`,
     inputPlaceholder: "Enter the URL",
+    didOpen: () => {
+      const popup = document.querySelector('.swal2-popup');
+      if (popup) {
+        popup.setAttribute('id', 'mySweetAlertModal'); // Ensure popup exists before setting ID
+      }
+    }
   });
   if (url) {
     Swal.fire(`Entered URL: ${url}`);
@@ -29,6 +35,7 @@ const getText = async (title: string) => {
 
 const showImage = (title: string, image: string) =>
   Swal.fire({
+    
     title: title,
     imageUrl: image,
     imageAlt: "your image",
