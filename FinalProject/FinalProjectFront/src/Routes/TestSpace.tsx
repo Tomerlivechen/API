@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import ImageUpload from "../Constants/ImageUploading";
-import SendPostComponent from "../Components/SendPostComponent";
-import CommentView from "../Constants/Objects/CommentView";
+
 import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
 import PostView from "../Constants/Objects/PostView";
 

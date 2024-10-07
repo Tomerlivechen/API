@@ -1,13 +1,6 @@
 import  { useContext, useEffect, useState } from "react";
 import {
-  Navbar,
-  Form,
-  Nav,
-  Container,
-  Col,
-  Button,
-  Image,
-  NavDropdown,
+  Navbar
 } from "react-bootstrap";
 import "../Css/Navbar.scss";
 import { ThemeContext } from "../ContextAPI/ThemeContext";

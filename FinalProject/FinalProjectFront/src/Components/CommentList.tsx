@@ -72,7 +72,7 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
                 style={{
                   position: "relative",
                   left: "20px",
-                  top: "0px",
+                  top: "10px",
                   
                 }}
               >
@@ -81,7 +81,7 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
                 ))}
                 {comments && passedIndex != comments.length && (
                   <button
-                    className={`rounded-lg w-40 ml-6 mb-3 mt-3 h-auto ${colors.ElementFrame}`}
+                    className={`rounded-lg w-40 ml-6 mb-3 mt-4 h-auto ${colors.ElementFrame}`}
                     onClick={increasAmount}
                   >
                     More

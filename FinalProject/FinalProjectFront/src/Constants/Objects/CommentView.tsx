@@ -82,10 +82,10 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
                   <IoImage size={20} />
                 </button>
               )}
-            </div>
+            
             <div className="flex items-center pl-4">
               <button
-                className={`rounded-md  m-1 p-1 ${colors.ButtonFont}`}
+                className={`flex items-center pl-3`}
                 onClick={handleShow}
               >
                 <FaCommentMedical size={21} aria-description="add comment" />
@@ -95,7 +95,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
                 onHide={handleClose}
                 commentId={commentDisplay.id}
               />
-            </div>
+            </div></div>
             <div className="flex items-center">
               {!commentDisplay.hasVoted && (
                 <>

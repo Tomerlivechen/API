@@ -39,7 +39,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
 
   return (
     <>
-      <ElementFrame height="450px" width="400px" padding="2">
+      <ElementFrame height="450px" width="400px" padding="2 mt-2">
         <div>
           <div className="flex">
             <button className=" text-sm font-bold">
@@ -101,8 +101,9 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
                   <HiLink size={22} />
                 </button>
               )}
-            </div>
-            <div className="flex items-center pl-4">
+
+            
+            <div className="flex items-center pl-3">
               <button
                 className={`{rounded-md m-1 p-1 }`}
                 onClick={handleShow}
@@ -115,6 +116,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
                 onHide={handleClose}
                 postId={postDisplay.id}
               />
+            </div>
             </div>
             <div className="flex items-center">
               {!postDisplay.hasVoted && (
@@ -146,7 +148,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
         <div className="flex justify-end">
         {postDisplay.datetime}</div>
       </ElementFrame>
-              <div className="-mt-12" style={{position: "relative",zIndex: 100}}>
+              <div className="-mt-10" style={{position: "relative",zIndex: 100}}>
       <CommentList index={0} commmentList={postDisplay.comments} />
 </div>
     </>

@@ -180,24 +180,24 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
                       />
                     </div>
                     <div className="font-semibold ml-3 flex justify-evenly items-center w-full mx-auto text-lg -m-2">
-                      <ElementFrame
-                        height="100"
-                        width="100"
-                        padding="0 pt-1 mr-3"
-                      >
-                        Add Link
+
+
                         <button
+                        
                           type="button"
-                          className="pl-6 pt-3"
+                          className="pl-6 -mt-2"
                           onClick={handelAddUrl}
-                        >
-                          <HiLink style={{ fontSize: "35px" }} />
+                        ><div className="flex flex-col items-center">
+                          Add Link
+                          <div className="p-2"></div>
+                          <HiLink style={{ fontSize: "35px" }} /></div>
                         </button>
-                      </ElementFrame>
-                      <div className="pl-10">
-                        <ElementFrame height="100px" width="130px" padding="1">
+                        
+
+                      <div className="pl-7 pb-4 pt-3">
+                        
                           <ImageUpload />
-                        </ElementFrame>
+                        
                       </div>
                     </div>
                     {isLoading && (

@@ -267,7 +267,7 @@ function Register() {
             <button
               disabled={isLoading}
               type="submit"
-              className="text-red-300 bg-green-700 font-bold p-3"
+              className={`${colors.Buttons} p-3`}
             >
               Register
             </button>
