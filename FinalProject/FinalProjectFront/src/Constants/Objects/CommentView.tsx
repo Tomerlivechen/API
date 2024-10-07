@@ -123,13 +123,19 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             </div>
           </div>
         </div>
+        <div className="flex justify-between items-center">
+
+        <div className={` font-bold ${colors.InteractionText} ml-16 mt-4` }>
+        {commentDisplay.comments && commentDisplay.comments.length>0  && commentDisplay.comments.length}
+        </div>
         <div className="flex justify-end">
         {commentDisplay.datetime}
         </div>
+        </div>
       </ElementFrame>
 
-      <div className="-mt-9 -ml-1" style={{position: "relative",zIndex: 100}}>
-        <CommentList index={0} commmentList={commentDisplay.comments} />
+      <div className={`-mt-9 -ml-1 font-bold ${colors.InteractionText}`} style={{position: "relative",zIndex: 100}}>
+        <CommentList index={0} commmentList={commentDisplay.comments} /> 
       </div>
     </>
   );

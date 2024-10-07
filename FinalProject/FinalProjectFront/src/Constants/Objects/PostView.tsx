@@ -145,8 +145,14 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
             </div>
           </div>
         </div>
+        <div className="flex justify-between items-center">
+
+<div className={` font-bold ${colors.InteractionText} ml-16 -mt-2` }>
+{postDisplay.comments && postDisplay.comments.length>0  && postDisplay.comments.length}
+</div>
         <div className="flex justify-end">
         {postDisplay.datetime}</div>
+        </div>
       </ElementFrame>
               <div className="-mt-10" style={{position: "relative",zIndex: 100}}>
       <CommentList index={0} commmentList={postDisplay.comments} />

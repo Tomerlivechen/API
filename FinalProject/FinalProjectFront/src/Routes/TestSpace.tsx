@@ -2,7 +2,7 @@
 import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
 import PostView from "../Constants/Objects/PostView";
 
-const commentsArray2: ICommentDisplay[] = [
+const commentsArray3: ICommentDisplay[] = [
   {
     id: "1",
     link: "https://example.com/1",
@@ -44,6 +44,65 @@ const commentsArray2: ICommentDisplay[] = [
     hasVoted: false,
     datetime: "2024-10-01T10:10:00Z",
     comments: null,
+  },
+  {
+    id: "4",
+    link: "https://example.com/4",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a4",
+    authorName: "Author 4",
+    authorId: "author4",
+    totalVotes: 2,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:15:00Z",
+    comments: null,
+  },
+];
+
+const commentsArray2: ICommentDisplay[] = [
+  {
+    id: "1",
+    link: "https://example.com/1",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a1",
+    authorName: "Author 1",
+    authorId: "author1",
+    totalVotes: 5,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:00:00Z",
+    comments: commentsArray3,
+  },
+  {
+    id: "2",
+    link: "https://example.com/2",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a2",
+    authorName: "Author 2",
+    authorId: "author2",
+    totalVotes: 3,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: true,
+    datetime: "2024-10-01T10:05:00Z",
+    comments: null,
+  },
+  {
+    id: "3",
+    link: "https://example.com/3",
+    imageUrl: "https://via.placeholder.com/150",
+    text: "This is a comment a3a",
+    authorName: "Author 3",
+    authorId: "author3",
+    totalVotes: 0,
+    parentPostId: "post1",
+    parentCommentId: "",
+    hasVoted: false,
+    datetime: "2024-10-01T10:10:00Z",
+    comments: commentsArray3,
   },
   {
     id: "4",

@@ -27,7 +27,7 @@ ElementFrame: "bg-blue-100 text-blue-900 dark:bg-gray-900 dark:text-orange-400",
 TextBox: "bg-gray-50 text-gray-800 dark:bg-blue-800 dark:text-gray-300", // Calming blue tones for input fields, enhancing focus
 Buttons: "bg-blue-500 text-white dark:bg-orange-600 dark:text-gray-100", // Action buttons use blue in light mode and warm orange in dark mode
 ButtonFont: "text-white dark:text-gray-100", // High contrast for readability across different button states
-
+InteractionText:"text-blue-900 dark:text-orange-400"
 
 };
 

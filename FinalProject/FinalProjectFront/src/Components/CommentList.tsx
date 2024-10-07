@@ -106,7 +106,7 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
         <>
           {!next20Comments && (
             <div
-              className={`rounded-lg ${colors.Buttons} ${
+              className={` ${colors.ButtonFont} ${
                 !next ? "w-12" : "w-44"
               } ml-6 pl-3 pt-1 h-auto`}
             >
