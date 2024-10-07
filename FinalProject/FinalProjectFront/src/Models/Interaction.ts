@@ -52,7 +52,7 @@ interface IPostDisplay {
   totalVotes: number;
   title: string;
   hasVoted: boolean;
-  category?: ICategory ;
+  category?: ICategory | null ;
   keyWords: string[];
   datetime: string;
   comments?: ICommentDisplay[] | null;
