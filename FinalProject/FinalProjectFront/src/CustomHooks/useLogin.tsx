@@ -4,7 +4,7 @@ import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 const useLogin = () => {
   const loggedInContext = useContext(LoggedInContext);
   if (!loggedInContext) {
-    throw new Error("userAuth must be within AuthProvider");
+    throw new Error("useLogin must be within loggedInProvider");
   }
   return loggedInContext;
 };
