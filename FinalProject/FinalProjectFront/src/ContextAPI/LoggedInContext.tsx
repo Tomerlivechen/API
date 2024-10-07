@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
-import { useNavigate } from "react-router-dom";
+
 
 export interface IAuthinitalValues {
   isLoggedin: boolean;
@@ -36,7 +36,7 @@ function LoggedInProvider({ children }) {
   useEffect(() => {
     if (initialValues.token) {
       auth
-        .validate(initialValues.token)
+        .validate()
         .then((response) => {
           if (response.status === 200) {
             login(initialValues.token ?? "");
