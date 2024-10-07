@@ -1,5 +1,5 @@
 import  { useContext, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { FaRegEye } from "react-icons/fa";
 import { auth } from "../Services/auth-service";
@@ -9,9 +9,32 @@ import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 import { colors } from "../Constants/Patterns";
 import ElementFrame from "../Constants/Objects/ElementFrame";
+import { FormikElementBuilder, FormikValues } from "../Constants/FormikElementBuilder";
+
+const emailValues : FormikValues ={
+  Title: "Email Address",
+  element: "email",
+  type: "text",
+  placeholder: "Email Address",
+  required: true,
+  hidden: false
+}
+
+const passwordValues : FormikValues ={
+  Title: "Password",
+  element: "password",
+  type: "text",
+  placeholder: "Password",
+  required: true,
+  hidden: false
+}
+
 
 function LoginPage() {
+
+  
   const [viewPassword, setviewPassword] = useState("password");
+  passwordValues.type=viewPassword;
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useContext(LoggedInContext);
   const navigate = useNavigate();
@@ -40,7 +63,7 @@ function LoginPage() {
   return (
     <>
         <div className="flex justify-center">
-    <ElementFrame height="400px" width="700px" overflowY="auto" padding="0 pb-4">
+    <ElementFrame height="500px" width="700px" overflowY="auto" padding="0 pb-4">
     <div className={`text-4xl font-bold  text-center ${colors.ButtonFont}`}>
                         Login
       </div>
@@ -77,40 +100,12 @@ function LoginPage() {
         }}
       >
         <Form className="mt-5">
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="email">Email Address</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="email"
-              name="email"
-              type="text"
-              placeholder="Email Address"
-              required
-            />
-            <ErrorMessage
-              name="email"
-              component="div"
-              className="text-red-500"
-            />
+          <FormikElementBuilder {...emailValues} />
+          <div className="relative" >
+          <FormikElementBuilder {...passwordValues} />
+          <FaRegEye size={25} className={`cursor-pointer absolute  top-0 right-32 `}  onClick={viewPass} />
           </div>
-
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="password">Password</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="password"
-              name="password"
-              type={viewPassword}
-              placeholder="Password"
-              required
-            />
-            <FaRegEye onClick={viewPass} />
-            <ErrorMessage
-              name="password"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
+          
 
           {isLoading && (
             <>

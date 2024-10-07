@@ -8,9 +8,83 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { colors } from "../Constants/Patterns";
+import { FormikElementBuilder, FormikValues } from "../Constants/FormikElementBuilder";
+
+const emailValues : FormikValues ={
+  Title: "Email Address",
+  element: "email",
+  type: "text",
+  placeholder: "Email Address",
+  required: true,
+  hidden: false
+}
+
+const userNameValues : FormikValues ={
+  Title: "User Name",
+  element: "userName",
+  type: "text",
+  placeholder: "User Name",
+  required: true,
+  hidden: false
+}
+
+const confirmPasswordValues : FormikValues ={
+  Title: "Confirm Password",
+  element: "confirmPassword",
+  type: "text",
+  placeholder: "Confirm Password",
+  required: true,
+  hidden: false
+}
+
+const passwordValues : FormikValues ={
+  Title: "Password",
+  element: "password",
+  type: "text",
+  placeholder: "Password",
+  required: true,
+  hidden: false
+}
+
+const prefixValues : FormikValues ={
+  Title: "Prefix",
+  element: "prefix",
+  type: "text",
+  placeholder: "Prefix",
+  required: true,
+  hidden: false
+}
+
+const firstNameValues : FormikValues ={
+  Title: "First Name",
+  element: "first_Name",
+  type: "text",
+  placeholder: "First Name",
+  required: true,
+  hidden: false
+}
+const lastNameValues : FormikValues ={
+  Title: "Last Name",
+  element: "last_Name",
+  type: "text",
+  placeholder: "Last Name",
+  required: true,
+  hidden: false
+}
+
+const pronounsValues : FormikValues ={
+  Title: "Pronouns",
+  element: "pronouns",
+  type: "text",
+  placeholder: "Pronouns",
+  required: true,
+  hidden: false
+}
+
 
 function Register() {
   const [viewPassword, setviewPassword] = useState("password");
+  passwordValues.type=viewPassword;
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const viewPass = () => {
@@ -104,138 +178,16 @@ function Register() {
         }}
       >
         <Form className="mt-5">
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="email">Email Address</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="email"
-              name="email"
-              type="text"
-              placeholder="Email Address"
-              required
-            />
-            <ErrorMessage
-              name="email"
-              component="div"
-              className="text-red-500"
-            />
+        <FormikElementBuilder {...emailValues} />
+          <div className="relative" >
+          <FormikElementBuilder {...passwordValues} />
+          <FaRegEye size={25} className={`cursor-pointer absolute  top-0 right-32 `}  onClick={viewPass} />
           </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="userName">User Name</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="userName"
-              name="userName"
-              type="text"
-              placeholder="User Name"
-              required
-            />
-            <ErrorMessage
-              name="userName"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="password">Password</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="password"
-              name="password"
-              type={viewPassword}
-              placeholder="Password"
-              required
-            />
-            <FaRegEye onClick={viewPass} />
-            <ErrorMessage
-              name="password"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="confirmPassword"
-              name="confirmPassword"
-              type={viewPassword}
-              placeholder="Confirm Password"
-              required
-            />
-
-            <ErrorMessage
-              name="confirmPassword"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="prefix">Prefix</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="prefix"
-              name="prefix"
-              type="text"
-              placeholder="Prefix"
-              required
-            />
-            <ErrorMessage
-              name="prefix"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="first_Name">First Name</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="first_Name"
-              name="first_Name"
-              type="text"
-              placeholder="First Name"
-              required
-            />
-
-            <ErrorMessage
-              name="first_Name"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="last_Name">Last Name</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="last_Name"
-              name="last_Name"
-              type="text"
-              placeholder="Last Name"
-              required
-            />
-
-            <ErrorMessage
-              name="last_Name"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
-          <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-            <label htmlFor="pronouns">Pronouns</label>
-            <Field
-              className="rounded-md hover:border-2 border-2 px-2 py-2"
-              id="pronouns"
-              name="pronouns"
-              type="text"
-              placeholder="Pronouns"
-            />
-
-            <ErrorMessage
-              name="pronouns"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
+          <FormikElementBuilder {...confirmPasswordValues} />
+          <FormikElementBuilder {...prefixValues} />
+          <FormikElementBuilder {...firstNameValues} />
+          <FormikElementBuilder {...lastNameValues} />
+          <FormikElementBuilder {...pronounsValues} />
           <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
             <label htmlFor="premissionLevel">User Type</label>
             <Field

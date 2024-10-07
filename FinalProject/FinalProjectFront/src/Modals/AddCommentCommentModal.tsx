@@ -1,6 +1,6 @@
 import { Modal } from "react-bootstrap";
 
-import React, { useEffect, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -15,12 +15,32 @@ import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
+import { FormikElementBuilder, FormikValues } from "../Constants/FormikElementBuilder";
 
 interface AddCommentCommentModalProps {
   commentId: string;
   Mshow: boolean;
   onHide: () => void;
 }
+
+
+
+const linkValues : FormikValues = {
+  element  : "link",
+  type : "hidden",
+  placeholder : "Link",
+  required : false,
+  hidden : true,
+  value : ""
+  }
+  const imageValues : FormikValues = {
+    element  : "imageURL",
+    type : "hidden",
+    placeholder : "",
+    required : false,
+    hidden : true,
+    value : ""
+    }
 
 const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   commentId,
@@ -31,7 +51,9 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
   const [Url, setUrl] = useState("");
+  linkValues.value = Url
   const postsContext = usePosts();
+  imageValues.value = postsContext.imageURL;
   const navigate = useNavigate();
 
   const handleclose = () => {
@@ -63,6 +85,9 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     ParentCommentId: commentId,
     Datetime: "",
   };
+
+
+  
   const [postValues, setpostValues] = useState<INewComment>(NewComment);
 
   const handleSubmit = async (values) => {
@@ -150,39 +175,9 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                         className="text-red-500"
                       />
                     </div>
-
-                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
-                      <Field
-                        className="rounded-md hover:border-2 border-2 px-2 py-2"
-                        id="link"
-                        name="link"
-                        type="hidden"
-                        value={Url}
-                        placeholder="Link"
-                      />
-
-                      <ErrorMessage
-                        name="link"
-                        component="div"
-                        className="text-red-500"
-                      />
-                    </div>
-                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
-                      <Field
-                        className="rounded-md hover:border-2 border-2 px-2 py-2"
-                        id="imageURL"
-                        name="imageURL"
-                        type="hidden"
-                        value={postsContext.imageURL}
-                        placeholder="imageURL"
-                      />
-
-                      <ErrorMessage
-                        name="imageURL"
-                        component="div"
-                        className="text-red-500"
-                      />
-                    </div>
+                    <div className="-mt-10">
+                    <FormikElementBuilder {...linkValues}/>
+                    <FormikElementBuilder {...imageValues}/></div>
                     <div className="font-semibold ml-3 flex justify-evenly items-center w-full mx-auto text-lg -m-2">
                     <button
                         
