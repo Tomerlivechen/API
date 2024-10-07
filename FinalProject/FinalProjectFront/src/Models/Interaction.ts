@@ -55,7 +55,7 @@ interface IPostDisplay {
   category?: ICategory ;
   keyWords: string[];
   datetime: string;
-  comments?: ICommentDisplay[];
+  comments?: ICommentDisplay[] | null;
 }
 
 interface ICommentDisplay {
@@ -70,7 +70,7 @@ interface ICommentDisplay {
   parentCommentId: string;
   hasVoted: boolean;
   datetime: string;
-  comments?: ICommentDisplay[] ;
+  comments?: ICommentDisplay[] | null;
 }
 
 interface IComment extends IInteraction {
