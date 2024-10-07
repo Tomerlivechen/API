@@ -7,12 +7,12 @@ interface IInteraction {
   imageUrl: string;
   text: string;
   author: IAppUserDisplay;
-  votes: Vote[];
+  votes?: Vote[] 
   upVotes: number;
   downVotes: number;
   totalVotes: number;
   datetime: string;
-  comments: IComment[];
+  comments?: IComment[];
   calcVotes: () => void;
 }
 
@@ -26,7 +26,7 @@ interface IPost extends IInteraction {
   title: string;
   category?: ICategory;
   group?: ISocialGroup;
-  keyWords: string[];
+  keyWords?: string[] ;
 }
 
 interface INewPost {
@@ -36,7 +36,7 @@ interface INewPost {
   imageURL: string;
   text: string;
   authorId: string;
-  category: ICategory;
+  category?: ICategory;
   group: string;
   keyWords: string;
   datetime: string;
@@ -52,10 +52,10 @@ interface IPostDisplay {
   totalVotes: number;
   title: string;
   hasVoted: boolean;
-  category: ICategory | null;
+  category?: ICategory ;
   keyWords: string[];
   datetime: string;
-  comments: ICommentDisplay[] | null;
+  comments?: ICommentDisplay[];
 }
 
 interface ICommentDisplay {
@@ -70,7 +70,7 @@ interface ICommentDisplay {
   parentCommentId: string;
   hasVoted: boolean;
   datetime: string;
-  comments: ICommentDisplay[] ;
+  comments?: ICommentDisplay[] ;
 }
 
 interface IComment extends IInteraction {
