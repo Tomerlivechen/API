@@ -6,11 +6,8 @@ import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
-import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
 import { catchError, colors, imageFieldValues, linkFieldValues } from "../Constants/Patterns";
-import { HiLink } from "react-icons/hi2";
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
@@ -19,6 +16,7 @@ import { CommentService } from "../Services/comment-service";
 import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
+import { FcAddImage } from "react-icons/fc";
 
 interface AddPostCommentModalProps {
   postId: string;
@@ -40,6 +38,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   const [imageUrl, file, setImageURL, clear] = useCloudinary();
   const linkValues = linkFieldValues
   const imageValues = imageFieldValues
+  const [holdFile, setHoldFile] = useState<File | null>()
 
   const handleclose = () => {
     onHide();
@@ -67,12 +66,15 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   
   const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
+  const handleFileChange = (event) => {
+    setHoldFile(event.target.files[0])
+  };
+
   const handleSubmit = async (values) => {
     setCommentValues(values);
-    if (loggedInContext.token) {
-    if (postsContext.selectedFile != null) {
-      setImageURL(postsContext.selectedFile)
-      postsContext.clearImage();
+    if (loggedInContext.token ) {
+    if (holdFile) {
+      setImageURL(holdFile)
       setIsLoading(true);
     } else {
       await postComment(values);
@@ -84,6 +86,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
     handleclose();
   }
   };
+
   
   useEffect(() => {
     const submitComment = async () => {
@@ -92,7 +95,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
       }
     };
     submitComment();
-  }, [postsContext.imageURL]);
+  }, [imageUrl]);
 
   const postComment = async (values) => {
     if (loggedInContext.token) {
@@ -166,14 +169,21 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
 
                     
                     <FormikElementBuilder {...linkValues}/>
-                    <FormikElementBuilder {...imageValues}/>
-                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-6">
-
-                        
+                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-4">
 
                       <div className=" pb-4 pt-3">
                         
-                          <ImageUpload />
+                      <p>Image Upload</p>
+      <div className="flex items-center pl-10 p-2 mt-1">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            id="file-input"
+            hidden
+          />
+            <FcAddImage size={40} className="cursor-pointer" />
+      </div>
                         
                       </div>
                     </div>

@@ -59,7 +59,7 @@ function PostsProvider({ children }) {
         selectedFile,
         setSelectedFile,
         toggleImageURL,
-        handleUpload,
+        
         clearImage,
       }}
     >
