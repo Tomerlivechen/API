@@ -17,6 +17,8 @@ import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
 import { CommentService } from "../Services/comment-service";
 import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
+import ClipSpinner from "../Spinners/ClipSpinner";
+import { useCloudinary } from "../CustomHooks/useCloudinary";
 
 interface AddPostCommentModalProps {
   postId: string;
@@ -35,6 +37,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   const [Url, setUrl] = useState("");
   const postsContext = usePosts();
   const navigate = useNavigate();
+  const [imageUrl, file, setImageURL, clear] = useCloudinary();
   const linkValues = linkFieldValues
   const imageValues = imageFieldValues
 
@@ -48,10 +51,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
     text: Yup.string().min(2).required("Must have some text"),
   });
 
-  const handelAddUrl = async () => {
-    const getUrl = await dialogs.getText("Link");
-    setUrl(getUrl);
-  };
+
 
   const NewComment: INewComment = {
     id: "",
@@ -69,17 +69,25 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
 
   const handleSubmit = async (values) => {
     setCommentValues(values);
+    if (loggedInContext.token) {
     if (postsContext.selectedFile != null) {
-      await postsContext.handleUpload();
+      setImageURL(postsContext.selectedFile)
+      postsContext.clearImage();
       setIsLoading(true);
     } else {
       await postComment(values);
     }
+  }
+  else {
+    dialogs.error("Comment not sent user not logged in")
+    setIsLoading(false);
+    handleclose();
+  }
   };
   
   useEffect(() => {
     const submitComment = async () => {
-      if (postsContext.imageURL && commentValues.text?.length && commentValues.text?.length>2) {
+      if (imageUrl) {
         await postComment(commentValues);
       }
     };
@@ -91,8 +99,8 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
       try {
-        values.imageURL = postsContext.imageURL;
-        postsContext.clearImage();
+        values.imageURL = imageUrl;
+        clear();
         const response = await CommentService.PostComment(values);
         console.log(response);
         dialogs.success("Comment Sent");
@@ -103,6 +111,11 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
         handleclose();
         setIsLoading(false);
       }
+    }
+    else {
+      dialogs.error("Comment not sent user not logged in")
+      setIsLoading(false);
+      handleclose();
     }
   };
   useEffect(() => {
@@ -167,7 +180,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
                     {isLoading && (
                       <>
                         <div className=" flex flex-col items-center">
-                          <ClimbBoxSpinner /> <br />
+                        <ClipSpinner /> 
                         </div>
                       </>
                     )}

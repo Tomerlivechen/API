@@ -30,8 +30,8 @@ try {
     const response = await axios.post(
       `https://api.cloudinary.com/v1_1/${cloudname}/image/upload`,
       formData
-    );
-    setImageURL(response.data.secure_url);
+    ).then((response)=>
+    setImageURL(response.data.secure_url));
   } catch (e) {
     console.error(e);
     dialogs.error("Image upload failed");
