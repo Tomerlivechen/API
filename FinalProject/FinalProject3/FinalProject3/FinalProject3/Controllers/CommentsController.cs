@@ -85,7 +85,13 @@ namespace FinalProject3.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if (userId is null)
+            {
+                return BadRequest("user not found");
+            }
+            comment.AuthorId = userId;
                 var newComment = await comment.NewCommentToComment(userManager);
+
                 _context.Comment.Add(newComment);
             Interaction? parent;
             if (!string.IsNullOrEmpty(comment.ParentPostId))

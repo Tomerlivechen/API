@@ -16,6 +16,7 @@ import { CommentList } from "../../Components/CommentList";
 import AddPostCommentModal from "../../Modals/AddPostCommentModal";
 import { FaCommentMedical } from "react-icons/fa";
 import { colors } from "../Patterns";
+import { FaKey } from "react-icons/fa";
 
 const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const [showModal, setShowModal] = useState(false);
@@ -41,10 +42,10 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
 
   return (
     <>
-      <ElementFrame height="450px" width="400px" padding="2 mt-2">
+      <ElementFrame height={`${postDisplay.imageUrl ? ("450px") : ("230px")}`} width="400px" padding="2 mt-2">
         <div>
           <div className="flex">
-            <button className=" text-sm font-bold">
+            <button className=" text-sm font-bold pl-10">
               {postDisplay.authorName}
             </button>
             {postDisplay.authorId == userContext.userInfo.UserId && (
@@ -103,7 +104,14 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
                   <HiLink size={22} />
                 </button>
               )}
-
+              {postDisplay.keyWords.length>0 && (
+                <button
+                  className="pl-3"
+                  onClick={() => dialogs.showtext(postDisplay.keyWords.toString())}
+                >
+                  <FaKey  size={22} />
+                </button>
+              )}
             
             <div className="flex items-center pl-3">
               <button
@@ -156,9 +164,10 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
         {postDisplay.datetime}</div>
         </div>
       </ElementFrame>
-              <div className="-mt-10" style={{position: "relative",zIndex: 100}}>
-      <CommentList index={0} commmentList={postDisplay.comments} />
-</div>
+      
+              <div className="-mt-8 relative z-10 " >
+      <CommentList index={0} commmentList={postDisplay.comments} /></div>
+
     </>
   );
 };

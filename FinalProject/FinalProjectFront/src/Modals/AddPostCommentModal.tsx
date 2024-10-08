@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError, colors, imageFieldValues, linkFieldValues } from "../Constants/Patterns";
+import { catchError, colors, imageFieldValues, linkFieldValues, textFieldValues } from "../Constants/Patterns";
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
@@ -32,12 +32,8 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
-  const [Url, setUrl] = useState("");
-  const postsContext = usePosts();
   const navigate = useNavigate();
   const [imageUrl, file, setImageURL, clear] = useCloudinary();
-  const linkValues = linkFieldValues
-  const imageValues = imageFieldValues
   const [holdFile, setHoldFile] = useState<File | null>()
 
   const handleclose = () => {
@@ -67,6 +63,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
   const handleFileChange = (event) => {
+    console.log("Form submitted with values: ");
     setHoldFile(event.target.files[0])
   };
 
@@ -144,31 +141,11 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
                         </label>
                       </div>
                     </div>
-                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1 ">
-                      <Field
-                        className={`rounded-md hover:border-2 border-2 px-2 py-2 ${colors.TextBox} `}
-                        id="text"
-                        name="text"
-                        type="text"
-                        placeholder="Text"
-                        as="textarea"
-                        style={{
-                          height: "80px",
-                          overflowY: "auto",
-                          whiteSpace: "pre-wrap",
-                          resize: "none",
-                        }}
-                        required
-                      />
-                      <ErrorMessage
-                        name="text"
-                        component="div"
-                        className="text-red-500"
-                      />
-                    </div>
+
+                    <FormikElementBuilder {...textFieldValues}/>
 
                     
-                    <FormikElementBuilder {...linkValues}/>
+                    <FormikElementBuilder {...linkFieldValues}/>
                     <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-4">
 
                       <div className=" pb-4 pt-3">
@@ -182,7 +159,9 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
             id="file-input"
             hidden
           />
-            <FcAddImage size={40} className="cursor-pointer" />
+            <FcAddImage onClick={() => {const fileInput = document.getElementById('file-input');
+      if (fileInput) {
+        fileInput.click()}}} size={40} className="cursor-pointer" />
       </div>
                         
                       </div>

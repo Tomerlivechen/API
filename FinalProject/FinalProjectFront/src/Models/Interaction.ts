@@ -61,7 +61,7 @@ interface IPostDisplay {
 interface ICommentDisplay {
   id: string;
   link: string;
-  imageUrl: string;
+  imageURL: string;
   text: string;
   authorName: string;
   authorId: string;

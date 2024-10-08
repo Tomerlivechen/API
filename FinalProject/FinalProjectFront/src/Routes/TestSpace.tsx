@@ -1,6 +1,8 @@
 
 import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
 import PostView from "../Constants/Objects/PostView";
+import { PostList } from "../Components/PostList";
+import PostCard from "../Constants/Objects/PostCard";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -285,8 +287,9 @@ function TestSpace() {
     <>
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
-      <PostView {...comment1} />
-      <PostView {...comment1} />
+      <div className=" flex flex-col items-center">
+<div>
+<PostCard {...comment1} /></div></div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>

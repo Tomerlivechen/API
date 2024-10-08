@@ -26,7 +26,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
   const loginContex = useLogin();
   const CommentAPI = CommentService;
   const handelImage = () => {
-    dialogs.showImage("", commentDisplay.imageUrl);
+    dialogs.showImage("", commentDisplay.imageURL);
   };
 
   const handleVote = async (vote: number) => {
@@ -77,11 +77,12 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
                   <HiLink size={20} />
                 </button>
               )}
-              {commentDisplay.imageUrl && (
+              {commentDisplay.imageURL && (
                 <button className="pl-3" onClick={handelImage}>
                   <IoImage size={20} />
                 </button>
               )}
+              
             
             <div className="flex items-center pl-4">
               <button

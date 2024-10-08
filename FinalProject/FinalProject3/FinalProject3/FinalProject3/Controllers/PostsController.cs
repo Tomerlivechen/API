@@ -23,7 +23,7 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<IEnumerable<PostDisplay>>> GetPosts()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return await _context.Post.Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+            return await _context.Post.Include(p=> p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
         }
 
 

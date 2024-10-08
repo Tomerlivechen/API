@@ -82,6 +82,16 @@ useEffect(() => {
   setFilterPostList([])
 ;},[userSearch,postSearch])
 
+useEffect(() => {
+
+  const timer = setTimeout(() => {
+    fillLists()
+  }, 35000); 
+  return () => {
+    clearTimeout(timer);
+  };
+}, []); 
+
   const fillLists = () => {
     auth
       .getUsers()

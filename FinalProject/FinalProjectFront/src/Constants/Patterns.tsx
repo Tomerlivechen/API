@@ -51,10 +51,38 @@ export const linkFieldValues : MYFormikValues = {
     placeholder : "",
     required : false,
     hidden : true,
-    value : ""
     }
 
+    export const textFieldValues : MYFormikValues = {
+      element  : "text",
+      type : "text",
+      placeholder : "Text",
+      required : true,
+      hidden : false,
+      as : "textarea",
+      classes : `${colors.TextBox} h-20 overflow-y-auto whitespace-pre-wrap resize-none}`,
+      width : "full"
+      }
 
+ export const sortByProperty = (property: keyof IPostDisplay, order: string = "asc") => {
+  return (a: IPostDisplay, b: IPostDisplay) => {
+    const valueA = a[property];
+    const valueB = b[property];
+
+    if (valueA == null && valueB == null) return 0;
+    if (valueA == null) return order === "asc" ? -1 : 1;
+    if (valueB == null) return order === "asc" ? 1 : -1;
+
+    if (typeof valueA === "number" && typeof valueB === "number") {
+      return order === "asc" ? valueA - valueB : valueB - valueA;
+    }
+    if (typeof valueA === "string" && typeof valueB === "string") {
+      return order === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+    }
+
+    return 0;
+  };
+};
 
 
 const stringToAppUserDisplay = (

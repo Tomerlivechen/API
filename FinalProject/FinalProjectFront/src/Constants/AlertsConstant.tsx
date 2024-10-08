@@ -1,3 +1,4 @@
+
 import Swal from "sweetalert2";
 
 const showErrorDialog = (message: string) =>
@@ -41,10 +42,17 @@ const showImage = (title: string, image: string) =>
     imageAlt: "your image",
   });
 
-export { showErrorDialog, showSuccessDialog, getText, showImage };
+
+const showtext = (text : string) => {
+  Swal.fire(text);
+}
+  
+
+
+export { showErrorDialog, showSuccessDialog, getText, showImage ,showtext };
 export const dialogs = {
   error: showErrorDialog,
   success: showSuccessDialog,
   getText,
-  showImage,
+  showImage, showtext
 };

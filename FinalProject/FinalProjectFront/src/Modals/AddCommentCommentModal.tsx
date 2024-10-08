@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError, colors, imageFieldValues, linkFieldValues } from "../Constants/Patterns";
+import { catchError, colors, imageFieldValues, linkFieldValues, textFieldValues } from "../Constants/Patterns";
 
 import ImageUpload from "../Constants/ImageUploading";
 import { usePosts } from "../CustomHooks/usePosts";
@@ -19,6 +19,7 @@ import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElement
 import { CommentService } from "../Services/comment-service";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import ClipSpinner from "../Spinners/ClipSpinner";
+import { FcAddImage } from "react-icons/fc";
 
 interface AddCommentCommentModalProps {
   commentId: string;
@@ -43,6 +44,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   const [imageUrl, file, setImageURL, clear] = useCloudinary();
   const linkValues = linkFieldValues
   const imageValues = imageFieldValues
+  const [holdFile, setHoldFile] = useState<File | null>()
 
 
 
@@ -52,9 +54,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     onHide();
   };
 
-  const toggelShow = () => {
-    setShow((prevshow) => !prevshow);
-  };
+
 
   const validationScheme = Yup.object({
     link: Yup.string().url(),
@@ -79,31 +79,36 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   
   const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
+  const handleFileChange = (event) => {
+    console.log("Form submitted with values: ");
+    setHoldFile(event.target.files[0])
+  };
   const handleSubmit = async (values) => {
     setCommentValues(values);
-    if (loggedInContext.token) {
-    if (postsContext.selectedFile != null) {
-      setImageURL(postsContext.selectedFile)
-      postsContext.clearImage();
+    if (loggedInContext.token ) {
+    if (holdFile) {
+      setImageURL(holdFile)
       setIsLoading(true);
     } else {
       await postComment(values);
     }
-  }  else {
+  }
+  else {
     dialogs.error("Comment not sent user not logged in")
     setIsLoading(false);
     handleclose();
   }
   };
+
   
   useEffect(() => {
     const submitComment = async () => {
-      if (imageUrl && loggedInContext.token) {
+      if (imageUrl) {
         await postComment(commentValues);
       }
     };
     submitComment();
-  }, [postsContext.imageURL]);
+  }, [imageUrl]);
 
   const postComment = async (values) => {
     if (loggedInContext.token) {
@@ -115,7 +120,6 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
         const response = await CommentService.PostComment(values);
         console.log(response);
         dialogs.success("Comment Sent");
-        toggelShow();
       } catch (error) {
         catchError(error, "Commenting");
       } finally {
@@ -153,37 +157,27 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                         </label>
                       </div>
                     </div>
-                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1 ">
-                      <Field
-                        className={`rounded-md hover:border-2 border-2 px-2 py-2 ${colors.TextBox} `}
-                        id="text"
-                        name="text"
-                        type="text"
-                        placeholder="Text"
-                        as="textarea"
-                        style={{
-                          height: "80px",
-                          overflowY: "auto",
-                          whiteSpace: "pre-wrap",
-                          resize: "none",
-                        }}
-                        required
-                      />
-                      <ErrorMessage
-                        name="text"
-                        component="div"
-                        className="text-red-500"
-                      />
-                    </div>
-                    
+                    <FormikElementBuilder {...textFieldValues}/>
                     <FormikElementBuilder {...linkValues}/>
-                    <FormikElementBuilder {...imageValues}/>
-                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-6">
+                   
+                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-4">
 
 
                     <div className="pb-4 pt-3">
                       
-                        <ImageUpload  />
+                    <p>Image Upload</p>
+      <div className="flex items-center pl-10 p-2 mt-1">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            id="file-input"
+            hidden
+          />
+            <FcAddImage onClick={() => {const fileInput = document.getElementById('file-input');
+      if (fileInput) {
+        fileInput.click()}}} size={40} className="cursor-pointer" />
+      </div>
                       
                     </div>
                     </div>

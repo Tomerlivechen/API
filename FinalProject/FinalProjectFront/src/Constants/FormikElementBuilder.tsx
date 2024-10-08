@@ -14,6 +14,7 @@ style?: CSSProperties,
 as? : string,
 textbox?: boolean,
 width?: string,
+classes?: string,
 }
 
 
@@ -28,7 +29,7 @@ const textboxParams = colors.TextBox;
     {initalValues.Title &&
 <label htmlFor={initalValues.element}>{initalValues.Title}</label>}
 <Field
-  className={`${fieldClassName}${initalValues.textbox && textboxParams}`}
+  className={`${fieldClassName}${initalValues.textbox && textboxParams} ${initalValues.classes}`}
   id={initalValues.element}
   name={initalValues.element}
   type={initalValues.type}

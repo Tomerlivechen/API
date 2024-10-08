@@ -57,7 +57,7 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
       {next20Comments ? (
         <>
           <button
-            className={`rounded-lg ${colors.ElementFrame} w-12 pl-3  ml-6 pt-1  h-auto`}
+            className={`rounded-lg ${colors.ElementFrame}  relative bottom-0 left-10`}
             onClick={toggelOpen}
           >
             {open ? (
@@ -105,17 +105,15 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
       ) : (
         <>
           {!next20Comments && (
-            <div
-              className={` ${colors.ButtonFont} ${
-                !next ? "w-12" : "w-44"
-              } ml-6 pl-3 pt-1 h-auto`}
+            <button
+            className={`rounded-lg ${colors.ElementFrame}  relative bottom-0 left-5`}
             >
               {!next ? (
                 <VscCommentDraft size={25} aria-description="No Comments" />
               ) : (
                 "No More Comments"
               )}
-            </div>
+            </button>
           )}
         </>
       )}
