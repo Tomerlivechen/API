@@ -225,6 +225,31 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
             user.PermissionLevel = manageView.PermissionLevel;
             changed = true;
         }
+        if (manageView.Bio is not null)
+        {
+            user.Bio = manageView.Bio;
+            changed = true;
+        }
+        if (manageView.BanerImageURL is not null)
+        {
+            user.BanerImageURL = manageView.BanerImageURL;
+            changed = true;
+        }
+        if (manageView.HideEmail != user.HideEmail)
+        {
+            user.HideEmail = manageView.HideEmail;
+            changed = true;
+        }
+        if (manageView.HideName != user.HideName)
+        {
+            user.HideName = manageView.HideName;
+            changed = true;
+        }
+        if (manageView.HideBlocked != user.HideBlocked)
+        {
+            user.HideBlocked = manageView.HideBlocked;
+            changed = true;
+        }
         if (changed)
         {
             await userManager.UpdateAsync(user);

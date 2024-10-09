@@ -129,7 +129,7 @@ namespace FinalProject3.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutPost(string id, [FromBody] Post post)
+        public async Task<IActionResult> PutPost(string id, [FromBody] PostDisplay post)
         {
             if (!ModelState.IsValid)
             {
@@ -140,7 +140,35 @@ namespace FinalProject3.Controllers
                 return BadRequest();
             }
 
-                _context.Entry(post).State = EntityState.Modified;
+            var fullPost = await _context.Post.FindAsync(id);
+
+            if (fullPost is null)
+            {
+                return BadRequest();
+            }
+
+            if (post.ImageURL != fullPost.ImageURL)
+            {
+                fullPost.ImageURL = post.ImageURL;
+            }
+            if (post.Text != fullPost.Text)
+            {
+                fullPost.Text = post.Text;
+            }
+            if (post.Text != fullPost.Text)
+            {
+                fullPost.Text = post.Text;
+            }
+            if (post.KeyWords != fullPost.KeyWords)
+            {
+                fullPost.KeyWords = post.KeyWords;
+            }
+            if (post.Link != fullPost.Link)
+            {
+                fullPost.Link = post.Link;
+            }
+
+            _context.Entry(fullPost).State = EntityState.Modified;
 
                 try
                 {

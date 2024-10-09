@@ -15,8 +15,15 @@ namespace FinalProject3.Models
         public string Pronouns { get; set; } = string.Empty;
 
         public string ImageURL { get; set; } = string.Empty;
-
+        public string BanerImageURL { get; set; } = string.Empty;
+        public string Bio { get; set; } = string.Empty;
         public string ImageAlt { get; set; } = string.Empty;
+
+
+
+        public bool HideEmail { get; set; } = false;
+        public bool HideName { get; set; } = false;
+        public bool HideBlocked { get; set; } = false;
 
         [Required]
         public required string PermissionLevel { get; set; }
