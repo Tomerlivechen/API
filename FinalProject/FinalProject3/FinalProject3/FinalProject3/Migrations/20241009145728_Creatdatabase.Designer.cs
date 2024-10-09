@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject3.Migrations
 {
     [DbContext(typeof(FP3Context))]
-    [Migration("20240930230213_MakeDatabase")]
-    partial class MakeDatabase
+    [Migration("20241009145728_Creatdatabase")]
+    partial class Creatdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,7 +191,6 @@ namespace FinalProject3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("userId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -306,7 +305,6 @@ namespace FinalProject3.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("VoterId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -350,7 +348,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "ab0aac35-96cd-45b6-bfcc-b516d876a21a",
+                            ConcurrencyStamp = "ec7abb7c-5d70-4283-b893-55f0850e5fc6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -519,7 +517,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "84431fea-b734-4e91-a3a6-3590147124c2",
+                            UserId = "02d64dec-8ebe-459e-b220-f58c151f68ff",
                             RoleId = "1"
                         });
                 });
@@ -577,6 +575,14 @@ namespace FinalProject3.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("BanerImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BlockedId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -588,6 +594,15 @@ namespace FinalProject3.Migrations
                     b.Property<string>("FollowingId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HideBlocked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HideEmail")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HideName")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ImageAlt")
                         .IsRequired()
@@ -621,22 +636,27 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "84431fea-b734-4e91-a3a6-3590147124c2",
+                            Id = "02d64dec-8ebe-459e-b220-f58c151f68ff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3080fc6a-7ca1-4aa8-a909-91fd4a03fc46",
+                            ConcurrencyStamp = "4104030b-2555-4c6b-bb2c-b7d6eb5d590c",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJRqjvSWlkfPOjvvol5E1zULsaa+9GwaoBDW9fmPgLztHFK3ezWFMrwMjsEygVsNog==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELsTf26Y70RjTBmF6+r7PlQirZKm1hmup72yOmqrl82jrAANLu+F29nisxsqq9/S7w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f28f96af-96d2-4824-b85a-d304d4da4d10",
+                            SecurityStamp = "fb3c8317-04ee-4253-9492-6cd743604704",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
+                            BanerImageURL = "",
+                            Bio = "",
                             BlockedId = "[]",
                             First_Name = "Tomer",
                             FollowingId = "[]",
+                            HideBlocked = false,
+                            HideEmail = false,
+                            HideName = false,
                             ImageAlt = "",
                             ImageURL = "https://i.imgur.com/1nKIWjB.gif",
                             Last_Name = "Chen",
@@ -705,9 +725,7 @@ namespace FinalProject3.Migrations
                 {
                     b.HasOne("FinalProject3.Models.AppUser", "user")
                         .WithMany("Notifications")
-                        .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("userId");
 
                     b.Navigation("user");
                 });
@@ -766,9 +784,7 @@ namespace FinalProject3.Migrations
 
                     b.HasOne("FinalProject3.Models.AppUser", "Voter")
                         .WithMany()
-                        .HasForeignKey("VoterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VoterId");
 
                     b.Navigation("Voter");
                 });

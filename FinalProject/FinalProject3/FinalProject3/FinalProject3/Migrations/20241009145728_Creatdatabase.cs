@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalProject3.Migrations
 {
     /// <inheritdoc />
-    public partial class MakeDatabase : Migration
+    public partial class Creatdatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,7 +36,12 @@ namespace FinalProject3.Migrations
                     Last_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pronouns = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BanerImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageAlt = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HideEmail = table.Column<bool>(type: "bit", nullable: true),
+                    HideName = table.Column<bool>(type: "bit", nullable: true),
+                    HideBlocked = table.Column<bool>(type: "bit", nullable: true),
                     PermissionLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FollowingId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlockedId = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -238,7 +243,7 @@ namespace FinalProject3.Migrations
                     Seen = table.Column<bool>(type: "bit", nullable: false),
                     Hidden = table.Column<bool>(type: "bit", nullable: false),
                     ReferenceId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    userId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    userId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,8 +252,7 @@ namespace FinalProject3.Migrations
                         name: "FK_Notification_AspNetUsers_userId",
                         column: x => x.userId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -425,7 +429,7 @@ namespace FinalProject3.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    VoterId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    VoterId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Voted = table.Column<int>(type: "int", nullable: false),
                     CommentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PostId = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -437,8 +441,7 @@ namespace FinalProject3.Migrations
                         name: "FK_Votes_AspNetUsers_VoterId",
                         column: x => x.VoterId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Votes_Comment_CommentId",
                         column: x => x.CommentId,
@@ -454,17 +457,17 @@ namespace FinalProject3.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "ab0aac35-96cd-45b6-bfcc-b516d876a21a", "Admin", "ADMIN" });
+                values: new object[] { "1", "ec7abb7c-5d70-4283-b893-55f0850e5fc6", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "BlockedId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "ImageAlt", "ImageURL", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
-                values: new object[] { "84431fea-b734-4e91-a3a6-3590147124c2", 0, "[]", "3080fc6a-7ca1-4aa8-a909-91fd4a03fc46", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", "", "https://i.imgur.com/1nKIWjB.gif", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAEJRqjvSWlkfPOjvvol5E1zULsaa+9GwaoBDW9fmPgLztHFK3ezWFMrwMjsEygVsNog==", "Admin", null, false, "Dr", "They", "f28f96af-96d2-4824-b85a-d304d4da4d10", false, "SysAdmin", 0 });
+                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
+                values: new object[] { "02d64dec-8ebe-459e-b220-f58c151f68ff", 0, "", "", "[]", "4104030b-2555-4c6b-bb2c-b7d6eb5d590c", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAELsTf26Y70RjTBmF6+r7PlQirZKm1hmup72yOmqrl82jrAANLu+F29nisxsqq9/S7w==", "Admin", null, false, "Dr", "They", "fb3c8317-04ee-4253-9492-6cd743604704", false, "SysAdmin", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1", "84431fea-b734-4e91-a3a6-3590147124c2" });
+                values: new object[] { "1", "02d64dec-8ebe-459e-b220-f58c151f68ff" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUserSocialGroup_SocialGroupId",

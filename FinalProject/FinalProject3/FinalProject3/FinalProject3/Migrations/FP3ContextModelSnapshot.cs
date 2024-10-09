@@ -345,7 +345,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "da4fd54d-df6d-4e97-a0d0-ce684721027b",
+                            ConcurrencyStamp = "ec7abb7c-5d70-4283-b893-55f0850e5fc6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -514,7 +514,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "b0cb5377-54c4-4e0d-8c69-44801aa599a7",
+                            UserId = "02d64dec-8ebe-459e-b220-f58c151f68ff",
                             RoleId = "1"
                         });
                 });
@@ -572,6 +572,14 @@ namespace FinalProject3.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("BanerImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BlockedId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -583,6 +591,15 @@ namespace FinalProject3.Migrations
                     b.Property<string>("FollowingId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HideBlocked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HideEmail")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HideName")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ImageAlt")
                         .IsRequired()
@@ -616,22 +633,27 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b0cb5377-54c4-4e0d-8c69-44801aa599a7",
+                            Id = "02d64dec-8ebe-459e-b220-f58c151f68ff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da11d4fb-79bd-4646-a9cb-ec9afedee872",
+                            ConcurrencyStamp = "4104030b-2555-4c6b-bb2c-b7d6eb5d590c",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOTi/X5Nkr9OUJnfSTPzskJTi63TlraBjHTqiw0O1yUw+YuTJdNuBae0zW7oi5gE+Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELsTf26Y70RjTBmF6+r7PlQirZKm1hmup72yOmqrl82jrAANLu+F29nisxsqq9/S7w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "17315f66-ca92-4fe0-b88c-b4c4edc02fae",
+                            SecurityStamp = "fb3c8317-04ee-4253-9492-6cd743604704",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
+                            BanerImageURL = "",
+                            Bio = "",
                             BlockedId = "[]",
                             First_Name = "Tomer",
                             FollowingId = "[]",
+                            HideBlocked = false,
+                            HideEmail = false,
+                            HideName = false,
                             ImageAlt = "",
                             ImageURL = "https://i.imgur.com/1nKIWjB.gif",
                             Last_Name = "Chen",
