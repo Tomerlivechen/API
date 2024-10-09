@@ -306,7 +306,7 @@
       },
       {
         "Name": "comment",
-        "Type": "FinalProject3.Models.Comment",
+        "Type": "FinalProject3.DTOs.CommentDisplay",
         "IsRequired": true
       }
     ],
@@ -561,7 +561,7 @@
       },
       {
         "Name": "post",
-        "Type": "FinalProject3.Models.Post",
+        "Type": "FinalProject3.DTOs.PostDisplay",
         "IsRequired": true
       }
     ],

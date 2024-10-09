@@ -56,10 +56,11 @@ namespace FinalProject3.Mapping
                 Group = await context.Group.FindAsync(Newpost.GroupId)
             };
             var key = Newpost.KeyWords.Split(delimiters).Select(x => x.Trim()).ToList();
+            List<string> keyword = new List<string>();
             foreach (var word in key) {
-                word.Capitelize();
+                keyword.Add(word.Capitelize());
             }
-            setPost.KeyWords = key;
+            setPost.KeyWords = keyword;
             var user = await userManager.FindByIdAsync(Newpost.AuthorId);
             user?.Posts.Add(setPost);
             return setPost;

@@ -29,7 +29,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const loginContex = useLogin();
   const CommentAPI = CommentService;
   const handelImage = () => {
-    dialogs.showImage("", postDisplay.imageUrl);
+    dialogs.showImage("", postDisplay.imageURL);
   };
 
   const handleVote = async (vote: number) => {
@@ -42,7 +42,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
 
   return (
     <>
-      <ElementFrame height={`${postDisplay.imageUrl ? ("450px") : ("230px")}`} width="400px" padding="2 mt-2">
+      <ElementFrame height={`${postDisplay.imageURL ? ("450px") : ("230px")}`} width="400px" padding="2 mt-2">
         <div>
           <div className="flex">
             <button className=" text-sm font-bold pl-10">
@@ -64,22 +64,22 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
           >
             {postDisplay.title}
           </div>
-          <div className="p-0.5" />
-          {postDisplay.imageUrl && (
+          
+          <div className="relative  " />
+          <div className="flex justify-evenly ">
+          {postDisplay.imageURL && (
             <button
-              className="pl-3 flex justify-center items-center"
+              className=""
               onClick={handelImage}
             >
-              <img
-                src={postDisplay.imageUrl}
-                style={{
-                  maxHeight: "70%",
-                  maxWidth: "70%",
-                  objectFit: "contain",
-                }}
+              <img className="h-56 "
+                src={postDisplay.imageURL}
+
               />
             </button>
           )}
+          </div>
+          
           <div className="p-0.5" />
           <div
             className={`${colors.TextBox}`}

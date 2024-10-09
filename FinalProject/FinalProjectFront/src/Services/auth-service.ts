@@ -4,9 +4,6 @@ import { request } from "../Utils/Axios-Interceptor";
 const baseURL = import.meta.env.VITE_BASE_URL;
 
 const AuthURL = "/Auth";
-
-
-
 const register = (
   email: string,
   userName: string,

@@ -85,6 +85,7 @@ const pronounsValues : MYFormikValues ={
 function Register() {
   const [viewPassword, setviewPassword] = useState("password");
   passwordValues.type=viewPassword;
+  confirmPasswordValues.type=viewPassword;
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const viewPass = () => {
@@ -140,6 +141,7 @@ function Register() {
         initialValues={initalValues}
         validationSchema={validationScheme}
         onSubmit={(o) => {
+          console.log(o);
           setIsLoading(true);
           auth
             .register(
@@ -179,10 +181,12 @@ function Register() {
       >
         <Form className="mt-5">
         <FormikElementBuilder {...emailValues} />
+        <FormikElementBuilder {...userNameValues} />
           <div className="relative" >
           <FormikElementBuilder {...passwordValues} />
           <FaRegEye size={25} className={`cursor-pointer absolute  top-0 right-32 `}  onClick={viewPass} />
           </div>
+          
           <FormikElementBuilder {...confirmPasswordValues} />
           <FormikElementBuilder {...prefixValues} />
           <FormikElementBuilder {...firstNameValues} />
@@ -219,6 +223,7 @@ function Register() {
             <button
               disabled={isLoading}
               type="submit"
+              onClick={()=>console.log("click")}
               className={`${colors.Buttons} p-3`}
             >
               Register

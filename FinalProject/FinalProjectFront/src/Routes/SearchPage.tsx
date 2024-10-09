@@ -5,6 +5,7 @@ import UserCard from "../Constants/Objects/UserCard";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import SearchTitleComponent from "../Components/SearchTitleComponent";
 import PostCard from "../Constants/Objects/PostCard";
+import ElementFrame from "../Constants/Objects/ElementFrame";
 
 function SearchPage() {
   const loggedInContext = useLogin();
@@ -36,20 +37,23 @@ function SearchPage() {
           <ClimbBoxSpinner /> <br />
         </div>
       )}
+      <div className=" flex flex-col items-center">
+      <ElementFrame height="50%" width="45%" padding="2" overflowY="auto">
       {activeSearch == "user" && 
       <div className=" flex flex-col items-center">
-        {searchContext.filterUserList.map((user) => (
+        {searchContext.filterUserList.map((user) => (<>
           <UserCard key={user.id} UserDisplay={user} />
-        ))}
+         <hr /></>
+        ))} 
         </div>}
       {activeSearch == "post" && 
       <div className=" flex flex-col items-center">
         {searchContext.filterPostList.map((post) => (<>
           <div className="pt-5">
           <PostCard key={post.id} {...post} /></div>
-          </>
+         </>
         ))}</div>}
-      
+      </ElementFrame></div>
     </>
   );
 }

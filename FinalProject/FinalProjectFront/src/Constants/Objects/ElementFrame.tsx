@@ -9,7 +9,7 @@ type Position =
   | "initial"
   | "inherit";
 
-type overflowYtype = "visible" | "hidden" | "scroll" | "auto" | "clip";
+type overflowtype = "visible" | "hidden" | "scroll" | "auto" | "clip";
 
 interface basicElements {
   children: ReactNode;
@@ -20,7 +20,8 @@ interface basicElements {
   top?: string;
   left?: string;
   right?: string;
-  overflowY?: overflowYtype;
+  overflowY?: overflowtype;
+  overflowX?: overflowtype;
   zindex?: number;
   margin?: string;
 }
@@ -29,7 +30,7 @@ const ElementFrame = (props: basicElements) => {
   return (
     <>
       <div
-        className={` p-${props.padding} shadow-lg  rounded-lg m${props.margin || "-3"} ${colors.ElementFrame}`}
+        className={` p-${props.padding} shadow-lg  rounded-lg m-${props.margin || "-3"} ${colors.ElementFrame}`}
         style={{
           left: props.left,
           zIndex: props.zindex || 0,
@@ -39,6 +40,7 @@ const ElementFrame = (props: basicElements) => {
           height: props.height,
           width: props.width,
           overflowY: props.overflowY,
+          overflowX: props.overflowX,
           resize: "none",
         }}
       >
