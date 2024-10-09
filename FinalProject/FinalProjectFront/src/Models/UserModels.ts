@@ -37,6 +37,7 @@ interface IAppUserFull {
   pronouns: string;
   imageUrl: string;
   imageAlt: string;
+  bio?: string;
   permissionLevel: string;
   following: IAppUserDisplay[];
   blocked: IAppUserDisplay[];

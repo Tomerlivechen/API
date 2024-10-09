@@ -3,12 +3,15 @@ import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
 import PostView from "../Constants/Objects/PostView";
 import { PostList } from "../Components/PostList";
 import PostCard from "../Constants/Objects/PostCard";
+import UserTab, { UserTabProps } from "../Constants/Objects/UserTab";
+import { IAppUserDisplay } from "../Models/UserModels";
+import { dialogs } from "../Constants/AlertsConstant";
 
 const commentsArray3: ICommentDisplay[] = [
   {
     id: "1",
     link: "https://example.com/1",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a1",
     authorName: "Author 1",
     authorId: "author1",
@@ -22,7 +25,7 @@ const commentsArray3: ICommentDisplay[] = [
   {
     id: "2",
     link: "https://example.com/2",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a2",
     authorName: "Author 2",
     authorId: "author2",
@@ -36,7 +39,7 @@ const commentsArray3: ICommentDisplay[] = [
   {
     id: "3",
     link: "https://example.com/3",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a3a",
     authorName: "Author 3",
     authorId: "author3",
@@ -50,7 +53,7 @@ const commentsArray3: ICommentDisplay[] = [
   {
     id: "4",
     link: "https://example.com/4",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a4",
     authorName: "Author 4",
     authorId: "author4",
@@ -67,7 +70,7 @@ const commentsArray2: ICommentDisplay[] = [
   {
     id: "1",
     link: "https://example.com/1",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a1",
     authorName: "Author 1",
     authorId: "author1",
@@ -81,7 +84,7 @@ const commentsArray2: ICommentDisplay[] = [
   {
     id: "2",
     link: "https://example.com/2",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a2",
     authorName: "Author 2",
     authorId: "author2",
@@ -95,7 +98,7 @@ const commentsArray2: ICommentDisplay[] = [
   {
     id: "3",
     link: "https://example.com/3",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a3a",
     authorName: "Author 3",
     authorId: "author3",
@@ -109,7 +112,7 @@ const commentsArray2: ICommentDisplay[] = [
   {
     id: "4",
     link: "https://example.com/4",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment a4",
     authorName: "Author 4",
     authorId: "author4",
@@ -126,7 +129,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "1",
     link: "https://example.com/1",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 1",
     authorName: "Author 1",
     authorId: "author1",
@@ -140,7 +143,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "2",
     link: "https://example.com/2",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 2",
     authorName: "Author 2",
     authorId: "author2",
@@ -154,7 +157,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "3",
     link: "https://example.com/3",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 3",
     authorName: "Author 3",
     authorId: "author3",
@@ -168,7 +171,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "4",
     link: "https://example.com/4",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 4",
     authorName: "Author 4",
     authorId: "author4",
@@ -182,7 +185,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "5",
     link: "https://example.com/5",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 5",
     authorName: "Author 5",
     authorId: "author5",
@@ -196,7 +199,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "6",
     link: "https://example.com/6",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 6",
     authorName: "Author 6",
     authorId: "author6",
@@ -210,7 +213,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "7",
     link: "https://example.com/7",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 7",
     authorName: "Author 7",
     authorId: "author7",
@@ -224,7 +227,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "8",
     link: "https://example.com/8",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 8",
     authorName: "Author 8",
     authorId: "author8",
@@ -238,7 +241,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "9",
     link: "https://example.com/9",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 9",
     authorName: "Author 9",
     authorId: "author9",
@@ -252,7 +255,7 @@ const commentsArray: ICommentDisplay[] = [
   {
     id: "10",
     link: "https://example.com/10",
-    imageUrl: "https://via.placeholder.com/150",
+    imageURL: "https://via.placeholder.com/150",
     text: "This is a comment 10",
     authorName: "Author 10",
     authorId: "author10",
@@ -282,6 +285,26 @@ const comment1: IPostDisplay = {
   keyWords: [],
 };
 
+const user1 : IAppUserDisplay = {
+  id: "12345",
+  prefix: "Dr",
+  first_Name: "Tomer",
+  last_Name: "Levi",
+  userName: "tomerlevi87",
+  email: "tomer.levi@artbioscience.com",
+  imageURL: "https://res.cloudinary.com/dhle9hj3n/image/upload/v1728074215/ucdbrgjng0fssqqot8ue.jpg",
+  following: true,
+  blocked: false,
+  blockedYou: false,
+  pronouns: "he/him",
+
+};
+
+const tabProps: UserTabProps =  {
+  UserDisplay: user1,
+  buttonAction: ()=>{dialogs.showtext("it works");}
+}
+
 function TestSpace() {
   return (
     <>
@@ -289,7 +312,17 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className=" flex flex-col items-center">
 <div>
-<PostCard {...comment1} /></div></div>
+<UserTab {...tabProps} />
+<div className="pt-2"/>
+<UserTab {...tabProps} />
+<div className="pt-2"/>
+<UserTab {...tabProps} />
+<div className="pt-2"/>
+<UserTab {...tabProps} />
+<div className="pt-2"/>
+
+
+</div></div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>
