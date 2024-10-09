@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
 
 namespace FinalProject3.Controllers
@@ -94,18 +95,26 @@ namespace FinalProject3.Controllers
 
                 _context.Comment.Add(newComment);
             Interaction? parent;
+            Notification notification = new Notification();
+            string Ntype;
             if (!string.IsNullOrEmpty(comment.ParentPostId))
             {
                 parent = await _context.Post.FindAsync(comment.ParentPostId);
+                Ntype = "CommentOnPost";
+
             }
             else
             {
                 parent = await _context.Comment.FindAsync(comment.ParentCommentId);
+                Ntype = "CommentOnComment";
             }
             if (parent is null)
             {
                 return BadRequest(!string.IsNullOrEmpty(comment.ParentPostId) ? "Post not found" : "Comment not found");
             }
+            var nUser = parent.Author;
+            notification.AddNotification(Ntype, comment.Id, nUser);
+            await _context.Notification.AddAsync(notification);
             parent.Comments.Add(newComment);
                 try
                 {
@@ -122,7 +131,7 @@ namespace FinalProject3.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutComment(string id, [FromBody] Comment comment)
+        public async Task<IActionResult> PutComment(string id, [FromBody] CommentDisplay comment)
         {
 
             if (!ModelState.IsValid)
@@ -133,8 +142,28 @@ namespace FinalProject3.Controllers
             {
                 return BadRequest("Comment ID mismatch.");
             }
-
-            _context.Entry(comment).State = EntityState.Modified;
+            var fullComment = await _context.Comment.FindAsync(id);
+            if (fullComment is null)
+            {
+                return BadRequest();
+            }
+            if (comment.ImageURL != fullComment.ImageURL)
+            {
+                fullComment.ImageURL = comment.ImageURL;
+            }
+            if (comment.Text != fullComment.Text)
+            {
+                fullComment.Text = comment.Text;
+            }
+            if (comment.Text != fullComment.Text)
+            {
+                fullComment.Text = comment.Text;
+            }
+            if (comment.Link != fullComment.Link)
+            {
+                fullComment.Link = comment.Link;
+            }
+            _context.Entry(fullComment).State = EntityState.Modified;
 
                 try
                 {
