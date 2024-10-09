@@ -116,6 +116,7 @@ namespace FinalProject3.Controllers
             notification.AddNotification(Ntype, comment.Id, nUser);
             await _context.Notification.AddAsync(notification);
             parent.Comments.Add(newComment);
+            nUser.Notifications.Add(notification);
                 try
                 {
                     await _context.SaveChangesAsync();
