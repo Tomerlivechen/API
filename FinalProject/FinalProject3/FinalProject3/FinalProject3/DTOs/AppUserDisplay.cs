@@ -11,7 +11,11 @@ namespace FinalProject3.DTOs
         public string Last_Name { get; set; } = string.Empty;
         public string UserName { get; set; } = string.Empty;
         public string Email {  get; set; } = string.Empty;
-
+        public string Bio { get; set; } = string.Empty;
+        public bool HideEmail { get; set; } = false;
+        public bool HideName { get; set; } = false;
+        public bool HideBlocked { get; set; } = false;
+        public string BanerImageURL { get; set; } = string.Empty;
         public string ImageURL { get; set; } = string.Empty;
         public string Pronouns { get; set; } = string.Empty;
         public bool Following { get; set; } = false;

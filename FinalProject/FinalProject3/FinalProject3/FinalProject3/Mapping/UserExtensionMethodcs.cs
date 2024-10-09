@@ -30,11 +30,16 @@ namespace FinalProject32.Mapping
                 Id = user.Id,
                 Email = user.Email ?? string.Empty,
                 UserName = user.UserName ?? string.Empty,
+                Bio = user.Bio ?? string.Empty,
                 Prefix = user.Prefix,
                 First_Name = user.First_Name,
                 Last_Name = user.Last_Name,
                 ImageURL = user.ImageURL,
                 Pronouns = user.Pronouns,
+                BanerImageURL = user.BanerImageURL,
+                HideBlocked = user.HideBlocked,
+                HideEmail = user.HideEmail,
+                HideName = user.HideName,
             };
             return display;
         }
