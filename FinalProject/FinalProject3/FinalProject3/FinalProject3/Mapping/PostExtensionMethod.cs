@@ -49,13 +49,17 @@ namespace FinalProject3.Mapping
                 Title = Newpost.Title,
                 Text = Newpost.Text,
                 Category = Newpost.Category,
-                KeyWords = Newpost.KeyWords.Split(delimiters).Select(x => x.Trim()).ToList(),
                 Link = Newpost.Link,
                 ImageURL = Newpost.ImageURL,
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId),
                 Datetime = Newpost.Datetime,
                 Group = await context.Group.FindAsync(Newpost.GroupId)
             };
+            var key = Newpost.KeyWords.Split(delimiters).Select(x => x.Trim()).ToList();
+            foreach (var word in key) {
+                word.Capitelize();
+            }
+            setPost.KeyWords = key;
             var user = await userManager.FindByIdAsync(Newpost.AuthorId);
             user?.Posts.Add(setPost);
             return setPost;

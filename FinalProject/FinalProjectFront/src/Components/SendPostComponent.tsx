@@ -1,27 +1,28 @@
-import  { useEffect, useState } from "react";
+import  {   useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
-import { useNavigate } from "react-router-dom";
+
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { ICategory, INewPost } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
 import { catchError, colors } from "../Constants/Patterns";
 import { HiLink } from "react-icons/hi2";
-import ImageUpload from "../Constants/ImageUploading";
-import { usePosts } from "../CustomHooks/usePosts";
+
 import ElementFrame from "../Constants/Objects/ElementFrame";
+import { useCloudinary } from "../CustomHooks/useCloudinary";
+import { FcAddImage } from "react-icons/fc";
 
 function SendPostComponent() {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
   const [Url, setUrl] = useState("");
-  const postsContext = usePosts();
-  const navigate = useNavigate();
 
+  const [imageUrl,, setImageURL, clear] = useCloudinary();
+  const [holdFile, setHoldFile] = useState<File | null>()
   const toggelOpen = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -54,45 +55,63 @@ function SendPostComponent() {
     keyWords: "",
     datetime: "",
   };
-  const [postValues, setpostValues] = useState<INewPost>(NewPost);
+  const [postValues, setPostValues] = useState<INewPost>(NewPost);
 
-  const handleSubmit = async (values) => {
-    setpostValues(values);
-    if (postsContext.selectedFile != null) {
-      await postsContext.handleUpload();
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setHoldFile(event.target.files[0]); 
+      console.log("File selected:", event.target.files[0]);
+    }
+  };
+  const handleSubmit = async (values: INewPost) => {
+    setPostValues(values);
+    if (loggedInContext.token ) {
+    if (holdFile) {
+      setImageURL(holdFile)
       setIsLoading(true);
     } else {
       await postPost(values);
     }
+  }
+  else {
+    dialogs.error("Comment not sent user not logged in")
+    setIsLoading(false);
+  }
   };
 
+  
   useEffect(() => {
     const submitPost = async () => {
-      if (postsContext.imageURL) {
+      if (imageUrl) {
         await postPost(postValues);
       }
     };
     submitPost();
-  }, [postsContext.imageURL]);
+  }, [imageUrl]);
 
-  const postPost = async (values) => {
+
+  const postPost = async (values: INewPost) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
       try {
-        values.link = Url;
-        values.imageURL = postsContext.imageURL;
+        values.imageURL = imageUrl;
+        clear();
         const response = await Posts.postPost(values);
         console.log(response);
-        dialogs.success("Sending Post Successful");
-        navigate("/Feed");
-        toggelOpen();
+        dialogs.success("Post Sent");
       } catch (error) {
-        catchError(error, "Sending Post");
+        catchError(error, "Posting");
       } finally {
-        postsContext.clearImage();
+        setPostValues(NewPost)
         setIsLoading(false);
+        toggelOpen();
       }
+    }
+    else {
+      dialogs.error("Post not sent user not logged in")
+      setIsLoading(false);
+      toggelOpen();
     }
   };
 
@@ -195,7 +214,6 @@ function SendPostComponent() {
                       id="imageURL"
                       name="imageURL"
                       type="hidden"
-                      value={postsContext.imageURL}
                       placeholder="imageURL"
                     />
 
@@ -217,9 +235,20 @@ function SendPostComponent() {
                       </button>
                     </ElementFrame>
                     <div className="pl-10">
-                      <ElementFrame height="100px" width="130px" padding="1">
-                        <ImageUpload />
-                      </ElementFrame>
+                    <p>Image Upload</p>
+      <div className="flex items-center pl-10 p-2 mt-1">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            id="file-input"
+            hidden
+          />
+            <FcAddImage onClick={() => {const fileInput = document.getElementById('file-input');
+      if (fileInput) {
+        fileInput.click()}}} size={40} className="cursor-pointer" />
+      </div>
+
                     </div>
                   </div>
                   {isLoading && (

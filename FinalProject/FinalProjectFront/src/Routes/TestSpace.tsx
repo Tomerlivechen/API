@@ -6,6 +6,7 @@ import PostCard from "../Constants/Objects/PostCard";
 import UserTab, { UserTabProps } from "../Constants/Objects/UserTab";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { dialogs } from "../Constants/AlertsConstant";
+import SendPostComponent from "../Components/SendPostComponent";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -320,7 +321,7 @@ function TestSpace() {
 <div className="pt-2"/>
 <UserTab {...tabProps} />
 <div className="pt-2"/>
-
+<SendPostComponent/>
 
 </div></div>
       <div>---------------------------</div>

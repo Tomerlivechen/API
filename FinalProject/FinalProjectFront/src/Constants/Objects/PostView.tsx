@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { HiLink } from "react-icons/hi2";
 
 import { BiSolidUpvote } from "react-icons/bi";

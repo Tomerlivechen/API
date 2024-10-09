@@ -45,7 +45,7 @@ interface INewPost {
 interface IPostDisplay {
   id: string;
   link: string;
-  imageUrl: string;
+  imageURL: string;
   text: string;
   authorName: string;
   authorId: string;

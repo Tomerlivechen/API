@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PostsContext } from "../ContextAPI/PostsContext";
+import { PostsContext } from "../ContextAPI/PostsContexrt";
 
 const usePosts = () => {
   const postsContext = useContext(PostsContext);

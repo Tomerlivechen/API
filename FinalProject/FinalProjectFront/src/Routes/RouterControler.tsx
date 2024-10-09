@@ -16,7 +16,7 @@ import ProtectedRoute from "../Constants/RoutrProtection/ProtectedRoute";
 import NoAuthRoute from "../Constants/RoutrProtection/NoAuthRoute";
 import { SearchProvider } from "../ContextAPI/SearchContext";
 import { SearchPage } from "./SearchPage";
-import { PostsProvider } from "../ContextAPI/PostsContext";
+import { PostsProvider } from "../ContextAPI/PostsContexrt";
 
 function RouterControler() {
   return (
