@@ -10,6 +10,7 @@ import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 import { colors } from "../Constants/Patterns";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElementBuilder";
+import { RxEyeClosed } from "react-icons/rx";
 
 const emailValues : MYFormikValues ={
   Title: "Email Address",
@@ -63,7 +64,7 @@ function LoginPage() {
   return (
     <>
         <div className="flex justify-center">
-    <ElementFrame height="500px" width="700px" overflowY="auto" padding="0 pb-4">
+    <ElementFrame height="400px" width="700px" overflowY="auto" padding="0 pb-4">
     <div className={`text-4xl font-bold  text-center ${colors.ButtonFont}`}>
                         Login
       </div>
@@ -100,11 +101,21 @@ function LoginPage() {
         }}
       >
         <Form className="mt-5">
-          <FormikElementBuilder {...emailValues} />
-          <div className="relative" >
-          <FormikElementBuilder {...passwordValues} />
-          <FaRegEye size={25} className={`cursor-pointer absolute  top-0 right-32 `}  onClick={viewPass} />
-          </div>
+        <div className="flex flex-wrap justify-between">
+                <div className="w-full pr-2 pl-2">
+                  <FormikElementBuilder {...emailValues} />
+                </div>
+                <div className="w-full pl-6">
+                <div className="w-1/12 absolute  mt-6 m-28 ">
+                {viewPassword == "text" ? <FaRegEye size={25}  onClick={viewPass} /> : <RxEyeClosed size={25}  onClick={viewPass} />}
+                </div>
+                <div className="w-11/12">
+                  <FormikElementBuilder {...passwordValues} />
+                  </div>
+                  </div>
+
+              </div>
+
           
 
           {isLoading && (
