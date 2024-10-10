@@ -19,6 +19,7 @@ import { colors } from "../Patterns";
 import { FaKey } from "react-icons/fa";
 import EditPostModal from "../../Modals/EditPostModal";
 import { MdEdit } from "react-icons/md";
+import { Posts } from "../../Services/post-service";
 
 const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const [showModal, setShowModal] = useState(false);
@@ -42,7 +43,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
       postDisplay.totalVotes += vote;
     }
   };
-
+  const handleDelete = () => Posts.DeletePost(postDisplay.id);
   return (
     <>
       <ElementFrame height={`${postDisplay.imageURL ? ("450px") : ("230px")}`} width="400px" padding="2 mt-2">
@@ -51,7 +52,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
             <button className=" text-sm font-bold pl-10">
               {postDisplay.authorName}
             </button>
-            {postDisplay.authorId != userContext.userInfo.UserId && (<>
+            {(postDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin && (<>
             <div className="flex">
               <div className="flex space-x-2">
                     <button className="ml-auto mb-2" onClick={handleShowEdit}>
@@ -63,7 +64,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
                                         post={postDisplay}
                         />
               <button className="ml-auto mb-2">
-                <TiDelete size={22} />
+                <TiDelete size={22} onClick={handleDelete} />
               </button>
                       </div></div></>
             )}

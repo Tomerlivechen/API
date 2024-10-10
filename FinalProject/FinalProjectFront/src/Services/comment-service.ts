@@ -13,6 +13,12 @@ const VoteOnComment = (Id: string, vote: number) =>
     data: vote,
   });
 
+  const DeleteComment = (Id: string) =>
+    request({
+      url: `${CommentURL}/${Id}`,
+      method: "Delete",
+      data: null,
+    });
   const PostComment = (newcomment: INewComment) =>
     request({
       url: `${CommentURL}`,
@@ -35,4 +41,4 @@ const VoteOnComment = (Id: string, vote: number) =>
     }
 
 
-export const CommentService = { VoteOnComment, PostComment , PutComment };
+export const CommentService = { VoteOnComment, PostComment , PutComment,DeleteComment };

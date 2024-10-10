@@ -19,6 +19,12 @@ const getPosts = () =>
       data: Post,
     });
 
+    const DeletePost = (Id: string) =>
+      request({
+        url: `${postURL}/${Id}`,
+        method: "Delete",
+        data: null,
+      });
 
     const VoteOnPost = (Id: string, vote: number) =>
       request({
@@ -34,6 +40,6 @@ const getPosts = () =>
           data: post,
         });
 
-export { getPosts, postPost, VoteOnPost , EditPost };
+export { getPosts, postPost, VoteOnPost , EditPost,DeletePost };
 
-export const Posts = { getPosts, postPost, VoteOnPost , EditPost };
+export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost };

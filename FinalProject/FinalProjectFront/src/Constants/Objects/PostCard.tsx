@@ -12,6 +12,8 @@ import { IPostDisplay } from "../../Models/Interaction";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import { colors } from "../Patterns";
 import PostView from "./PostView";
+import { CommentService } from "../../Services/comment-service";
+import { Posts } from "../../Services/post-service";
 
 const PostCard: React.FC<IPostDisplay> = (postDisplay) => {
   const [card, setCard] = useState(true);
@@ -25,7 +27,7 @@ const PostCard: React.FC<IPostDisplay> = (postDisplay) => {
   const toggleCard = () => {
     setCard((prevCrad) => !prevCrad )
   }
-
+  const handleDelete = () => Posts.DeletePost(postDisplay.id);
   return (
     <>
     
@@ -39,9 +41,9 @@ const PostCard: React.FC<IPostDisplay> = (postDisplay) => {
             <button className=" text-sm font-bold pl-10">
               {postDisplay.authorName}
               </button>
-            {postDisplay.authorId == userContext.userInfo.UserId && (
+            {(postDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin && (
               <button className="ml-auto mb-2">
-                <TiDelete />
+                <TiDelete size={22} onClick={handleDelete} />
               </button>
             )}
           </div>

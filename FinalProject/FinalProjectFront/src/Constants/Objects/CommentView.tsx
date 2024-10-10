@@ -39,7 +39,8 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
     }
   };
   const handleShowEdit = () => setShowEditModal((prevshowEditModal) => !prevshowEditModal);
-  ;
+  const handleDelete = () => CommentService.DeleteComment(commentDisplay.id);
+  
   return (
     <>
       <ElementFrame
@@ -54,19 +55,15 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             <button className=" text-sm font-bold">
               {commentDisplay.authorName}
             </button>
-            {commentDisplay.authorId != userContext.userInfo.UserId && (<>
+            {(commentDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin && (<>
             <div className="flex">
               <div className="flex space-x-2">
                     <button className="ml-auto mb-2" onClick={handleShowEdit}>
                           <MdEdit size={22} />
                         </button>
-                        <EditCommentModal 
-                                        Mshow={showEditModal}
-                                        onHide={handleShowEdit}
-                                        comment={commentDisplay}
-                        />
+                        <EditCommentModal Mshow={showEditModal} onHide={handleShowEdit} comment={commentDisplay}/>
               <button className="ml-auto mb-2">
-                <TiDelete size={22} />
+                <TiDelete size={22} onClick={handleDelete} />
               </button>
                       </div></div></>
             )}
