@@ -86,15 +86,15 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
     }
 
 
-    [HttpPost("GetUser")]
+    [HttpGet("ById/{userId}")]
     [Authorize]
-    public async Task<ActionResult<AppUserDisplay>> GetUser([FromBody] AppUserIdRequest id)
+    public async Task<ActionResult<AppUserDisplay>> GetUser(string userId)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-            var user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == id.Id);
+            var user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
         if (user is not null)
         {
             return Ok(user.UsertoDisplay());
