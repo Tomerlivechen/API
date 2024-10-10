@@ -60,7 +60,7 @@ export const linkFieldValues : MYFormikValues = {
       required : true,
       hidden : false,
       as : "textarea",
-      classes : `${colors.TextBox} h-20 overflow-y-auto whitespace-pre-wrap resize-none}`,
+      classes : `${colors.TextBox} h-20 overflow-y-auto whitespace-pre-wrap resize-none`,
       width : "full"
       }
 

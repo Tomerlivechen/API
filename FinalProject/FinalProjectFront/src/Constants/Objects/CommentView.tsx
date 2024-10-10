@@ -7,7 +7,7 @@ import { BiSolidDownvote } from "react-icons/bi";
 import ElementFrame from "./ElementFrame";
 import { dialogs } from "../AlertsConstant";
 import { TiDelete } from "react-icons/ti";
-
+import { MdEdit } from "react-icons/md";
 import { useUser } from "../../CustomHooks/useUser";
 import { CommentService } from "../../Services/comment-service";
 import { useLogin } from "../../CustomHooks/useLogin";
@@ -16,9 +16,11 @@ import { CommentList } from "../../Components/CommentList";
 import AddCommentCommentModal from "../../Modals/AddCommentCommentModal";
 import { FaCommentMedical } from "react-icons/fa";
 import { colors } from "../Patterns";
+import EditCommentModal from "../../Modals/CommentAdd_Edit";
 
 const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const handleShow = () => setShowModal((prevshowModal) => !prevshowModal);
   const handleClose = () => setShowModal(false);
@@ -36,7 +38,8 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
       commentDisplay.totalVotes += vote;
     }
   };
-
+  const handleShowEdit = () => setShowEditModal((prevshowEditModal) => !prevshowEditModal);
+  ;
   return (
     <>
       <ElementFrame
@@ -47,14 +50,25 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
         margin="t-2"
       >
         <div>
-          <div className="flex">
-            <button className=" text-sm font-bold ">
+          <div className="flex justify-between items-center">
+            <button className=" text-sm font-bold">
               {commentDisplay.authorName}
             </button>
-            {commentDisplay.authorId == userContext.userInfo.UserId && (
+            {commentDisplay.authorId != userContext.userInfo.UserId && (<>
+            <div className="flex">
+              <div className="flex space-x-2">
+                    <button className="ml-auto mb-2" onClick={handleShowEdit}>
+                          <MdEdit size={22} />
+                        </button>
+                        <EditCommentModal 
+                                        Mshow={showEditModal}
+                                        onHide={handleShowEdit}
+                                        comment={commentDisplay}
+                        />
               <button className="ml-auto mb-2">
-                <TiDelete />
+                <TiDelete size={22} />
               </button>
+                      </div></div></>
             )}
           </div>
           <div
@@ -135,7 +149,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
         </div>
       </ElementFrame>
 
-      <div className={`-mt-9 -ml-1 font-bold ${colors.InteractionText}`} style={{position: "relative",zIndex: 100}}>
+      <div className={`-mt-7 font-bold ${colors.InteractionText}`} style={{position: "relative",zIndex: 100}}>
         <CommentList index={0} commmentList={commentDisplay.comments} /> 
       </div>
     </>

@@ -7,6 +7,7 @@ import UserTab, { UserTabProps } from "../Constants/Objects/UserTab";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { dialogs } from "../Constants/AlertsConstant";
 import SendPostComponent from "../Components/SendPostComponent";
+import CommentView from "../Constants/Objects/CommentView";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -269,10 +270,10 @@ const commentsArray: ICommentDisplay[] = [
   },
 ];
 
-const comment1: IPostDisplay = {
+const post1: IPostDisplay = {
   id: "post1",
   link: "https://react-icons.github.io/react-icons/",
-  imageUrl:
+  imageURL:
     "https://res.cloudinary.com/dhle9hj3n/image/upload/v1728074215/ucdbrgjng0fssqqot8ue.jpg",
   text: "This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.",
   authorName: "John Doe",
@@ -284,6 +285,25 @@ const comment1: IPostDisplay = {
   title: "This is the first post",
   category: null,
   keyWords: [],
+  
+};
+
+
+const coment1: ICommentDisplay = {
+  id: "post1",
+  link: "https://react-icons.github.io/react-icons/",
+  imageURL:
+    "https://res.cloudinary.com/dhle9hj3n/image/upload/v1728074215/ucdbrgjng0fssqqot8ue.jpg",
+  text: "This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.This is the first comment.",
+  authorName: "John Doe",
+  authorId: "auth1",
+  totalVotes: 8,
+  datetime: "2024-10-04T10:30:00Z",
+  comments: commentsArray,
+  hasVoted: false,
+  parentPostId: "post1",
+  parentCommentId: "",
+
 };
 
 const user1 : IAppUserDisplay = {
@@ -313,15 +333,7 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className=" flex flex-col items-center">
 <div>
-<UserTab {...tabProps} />
-<div className="pt-2"/>
-<UserTab {...tabProps} />
-<div className="pt-2"/>
-<UserTab {...tabProps} />
-<div className="pt-2"/>
-<UserTab {...tabProps} />
-<div className="pt-2"/>
-<SendPostComponent/>
+<CommentView {...coment1}/>
 
 </div></div>
       <div>---------------------------</div>
