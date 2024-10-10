@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { IAppUserDisplay } from "../../Models/UserModels";
 
 import ElementFrame from "./ElementFrame";
-import { auth } from "../../Services/auth-service";
 import { useLogin } from "../../CustomHooks/useLogin";
 import { dialogs } from "../AlertsConstant";
-import { catchError, colors } from "../Patterns";
 import { useUser } from "../../CustomHooks/useUser";
+import { colors } from "../Patterns";
 
 export interface UserTabProps {
   UserDisplay: IAppUserDisplay;
@@ -35,7 +34,7 @@ const UserTab: React.FC<UserTabProps> = ( TabProps :UserTabProps ) => {
             <img
               className="rounded-full border-2 h-14 w-14 shadow-2xl p-1 "
               src={TabProps.UserDisplay.imageURL}
-              aria-description={`Profile picture on ${TabProps.UserDisplay.first_Name} ${TabProps.UserDisplay.last_Name}`}
+              aria-description={`Profile picture of ${TabProps.UserDisplay.first_Name} ${TabProps.UserDisplay.last_Name}`}
             />
           
           <div className={`  col-span-4 font-extrabold  p-4 ${colors.ButtonFont} `}>

@@ -90,6 +90,12 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
         catchError(error, "Unblocking");
       });
   };
+
+if(UserDisplay.blockedYou && UserDisplay.HideBlocked){
+  return null;
+}
+else {
+
   return (
     <>
       <ElementFrame height="60px" width="650px" padding="5">
@@ -100,16 +106,17 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
               width={60}
               className="rounded-full border-2 shadow-2xl"
               src={UserDisplay.imageURL}
-              aria-description={`Profile picture on ${UserDisplay.first_Name} ${UserDisplay.last_Name}`}
+              aria-description={`Profile picture of ${UserDisplay.first_Name} ${UserDisplay.last_Name}`}
             />
           </div>
           <div className=" ml-6 col-span-4 font-extrabold text-emerald-800 p-3">
+            
             {UserDisplay.userName}
-          </div>
+          </div>{!UserDisplay.HideName &&
           <div className=" ml-4 col-span-4 font-extrabold p-3">
             {`${UserDisplay.prefix}. ${UserDisplay.first_Name} 
           ${UserDisplay.last_Name} (${UserDisplay.pronouns})`}
-          </div>
+          </div>}
           <div className=" ml-auto col-span-4 font-extrabold p-3 flex gap-3">
             {!UserDisplay.blockedYou &&
               userContext.userInfo.UserId !== UserDisplay.id && (
@@ -135,5 +142,6 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
     </>
   );
 };
+}
 
 export default UserCard;

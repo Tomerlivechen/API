@@ -14,6 +14,11 @@ interface IAppUserDisplay {
   blocked: boolean;
   blockedYou: boolean;
   pronouns: string;
+  Bio : string;
+  BanerImageURL:string;
+  HideEmail:boolean;
+  HideName: boolean;
+  HideBlocked : boolean
 }
 
 const AppUserDisplay = {
@@ -37,7 +42,11 @@ interface IAppUserFull {
   pronouns: string;
   imageUrl: string;
   imageAlt: string;
-  bio?: string;
+  Bio : string;
+  BanerImageURL:string;
+  HideEmail:boolean;
+  HideName: boolean;
+  HideBlocked : boolean
   permissionLevel: string;
   following: IAppUserDisplay[];
   blocked: IAppUserDisplay[];
