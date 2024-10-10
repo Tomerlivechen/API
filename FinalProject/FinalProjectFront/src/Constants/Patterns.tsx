@@ -45,6 +45,27 @@ export const linkFieldValues : MYFormikValues = {
   textbox : true,
   width : "full"
   }
+
+  export const titleFieldValues : MYFormikValues = {
+    element  : "title",
+    type : "text",
+    placeholder : "Title",
+    required : true,
+    hidden : false,
+    textbox : true,
+    width : "full",
+    onChange : (e: React.ChangeEvent<HTMLInputElement>) => e.target.value
+    }
+    export const keyFieldValues : MYFormikValues = {
+      element  : "keyWords",
+      type : "text",
+      placeholder : "Key Words (optional)",
+      required : false,
+      hidden : false,
+      textbox : true,
+      width : "full",
+      
+      }
   export const imageFieldValues : MYFormikValues = {
     element  : "imageURL",
     type : "hidden",

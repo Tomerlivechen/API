@@ -16,7 +16,7 @@ import { CommentList } from "../../Components/CommentList";
 import AddCommentCommentModal from "../../Modals/AddCommentCommentModal";
 import { FaCommentMedical } from "react-icons/fa";
 import { colors } from "../Patterns";
-import EditCommentModal from "../../Modals/CommentAdd_Edit";
+import EditCommentModal from "../../Modals/EditCommentModal";
 
 const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
   const [showModal, setShowModal] = useState(false);

@@ -1,5 +1,5 @@
 
-import { INewPost } from "../Models/Interaction";
+import { INewPost, IPostDisplay } from "../Models/Interaction";
 import { request } from "../Utils/Axios-Interceptor";
 
 const postURL = "/posts";
@@ -27,7 +27,13 @@ const getPosts = () =>
         data: vote,
       });
   
+      const EditPost = ( post: IPostDisplay) =>
+        request({
+          url: `${postURL}/${post.id}`,
+          method: "PUT",
+          data: post,
+        });
 
-export { getPosts, postPost, VoteOnPost };
+export { getPosts, postPost, VoteOnPost , EditPost };
 
-export const Posts = { getPosts, postPost, VoteOnPost };
+export const Posts = { getPosts, postPost, VoteOnPost , EditPost };

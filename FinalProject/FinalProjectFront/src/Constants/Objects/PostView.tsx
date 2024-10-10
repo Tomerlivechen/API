@@ -17,9 +17,12 @@ import AddPostCommentModal from "../../Modals/AddPostCommentModal";
 import { FaCommentMedical } from "react-icons/fa";
 import { colors } from "../Patterns";
 import { FaKey } from "react-icons/fa";
+import EditPostModal from "../../Modals/EditPostModal";
+import { MdEdit } from "react-icons/md";
 
 const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const handleShow = () => setShowModal((prevshowModal) => !prevshowModal);
 
@@ -31,7 +34,7 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const handelImage = () => {
     dialogs.showImage("", postDisplay.imageURL);
   };
-
+  const handleShowEdit = () => setShowEditModal((prevshowEditModal) => !prevshowEditModal);
   const handleVote = async (vote: number) => {
     if (loginContex.token) {
       await CommentAPI.VoteOnComment(postDisplay.id, vote);
@@ -44,16 +47,28 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
     <>
       <ElementFrame height={`${postDisplay.imageURL ? ("450px") : ("230px")}`} width="400px" padding="2 mt-2">
         <div>
-          <div className="flex">
+          <div className="flex justify-between items-center">
             <button className=" text-sm font-bold pl-10">
               {postDisplay.authorName}
             </button>
-            {postDisplay.authorId == userContext.userInfo.UserId && (
+            {postDisplay.authorId != userContext.userInfo.UserId && (<>
+            <div className="flex">
+              <div className="flex space-x-2">
+                    <button className="ml-auto mb-2" onClick={handleShowEdit}>
+                          <MdEdit size={22} />
+                        </button>
+                        <EditPostModal
+                                        Mshow={showEditModal}
+                                        onHide={handleShowEdit}
+                                        post={postDisplay}
+                        />
               <button className="ml-auto mb-2">
-                <TiDelete />
+                <TiDelete size={22} />
               </button>
+                      </div></div></>
             )}
           </div>
+
           <div
             className=" font-bold flex justify-evenly"
             style={{

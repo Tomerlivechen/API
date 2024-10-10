@@ -9,6 +9,7 @@ import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { colors } from "../Constants/Patterns";
 import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElementBuilder";
+import { RxEyeClosed } from "react-icons/rx";
 
 const emailValues : MYFormikValues ={
   Title: "Email Address",
@@ -16,7 +17,8 @@ const emailValues : MYFormikValues ={
   type: "text",
   placeholder: "Email Address",
   required: true,
-  hidden: false
+  hidden: false,
+  width: "full"
 }
 
 const userNameValues : MYFormikValues ={
@@ -25,7 +27,8 @@ const userNameValues : MYFormikValues ={
   type: "text",
   placeholder: "User Name",
   required: true,
-  hidden: false
+  hidden: false,
+  width: "full"
 }
 
 const confirmPasswordValues : MYFormikValues ={
@@ -34,7 +37,8 @@ const confirmPasswordValues : MYFormikValues ={
   type: "text",
   placeholder: "Confirm Password",
   required: true,
-  hidden: false
+  hidden: false,
+   width: "full"
 }
 
 const passwordValues : MYFormikValues ={
@@ -43,7 +47,8 @@ const passwordValues : MYFormikValues ={
   type: "text",
   placeholder: "Password",
   required: true,
-  hidden: false
+  hidden: false,
+   width: "full"
 }
 
 const prefixValues : MYFormikValues ={
@@ -52,7 +57,8 @@ const prefixValues : MYFormikValues ={
   type: "text",
   placeholder: "Prefix",
   required: true,
-  hidden: false
+  hidden: false,
+  width: "full"
 }
 
 const firstNameValues : MYFormikValues ={
@@ -61,7 +67,8 @@ const firstNameValues : MYFormikValues ={
   type: "text",
   placeholder: "First Name",
   required: true,
-  hidden: false
+  hidden: false,
+  width: "full"
 }
 const lastNameValues : MYFormikValues ={
   Title: "Last Name",
@@ -69,7 +76,8 @@ const lastNameValues : MYFormikValues ={
   type: "text",
   placeholder: "Last Name",
   required: true,
-  hidden: false
+  hidden: false,
+  width: "full"
 }
 
 const pronounsValues : MYFormikValues ={
@@ -78,7 +86,8 @@ const pronounsValues : MYFormikValues ={
   type: "text",
   placeholder: "Pronouns",
   required: true,
-  hidden: false
+  hidden: false,
+  width: "full"
 }
 
 
@@ -133,7 +142,7 @@ function Register() {
   return (
     <>
     <div className="flex justify-center">
-    <ElementFrame height="1100px" width="700px" overflowY="auto" padding="0 pb-4">
+    <ElementFrame height="750px" width="700px" overflowY="auto" padding="0 pb-4">
     <div className={`text-4xl font-bold  text-center ${colors.ButtonFont}`}>
                         Register
       </div>
@@ -180,18 +189,42 @@ function Register() {
         }}
       >
         <Form className="mt-5">
-        <FormikElementBuilder {...emailValues} />
-        <FormikElementBuilder {...userNameValues} />
-          <div className="relative" >
-          <FormikElementBuilder {...passwordValues} />
-          <FaRegEye size={25} className={`cursor-pointer absolute  top-0 right-32 `}  onClick={viewPass} />
-          </div>
-          
-          <FormikElementBuilder {...confirmPasswordValues} />
-          <FormikElementBuilder {...prefixValues} />
-          <FormikElementBuilder {...firstNameValues} />
-          <FormikElementBuilder {...lastNameValues} />
-          <FormikElementBuilder {...pronounsValues} />
+        <div className="flex flex-wrap justify-between">
+                <div className="w-1/2 pr-2 pl-2">
+                  <FormikElementBuilder {...emailValues} />
+                </div>
+                <div className="w-1/2 pl-2 pr-2">
+                  <FormikElementBuilder {...userNameValues} />
+                </div>
+              </div>
+          <div className="flex flex-wrap justify-between">
+                <div className="w-6/12 pl-2 pr-2">
+                  <FormikElementBuilder {...passwordValues} />
+                </div>
+                <div className="w-1/12  mt-6 -ml-16 ">
+                {viewPassword == "text" ? <FaRegEye size={25}  onClick={viewPass} /> : <RxEyeClosed size={25}  onClick={viewPass} />}
+                </div>
+                <div className="w-6/12 pr-2">
+                  <FormikElementBuilder {...confirmPasswordValues} />
+                </div>
+              </div>
+          <div className="flex flex-wrap justify-between">
+                <div className="w-1/2 pr-2 pl-2">
+                  <FormikElementBuilder {...prefixValues} />
+                </div>
+                <div className="w-1/2 pl-2 pr-2">
+                  <FormikElementBuilder {...firstNameValues} />
+                </div>
+              </div>
+
+              <div className="flex flex-wrap justify-between">
+                <div className="w-1/2 pr-2 pl-2">
+                  <FormikElementBuilder {...lastNameValues} />
+                </div>
+                <div className="w-1/2 pl-2 pr-2">
+                  <FormikElementBuilder {...pronounsValues} />
+                </div>
+              </div>
           <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
             <label htmlFor="premissionLevel">User Type</label>
             <Field

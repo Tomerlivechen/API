@@ -15,6 +15,7 @@ as? : string,
 textbox?: boolean,
 width?: string,
 classes?: string,
+onChange?:  (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 
@@ -39,6 +40,7 @@ const textboxParams = colors.TextBox;
   style={initalValues.style}
   value={initalValues.value}
   as =  {initalValues.as}
+  onChange={initalValues.onChange}
 />
 <ErrorMessage
   name={initalValues.element}

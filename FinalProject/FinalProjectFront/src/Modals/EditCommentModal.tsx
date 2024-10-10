@@ -107,7 +107,12 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
       handleclose();
     }
   };
-
+  const fieldChange = (e :React.ChangeEvent<HTMLInputElement>, element :keyof ICommentDisplay) =>{
+    setCommentValues(prevPostValues => ({
+        ...prevPostValues,
+        [element]: e.target.value
+      }))
+    }
 const handleRemoveImage = ()=>{
     setCommentValues((prevCommentValues =>({...prevCommentValues, imageURL:"" })))
 }
@@ -131,13 +136,13 @@ const handleRemoveImage = ()=>{
                     <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1">
                       <div className="flex justify-evenly">
                         <label className="text-2xl font-bold  text-center">
-                          Comment
+                          Edit Comment
                         </label>
                       </div>
                     </div>
 
-                    <FormikElementBuilder {...textFieldValues} value={`${comment.text}`} />
-                    <FormikElementBuilder {...linkFieldValues} value={`${comment.link}`}/>
+                    <FormikElementBuilder {...textFieldValues} value={`${comment.text}`} onChange={(e:React.ChangeEvent<HTMLInputElement>) => fieldChange(e,"text")}/>
+                    <FormikElementBuilder {...linkFieldValues} value={`${comment.link}`} onChange={(e:React.ChangeEvent<HTMLInputElement>) => fieldChange(e,"link")}/>
                     <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-4">
 
                       <div className=" pb-4 pt-3">

@@ -1,0 +1,212 @@
+import { Modal } from "react-bootstrap";
+
+import React, { useEffect, useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+import { dialogs } from "../Constants/AlertsConstant";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../CustomHooks/useLogin";
+import { catchError, colors, imageFieldValues, keyFieldValues, linkFieldValues, textFieldValues, titleFieldValues } from "../Constants/Patterns";
+
+import ElementFrame from "../Constants/Objects/ElementFrame";
+
+import { FcRemoveImage } from "react-icons/fc";
+import { FcEditImage } from "react-icons/fc";
+import { CommentService } from "../Services/comment-service";
+import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
+import ClipSpinner from "../Spinners/ClipSpinner";
+import { useCloudinary } from "../CustomHooks/useCloudinary";
+import { FcAddImage } from "react-icons/fc";
+import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
+import { Posts } from "../Services/post-service";
+
+interface EditPostModalProps {
+  Mshow: boolean;
+  onHide: () => void;
+  post : IPostDisplay;
+}
+
+const EditPostModal: React.FC<EditPostModalProps> = ({
+  Mshow,
+  onHide,
+  post,
+}) => {
+  const [show, setShow] = useState(Mshow);
+  const [isLoading, setIsLoading] = useState(false);
+  const loggedInContext = useLogin();
+  const navigate = useNavigate();
+  const [imageUrl, file, setImageURL, clear] = useCloudinary();
+  const [holdFile, setHoldFile] = useState<File | null>()
+  const PostToEdit: IPostDisplay = (post);
+  const handleclose = () => {
+    setPostValues(PostToEdit)
+    onHide();
+  };
+
+  const validationScheme = Yup.object({
+    title: Yup.string().min(2).required("Must have a text"),
+    link: Yup.string().url(),
+    text: Yup.string().min(2).required("Must have some text"),
+  });
+
+  
+  const [postValues, setPostValues] = useState<IPostDisplay>(PostToEdit);
+
+  const handleFileChange = (event) => {
+    console.log("Form submitted with values: ");
+    setHoldFile(event.target.files[0])
+  };
+
+  const handleSubmit = async (values) => {
+    setPostValues(values);
+    if (loggedInContext.token ) {
+    if (holdFile) {
+      setImageURL(holdFile)
+      setIsLoading(true);
+    } else {
+      await postPost(values);
+    }
+  }
+  else {
+    dialogs.error("Comment not sent user not logged in")
+    setIsLoading(false);
+    handleclose();
+  }
+  };
+
+  
+  useEffect(() => {
+    const submitComment = async () => {
+      if (imageUrl) {
+        await postPost(postValues);
+      }
+    };
+    submitComment();
+  }, [imageUrl]);
+
+  const postPost = async (values) => {
+    if (loggedInContext.token) {
+      console.log("Form submitted with values: ", values);
+      setIsLoading(true);
+      try {
+        values.imageURL = imageUrl;
+        clear();
+        const response = await Posts.EditPost(values);
+        console.log(response);
+        dialogs.success("Comment Sent");
+      } catch (error) {
+        catchError(error, "Commenting");
+      } finally {
+        setPostValues(postValues)
+        handleclose();
+        setIsLoading(false);
+      }
+    }
+    else {
+      dialogs.error("Comment not sent user not logged in")
+      setIsLoading(false);
+      handleclose();
+    }
+  };
+
+const handleRemoveImage = ()=>{
+    setPostValues((prevPostValues =>({...prevPostValues, imageURL:"" })))
+}
+
+const fieldChange = (e :React.ChangeEvent<HTMLInputElement>, element :keyof IPostDisplay) =>{
+    setPostValues(prevPostValues => ({
+        ...prevPostValues,
+        [element]: e.target.value
+      }))
+}
+
+  useEffect(() => {
+    setShow(Mshow);
+  }, [Mshow]);
+  return (
+    <>
+      <Modal show={Mshow} onHide={handleclose} className="comment-modal">
+        <>
+          <ElementFrame height="460px" width="300px" padding="1">
+            <>
+              <Formik
+                initialValues={postValues}
+                validationSchema={validationScheme}
+                onSubmit={handleSubmit}
+              >
+                {({ handleSubmit }) => (
+                  <Form className="mt-1" onSubmit={handleSubmit}>
+                    <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg mt-1">
+                      <div className="flex justify-evenly">
+                        <label className="text-2xl font-bold  text-center">
+                          Edit Post
+                        </label>
+                      </div>
+                    </div>
+                    <FormikElementBuilder {...titleFieldValues} value={`${postValues.title}`} onChange={(e:React.ChangeEvent<HTMLInputElement>) => fieldChange(e,"title")} />
+                    <FormikElementBuilder {...keyFieldValues} value={`${postValues.keyWords}`} onChange={(e:React.ChangeEvent<HTMLInputElement>) => fieldChange(e,"keyWords")} />
+                    <FormikElementBuilder {...linkFieldValues} value={`${postValues.link}`} onChange={(e:React.ChangeEvent<HTMLInputElement>) => fieldChange(e,"link")} />
+                    <FormikElementBuilder {...textFieldValues} value={`${postValues.text}`} onChange={(e:React.ChangeEvent<HTMLInputElement>) => fieldChange(e,"text")} />
+                    <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-4">
+
+                      <div className=" pb-4 pt-3">
+                        
+                      <p>Image Upload</p>
+      <div className={`flex items-center  p-2 mt-1 ${post.imageURL || holdFile ? ("pl-3"):("pl-10")}`}>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            id="file-input"
+            hidden
+          /><div className="flex justify-evenly">
+        {post.imageURL || holdFile ? (<>
+            <FcEditImage onClick={() => {const fileInput = document.getElementById('file-input');
+      if (fileInput) {
+        fileInput.click()}}} size={40} className="cursor-pointer" />
+        
+        <FcRemoveImage size={40} className="cursor-pointer" onClick={handleRemoveImage}/></>):(
+                    <FcAddImage onClick={() => {const fileInput = document.getElementById('file-input');
+      if (fileInput) {
+        fileInput.click()}}} size={40} className="cursor-pointer" />)}</div>
+      </div>
+                        
+                      </div>
+                    </div>
+                    {isLoading && (
+                      <>
+                        <div className=" flex flex-col items-center">
+                        <ClipSpinner /> 
+                        </div>
+                      </>
+                    )}
+                    <div className="font-extralight rounded-md border-2 form-group flex flex-col gap-2 w-full mx-auto text-lg -m-3">
+                      <button
+                        disabled={isLoading}
+                        type="submit"
+                        className={` font-bold ${colors.Buttons}`}
+                      >
+                        Submit
+                      </button>
+                      <button
+                        disabled={isLoading}
+                        type="button"
+                        onClick={handleclose}
+                        className={` font-bold ${colors.Buttons}`}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </>
+          </ElementFrame>
+        </>
+      </Modal>
+    </>
+  );
+};
+
+export default EditPostModal;

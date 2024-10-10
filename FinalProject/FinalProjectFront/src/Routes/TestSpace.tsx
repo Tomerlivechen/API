@@ -333,7 +333,7 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className=" flex flex-col items-center">
 <div>
-<CommentView {...coment1}/>
+<PostView {...post1}/>
 
 </div></div>
       <div>---------------------------</div>
