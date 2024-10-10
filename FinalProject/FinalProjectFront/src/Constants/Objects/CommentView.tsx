@@ -55,7 +55,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             <button className=" text-sm font-bold">
               {commentDisplay.authorName}
             </button>
-            {(commentDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin && (<>
+            {((commentDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin) && (<>
             <div className="flex">
               <div className="flex space-x-2">
                     <button className="ml-auto mb-2" onClick={handleShowEdit}>

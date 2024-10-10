@@ -9,16 +9,16 @@ import ClimbBoxSpinner from "../../Spinners/ClimbBoxSpinner";
 
 const ProfileUserSection: React.FC<string | null> = ( Userid : string | null ) => {
 const [user, setUser] = useState<IAppUserDisplay | null>(null);
-const [loading, setLoading] = useState(true);
+const [loading, setLoading] = useState(false);
 const userdata = useUser()
 useEffect(() => {
-  if (Userid){
-    getUser (Userid)
-  }
-    else if (userdata.userInfo.UserId)
-    {
-      getUser (userdata.userInfo.UserId)
-    }
+if (Userid){
+getUser (Userid)
+}
+else if (userdata.userInfo.UserId)
+{
+getUser (userdata.userInfo.UserId)
+}
 },[]);
 
 const getUser = async (id:string) => {
@@ -29,8 +29,8 @@ const getUser = async (id:string) => {
 
     <>
     {loading && <ClimbBoxSpinner/>}
-    {!loading && user && !user.blockedYou && (<>
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+    {(!loading && user && !user.blockedYou) && (<>
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-2/3">
       <div className="relative">
         <img src={user.BanerImageURL} alt="User banner" className="w-full h-32 object-cover" />
         <div className="absolute -bottom-12 left-6">
@@ -45,12 +45,16 @@ const getUser = async (id:string) => {
       <div className="pt-16 px-6 pb-6">
         <div className="text-center">
           {!user.HideName &&
-          <h2 className="text-xl font-bold">{`${user.prefix} ${user.first_Name} ${user.last_Name}`}</h2>}
+          <h2 className="text-xl font-bold text-left">{`${user.prefix}. ${user.first_Name} ${user.last_Name}`}</h2>}
           {!user.HideEmail &&
-          <p className="text-gray-500">{user.email}</p> }
+          <p className="text-gray-500 text-left">{user.email}</p> }
         </div>
-        <div className="mt-4">
-          <p className="text-gray-700 text-center">{user.Bio}</p>
+        <div className="text-left">
+          <div className="mt-4">
+        <h1 className="text-2xl font-bold">About</h1>
+        </div>
+        
+          <p className="text-gray-700 text-left w-1/2">{user.Bio}</p>
         </div>
       </div>
     </div>
