@@ -9,18 +9,18 @@ import ElementFrame from "../Constants/Objects/ElementFrame";
 
 function SearchPage() {
   const loggedInContext = useLogin();
-    const searchContext = useSearch();
-    const [activeSearch, setActiveSearch] =useState("");
-  
-    useEffect(() => {
-      const { userSearch, postSearch } = searchContext;
-    
-      if (Object.values(userSearch).some(value => value)) {
-        setActiveSearch("user");
-      } else if (Object.values(postSearch).some(value => value)) {
-        setActiveSearch("post");
-      }
-    }, [searchContext.userSearch, searchContext.postSearch]);
+  const searchContext = useSearch();
+  const [activeSearch, setActiveSearch] = useState("");
+
+  useEffect(() => {
+    const { userSearch, postSearch } = searchContext;
+
+    if (Object.values(userSearch).some((value) => value)) {
+      setActiveSearch("user");
+    } else if (Object.values(postSearch).some((value) => value)) {
+      setActiveSearch("post");
+    }
+  }, [searchContext.userSearch, searchContext.postSearch]);
 
   useEffect(() => {
     searchContext.fillLists();
@@ -31,29 +31,37 @@ function SearchPage() {
       <div className="flex flex-col items-center pt-11">
         <SearchTitleComponent />
       </div>
-      
-     { searchContext.loadingData && (
+
+      {searchContext.loadingData && (
         <div className=" flex flex-col items-center">
           <ClimbBoxSpinner /> <br />
         </div>
       )}
       <div className=" flex flex-col items-center">
-      <ElementFrame height="50%" width="45%" padding="2" overflowY="auto">
-      {activeSearch == "user" && 
-      <div className=" flex flex-col items-center">
-        {searchContext.filterUserList.map((user) => (<>
-          <UserCard key={user.id} UserDisplay={user} />
-         <hr /></>
-        ))} 
-        </div>}
-      {activeSearch == "post" && 
-      <div className=" flex flex-col items-center">
-        {searchContext.filterPostList.map((post) => (<>
-          <div className="pt-5">
-          <PostCard key={post.id} {...post} /></div>
-         </>
-        ))}</div>}
-      </ElementFrame></div>
+        <ElementFrame height="50%" width="45%" padding="2" overflowY="auto">
+          {activeSearch == "user" && (
+            <div className=" flex flex-col items-center">
+              {searchContext.filterUserList.map((user) => (
+                <>
+                  <UserCard key={user.id} UserDisplay={user} />
+                  <hr />
+                </>
+              ))}
+            </div>
+          )}
+          {activeSearch == "post" && (
+            <div className=" flex flex-col items-center">
+              {searchContext.filterPostList.map((post) => (
+                <>
+                  <div className="pt-5 ">
+                    <PostCard key={post.id} {...post} />
+                  </div>
+                </>
+              ))}
+            </div>
+          )}
+        </ElementFrame>
+      </div>
     </>
   );
 }

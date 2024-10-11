@@ -129,8 +129,10 @@ namespace FinalProject3.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutPost(string id, [FromBody] PostDisplay post)
+        public async Task<ActionResult<PostDisplay>> PutPost(string id, [FromBody] PostDisplay post)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -140,7 +142,7 @@ namespace FinalProject3.Controllers
                 return BadRequest();
             }
 
-            var fullPost = await _context.Post.FindAsync(id);
+            var fullPost = await _context.Post.Include(p => p.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
 
             if (fullPost is null)
             {
@@ -154,6 +156,10 @@ namespace FinalProject3.Controllers
             if (post.Text != fullPost.Text)
             {
                 fullPost.Text = post.Text;
+            }
+            if (post.Title != fullPost.Title)
+            {
+                fullPost.Title = post.Title;
             }
             if (post.Text != fullPost.Text)
             {
@@ -187,7 +193,7 @@ namespace FinalProject3.Controllers
                 }
             
 
-            return NoContent();
+            return Ok(fullPost.ToDisplay(userId));
         }
 
         // POST: api/Posts

@@ -23,26 +23,7 @@ namespace FinalProject3
 
            builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
             builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
-            //jwt setup
-        //    var jwtsettings = builder.Configuration.GetSection("JwtSettings");
-            // auth setup
-        //    builder.Services.AddAuthentication(options =>
-        //    {
-        //        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        //        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        //    }).AddJwtBearer(options =>
-        //    {
-        //        options.TokenValidationParameters = new TokenValidationParameters
-        //        {
-        //            ValidateIssuer = true,
-        //            ValidateAudience = true,
-         //           ValidIssuer = jwtsettings["Issuer"],
-        //            ValidAudience = jwtsettings["Audience"],
-       //             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtsettings["SecretKey"]))
-        //        };
-       //     }
-       //      );
-            // Add services to the container.
+
 
 
             builder.Services.AddControllers();
@@ -59,7 +40,7 @@ namespace FinalProject3
                         "http://localhost:5173",
                         "http://localhost:5174",
                         //host
-                        ]).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                        ]).AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithExposedHeaders("Authorization");
 
                 });
             });

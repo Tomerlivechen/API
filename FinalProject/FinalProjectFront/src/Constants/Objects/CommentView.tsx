@@ -38,9 +38,10 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
       commentDisplay.totalVotes += vote;
     }
   };
-  const handleShowEdit = () => setShowEditModal((prevshowEditModal) => !prevshowEditModal);
+  const handleShowEdit = () =>
+    setShowEditModal((prevshowEditModal) => !prevshowEditModal);
   const handleDelete = () => CommentService.DeleteComment(commentDisplay.id);
-  
+
   return (
     <>
       <ElementFrame
@@ -55,17 +56,25 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
             <button className=" text-sm font-bold">
               {commentDisplay.authorName}
             </button>
-            {((commentDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin) && (<>
-            <div className="flex">
-              <div className="flex space-x-2">
+            {(commentDisplay.authorId == userContext.userInfo.UserId ||
+              userContext.userInfo.IsAdmin) && (
+              <>
+                <div className="flex">
+                  <div className="flex space-x-2">
                     <button className="ml-auto mb-2" onClick={handleShowEdit}>
-                          <MdEdit size={22} />
-                        </button>
-                        <EditCommentModal Mshow={showEditModal} onHide={handleShowEdit} comment={commentDisplay}/>
-              <button className="ml-auto mb-2">
-                <TiDelete size={22} onClick={handleDelete} />
-              </button>
-                      </div></div></>
+                      <MdEdit size={22} />
+                    </button>
+                    <EditCommentModal
+                      Mshow={showEditModal}
+                      onHide={handleShowEdit}
+                      comment={commentDisplay}
+                    />
+                    <button className="ml-auto mb-2">
+                      <TiDelete size={22} onClick={handleDelete} />
+                    </button>
+                  </div>
+                </div>
+              </>
             )}
           </div>
           <div
@@ -93,21 +102,21 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
                   <IoImage size={20} />
                 </button>
               )}
-              
-            
-            <div className="flex items-center pl-4">
-              <button
-                className={`flex items-center pl-3`}
-                onClick={handleShow}
-              >
-                <FaCommentMedical size={21} aria-description="add comment" />
-              </button>
-              <AddCommentCommentModal
-                Mshow={showModal}
-                onHide={handleClose}
-                commentId={commentDisplay.id}
-              />
-            </div></div>
+
+              <div className="flex items-center pl-4">
+                <button
+                  className={`flex items-center pl-3`}
+                  onClick={handleShow}
+                >
+                  <FaCommentMedical size={21} aria-description="add comment" />
+                </button>
+                <AddCommentCommentModal
+                  Mshow={showModal}
+                  onHide={handleClose}
+                  commentId={commentDisplay.id}
+                />
+              </div>
+            </div>
             <div className="flex items-center">
               {!commentDisplay.hasVoted && (
                 <>
@@ -136,18 +145,20 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
           </div>
         </div>
         <div className="flex justify-between items-center">
-
-        <div className={` font-bold ${colors.InteractionText} ml-16 mt-4` }>
-        {commentDisplay.comments && commentDisplay.comments.length>0  && commentDisplay.comments.length}
-        </div>
-        <div className="flex justify-end">
-        {commentDisplay.datetime}
-        </div>
+          <div className={` font-bold ${colors.InteractionText} ml-16 mt-4`}>
+            {commentDisplay.comments &&
+              commentDisplay.comments.length > 0 &&
+              commentDisplay.comments.length}
+          </div>
+          <div className="flex justify-end">{commentDisplay.datetime}</div>
         </div>
       </ElementFrame>
 
-      <div className={`-mt-7 font-bold ${colors.InteractionText}`} style={{position: "relative",zIndex: 100}}>
-        <CommentList index={0} commmentList={commentDisplay.comments} /> 
+      <div
+        className={`-mt-7 font-bold ${colors.InteractionText}`}
+        style={{ position: "relative", zIndex: 100 }}
+      >
+        <CommentList index={0} commmentList={commentDisplay.comments} />
       </div>
     </>
   );

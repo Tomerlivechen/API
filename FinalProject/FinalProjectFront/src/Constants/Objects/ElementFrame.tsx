@@ -30,7 +30,9 @@ const ElementFrame = (props: basicElements) => {
   return (
     <>
       <div
-        className={` p-${props.padding} shadow-lg  rounded-lg m-${props.margin || "-3"} ${colors.ElementFrame}`}
+        className={` p-${props.padding} shadow-lg  rounded-lg m-${
+          props.margin || "-3"
+        } ${colors.ElementFrame}`}
         style={{
           left: props.left,
           zIndex: props.zindex || 0,

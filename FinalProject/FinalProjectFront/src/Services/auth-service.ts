@@ -46,7 +46,7 @@ const login = (email: string, password: string) =>
     const getUser = (id: string) =>
       request({
         url: `${AuthURL}/ById/${id}`,
-        method: "Get",
+        method: "GET",
         data: null,
     });
 

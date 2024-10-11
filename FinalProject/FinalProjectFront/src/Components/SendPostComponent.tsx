@@ -1,4 +1,4 @@
-import  {   useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -21,8 +21,8 @@ function SendPostComponent() {
   const loggedInContext = useLogin();
   const [Url, setUrl] = useState("");
 
-  const [imageUrl,, setImageURL, clear] = useCloudinary();
-  const [holdFile, setHoldFile] = useState<File | null>()
+  const [imageUrl, , setImageURL, clear] = useCloudinary();
+  const [holdFile, setHoldFile] = useState<File | null>();
   const toggelOpen = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -59,27 +59,25 @@ function SendPostComponent() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      setHoldFile(event.target.files[0]); 
+      setHoldFile(event.target.files[0]);
       console.log("File selected:", event.target.files[0]);
     }
   };
   const handleSubmit = async (values: INewPost) => {
     setPostValues(values);
-    if (loggedInContext.token ) {
-    if (holdFile) {
-      setImageURL(holdFile)
-      setIsLoading(true);
+    if (loggedInContext.token) {
+      if (holdFile) {
+        setImageURL(holdFile);
+        setIsLoading(true);
+      } else {
+        await postPost(values);
+      }
     } else {
-      await postPost(values);
+      dialogs.error("Comment not sent user not logged in");
+      setIsLoading(false);
     }
-  }
-  else {
-    dialogs.error("Comment not sent user not logged in")
-    setIsLoading(false);
-  }
   };
 
-  
   useEffect(() => {
     const submitPost = async () => {
       if (imageUrl) {
@@ -88,7 +86,6 @@ function SendPostComponent() {
     };
     submitPost();
   }, [imageUrl]);
-
 
   const postPost = async (values: INewPost) => {
     if (loggedInContext.token) {
@@ -103,13 +100,12 @@ function SendPostComponent() {
       } catch (error) {
         catchError(error, "Posting");
       } finally {
-        setPostValues(NewPost)
+        setPostValues(NewPost);
         setIsLoading(false);
         toggelOpen();
       }
-    }
-    else {
-      dialogs.error("Post not sent user not logged in")
+    } else {
+      dialogs.error("Post not sent user not logged in");
       setIsLoading(false);
       toggelOpen();
     }
@@ -235,20 +231,28 @@ function SendPostComponent() {
                       </button>
                     </ElementFrame>
                     <div className="pl-10">
-                    <p>Image Upload</p>
-      <div className="flex items-center pl-10 p-2 mt-1">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            id="file-input"
-            hidden
-          />
-            <FcAddImage onClick={() => {const fileInput = document.getElementById('file-input');
-      if (fileInput) {
-        fileInput.click()}}} size={40} className="cursor-pointer" />
-      </div>
-
+                      <p>Image Upload</p>
+                      <div className="flex items-center pl-10 p-2 mt-1">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileChange}
+                          id="file-input"
+                          hidden
+                        />
+                        <FcAddImage
+                          onClick={() => {
+                            const fileInput = document.getElementById(
+                              "file-input"
+                            );
+                            if (fileInput) {
+                              fileInput.click();
+                            }
+                          }}
+                          size={40}
+                          className="cursor-pointer"
+                        />
+                      </div>
                     </div>
                   </div>
                   {isLoading && (

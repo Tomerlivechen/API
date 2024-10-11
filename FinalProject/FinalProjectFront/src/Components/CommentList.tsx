@@ -61,19 +61,19 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
             onClick={toggelOpen}
           >
             {open ? (
-              <FaCommentSlash size={25} aria-description="Close"  />
+              <FaCommentSlash size={25} aria-description="Close" />
             ) : (
               <FaComments size={25} aria-description="View Comments" />
             )}
           </button>
           {open && (
             <>
-              <div className="-mt-1.5"
+              <div
+                className="-mt-1.5"
                 style={{
                   position: "relative",
                   left: "20px",
                   top: "10px",
-                  
                 }}
               >
                 {next20Comments.map((comment) => (
@@ -106,7 +106,7 @@ const CommentList: React.FC<CommentListValues> = ({ index, commmentList }) => {
         <>
           {!next20Comments && (
             <button
-            className={`rounded-lg ${colors.ElementFrame}  relative bottom-0 left-5`}
+              className={`rounded-lg ${colors.ElementFrame}  relative bottom-0 left-5`}
             >
               {!next ? (
                 <VscCommentDraft size={25} aria-description="No Comments" />

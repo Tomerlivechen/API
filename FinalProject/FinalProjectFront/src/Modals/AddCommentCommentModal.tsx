@@ -1,21 +1,25 @@
 import { Modal } from "react-bootstrap";
 
-import React, { CSSProperties, useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useEffect, useState } from "react";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
-import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import { Posts } from "../Services/post-service";
-import { useLogin } from "../CustomHooks/useLogin";
-import { catchError, colors, imageFieldValues, linkFieldValues, textFieldValues } from "../Constants/Patterns";
 
-import ImageUpload from "../Constants/ImageUploading";
+import { useLogin } from "../CustomHooks/useLogin";
+import {
+  catchError,
+  colors,
+  imageFieldValues,
+  linkFieldValues,
+  textFieldValues,
+} from "../Constants/Patterns";
+
 import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
-import { FormikElementBuilder, MYFormikValues } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
 import { CommentService } from "../Services/comment-service";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import ClipSpinner from "../Spinners/ClipSpinner";
@@ -27,10 +31,6 @@ interface AddCommentCommentModalProps {
   onHide: () => void;
 }
 
-
-
-
-
 const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   commentId,
   Mshow,
@@ -39,29 +39,21 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
-   const postsContext = usePosts(); 
-   const navigate = useNavigate();
+
   const [imageUrl, file, setImageURL, clear] = useCloudinary();
-  const linkValues = linkFieldValues
-  const imageValues = imageFieldValues
-  const [holdFile, setHoldFile] = useState<File | null>()
-
-
-
+  const linkValues = linkFieldValues;
+  const imageValues = imageFieldValues;
+  const [holdFile, setHoldFile] = useState<File | null>();
 
   const handleclose = () => {
     setShow(false);
     onHide();
   };
 
-
-
   const validationScheme = Yup.object({
     link: Yup.string().url(),
     text: Yup.string().min(2).required("Must have some text"),
   });
-
-
 
   const NewComment: INewComment = {
     id: "",
@@ -72,35 +64,30 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     ParentPostId: "",
     ParentCommentId: commentId,
     Datetime: "",
-    
   };
 
-
-  
   const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
   const handleFileChange = (event) => {
     console.log("Form submitted with values: ");
-    setHoldFile(event.target.files[0])
+    setHoldFile(event.target.files[0]);
   };
   const handleSubmit = async (values) => {
     setCommentValues(values);
-    if (loggedInContext.token ) {
-    if (holdFile) {
-      setImageURL(holdFile)
-      setIsLoading(true);
+    if (loggedInContext.token) {
+      if (holdFile) {
+        setImageURL(holdFile);
+        setIsLoading(true);
+      } else {
+        await postComment(values);
+      }
     } else {
-      await postComment(values);
+      dialogs.error("Comment not sent user not logged in");
+      setIsLoading(false);
+      handleclose();
     }
-  }
-  else {
-    dialogs.error("Comment not sent user not logged in")
-    setIsLoading(false);
-    handleclose();
-  }
   };
 
-  
   useEffect(() => {
     const submitComment = async () => {
       if (imageUrl) {
@@ -123,13 +110,12 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
       } catch (error) {
         catchError(error, "Commenting");
       } finally {
-        setCommentValues(NewComment)
+        setCommentValues(NewComment);
         handleclose();
         setIsLoading(false);
       }
-    }
-    else {
-      dialogs.error("Comment not sent user not logged in")
+    } else {
+      dialogs.error("Comment not sent user not logged in");
       setIsLoading(false);
       handleclose();
     }
@@ -157,34 +143,39 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                         </label>
                       </div>
                     </div>
-                    <FormikElementBuilder {...textFieldValues}/>
-                    <FormikElementBuilder {...linkValues}/>
-                   
+                    <FormikElementBuilder {...textFieldValues} />
+                    <FormikElementBuilder {...linkValues} />
+
                     <div className="font-semibold  flex justify-evenly items-center w-full mx-auto text-lg -mt-4">
-
-
-                    <div className="pb-4 pt-3">
-                      
-                    <p>Image Upload</p>
-      <div className="flex items-center pl-10 p-2 mt-1">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            id="file-input"
-            hidden
-          />
-            <FcAddImage onClick={() => {const fileInput = document.getElementById('file-input');
-      if (fileInput) {
-        fileInput.click()}}} size={40} className="cursor-pointer" />
-      </div>
-                      
-                    </div>
+                      <div className="pb-4 pt-3">
+                        <p>Image Upload</p>
+                        <div className="flex items-center pl-10 p-2 mt-1">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            id="file-input"
+                            hidden
+                          />
+                          <FcAddImage
+                            onClick={() => {
+                              const fileInput = document.getElementById(
+                                "file-input"
+                              );
+                              if (fileInput) {
+                                fileInput.click();
+                              }
+                            }}
+                            size={40}
+                            className="cursor-pointer"
+                          />
+                        </div>
+                      </div>
                     </div>
                     {isLoading && (
                       <>
                         <div className=" flex flex-col items-center">
-                          <ClipSpinner /> 
+                          <ClipSpinner />
                         </div>
                       </>
                     )}
