@@ -199,7 +199,7 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
                       <p>Image Upload</p>
                       <div
                         className={`flex items-center  p-2 mt-1 ${
-                          post.imageURL || holdFile ? "pl-3" : "pl-10"
+                          postValues.imageURL || holdFile ? "pl-3" : "pl-10"
                         }`}
                       >
                         <input

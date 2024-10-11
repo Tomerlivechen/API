@@ -26,15 +26,8 @@ const VoteOnComment = (Id: string, vote: number) =>
       data: newcomment,
     });
     const PutComment = (Editcomment: ICommentDisplay) => {
-      let parentid;
-      if (Editcomment.parentCommentId) {
-      parentid = Editcomment.parentCommentId;
-      }
-    else{
-    parentid = Editcomment.parentPostId
-    }
       request({
-        url: `${CommentURL}/${parentid}`,
+        url: `${CommentURL}/${Editcomment.id}`,
         method: "PUT",
         data: Editcomment,
       });

@@ -134,7 +134,7 @@ namespace FinalProject3.Controllers
         [Authorize]
         public async Task<IActionResult> PutComment(string id, [FromBody] CommentDisplay comment)
         {
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -143,7 +143,7 @@ namespace FinalProject3.Controllers
             {
                 return BadRequest("Comment ID mismatch.");
             }
-            var fullComment = await _context.Comment.FindAsync(id);
+            var fullComment = await _context.Comment.Include(p => p.Author).Include(p => p.ParentComment).Include(p => p.ParentPost).Where(p => p.Id == id).FirstOrDefaultAsync();
             if (fullComment is null)
             {
                 return BadRequest();
@@ -183,7 +183,7 @@ namespace FinalProject3.Controllers
                 }
             
 
-            return NoContent();
+            return Ok(fullComment.ToDisplay(userId));
         }
 
         [HttpDelete("{id}")]
