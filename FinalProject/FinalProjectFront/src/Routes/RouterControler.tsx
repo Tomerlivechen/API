@@ -17,6 +17,7 @@ import NoAuthRoute from "../Constants/RoutrProtection/NoAuthRoute";
 import { SearchProvider } from "../ContextAPI/SearchContext";
 import { SearchPage } from "./SearchPage";
 import { PostsProvider } from "../ContextAPI/PostsContexrt";
+import UserSettings from "./UserSettings";
 
 function RouterControler() {
   return (
@@ -57,14 +58,29 @@ function RouterControler() {
                       }
                     />
                     <Route
-                      path="Profile"
+                      path="Profile/:userId"
                       element={
                         <ProtectedRoute>
-                          <Profile />
+                          <Profile  />
                         </ProtectedRoute>
                       }
                     />
-
+                    <Route
+                      path="Profile"
+                      element={
+                        <ProtectedRoute>
+                          <Profile  />
+                        </ProtectedRoute>
+                      }
+                    />
+                     <Route
+                      path="Settings"
+                      element={
+                        <ProtectedRoute>
+                          <UserSettings  />
+                        </ProtectedRoute>
+                      }
+                    />
                     <Route
                       path="Register"
                       element={

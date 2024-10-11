@@ -24,7 +24,7 @@ const emailValues : MYFormikValues ={
 const passwordValues : MYFormikValues ={
   Title: "Password",
   element: "password",
-  type: "text",
+  type: "password",
   placeholder: "Password",
   required: true,
   hidden: false

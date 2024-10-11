@@ -6,28 +6,28 @@ namespace FinalProject3.DTOs
 {
     public class AppUserEdit
     {
+        public string id { get; set; } = string.Empty;
 
+        public  string userName { get; set; } = string.Empty;
 
-        public required string UserName { get; set; }
-        [Required, PasswordPropertyText]
-        public required string OldPassword { get; set; }
-        [Required, PasswordPropertyText]
-        public required string NewPassword { get; set; }
-        public required string Bio { get; set; }
+        public  string oldPassword { get; set; } = string.Empty;
 
-        public required string Prefix { get; set; }
-        public bool HideEmail { get; set; } = false;
-        public bool HideName { get; set; } = false;
-        public bool HideBlocked { get; set; } = false;
-        public string BanerImageURL { get; set; } = string.Empty;
-        public required string First_Name { get; set; }
+        public  string newPassword { get; set; } = string.Empty;
+        public  string bio { get; set; } = string.Empty;
 
-        public required string Last_Name { get; set; }
+        public  string prefix { get; set; } = string.Empty;
+        public bool hideEmail { get; set; } = false;
+        public bool hideName { get; set; } = false;
+        public bool hideBlocked { get; set; } = false;
+        public string banerImageURL { get; set; } = string.Empty;
+        public  string first_Name { get; set; } = string.Empty;
 
-        public required string Pronouns { get; set; }
+        public  string last_Name { get; set; } = string.Empty;
 
-        public required string ImageURL { get; set; }
+        public  string pronouns { get; set; } = string.Empty;
 
-        public required string PermissionLevel { get; set; }
+        public  string imageURL { get; set; } = string.Empty;
+
+        public  string permissionLevel { get; set; } = string.Empty;
     }
 }

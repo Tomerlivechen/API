@@ -1,5 +1,6 @@
 import axios from "axios";
 import { request } from "../Utils/Axios-Interceptor";
+import { IAppUserDisplay, IAppUserEdit, IEditUser } from "../Models/UserModels";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -47,7 +48,7 @@ const login = (email: string, password: string) =>
         url: `${AuthURL}/ById/${id}`,
         method: "Get",
         data: null,
-      });
+    });
 
 
     const getUsers = () =>
@@ -86,9 +87,15 @@ const login = (email: string, password: string) =>
                 data: {id},
               });
 
+              const manage = (AppUserEdit : IAppUserEdit) =>
+                request({
+                  url: `${AuthURL}/manage`,
+                  method: "PUT",
+                  data: AppUserEdit ,
+                });
+              
 
-
-export { register, login, validate, getUser, follow, unfollow, block, unBlock };
+export { register, login, validate, getUser, follow, unfollow, block, unBlock,manage };
 
 export const auth = {
   register,
@@ -100,4 +107,5 @@ export const auth = {
   unfollow,
   block,
   unBlock,
+  manage
 };

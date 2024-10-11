@@ -166,17 +166,19 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
     }
 
     [HttpPut("manage")]
-    public async Task<IActionResult> Manage(AppUserEdit manageView)
+    [Authorize]
+    public async Task<ActionResult<AppUserDisplay>> Manage([FromBody] AppUserEdit manageView)
     {
+
         var user = await userManager.GetUserAsync(User);
         bool changed = false;
         if (user == null)
         {
             return Redirect("/");
         }
-        if (manageView.OldPassword is not null && manageView.NewPassword is not null)
+        if (!string.IsNullOrEmpty(manageView.oldPassword)  && !string.IsNullOrEmpty(manageView.newPassword) )
         {
-            var passwordChange = await userManager.ChangePasswordAsync(user, manageView.OldPassword, manageView.NewPassword);
+            var passwordChange = await userManager.ChangePasswordAsync(user, manageView.oldPassword, manageView.newPassword);
             if (passwordChange.Succeeded)
             {
                 changed = true;
@@ -190,73 +192,73 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
                 }
             }
         }
-        if (manageView.UserName is not null)
+        if (!string.IsNullOrEmpty(manageView.userName))
         {
-            user.UserName = manageView.UserName;
+            user.UserName = manageView.userName;
             changed = true;
         }
-        if (manageView.Prefix is not null)
+        if (!string.IsNullOrEmpty(manageView.prefix))
         {
-            user.Prefix = manageView.Prefix;
+            user.Prefix = manageView.prefix;
             changed = true;
         }
-        if (manageView.First_Name is not null)
+        if (!string.IsNullOrEmpty(manageView.first_Name))
         {
-            user.First_Name = manageView.First_Name;
+            user.First_Name = manageView.first_Name;
             changed = true;
         }
-        if (manageView.Last_Name is not null)
+        if (!string.IsNullOrEmpty(manageView.last_Name))
         {
-            user.Last_Name = manageView.Last_Name;
+            user.Last_Name = manageView.last_Name;
             changed = true;
         }
-        if (manageView.Pronouns is not null)
+        if (!string.IsNullOrEmpty(manageView.pronouns))
         {
-            user.Pronouns = manageView.Pronouns;
+            user.Pronouns = manageView.pronouns;
             changed = true;
         }
-        if (manageView.ImageURL is not null)
+        if (!string.IsNullOrEmpty(manageView.imageURL))
         {
-            user.ImageURL = manageView.ImageURL;
+            user.ImageURL = manageView.imageURL;
             changed = true;
         }
-        if (manageView.PermissionLevel is not null)
+        if (!string.IsNullOrEmpty(manageView.permissionLevel))
         {
-            user.PermissionLevel = manageView.PermissionLevel;
+            user.PermissionLevel = manageView.permissionLevel;
             changed = true;
         }
-        if (manageView.Bio is not null)
+        if (!string.IsNullOrEmpty(manageView.bio))
         {
-            user.Bio = manageView.Bio;
+            user.Bio = manageView.bio;
             changed = true;
         }
-        if (manageView.BanerImageURL is not null)
+        if (!string.IsNullOrEmpty(manageView.banerImageURL) )
         {
-            user.BanerImageURL = manageView.BanerImageURL;
+            user.BanerImageURL = manageView.banerImageURL;
             changed = true;
         }
-        if (manageView.HideEmail != user.HideEmail)
+        if (manageView.hideEmail != user.HideEmail)
         {
-            user.HideEmail = manageView.HideEmail;
+            user.HideEmail = manageView.hideEmail;
             changed = true;
         }
-        if (manageView.HideName != user.HideName)
+        if (manageView.hideName != user.HideName)
         {
-            user.HideName = manageView.HideName;
+            user.HideName = manageView.hideName;
             changed = true;
         }
-        if (manageView.HideBlocked != user.HideBlocked)
+        if (manageView.hideBlocked != user.HideBlocked)
         {
-            user.HideBlocked = manageView.HideBlocked;
+            user.HideBlocked = manageView.hideBlocked;
             changed = true;
         }
         if (changed)
         {
             await userManager.UpdateAsync(user);
-            return Ok();
+            return Ok(user.UsertoDisplay());
         }
         ModelState.AddModelError("No Changes", "No changes made");
-        return Ok();
+        return Ok(user.UsertoDisplay());
     }
 
     [HttpPut("follow")]

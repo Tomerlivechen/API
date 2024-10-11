@@ -40,7 +40,7 @@ const textboxParams = colors.TextBox;
   style={initalValues.style}
   value={initalValues.value}
   as =  {initalValues.as}
-  onChange={initalValues.onChange}
+  {...(initalValues.onChange ? { onChange: initalValues.onChange } : {})}
 />
 <ErrorMessage
   name={initalValues.element}

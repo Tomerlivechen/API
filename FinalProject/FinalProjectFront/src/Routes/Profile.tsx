@@ -1,27 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import ProfileUserSection from "../Constants/Objects/ProfileUserSection";
 import { auth } from "../Services/auth-service";
-import { UserContext } from "../ContextAPI/UserContext";
 
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import { useParams } from "react-router-dom";
+import { useUser } from "../CustomHooks/useUser";
 
 
-function Profile() {
-  const { userInfo } = useContext(UserContext);
-  const [UserDisplay, setUserDisplay] = useState<string | null>(null);
+const Profile=() =>{
+  const { userId } = useParams();
+  const [userIdState, setUserIdState] = useState<string | null>(userId);
 
-  useEffect(() => {
-    if (userInfo && userInfo.UserId) {
-      auth.getUser(userInfo.UserId).then((response) => {
-        setUserDisplay(response.data);
-      });
-    }
-  }, [userInfo]);
+  
   return (
     <>
-      <ElementFrame height="300px" width="800px" padding="0">
-        {UserDisplay && <ProfileUserSection UserDisplay={UserDisplay} />}
-      </ElementFrame>
+       <ProfileUserSection userId={userIdState} />
     </>
   );
 }

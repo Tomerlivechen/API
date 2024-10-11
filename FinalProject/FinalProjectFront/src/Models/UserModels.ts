@@ -14,13 +14,37 @@ interface IAppUserDisplay {
   blocked: boolean;
   blockedYou: boolean;
   pronouns: string;
-  Bio : string;
-  BanerImageURL:string;
-  HideEmail:boolean;
-  HideName: boolean;
-  HideBlocked : boolean
+  bio : string;
+  banerImageURL:string;
+  hideEmail:boolean;
+  hideName: boolean;
+  hideBlocked : boolean
 }
 
+interface IEditUser {
+  oldPassword?: string;
+  newPassword?: string;
+  permissionLevel?: string;
+}
+
+
+export interface IAppUserEdit {
+  id: string;
+  userName: string;
+  oldPassword: string;
+  newPassword: string;
+  bio: string;
+  prefix: string;
+  hideEmail: boolean;
+  hideName: boolean;
+  hideBlocked: boolean;
+  banerImageURL: string;
+  first_Name: string;
+  last_Name: string;
+  pronouns: string;
+  imageURL: string;
+  permissionLevel: string;
+}
 const AppUserDisplay = {
   id: "",
   prefix: "",
@@ -57,5 +81,6 @@ interface IAppUserFull {
   notifications: Notification[];
 }
 
-export type { IAppUserDisplay, IAppUserFull };
+
+export type { IAppUserDisplay, IAppUserFull , IEditUser };
 export { AppUserDisplay };

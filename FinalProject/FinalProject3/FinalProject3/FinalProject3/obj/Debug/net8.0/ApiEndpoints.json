@@ -17,6 +17,32 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "GetUser",
+    "RelativePath": "api/Auth/ById/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FinalProject3.DTOs.AppUserDisplay",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
     "Method": "Follow",
     "RelativePath": "api/Auth/follow",
     "HttpMethod": "PUT",
@@ -48,32 +74,6 @@
     "ReturnTypes": [
       {
         "Type": "FinalProject3.Models.AppUser",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "FinalProject3.Controllers.AuthController",
-    "Method": "GetUser",
-    "RelativePath": "api/Auth/GetUser",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "FinalProject3.DTOs.AppUserIdRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "FinalProject3.DTOs.AppUserDisplay",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -148,7 +148,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "FinalProject3.DTOs.AppUserDisplay",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",

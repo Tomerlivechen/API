@@ -9,6 +9,7 @@ import { dialogs } from "../Constants/AlertsConstant";
 import SendPostComponent from "../Components/SendPostComponent";
 import CommentView from "../Constants/Objects/CommentView";
 import ProfileUserSection from "../Constants/Objects/ProfileUserSection";
+import EditUserComponent from "../Components/EditUserComponent";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -319,11 +320,11 @@ const user1 : IAppUserDisplay = {
   blocked: false,
   blockedYou: false,
   pronouns: "he/him",
-  Bio: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
-  BanerImageURL: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
-  HideEmail: false,
-  HideName: false,
-  HideBlocked: false
+  bio: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
+  banerImageURL: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
+  hideEmail: false,
+  hideName: false,
+ hideBlocked: false
 };
 
 const tabProps: UserTabProps =  {
@@ -338,6 +339,7 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className=" flex flex-col items-center">
 <div>
+  <EditUserComponent {...user1}/>
 </div></div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
