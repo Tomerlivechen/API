@@ -13,7 +13,7 @@ import { HiLink } from "react-icons/hi2";
 
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
-import { FcAddImage } from "react-icons/fc";
+import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 
 function SendPostComponent() {
   const [open, setOpen] = useState(false);
@@ -109,6 +109,14 @@ function SendPostComponent() {
       setIsLoading(false);
       toggelOpen();
     }
+  };
+
+  const handleRemoveImage = () => {
+    setPostValues((prevPostValues) => ({
+      ...prevPostValues,
+      imageURL: "",
+    }));
+    setHoldFile(null);
   };
 
   return (
@@ -240,18 +248,43 @@ function SendPostComponent() {
                           id="file-input"
                           hidden
                         />
-                        <FcAddImage
-                          onClick={() => {
-                            const fileInput = document.getElementById(
-                              "file-input"
-                            );
-                            if (fileInput) {
-                              fileInput.click();
-                            }
-                          }}
-                          size={40}
-                          className="cursor-pointer"
-                        />
+                        <div className="flex justify-evenly">
+                          {postValues.imageURL || holdFile ? (
+                            <>
+                              <FcEditImage
+                                onClick={() => {
+                                  const fileInput = document.getElementById(
+                                    "file-input"
+                                  );
+                                  if (fileInput) {
+                                    fileInput.click();
+                                  }
+                                }}
+                                size={40}
+                                className="cursor-pointer"
+                              />
+
+                              <FcRemoveImage
+                                size={40}
+                                className="cursor-pointer"
+                                onClick={handleRemoveImage}
+                              />
+                            </>
+                          ) : (
+                            <FcAddImage
+                              onClick={() => {
+                                const fileInput = document.getElementById(
+                                  "file-input"
+                                );
+                                if (fileInput) {
+                                  fileInput.click();
+                                }
+                              }}
+                              size={40}
+                              className="cursor-pointer"
+                            />
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

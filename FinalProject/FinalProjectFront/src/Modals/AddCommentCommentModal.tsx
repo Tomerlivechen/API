@@ -23,7 +23,7 @@ import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
 import { CommentService } from "../Services/comment-service";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import ClipSpinner from "../Spinners/ClipSpinner";
-import { FcAddImage } from "react-icons/fc";
+import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 
 interface AddCommentCommentModalProps {
   commentId: string;
@@ -123,6 +123,14 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   useEffect(() => {
     setShow(Mshow);
   }, [Mshow]);
+  const handleRemoveImage = () => {
+    setCommentValues((prevCommentValues) => ({
+      ...prevCommentValues,
+      imageURL: "",
+    }));
+    setHoldFile(null);
+  };
+
   return (
     <>
       <Modal show={show} onHide={onHide} className="comment-modal">
@@ -157,18 +165,43 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
                             id="file-input"
                             hidden
                           />
-                          <FcAddImage
-                            onClick={() => {
-                              const fileInput = document.getElementById(
-                                "file-input"
-                              );
-                              if (fileInput) {
-                                fileInput.click();
-                              }
-                            }}
-                            size={40}
-                            className="cursor-pointer"
-                          />
+                          <div className="flex justify-evenly">
+                            {commentValues.imageURL || holdFile ? (
+                              <>
+                                <FcEditImage
+                                  onClick={() => {
+                                    const fileInput = document.getElementById(
+                                      "file-input"
+                                    );
+                                    if (fileInput) {
+                                      fileInput.click();
+                                    }
+                                  }}
+                                  size={40}
+                                  className="cursor-pointer"
+                                />
+
+                                <FcRemoveImage
+                                  size={40}
+                                  className="cursor-pointer"
+                                  onClick={handleRemoveImage}
+                                />
+                              </>
+                            ) : (
+                              <FcAddImage
+                                onClick={() => {
+                                  const fileInput = document.getElementById(
+                                    "file-input"
+                                  );
+                                  if (fileInput) {
+                                    fileInput.click();
+                                  }
+                                }}
+                                size={40}
+                                className="cursor-pointer"
+                              />
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
