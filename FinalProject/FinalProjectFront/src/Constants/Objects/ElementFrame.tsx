@@ -24,15 +24,17 @@ interface basicElements {
   overflowX?: overflowtype;
   zindex?: number;
   margin?: string;
+  direction?: "ltr" | "rtl";
+  notRounded?: boolean;
 }
 
 const ElementFrame = (props: basicElements) => {
   return (
     <>
       <div
-        className={` p-${props.padding} shadow-lg  rounded-lg m-${
-          props.margin || "-3"
-        } ${colors.ElementFrame}`}
+        className={` p-${props.padding} shadow-lg  ${
+          !props.notRounded && " rounded-lg"
+        } m-${props.margin || "-3"} ${colors.ElementFrame}`}
         style={{
           left: props.left,
           zIndex: props.zindex || 0,
@@ -44,6 +46,7 @@ const ElementFrame = (props: basicElements) => {
           overflowY: props.overflowY,
           overflowX: props.overflowX,
           resize: "none",
+          ...(props.direction && { direction: props.direction }),
         }}
       >
         {props.children}

@@ -278,7 +278,7 @@ function SendPostComponent() {
         </>
       ) : (
         <>
-          <ElementFrame height="55px" width="300px" padding="1">
+          <ElementFrame height="55px" width="400px" padding="1">
             <div className="flex justify-evenly">
               <label className="text-4xl font-bold  mb-1 ">New Post</label>
               <button

@@ -76,21 +76,14 @@ function SearchProvider({ children }) {
   const [filterUserList, setFilterUserList] = useState<IAppUserDisplay[]>([]);
   const [filterPostList, setFilterPostList] = useState<IPostDisplay[]>([]);
 
-useEffect(() => {
+  useEffect(() => {
+    setFilterUserList([]);
+    setFilterPostList([]);
+  }, [userSearch, postSearch]);
 
-  setFilterUserList([])
-  setFilterPostList([])
-;},[userSearch,postSearch])
-
-useEffect(() => {
-
-  const timer = setTimeout(() => {
-    fillLists()
-  }, 35000); 
-  return () => {
-    clearTimeout(timer);
-  };
-}, []); 
+  useEffect(() => {
+    fillLists();
+  }, [postSearch, userSearch]);
 
   const fillLists = () => {
     auth
