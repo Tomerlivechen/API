@@ -146,9 +146,8 @@ const Feed = () => {
   return (
     <>
       <div className="flex flex-wrap justify-between">
-        <div className="w-2/12 pr-2 pl-2"></div>
-        <div className="w-2/12 pr-2 pl-2"></div>
-
+        <div className="lg:w-1/12 hidden lg:block 0/12 pr-2 pl-2"></div>
+        <div className="lg:w-1/12 hidden lg:block 0/12 pr-2 pl-2"></div>
         <div className="w-3/12 pl-2 pr-2">
           <>
             <div className={`${colors.ElementFrame} rounded-b-xl`}>
@@ -195,7 +194,7 @@ const Feed = () => {
             </div>
           </>
         </div>
-        <div className="w-2/12 pl-2 pr-2 top-0 right-0 ">
+        <div className="hidden md:block md:w-1/2 w-2/12 pl-2 pr-2 top-0 right-0 ">
           {!loadingUsers && (
             <>
               <ResizableFrame
@@ -212,7 +211,7 @@ const Feed = () => {
             </>
           )}
         </div>
-        <div className="w-2/12 pr-2 pl-2"></div>
+        <div className="lg:w-1/12 hidden lg:block 0/12 pr-2 pl-2"></div>
       </div>
     </>
   );
