@@ -44,5 +44,7 @@ namespace FinalProject3.Models
 
         public List<Notification> Notifications { get; set; } = new List<Notification>();
 
+        public string LastActive { get; set; } = string.Empty;
+
     }
 }

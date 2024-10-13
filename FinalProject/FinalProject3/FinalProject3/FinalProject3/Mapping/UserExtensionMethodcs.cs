@@ -40,6 +40,7 @@ namespace FinalProject32.Mapping
                 HideBlocked = user.HideBlocked,
                 HideEmail = user.HideEmail,
                 HideName = user.HideName,
+                LastActive = user.LastActive,
             };
             return display;
         }

@@ -81,7 +81,8 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
                 }
             }
         }
-        
+        user.LastActive = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
+        await userManager.UpdateAsync(user);
         return Ok(users);
     }
 

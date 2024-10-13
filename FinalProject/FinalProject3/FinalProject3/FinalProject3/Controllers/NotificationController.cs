@@ -2,11 +2,13 @@
 using FinalProject3.DTOs;
 using FinalProject3.Mapping;
 using FinalProject3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using System.Security.Claims;
 
 namespace FinalProject3.Controllers
 {
@@ -15,6 +17,18 @@ namespace FinalProject3.Controllers
     public class NotificationController(FP3Context context, UserManager<AppUser> userManager) : ControllerBase
     {
         private readonly FP3Context _context = context;
+
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<List<NotificationDisplay>>> GetNotifications()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var notifications = await _context.Notification.Where(n => n.user.Id == userId && !n.Hidden).Select(n => n.toDisplay()).ToListAsync();
+
+            return (notifications);
+
+        }
+
         [HttpPost]
         public async Task<ActionResult> PostNotification(string type, string ActionId)
         {

@@ -19,5 +19,22 @@ namespace FinalProject3.Mapping
             return notification;
         }
 
+        public static NotificationDisplay toDisplay(this Notification notification)
+        {
+            NotificationDisplay Displaynotification = new NotificationDisplay()
+            {
+                Id = notification.Id,
+                ReferenceId = notification.ReferenceId,
+                Seen = notification.Seen,
+                Hidden = notification.Hidden,
+                Type = notification.Type,
+                Date = notification.Date,
+                userid = notification.user.Id,
+            };
+
+            return Displaynotification;
+
+        }
+
     }
 }
