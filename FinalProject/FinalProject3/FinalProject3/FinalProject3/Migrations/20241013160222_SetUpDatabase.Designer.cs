@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject3.Migrations
 {
     [DbContext(typeof(FP3Context))]
-    [Migration("20241009145728_Creatdatabase")]
-    partial class Creatdatabase
+    [Migration("20241013160222_SetUpDatabase")]
+    partial class SetUpDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -348,7 +348,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "ec7abb7c-5d70-4283-b893-55f0850e5fc6",
+                            ConcurrencyStamp = "dacd3ed3-00d0-49ac-86d8-9655a160fd68",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -517,7 +517,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "02d64dec-8ebe-459e-b220-f58c151f68ff",
+                            UserId = "cc3347e9-ce79-4422-a9fc-a166da2c9a06",
                             RoleId = "1"
                         });
                 });
@@ -612,6 +612,10 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LastActive")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Last_Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -636,17 +640,17 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "02d64dec-8ebe-459e-b220-f58c151f68ff",
+                            Id = "cc3347e9-ce79-4422-a9fc-a166da2c9a06",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4104030b-2555-4c6b-bb2c-b7d6eb5d590c",
+                            ConcurrencyStamp = "242299b4-e3bb-4dc8-8f99-1f29ccce078b",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELsTf26Y70RjTBmF6+r7PlQirZKm1hmup72yOmqrl82jrAANLu+F29nisxsqq9/S7w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGGe3s53AZTV/LYfAKjkZpX4M5wl3LGkINJb9mqMtzUABp+6f+pDZ6VzOSGpQkWZog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fb3c8317-04ee-4253-9492-6cd743604704",
+                            SecurityStamp = "2e68820a-fc45-4526-a067-37ed96314b83",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             BanerImageURL = "",
@@ -659,6 +663,7 @@ namespace FinalProject3.Migrations
                             HideName = false,
                             ImageAlt = "",
                             ImageURL = "https://i.imgur.com/1nKIWjB.gif",
+                            LastActive = "",
                             Last_Name = "Chen",
                             PermissionLevel = "Admin",
                             Prefix = "Dr",

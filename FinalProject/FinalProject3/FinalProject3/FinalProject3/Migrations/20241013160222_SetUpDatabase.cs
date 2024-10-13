@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalProject3.Migrations
 {
     /// <inheritdoc />
-    public partial class Creatdatabase : Migration
+    public partial class SetUpDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,6 +46,7 @@ namespace FinalProject3.Migrations
                     FollowingId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlockedId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VoteScore = table.Column<int>(type: "int", nullable: true),
+                    LastActive = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -457,17 +458,17 @@ namespace FinalProject3.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "ec7abb7c-5d70-4283-b893-55f0850e5fc6", "Admin", "ADMIN" });
+                values: new object[] { "1", "dacd3ed3-00d0-49ac-86d8-9655a160fd68", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
-                values: new object[] { "02d64dec-8ebe-459e-b220-f58c151f68ff", 0, "", "", "[]", "4104030b-2555-4c6b-bb2c-b7d6eb5d590c", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAELsTf26Y70RjTBmF6+r7PlQirZKm1hmup72yOmqrl82jrAANLu+F29nisxsqq9/S7w==", "Admin", null, false, "Dr", "They", "fb3c8317-04ee-4253-9492-6cd743604704", false, "SysAdmin", 0 });
+                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "LastActive", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
+                values: new object[] { "cc3347e9-ce79-4422-a9fc-a166da2c9a06", 0, "", "", "[]", "242299b4-e3bb-4dc8-8f99-1f29ccce078b", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAEGGe3s53AZTV/LYfAKjkZpX4M5wl3LGkINJb9mqMtzUABp+6f+pDZ6VzOSGpQkWZog==", "Admin", null, false, "Dr", "They", "2e68820a-fc45-4526-a067-37ed96314b83", false, "SysAdmin", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1", "02d64dec-8ebe-459e-b220-f58c151f68ff" });
+                values: new object[] { "1", "cc3347e9-ce79-4422-a9fc-a166da2c9a06" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUserSocialGroup_SocialGroupId",

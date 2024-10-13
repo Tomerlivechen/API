@@ -14,11 +14,12 @@ import { Tooltip } from "react-bootstrap";
 import { IoSparkles } from "react-icons/io5";
 import { GoCommentDiscussion } from "react-icons/go";
 import { FaCircleUp } from "react-icons/fa6";
+import UserLane from "../Constants/Objects/UserLane";
 
 interface IPostSortingProps {
   icon: React.ComponentType<{ size: number }>;
   activeHook: boolean;
-  type: "totalVotes" | "datetime" | "controversial";
+  type: "totalVotes" | "datetime" | "comments";
   tooltip: string;
 }
 
@@ -39,18 +40,36 @@ const Feed = () => {
   const searchContext = useSearch();
 
   useEffect(() => {
-    searchContext.fillLists();
+    updatePostList();
   }, []);
 
+  const updatePostList = () => {
+    searchContext.fillLists();
+  };
+
   useEffect(() => {
-    setLoadingUsers(false);
+    if (searchContext.postList.length > 0) {
+      const newPostList = searchContext.postList;
+      if (newPostList.length !== postList?.posts.length) {
+        setPostList((prevPostList) => ({
+          ...prevPostList,
+          posts: newPostList,
+        }));
+      }
+    }
+  }, [searchContext.postList]);
+
+  useEffect(() => {
+    if (searchContext.userList.length > 0) {
+      setLoadingUsers(false);
+    }
   }, [searchContext.userList]);
 
   const [postList, setPostList] = useState<PostListValues | null>();
   const [feedSort, setFeedSort] = useState({
     totalVotes: false,
     datetime: true,
-    controversial: false,
+    comments: false,
   });
   const [feedDirection, setFeedDirection] = useState({
     ascending: true,
@@ -60,13 +79,14 @@ const Feed = () => {
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [loadingUsers, setLoadingUsers] = useState(true);
 
-  const toggleSort = (type: "totalVotes" | "datetime" | "controversial") => {
+  const toggleSort = (type: "totalVotes" | "datetime" | "comments") => {
     setFeedSort({
       totalVotes: false,
       datetime: false,
-      controversial: false,
+      comments: false,
       [type]: true,
     });
+    updatePostList();
   };
   const toggleDirection = (type: "ascending" | "descending") => {
     setFeedDirection({
@@ -74,6 +94,7 @@ const Feed = () => {
       descending: false,
       [type]: true,
     });
+    updatePostList();
   };
 
   const IconSortButton: React.FC<IPostSortingProps> = (e) => {
@@ -112,27 +133,19 @@ const Feed = () => {
     );
   };
   useEffect(() => {
-    if (
-      searchContext.postList.length > 0 &&
-      feedDirection.ascending &&
-      feedSort
-    ) {
-      const order = feedDirection.ascending ? "asc" : "desc";
-      let activeSort = Object.entries(feedSort).find(([key, value]) => value);
-      console.log(searchContext.postList);
-      if (activeSort && activeSort[0] === "controversial") {
-        activeSort[0] = "comments.length";
-      }
-      if (activeSort && searchContext.postList && order) {
-        const newPostList = {
-          sortElement: activeSort[0] as keyof IPostDisplay,
-          orderBy: order,
-          posts: searchContext.postList,
-        };
-        console.log(newPostList);
-        if (newPostList !== postList) {
-          setPostList(newPostList);
-        }
+    if (searchContext.postList.length > 0) {
+      const newPostList: PostListValues = {
+        sortElement: feedSort.totalVotes
+          ? "totalVotes"
+          : feedSort.datetime
+          ? "datetime"
+          : "comments",
+        orderBy: feedDirection.ascending ? "asc" : "desc",
+        posts: searchContext.postList,
+      };
+
+      if (JSON.stringify(newPostList) !== JSON.stringify(postList)) {
+        setPostList(newPostList);
       }
     }
   }, [feedDirection, feedSort, searchContext.postList]);
@@ -146,13 +159,18 @@ const Feed = () => {
   return (
     <>
       <div className="flex flex-wrap justify-between">
-        <div className="lg:w-1/12 hidden lg:block 0/12 pr-2 pl-2"></div>
-        <div className="lg:w-1/12 hidden lg:block 0/12 pr-2 pl-2"></div>
-        <div className="w-3/12 pl-2 pr-2">
+        <div className="lg:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
+        <div className="lg:w-2/12 hidden lg:block pr-2 pl-2">
+          <UserLane />
+        </div>
+        <div className="lg:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
+        <div className="  lg:w-4/12 pl-2 pr-2  md:w-1/2 sm:w-full">
           <>
-            <div className={`${colors.ElementFrame} rounded-b-xl`}>
-              <div className="flex justify-between items-center p-4 pr-1">
-                <div className="flex items-center gap-4 rounded-xl ">
+            <div
+              className={`${colors.ElementFrame} rounded-b-xl flex-grow w-full`}
+            >
+              <div className="flex relative p-4 pb-4 flex-grow w-full ">
+                <div className="flex items-center gap-4 rounded-xl w-full">
                   <IconSortButton
                     icon={FaCircleUp}
                     activeHook={feedSort.totalVotes}
@@ -167,9 +185,9 @@ const Feed = () => {
                   />
                   <IconSortButton
                     icon={GoCommentDiscussion}
-                    activeHook={feedSort.controversial}
-                    type="controversial"
-                    tooltip="Sort by controversial"
+                    activeHook={feedSort.comments}
+                    type="comments"
+                    tooltip="Sort by comments"
                   />
                 </div>
                 <div className="flex space-x-2">
@@ -190,11 +208,12 @@ const Feed = () => {
             </div>
             <SendPostComponent />
             <div className="-ml-2">
-              {!loadingPosts && <PostList {...(postList as PostListValues)} />}
+              {!loadingPosts && <PostList {...postList} />}
             </div>
           </>
         </div>
-        <div className="hidden md:block md:w-1/2 w-2/12 pl-2 pr-2 top-0 right-0 ">
+        <div className="lg:w-1/12 hidden lg:block pr-2 pl-2"></div>
+        <div className=" lg:w-2/12 hidden md:block md:w-1/2  w-0/12 pr-2 pl-2">
           {!loadingUsers && (
             <>
               <ResizableFrame
@@ -211,7 +230,7 @@ const Feed = () => {
             </>
           )}
         </div>
-        <div className="lg:w-1/12 hidden lg:block 0/12 pr-2 pl-2"></div>
+        <div className="lg:w-1/12 hidden lg:block pr-2 pl-2"></div>
       </div>
     </>
   );

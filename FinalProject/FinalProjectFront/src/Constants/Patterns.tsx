@@ -1,5 +1,5 @@
 import { FormikValues } from "formik";
-import { IPostDisplay } from "../Models/Interaction";
+import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { dialogs } from "./AlertsConstant";
 import { MYFormikValues } from "./FormikElementBuilder";
@@ -93,6 +93,12 @@ export const sortByProperty = <T,>(
   return (a: T, b: T) => {
     const valueA = a[property];
     const valueB = b[property];
+
+    if (property === "comments") {
+      const commentsA = (valueA as ICommentDisplay[] | null)?.length || 0;
+      const commentsB = (valueB as ICommentDisplay[] | null)?.length || 0;
+      return order === "asc" ? commentsA - commentsB : commentsB - commentsA;
+    }
 
     if (valueA == null && valueB == null) return 0;
     if (valueA == null) return order === "asc" ? -1 : 1;
