@@ -11,6 +11,7 @@ import ProfileUserSection from "../Constants/Objects/ProfileUserSection";
 import EditUserComponent from "../Components/EditUserComponent";
 import ResizableFrame from "../Constants/Objects/ResizableFrame";
 import { colors } from "../Constants/Patterns";
+import UserLane from "../Constants/Objects/UserLane";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -342,19 +343,12 @@ function TestSpace() {
     <>
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
-      <div className=" flex flex-col items-center">
-        <div>
-          <ResizableFrame whidth="100%" show={true} title={"Floowing"}>
-            {commentsArray.map((comment) => (
-              <>
-                <div className="pt-5 ">
-                  <CommentView key={comment.id} {...comment} />
-                </div>
-              </>
-            ))}
-          </ResizableFrame>
-        </div>
+      <div className="flex w-2/12">
+      <UserLane/>
       </div>
+
+
+      
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>
