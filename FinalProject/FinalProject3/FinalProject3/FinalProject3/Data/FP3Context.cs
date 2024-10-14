@@ -91,7 +91,23 @@ namespace FinalProject3.Data
                         .WithMany()
                         .HasForeignKey("BlockerId")
                         .OnDelete(DeleteBehavior.Cascade)); // Keep as Cascade
-
+                                                            // Configure the Chat relationship
+            builder.Entity<AppUser>()
+                .HasMany(u => u.Chats) 
+                .WithMany(c => c.Users) 
+                .UsingEntity<Dictionary<string, object>>( 
+                    "UserChats", 
+                    j => j
+                        .HasOne<Chat>() 
+                        .WithMany() 
+                        .HasForeignKey("ChatId") 
+                        .OnDelete(DeleteBehavior.Restrict), 
+                    j => j
+                        .HasOne<AppUser>() 
+                        .WithMany()
+                        .HasForeignKey("UserId") 
+                        .OnDelete(DeleteBehavior.Cascade) 
+                );
 
 
 

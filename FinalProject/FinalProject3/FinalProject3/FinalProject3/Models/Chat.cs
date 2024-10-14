@@ -3,8 +3,7 @@
     public class Chat
     {
         public string Id { get; set; } = string.Empty;
-        public AppUser User1 { get; set; }
-        public AppUser User2 { get; set; }
+        public List<AppUser> Users { get; set; } = new List<AppUser>();
 
         public string User1Id { get; set; } = string.Empty;
         public string User1Name { get; set; } = string.Empty;

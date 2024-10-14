@@ -209,7 +209,7 @@ namespace FinalProject3.Controllers
 
 
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpPut("VoteById/{commentId}")]

@@ -249,7 +249,7 @@ namespace FinalProject3.Controllers
             _context.Post.Remove(post);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok();
         }
         [HttpPut("VoteById/{PostId}")]
         [Authorize]

@@ -220,6 +220,22 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.ChatController",
+    "Method": "CreatNewChat",
+    "RelativePath": "api/Chat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user2id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.ChatController",
     "Method": "GetChatID",
     "RelativePath": "api/Chat/ByChatId/{ChatID}",
     "HttpMethod": "GET",
@@ -253,24 +269,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "sendingUserID",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "recevengUserID",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "message",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ChatId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "newmesage",
+        "Type": "FinalProject3.DTOs.MessageNew",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

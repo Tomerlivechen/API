@@ -15,6 +15,7 @@ import { IoSparkles } from "react-icons/io5";
 import { GoCommentDiscussion } from "react-icons/go";
 import { FaCircleUp } from "react-icons/fa6";
 import UserLane from "../Constants/Objects/UserLane";
+import { MdCloudSync } from "react-icons/md";
 
 interface IPostSortingProps {
   icon: React.ComponentType<{ size: number }>;
@@ -159,11 +160,11 @@ const Feed = () => {
   return (
     <>
       <div className="flex flex-wrap justify-between">
-        <div className="lg:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
-        <div className="lg:w-2/12 hidden lg:block pr-2 pl-2">
+        <div className="xl:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
+        <div className="lg:w-3/12 xl:w-2/12 hidden lg:block pr-2 pl-2">
           <UserLane />
         </div>
-        <div className="lg:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
+        <div className="xl:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
         <div className="  lg:w-4/12 pl-2 pr-2  md:w-1/2 sm:w-full">
           <>
             <div
@@ -191,6 +192,11 @@ const Feed = () => {
                   />
                 </div>
                 <div className="flex space-x-2">
+                  <button onClick={() => updatePostList()}>
+                    <Tooltip title="Sync">
+                      <MdCloudSync size={26} />
+                    </Tooltip>
+                  </button>
                   <IconDirectionButton
                     icon={FaAngleDoubleUp}
                     activeHook={feedDirection.ascending}
@@ -212,8 +218,8 @@ const Feed = () => {
             </div>
           </>
         </div>
-        <div className="lg:w-1/12 hidden lg:block pr-2 pl-2"></div>
-        <div className=" lg:w-2/12 hidden md:block md:w-1/2  w-0/12 pr-2 pl-2">
+        <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>
+        <div className=" lg:w-3/12 xl:w-2/12 hidden md:block md:w-1/2  w-0/12 pr-2 pl-2">
           {!loadingUsers && (
             <>
               <ResizableFrame
@@ -230,7 +236,7 @@ const Feed = () => {
             </>
           )}
         </div>
-        <div className="lg:w-1/12 hidden lg:block pr-2 pl-2"></div>
+        <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>
       </div>
     </>
   );

@@ -59,9 +59,6 @@ namespace FinalProject3.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("User1Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -79,8 +76,6 @@ namespace FinalProject3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("Chat");
                 });
@@ -144,6 +139,10 @@ namespace FinalProject3.Migrations
                     b.Property<string>("ChatId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Datetime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -345,7 +344,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "dacd3ed3-00d0-49ac-86d8-9655a160fd68",
+                            ConcurrencyStamp = "8483482b-5759-4d89-b13c-434aa2eb06da",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -514,7 +513,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "cc3347e9-ce79-4422-a9fc-a166da2c9a06",
+                            UserId = "543455d9-2487-47b6-a47a-4fc4c92ec1a2",
                             RoleId = "1"
                         });
                 });
@@ -553,6 +552,21 @@ namespace FinalProject3.Migrations
                     b.ToTable("UserBlock");
                 });
 
+            modelBuilder.Entity("UserChats", b =>
+                {
+                    b.Property<string>("ChatId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ChatId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserChats");
+                });
+
             modelBuilder.Entity("UserFollow", b =>
                 {
                     b.Property<string>("FollowerId")
@@ -581,6 +595,10 @@ namespace FinalProject3.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BlockedId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ChatsId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -637,22 +655,23 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cc3347e9-ce79-4422-a9fc-a166da2c9a06",
+                            Id = "543455d9-2487-47b6-a47a-4fc4c92ec1a2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "242299b4-e3bb-4dc8-8f99-1f29ccce078b",
+                            ConcurrencyStamp = "7ecdfc62-7eaa-4c8b-93cb-6a18cfca9eb5",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGGe3s53AZTV/LYfAKjkZpX4M5wl3LGkINJb9mqMtzUABp+6f+pDZ6VzOSGpQkWZog==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAEQ9lxRvSkc24HbCuyxvFWGN3ajmVOMauEV6Uj4LrnzCcLiTnInArcgPrcB/pbPpg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2e68820a-fc45-4526-a067-37ed96314b83",
+                            SecurityStamp = "7882d68a-043f-4ce7-82bd-65e7ed79e98d",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             BanerImageURL = "",
                             Bio = "",
                             BlockedId = "[]",
+                            ChatsId = "[]",
                             First_Name = "Tomer",
                             FollowingId = "[]",
                             HideBlocked = false,
@@ -682,13 +701,6 @@ namespace FinalProject3.Migrations
                         .HasForeignKey("SocialGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FinalProject3.Models.Chat", b =>
-                {
-                    b.HasOne("FinalProject3.Models.AppUser", null)
-                        .WithMany("Chats")
-                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Comment", b =>
@@ -857,6 +869,21 @@ namespace FinalProject3.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("UserChats", b =>
+                {
+                    b.HasOne("FinalProject3.Models.Chat", null)
+                        .WithMany()
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FinalProject3.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("UserFollow", b =>
                 {
                     b.HasOne("FinalProject3.Models.AppUser", null)
@@ -898,8 +925,6 @@ namespace FinalProject3.Migrations
 
             modelBuilder.Entity("FinalProject3.Models.AppUser", b =>
                 {
-                    b.Navigation("Chats");
-
                     b.Navigation("Notifications");
 
                     b.Navigation("Posts");

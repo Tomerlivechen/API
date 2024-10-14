@@ -24,5 +24,6 @@ namespace FinalProject3.DTOs
 
         public string LastActive {  get; set; } = string.Empty;
 
+
     }
 }

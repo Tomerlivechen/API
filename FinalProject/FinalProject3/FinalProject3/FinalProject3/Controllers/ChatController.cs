@@ -2,11 +2,13 @@
 using FinalProject3.DTOs;
 using FinalProject3.Mapping;
 using FinalProject3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Security.Claims;
 
 namespace FinalProject3.Controllers
 {
@@ -16,10 +18,35 @@ namespace FinalProject3.Controllers
     {
         private readonly FP3Context _context = context;
 
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> CreatNewChat (string user2id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ChatNew chat = new ChatNew()
+            {
+                User1Id = userId,
+                User2Id = user2id
+            };
+            var upChat = await chat.MakeNewChat(userManager);
+            await _context.Chat.AddAsync(upChat);
+            var user1 = await _context.Users.FindAsync(userId);
+            var user2 = await _context.Users.FindAsync (user2id);
+            user1.Chats.Add(upChat);
+            user2.Chats.Add(upChat);
+            await _context.SaveChangesAsync();
+            return Ok();
+
+        }
+
+
+
         [HttpGet("ByChatId/{ChatID}")]
+        [Authorize]
         public async Task<ActionResult<Chat>> GetChatID(string ChatId)
         {
-            var chat = await _context.Chat.FindAsync(ChatId);
+            var chat = await _context.Chat.Include(c => c.messages).FirstOrDefaultAsync(c => c.Id == ChatId);
 
             if (chat == null)
             {
@@ -30,32 +57,19 @@ namespace FinalProject3.Controllers
         }
 
         [HttpPost("Message")]
-        public async Task<ActionResult> SendMessage(string sendingUserID, string recevengUserID ,  string message , string ChatId)
+        [Authorize]
+        public async Task<ActionResult> SendMessage([FromBody] MessageNew newmesage)
         {
-            if (!ModelState.IsValid || string.IsNullOrEmpty(sendingUserID) || string.IsNullOrEmpty(recevengUserID) || string.IsNullOrEmpty(message))
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = User.FindFirstValue(ClaimTypes.Name);
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Chat? chat = await _context.Chat.FindAsync(ChatId);
-            var sendingUser = await userManager.FindByIdAsync(sendingUserID);
-            if (sendingUser is null) {
-                return NotFound(sendingUserID);
-            }
-            var recevengUser = await userManager.FindByIdAsync(recevengUserID);
-            if (recevengUser is null)
-            {
-                return NotFound(recevengUserID);
-            }
-            if (chat == null)
-            {
-                chat = new Chat();
-                chat.MakeNewChat(sendingUser, recevengUser);
-                await _context.Chat.AddAsync(chat);
-                await _context.SaveChangesAsync();
+            var user = await _context.Users.Include(u => u.Chats).FirstOrDefaultAsync(u => u.Id == userId);
 
-            }
-            Message newMessage = new Message();
-            newMessage.MakeMessage(chat.Id, sendingUser, message);
+            Message newMessage = newmesage.MakeMessage(userId, userName);
+            var chat = await _context.Chat.FindAsync(newmesage.ChatId);
             await _context.Message.AddAsync(newMessage);
             chat.messages.Add(newMessage);
             await _context.SaveChangesAsync();

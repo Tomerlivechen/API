@@ -46,6 +46,7 @@ namespace FinalProject3.Migrations
                     FollowingId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlockedId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VoteScore = table.Column<int>(type: "int", nullable: true),
+                    ChatsId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastActive = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -78,6 +79,21 @@ namespace FinalProject3.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Chat",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    User1Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User1Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User2Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User2Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Chat", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,27 +203,6 @@ namespace FinalProject3.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Chat",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    User1Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    User1Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    User2Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    User2Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Chat", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Chat_AspNetUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Group",
                 columns: table => new
                 {
@@ -312,7 +307,8 @@ namespace FinalProject3.Migrations
                     ChatId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    message = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Datetime = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -323,6 +319,30 @@ namespace FinalProject3.Migrations
                         principalTable: "Chat",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserChats",
+                columns: table => new
+                {
+                    ChatId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserChats", x => new { x.ChatId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_UserChats_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserChats_Chat_ChatId",
+                        column: x => x.ChatId,
+                        principalTable: "Chat",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -458,17 +478,17 @@ namespace FinalProject3.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "dacd3ed3-00d0-49ac-86d8-9655a160fd68", "Admin", "ADMIN" });
+                values: new object[] { "1", "8483482b-5759-4d89-b13c-434aa2eb06da", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "LastActive", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
-                values: new object[] { "cc3347e9-ce79-4422-a9fc-a166da2c9a06", 0, "", "", "[]", "242299b4-e3bb-4dc8-8f99-1f29ccce078b", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAEGGe3s53AZTV/LYfAKjkZpX4M5wl3LGkINJb9mqMtzUABp+6f+pDZ6VzOSGpQkWZog==", "Admin", null, false, "Dr", "They", "2e68820a-fc45-4526-a067-37ed96314b83", false, "SysAdmin", 0 });
+                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ChatsId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "LastActive", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
+                values: new object[] { "543455d9-2487-47b6-a47a-4fc4c92ec1a2", 0, "", "", "[]", "[]", "7ecdfc62-7eaa-4c8b-93cb-6a18cfca9eb5", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAEAEQ9lxRvSkc24HbCuyxvFWGN3ajmVOMauEV6Uj4LrnzCcLiTnInArcgPrcB/pbPpg==", "Admin", null, false, "Dr", "They", "7882d68a-043f-4ce7-82bd-65e7ed79e98d", false, "SysAdmin", 0 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1", "cc3347e9-ce79-4422-a9fc-a166da2c9a06" });
+                values: new object[] { "1", "543455d9-2487-47b6-a47a-4fc4c92ec1a2" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUserSocialGroup_SocialGroupId",
@@ -513,11 +533,6 @@ namespace FinalProject3.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Chat_AppUserId",
-                table: "Chat",
-                column: "AppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_AuthorId",
@@ -575,6 +590,11 @@ namespace FinalProject3.Migrations
                 column: "BlockerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserChats_UserId",
+                table: "UserChats",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserFollow_FollowingId",
                 table: "UserFollow",
                 column: "FollowingId");
@@ -624,6 +644,9 @@ namespace FinalProject3.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserBlock");
+
+            migrationBuilder.DropTable(
+                name: "UserChats");
 
             migrationBuilder.DropTable(
                 name: "UserFollow");
