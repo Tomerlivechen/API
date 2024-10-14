@@ -18,11 +18,14 @@ const PostList: React.FC<PostListValues> = (postListValue: PostListValues) => {
   );
   useEffect(() => {
     if (order && sort) {
-      setSortedPosts(posts.sort(sortByProperty(sort, order)));
+      const sorted = postListValue.posts.sort(sortByProperty(sort, order));
+      setSortedPosts(sorted);
+      console.log(postListValue.posts);
+      console.log(sorted);
     } else {
       setSortedPosts(posts);
     }
-  }, []);
+  }, [postListValue]);
 
   return (
     <>

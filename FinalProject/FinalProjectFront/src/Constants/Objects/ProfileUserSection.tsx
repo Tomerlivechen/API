@@ -89,7 +89,6 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
             </div>
           </>
         )}
-        ;
       </div>
     </>
   );

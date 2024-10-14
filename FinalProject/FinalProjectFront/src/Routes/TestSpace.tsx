@@ -12,6 +12,8 @@ import EditUserComponent from "../Components/EditUserComponent";
 import ResizableFrame from "../Constants/Objects/ResizableFrame";
 import { colors } from "../Constants/Patterns";
 import UserLane from "../Constants/Objects/UserLane";
+import { MessageComponent } from "../Constants/Objects/MessageComponent";
+import { IMessage } from "../Models/ChatModels";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -331,6 +333,22 @@ const user1: IAppUserDisplay = {
   hideBlocked: false,
 };
 
+const message1 : IMessage ={
+  id: "sghsfsghf",
+  chatId: "fghfghgfh",
+  userId: "fgshfghfgh",
+  userName: "UserName",
+  message: "this is a test message"
+}
+
+const message2 : IMessage ={
+  id: "sghsfsghf",
+  chatId: "fghfghgfh",
+  userId: "fgshfghfgh",
+  userName: "UserName",
+  message: "thiis is a very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long test text message"
+}
+
 const tabProps: UserTabProps = {
   UserDisplay: user1,
   buttonAction: () => {
@@ -344,7 +362,8 @@ function TestSpace() {
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
       <div className="flex w-2/12">
-      <UserLane/>
+      <MessageComponent {...message2}/>
+      <MessageComponent {...message1}/>
       </div>
 
 
