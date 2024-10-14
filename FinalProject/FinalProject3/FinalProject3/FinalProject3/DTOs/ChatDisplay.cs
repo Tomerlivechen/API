@@ -1,16 +1,16 @@
-﻿namespace FinalProject3.Models
+﻿using FinalProject3.Models;
+
+namespace FinalProject3.DTOs
 {
-    public class Chat
+    public class ChatDisplay
     {
         public string Id { get; set; } = string.Empty;
-        public AppUser User1 { get; set; }
-        public AppUser User2 { get; set; }
 
         public string User1Id { get; set; } = string.Empty;
         public string User1Name { get; set; } = string.Empty;
         public string User2Id { get; set; } = string.Empty;
         public string User2Name { get; set; } = string.Empty;
 
-        public List<Message> messages { get; set; } = new List<Message>();
+        public List<MessageDisplay> messages { get; set; } = new List<MessageDisplay>();
     }
 }
