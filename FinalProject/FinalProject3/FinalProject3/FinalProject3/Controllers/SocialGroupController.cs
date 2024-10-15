@@ -145,10 +145,12 @@ namespace FinalProject3.Controllers
             {
                return Conflict(ex);
             }
-
             return Ok(group);
-
         }
+
+        
+
+
 
         [HttpPut("RemoveMember/{UserId}")]
         public async Task<ActionResult> RemoveMember(string groupId, string UserId)

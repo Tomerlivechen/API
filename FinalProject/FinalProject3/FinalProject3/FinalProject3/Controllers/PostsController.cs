@@ -77,6 +77,7 @@ namespace FinalProject3.Controllers
         }
 
         [HttpGet("ByGroup/{GroupId}")]
+        [Authorize]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByGroupd(string GroupId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -84,7 +85,26 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+
+            if (posts == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(posts);
+        }
+
+        [HttpGet("ByAuthor/{userId}")]
+        [Authorize]
+        public async Task<ActionResult<List<PostDisplay>>> GetPostByAuthor(string AuthorId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Where(p => p.Author != null && p.Author.Id == AuthorId).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
 
             if (posts == null)
             {

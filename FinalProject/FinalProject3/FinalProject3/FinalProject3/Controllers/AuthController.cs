@@ -1,6 +1,7 @@
 ﻿using FinalProject3.Auth;
 using FinalProject3.Data;
 using FinalProject3.DTOs;
+using FinalProject3.Mapping;
 using FinalProject3.Models;
 using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Authorization;
@@ -60,19 +61,62 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         {
             return Unauthorized();
         }
-        var user = await userManager.FindByIdAsync(currentUserId);
-        if (user == null)
+        var users = await userManager.Users.ToListAsync();
+        var usersDisplay = await Task.WhenAll(users.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
+        currentUser.LastActive = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
+        await userManager.UpdateAsync(currentUser);
+        return Ok(usersDisplay);
+    }
+
+    [HttpGet("GetFollowing{userId}")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetFollowing(string userId)
+    {
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+        var currentUser = await userManager.FindByIdAsync(currentUserId);
+        if (currentUser is null)
+        {
+            return Unauthorized();
+        }
+        var user = await _context.Users.Include(u => u.Following).Where(u => u.Id == userId).FirstOrDefaultAsync();
+        if (user is null)
         {
             return NotFound("User not found.");
         }
+        var following = user.Following;
+        if (following is null)
+        {
+            return Ok();
+        }
+        var followingDsplay = await Task.WhenAll(following.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
+        return Ok(followingDsplay);
+    }
 
-        var users = await userManager.Users.ToListAsync();
-
-        var usersDisplay = await Task.WhenAll(users.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
-
-        user.LastActive = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
-        await userManager.UpdateAsync(user);
-        return Ok(usersDisplay);
+    [HttpGet("GroupsByUser/{UserId}")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<SocialGroupCard>>> GetGroups(string userId)
+    {
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+        var user = await _context.Users.Include(u => u.SocialGroups).Where(u => u.Id == userId).FirstOrDefaultAsync();
+        if (user is null)
+        {
+            return NotFound("User not found.");
+        }
+        var groups = user.SocialGroups;
+        if (groups is null)
+        {
+            return Ok();
+        }
+        var groupCards = await Task.WhenAll(groups.Select(g => g.ToCard(currentUserId, _context, userManager)));
+        return Ok(groupCards);
     }
 
 
