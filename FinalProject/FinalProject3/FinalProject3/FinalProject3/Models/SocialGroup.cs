@@ -12,11 +12,11 @@ namespace FinalProject3.Models
 
         public string GroupCreatorId { get; set; } = string.Empty;
 
-        public AppUser GroupCreator { get; set; }
+        public AppUser? GroupCreator { get; set; }
 
 
         public string AdminId { get; set; } = string.Empty;
-        public AppUser groupAdmin { get; set; } 
+        public AppUser? groupAdmin { get; set; } 
 
         public List<AppUser> Members { get; set; } = new List<AppUser>();
 

@@ -31,10 +31,41 @@ namespace FinalProject3.Mapping
 
         }
 
-        public static async Task<Chat> MakeNewChat(this ChatNew chat, UserManager<AppUser> userManager)
+
+        public static ChatDisplay ToDisplay(this Chat chat)
+        {
+            var chatDisplay = new ChatDisplay()
+            {
+                Id = chat.Id,
+                User1Name = chat.User1Name,
+                User1Id = chat.User1Id,
+                User2Id = chat.User2Id,
+                User2Name = chat.User2Name,
+            };
+            foreach (var message in chat.messages) {
+                chatDisplay.messages.Add(message.ToDisplay());
+            }
+            return chatDisplay;
+        }
+
+        public static MessageDisplay ToDisplay(this Message Fullmessage)
+        {
+            var DisplayMessage = new MessageDisplay() {
+            message = Fullmessage.message,
+            ChatId = Fullmessage.ChatId,
+            UserName= Fullmessage.UserName,
+            Datetime= Fullmessage.Datetime,
+            };
+            return DisplayMessage;
+        }
+
+        public static async Task<Chat?> MakeNewChat(this ChatNew chat, UserManager<AppUser> userManager)
         {
             var user1 = await userManager.FindByIdAsync(chat.User1Id);
             var user2 = await userManager.FindByIdAsync(chat.User2Id);
+            if (user1 is null || user2 is null || user1.UserName is null || user2.UserName is null) { 
+            return null;
+            }
             if (user1 is not null && user2 is not null)
             {
                 var newChat = new Chat()

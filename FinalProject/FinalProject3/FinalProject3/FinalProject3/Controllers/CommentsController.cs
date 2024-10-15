@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
+using System.Xml.Linq;
 
 namespace FinalProject3.Controllers
 {
@@ -24,7 +25,11 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<CommentDisplay>>> GetCommentByPPostID(string PostID)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var comments = await _context.Comment.Where(c => c.ParentPost.Id== PostID).Select(c => c.ToDisplay(userId)).ToListAsync();
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
+            var comments = await _context.Comment.Where(c => c.ParentPost != null && c.ParentPost.Id == PostID).Select(c => c.ToDisplay(userId)).ToListAsync();
 
             if (comments == null)
             {
@@ -39,14 +44,18 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<CommentDisplay>>> GetCommentByPCommentID(string CommentID)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var comments = await _context.Comment.Where(c => c.ParentComment.Id == CommentID).Select(c => c.ToDisplay(userId)).ToListAsync();
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
+            var comments = await _context.Comment.Where(c => c.ParentComment != null && c.ParentComment.Id == CommentID).Select(c => c.ToDisplay(userId)).ToListAsync();
 
             if (comments == null)
             {
                 return NotFound();
             }
 
-            return comments;
+            return Ok(comments);
         }
 
         [HttpGet("ByCommentId/{CommentID}")]
@@ -54,6 +63,10 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<CommentDisplay>> GetCommentByCommentID(string CommentID)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             var comment = await _context.Comment.FindAsync(CommentID);
 
             if (comment == null)
@@ -74,7 +87,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return comment;
+            return Ok(comment);
         }
 
         [HttpPost]
@@ -135,6 +148,10 @@ namespace FinalProject3.Controllers
         public async Task<IActionResult> PutComment(string id, [FromBody] CommentDisplay comment)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -218,15 +235,23 @@ namespace FinalProject3.Controllers
         {
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var fullComment = (await GetFullCommentByCommentID(commentId)).Value;
+            var fullComment = await _context.Comment.Include(p => p.Votes).ThenInclude(v => v.Voter).Where(p => p.Id == commentId).FirstOrDefaultAsync();
             if (fullComment is null)
             {
                 return NotFound();
+            }
+            var hasVoted = fullComment.Votes.Where(v => v.Voter != null && v.Voter.Id == userId).FirstOrDefault();
+            if (hasVoted is not null)
+            {
+                return BadRequest("You have alredey voted");
             }
             var user =await userManager.FindByIdAsync(userId);
             if (user == null)
@@ -238,6 +263,14 @@ namespace FinalProject3.Controllers
             fullComment.Votes.Add(addedVote);
             fullComment.calcVotes();
             _context.Update(fullComment);
+            if (Vote > 0)
+            {
+                Vote = 1;
+            }
+            else
+            {
+                Vote = -1;
+            }
             try
             {
                 await _context.SaveChangesAsync();
@@ -253,7 +286,7 @@ namespace FinalProject3.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok(fullComment.ToDisplay(userId));
         }
 
         private bool CommentExists(string id)

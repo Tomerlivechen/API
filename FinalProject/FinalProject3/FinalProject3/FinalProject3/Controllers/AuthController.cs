@@ -50,40 +50,29 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
     [Authorize]
     public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetUsers()
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var user = await userManager.FindByIdAsync(userId);
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+        var currentUser = await userManager.FindByIdAsync(currentUserId);
+        if (currentUser is null)
+        {
+            return Unauthorized();
+        }
+        var user = await userManager.FindByIdAsync(currentUserId);
         if (user == null)
         {
             return NotFound("User not found.");
         }
 
-        var users = await userManager.Users.Select(u => u.UsertoDisplay()).ToListAsync();
-        var usersFull = await _context.Users.Include(u => u.Blocked).ToListAsync();
-        foreach (AppUserDisplay userDisplay in users)
-        {
-            var isFollowed = user.FollowingId.Find(u => u == userDisplay.Id);
-            if (isFollowed is not null)
-            {
-                userDisplay.Following = true;
-            }
-            var Blocked = user.BlockedId.Find(u => u == userDisplay.Id);
-            if (Blocked is not null)
-            {
-                userDisplay.Blocked = true;
-            }
-            var setUser = usersFull.FirstOrDefault(u => u.Id == userDisplay.Id);
-            if (setUser is not null) 
-            {
-                var isBlocked = setUser.Blocked.Find(u => u.Id == user.Id);
-                if (isBlocked is not null)
-                {
-                    userDisplay.BlockedYou = true;
-                }
-            }
-        }
+        var users = await userManager.Users.ToListAsync();
+
+        var usersDisplay = await Task.WhenAll(users.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
+
         user.LastActive = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
         await userManager.UpdateAsync(user);
-        return Ok(users);
+        return Ok(usersDisplay);
     }
 
 
@@ -91,6 +80,17 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
     [Authorize]
     public async Task<ActionResult<AppUserDisplay>> GetUser(string userId)
     {
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+        var currentUser = await userManager.FindByIdAsync(currentUserId);
+        if (currentUser is null)
+        {
+            return Unauthorized();
+        }
+
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -98,7 +98,8 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
             var user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
         if (user is not null)
         {
-            return Ok(user.UsertoDisplay());
+            var usersDisplay = await user.UsertoDisplay(userManager, _context, currentUser);
+            return Ok(usersDisplay);
         }
 
             return NotFound("User Not Found");
@@ -170,16 +171,21 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
     [Authorize]
     public async Task<ActionResult<AppUserDisplay>> Manage([FromBody] AppUserEdit manageView)
     {
-
-        var user = await userManager.GetUserAsync(User);
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (currentUserId is null)
+        {
+            return Unauthorized();
+        }
+        var currentUser = await userManager.FindByIdAsync(currentUserId);
+        
         bool changed = false;
-        if (user == null)
+        if (currentUser == null)
         {
             return Redirect("/");
         }
         if (!string.IsNullOrEmpty(manageView.oldPassword)  && !string.IsNullOrEmpty(manageView.newPassword) )
         {
-            var passwordChange = await userManager.ChangePasswordAsync(user, manageView.oldPassword, manageView.newPassword);
+            var passwordChange = await userManager.ChangePasswordAsync(currentUser, manageView.oldPassword, manageView.newPassword);
             if (passwordChange.Succeeded)
             {
                 changed = true;
@@ -195,71 +201,73 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         }
         if (!string.IsNullOrEmpty(manageView.userName))
         {
-            user.UserName = manageView.userName;
+            currentUser.UserName = manageView.userName;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.prefix))
         {
-            user.Prefix = manageView.prefix;
+            currentUser.Prefix = manageView.prefix;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.first_Name))
         {
-            user.First_Name = manageView.first_Name;
+            currentUser.First_Name = manageView.first_Name;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.last_Name))
         {
-            user.Last_Name = manageView.last_Name;
+            currentUser.Last_Name = manageView.last_Name;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.pronouns))
         {
-            user.Pronouns = manageView.pronouns;
+            currentUser.Pronouns = manageView.pronouns;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.imageURL))
         {
-            user.ImageURL = manageView.imageURL;
+            currentUser.ImageURL = manageView.imageURL;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.permissionLevel))
         {
-            user.PermissionLevel = manageView.permissionLevel;
+            currentUser.PermissionLevel = manageView.permissionLevel;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.bio))
         {
-            user.Bio = manageView.bio;
+            currentUser.Bio = manageView.bio;
             changed = true;
         }
         if (!string.IsNullOrEmpty(manageView.banerImageURL) )
         {
-            user.BanerImageURL = manageView.banerImageURL;
+            currentUser.BanerImageURL = manageView.banerImageURL;
             changed = true;
         }
-        if (manageView.hideEmail != user.HideEmail)
+        if (manageView.hideEmail != currentUser.HideEmail)
         {
-            user.HideEmail = manageView.hideEmail;
+            currentUser.HideEmail = manageView.hideEmail;
             changed = true;
         }
-        if (manageView.hideName != user.HideName)
+        if (manageView.hideName != currentUser.HideName)
         {
-            user.HideName = manageView.hideName;
+            currentUser.HideName = manageView.hideName;
             changed = true;
         }
-        if (manageView.hideBlocked != user.HideBlocked)
+        if (manageView.hideBlocked != currentUser.HideBlocked)
         {
-            user.HideBlocked = manageView.hideBlocked;
+            currentUser.HideBlocked = manageView.hideBlocked;
             changed = true;
         }
         if (changed)
         {
-            await userManager.UpdateAsync(user);
-            return Ok(user.UsertoDisplay());
+            await userManager.UpdateAsync(currentUser);
+            var returnUser = await currentUser.UsertoDisplay(userManager, _context, currentUser);
+            return Ok(returnUser);
         }
         ModelState.AddModelError("No Changes", "No changes made");
-        return Ok(user.UsertoDisplay());
+        var returnEmptyUser = await currentUser.UsertoDisplay(userManager, _context, currentUser);
+        return Ok(returnEmptyUser);
     }
 
     [HttpPut("follow")]
@@ -267,7 +275,10 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
     public async Task<IActionResult> Follow([FromBody] AppUserIdRequest followId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        Console.WriteLine(ClaimTypes.NameIdentifier, userId);
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
         if (!ModelState.IsValid)
         {
             return BadRequest(new { ModelState, userId });

@@ -1,14 +1,17 @@
-﻿using FinalProject3.DTOs;
+﻿using FinalProject3.Data;
+using FinalProject3.DTOs;
 using FinalProject3.Models;
+using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Identity;
 
 namespace FinalProject3.Mapping
 {
     public static class SocialGroupExtensionMethod
     {
-        public async static Task<SocialGroup> CreateGroup(this SocialGroup group, string userId, string groupName, UserManager<AppUser> userManager)
+        public async static Task<SocialGroup> CreateGroup(this SocialGroupNew NewGroup, string userId, UserManager<AppUser> userManager)
         {
             var user = await userManager.FindByIdAsync(userId);
+            var group = new SocialGroup();
             if (user is not null)
             {
                 group.GroupCreator = user;
@@ -16,8 +19,10 @@ namespace FinalProject3.Mapping
                 group.GroupCreatorId = userId;
                 group.AdminId = userId;
                 group.Members.Add(user);
+                group.Name = NewGroup.Name;
+                group.Description = NewGroup.Description;
+                group.Id = Guid.NewGuid().ToString();
             }
-            group.Name = groupName;
             return group;
         }
         
@@ -32,9 +37,9 @@ namespace FinalProject3.Mapping
             {
                 group.Description = editGroup.Description;
             }
-            if (editGroup.AdminEmail is not null)
+            if (editGroup.AdminId is not null)
             {
-                var adminUser = await userManager.FindByEmailAsync(editGroup.AdminEmail);
+                var adminUser = await userManager.FindByIdAsync(editGroup.AdminId);
                 if (adminUser is not null)
                 {
                     group.groupAdmin = adminUser;
@@ -43,5 +48,57 @@ namespace FinalProject3.Mapping
             }
             return group;
         }
+
+        public async static Task<SocialGroupCard?> ToCard(this SocialGroup socialGroup, string userId, FP3Context _context, UserManager<AppUser> userManager)
+        {
+            var currentUser = await userManager.FindByIdAsync(userId);
+
+            if (currentUser is null || socialGroup.GroupCreator is null || socialGroup.groupAdmin is null)
+            {
+                return default;
+            }
+            var isMember =  socialGroup.Members.Where(m => m.Id == userId).First();
+            bool member = false;
+            if (isMember is not null) {
+                member = true;
+            }
+
+            var card = new SocialGroupCard()
+            {
+                Id = socialGroup.Id,
+                Name = socialGroup.Name,
+                Description = socialGroup.Description,
+                Admin = await socialGroup.groupAdmin.UsertoDisplay(userManager, _context, currentUser),
+                IsMemember = member
+            };
+            return card;
+
+        }
+
+
+        public async static Task<SocialGroupDisplay?> ToDisplay(this SocialGroup socialGroup, string userId ,FP3Context _context, UserManager<AppUser> userManager)
+        {
+            var currentUser = await userManager.FindByIdAsync(userId);
+
+            if (currentUser is null || socialGroup.GroupCreator is null || socialGroup.groupAdmin is null)
+            {
+                return default;
+            }
+            var display = new SocialGroupDisplay()
+            {
+                Id = socialGroup.Id,
+                Name = socialGroup.Name,
+                Description = socialGroup.Description,
+                GroupCreator = await socialGroup.GroupCreator.UsertoDisplay(userManager, _context, currentUser),
+                Admin = await socialGroup.groupAdmin.UsertoDisplay(userManager, _context, currentUser),
+                Members = (await Task.WhenAll(socialGroup.Members.Select(u => u.UsertoDisplay(userManager, _context, currentUser)))).ToList(),
+                Posts = socialGroup.Posts.Select(p => p.ToDisplay(userId)).ToList(),
+
+            };
+            return display;
+
+        }
     }
 }
+
+

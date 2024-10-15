@@ -21,8 +21,8 @@ namespace FinalProject3.DTOs
         public bool Following { get; set; } = false;
         public bool Blocked { get; set; } = false;
         public bool BlockedYou { get; set; } = false;
-
         public string LastActive {  get; set; } = string.Empty;
+        public string ChatId { get; set; } = string.Empty;
 
 
     }

@@ -1,6 +1,8 @@
-﻿using FinalProject3.DTOs;
+﻿using FinalProject3.Data;
+using FinalProject3.DTOs;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject32.Mapping
 {
@@ -23,7 +25,7 @@ namespace FinalProject32.Mapping
 
         }
 
-        public static AppUserDisplay UsertoDisplay(this AppUser user)
+        public static async Task<AppUserDisplay> UsertoDisplay(this AppUser user, UserManager<AppUser> userManager, FP3Context _context, AppUser currentUser)
         {
             var display = new AppUserDisplay()
             {
@@ -42,6 +44,38 @@ namespace FinalProject32.Mapping
                 HideName = user.HideName,
                 LastActive = user.LastActive,
             };
+
+            // Check if the current user is following this user
+            if (currentUser.FollowingId.Contains(user.Id))
+            {
+                display.Following = true;
+            }
+
+            // Check if the current user has blocked this user
+            if (currentUser.BlockedId.Contains(user.Id))
+            {
+                display.Blocked = true;
+            }
+
+            // Load users with chat and blocked lists (asynchronously)
+            var userFull = await _context.Users.Include(u => u.Chats)
+                .Include(u => u.Blocked)
+                .FirstOrDefaultAsync(u => u.Id == user.Id);
+
+            // Check if this user has blocked the current user
+            if (userFull is not null && userFull.Blocked.Any(u => u.Id == currentUser.Id))
+            {
+                display.BlockedYou = true;
+            }
+
+            // Check if there is an existing chat with the user
+            var chatWithUser = currentUser.Chats
+                .FirstOrDefault(c => c.Users.Contains(user));
+
+            if (chatWithUser != null)
+            {
+                display.ChatId = chatWithUser.Id;
+            }
             return display;
         }
     }

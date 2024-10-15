@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
 
 namespace FinalProject3.Controllers
@@ -23,7 +24,13 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<IEnumerable<PostDisplay>>> GetPosts()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return await _context.Post.Include(p=> p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+
+            return Ok(posts);
         }
 
 
@@ -33,6 +40,10 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<PostDisplay>> GetPost(string id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             var post = await _context.Post.FindAsync(id);
 
             if (post == null)
@@ -40,7 +51,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return post.ToDisplay(userId);
+            return Ok(post.ToDisplay(userId));
         }
 
 
@@ -51,6 +62,10 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<PostDisplay>>> GetPostByKeyWord(string KeyWord)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).Select(p => p.ToDisplay(userId)).ToListAsync();
 
             if (posts == null)
@@ -65,22 +80,30 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<PostDisplay>>> GetPostByGroupd(string GroupId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var posts = await _context.Post.Where(p => p.Group.Id == GroupId).Select(p => p.ToDisplay(userId)).ToListAsync();
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
 
             if (posts == null)
             {
                 return NotFound();
             }
 
-            return posts;
+            return Ok(posts);
         }
 
         [HttpGet("ByUpVote/{UserID}")]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByUpVote(string UserID)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             var posts = await _context.Post
-            .Where(p => p.Votes.Any(v => v.Voter.Id == UserID && v.Voted > 0))
+            .Where(p => p.Votes.Any(v => v.Voter != null && v.Voter.Id == UserID && v.Voted > 0))
             .Select(p => p.ToDisplay(userId))
             .ToListAsync();
 
@@ -89,15 +112,20 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return posts;
+            return Ok(posts);
         }
 
         [HttpGet("ByDownVote/{UserID}")]
+        [Authorize]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByDownVote(string UserID)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             var posts = await _context.Post
-            .Where(p => p.Votes.Any(v => v.Voter.Id == UserID && v.Voted < 0))
+            .Where(p => p.Votes.Any(v => v.Voter != null && v.Voter.Id == UserID && v.Voted < 0))
             .Select(p => p.ToDisplay(userId))
             .ToListAsync();
 
@@ -106,7 +134,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return posts;
+            return Ok(posts);
         }
 
         [HttpGet("FullById/{PostID}")]
@@ -120,7 +148,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return post;
+            return Ok(post);
         }
 
 
@@ -132,7 +160,10 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<PostDisplay>> PutPost(string id, [FromBody] PostDisplay post)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -256,20 +287,37 @@ namespace FinalProject3.Controllers
         public async Task<IActionResult> VoteOnPost(string PostId, [FromBody] int vote)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var fullPost = (await GetFullPostByPostID(PostId))?.Value;
+            var fullPost = await _context.Post.Include(p => p.Votes).Where(p => p.Id== PostId).FirstOrDefaultAsync();
             if (fullPost is null)
             {
                 return NotFound();
+            }
+            var hasVoted = fullPost.Votes.Where(v => v?.Voter?.Id == userId).FirstOrDefault();
+            if (hasVoted is not null)
+            {
+                return BadRequest("You have alredey voted");
             }
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return BadRequest("User Not Found");
+            }
+            if (vote > 0)
+            {
+                vote = 1;
+            }
+            else
+            {
+                vote = -1;
             }
             Votes addedVote = new Votes();
             addedVote.CreatVote(user, vote);
@@ -291,7 +339,7 @@ namespace FinalProject3.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok(fullPost.ToDisplay(userId));
         }
         private bool PostExists(string id)
         {
