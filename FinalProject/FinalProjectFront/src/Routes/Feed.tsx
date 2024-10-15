@@ -6,7 +6,7 @@ import { useSearch } from "../CustomHooks/useSearch";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaGripfire } from "react-icons/fa6";
 import { FaAngleDoubleDown } from "react-icons/fa";
-import { PostList } from "../Components/PostList";
+import { PostList, PostListValues } from "../Components/PostList";
 import { FaAngleDoubleUp } from "react-icons/fa";
 import { IPostDisplay } from "../Models/Interaction";
 import { colors } from "../Constants/Patterns";
@@ -16,26 +16,10 @@ import { GoCommentDiscussion } from "react-icons/go";
 import { FaCircleUp } from "react-icons/fa6";
 import UserLane from "../Constants/Objects/UserLane";
 import { MdCloudSync } from "react-icons/md";
-
-interface IPostSortingProps {
-  icon: React.ComponentType<{ size: number }>;
-  activeHook: boolean;
-  type: "totalVotes" | "datetime" | "comments";
-  tooltip: string;
-}
-
-interface IPostOrderProps {
-  icon: React.ComponentType<{ size: number }>;
-  activeHook: boolean;
-  type: "ascending" | "descending";
-  tooltip: string;
-}
-
-interface PostListValues {
-  sortElement?: keyof IPostDisplay;
-  orderBy?: string;
-  posts: IPostDisplay[];
-}
+import {
+  IPostOrderProps,
+  IPostSortingProps,
+} from "../Constants/RoutrProtection/@types";
 
 const Feed = () => {
   const searchContext = useSearch();

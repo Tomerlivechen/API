@@ -57,7 +57,7 @@ const CommentView: React.FC<ICommentDisplay> = (commentDisplay) => {
               {commentDisplay.authorName}
             </button>
             {(commentDisplay.authorId == userContext.userInfo.UserId ||
-              userContext.userInfo.IsAdmin) && (
+              userContext.userInfo.IsAdmin == "true") && (
               <>
                 <div className="flex">
                   <div className="flex space-x-2">

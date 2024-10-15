@@ -62,7 +62,12 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
             return Unauthorized();
         }
         var users = await userManager.Users.ToListAsync();
-        var usersDisplay = await Task.WhenAll(users.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
+        var usersDisplay = new List<AppUserDisplay>();
+        foreach (var user in users)
+        {
+            var display = await user.UsertoDisplay(userManager, _context, currentUser);
+            usersDisplay.Add(display);
+        }
         currentUser.LastActive = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
         await userManager.UpdateAsync(currentUser);
         return Ok(usersDisplay);
@@ -92,7 +97,15 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         {
             return Ok();
         }
-        var followingDsplay = await Task.WhenAll(following.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
+
+        var followingDsplay = new List<AppUserDisplay>();
+        foreach (var follower in following)
+        {
+            var display = await follower.UsertoDisplay(userManager, _context, currentUser);
+            followingDsplay.Add(display);
+        }
+
+
         return Ok(followingDsplay);
     }
 
@@ -115,7 +128,15 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         {
             return Ok();
         }
-        var groupCards = await Task.WhenAll(groups.Select(g => g.ToCard(currentUserId, _context, userManager)));
+        var groupCards = new List<SocialGroupCard>();
+        foreach (var group in groups)
+        {
+            var Card = await group.ToCard(currentUserId, _context, userManager);
+            groupCards.Add(Card);
+        }
+
+
+
         return Ok(groupCards);
     }
 

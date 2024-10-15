@@ -30,7 +30,7 @@ const getPosts = () =>
       request({
         url: `${postURL}/VoteById/${Id}`,
         method: "PUT",
-        data: vote,
+        data: {Vote:vote},
       });
   
       const EditPost = ( post: IPostDisplay) =>
@@ -40,6 +40,15 @@ const getPosts = () =>
           data: post,
         });
 
+        const GetAuthorPosts = ( userId: string) =>
+          request({
+            url: `${postURL}/ByAuthor/${userId}`,
+            method: "Get",
+            data: null,
+          });
+  
+
+
 export { getPosts, postPost, VoteOnPost , EditPost,DeletePost };
 
-export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost };
+export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost,GetAuthorPosts };

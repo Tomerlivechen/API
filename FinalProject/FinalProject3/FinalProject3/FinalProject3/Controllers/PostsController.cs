@@ -95,7 +95,7 @@ namespace FinalProject3.Controllers
             return Ok(posts);
         }
 
-        [HttpGet("ByAuthor/{userId}")]
+        [HttpGet("ByAuthor/{AuthorId}")]
         [Authorize]
         public async Task<ActionResult<List<PostDisplay>>> GetPostByAuthor(string AuthorId)
         {
@@ -304,7 +304,7 @@ namespace FinalProject3.Controllers
         }
         [HttpPut("VoteById/{PostId}")]
         [Authorize]
-        public async Task<IActionResult> VoteOnPost(string PostId, [FromBody] int vote)
+        public async Task<IActionResult> VoteOnPost(string PostId, [FromBody] VoteInput vote)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId is null)
@@ -331,16 +331,16 @@ namespace FinalProject3.Controllers
             {
                 return BadRequest("User Not Found");
             }
-            if (vote > 0)
+            if (vote.Vote > 0)
             {
-                vote = 1;
+                vote.Vote = 1;
             }
             else
             {
-                vote = -1;
+                vote.Vote = -1;
             }
             Votes addedVote = new Votes();
-            addedVote.CreatVote(user, vote);
+            addedVote.CreatVote(user, vote.Vote);
             fullPost.Votes.Add(addedVote);
             fullPost.calcVotes();
             _context.Update(fullPost);

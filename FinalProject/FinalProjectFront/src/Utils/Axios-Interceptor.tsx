@@ -53,7 +53,7 @@ const SortResponse = (response) => {
   }
 };
 
-const request = (Options: AxiosRequestConfig) => {
+const request = async (Options: AxiosRequestConfig) => {
   return client(Options).then(SortResponse).catch(SortResponse);
 };
 

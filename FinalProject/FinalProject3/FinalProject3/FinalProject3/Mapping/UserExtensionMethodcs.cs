@@ -59,7 +59,7 @@ namespace FinalProject32.Mapping
 
             // Load users with chat and blocked lists (asynchronously)
             var userFull = await _context.Users.Include(u => u.Chats)
-                .Include(u => u.Blocked)
+                .Include(u => u.Blocked).AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Id == user.Id);
 
             // Check if this user has blocked the current user
@@ -70,7 +70,7 @@ namespace FinalProject32.Mapping
 
             // Check if there is an existing chat with the user
             var chatWithUser = currentUser.Chats
-                .FirstOrDefault(c => c.Users.Contains(user));
+                .FirstOrDefault(c => c.Users.Contains(currentUser));
 
             if (chatWithUser != null)
             {

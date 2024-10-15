@@ -59,6 +59,32 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "GetFollowing",
+    "RelativePath": "api/Auth/GetFollowing{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject3.DTOs.AppUserDisplay, FinalProject3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
     "Method": "GetFullUser",
     "RelativePath": "api/Auth/GetFullUser",
     "HttpMethod": "POST",
@@ -94,6 +120,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject3.DTOs.AppUserDisplay, FinalProject3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "GetGroups",
+    "RelativePath": "api/Auth/GroupsByUser/{UserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject3.DTOs.SocialGroupCard, FinalProject3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -626,6 +678,37 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.PostsController",
+    "Method": "GetPostByAuthor",
+    "RelativePath": "api/Posts/ByAuthor/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AuthorId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[FinalProject3.DTOs.PostDisplay, FinalProject3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.PostsController",
     "Method": "GetPostByDownVote",
     "RelativePath": "api/Posts/ByDownVote/{UserID}",
     "HttpMethod": "GET",
@@ -795,7 +878,7 @@
       },
       {
         "Name": "vote",
-        "Type": "System.Int32",
+        "Type": "FinalProject3.DTOs.VoteInput",
         "IsRequired": true
       }
     ],
@@ -811,7 +894,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject3.Models.SocialGroup, FinalProject3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FinalProject3.DTOs.SocialGroupCard, FinalProject3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -830,14 +913,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "groupId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "groupName",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "groupNew",
+        "Type": "FinalProject3.DTOs.SocialGroupNew",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -855,18 +933,13 @@
   {
     "ContainingType": "FinalProject3.Controllers.SocialGroupController",
     "Method": "AddMember",
-    "RelativePath": "api/SocialGroup/AddMember/{UserId}",
+    "RelativePath": "api/SocialGroup/AddMember/{groupId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "groupId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserId",
         "Type": "System.String",
         "IsRequired": true
       }

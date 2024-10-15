@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { HiLink } from "react-icons/hi2";
 
 import { BiSolidUpvote } from "react-icons/bi";
@@ -20,53 +20,71 @@ import { FaKey } from "react-icons/fa";
 import EditPostModal from "../../Modals/EditPostModal";
 import { MdEdit } from "react-icons/md";
 import { Posts } from "../../Services/post-service";
+import { useNavigate } from "react-router-dom";
 
 const PostView: React.FC<IPostDisplay> = (postDisplay) => {
+  const navagate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
   const handleShow = () => setShowModal((prevshowModal) => !prevshowModal);
 
-
   const handleClose = () => setShowModal(false);
   const userContext = useUser();
   const loginContex = useLogin();
-  const CommentAPI = CommentService;
+  const postAPI = Posts;
   const handelImage = () => {
     dialogs.showImage("", postDisplay.imageURL);
   };
-  const handleShowEdit = () => setShowEditModal((prevshowEditModal) => !prevshowEditModal);
+  const handleShowEdit = () =>
+    setShowEditModal((prevshowEditModal) => !prevshowEditModal);
   const handleVote = async (vote: number) => {
     if (loginContex.token) {
-      await CommentAPI.VoteOnComment(postDisplay.id, vote);
+      await postAPI.VoteOnPost(postDisplay.id, vote);
       postDisplay.hasVoted = true;
       postDisplay.totalVotes += vote;
     }
   };
   const handleDelete = () => Posts.DeletePost(postDisplay.id);
+
+  const GoToUser = () => {
+    navagate(`/profile/${postDisplay.authorId}`);
+  };
+
   return (
     <>
-      <ElementFrame height={`${postDisplay.imageURL ? ("450px") : ("230px")}`} width="400px" padding="2 mt-2">
+      <ElementFrame
+        height={`${postDisplay.imageURL ? "450px" : "230px"}`}
+        width="400px"
+        padding="2 mt-2"
+      >
         <div>
           <div className="flex justify-between items-center">
-            <button className=" text-sm font-bold pl-10">
+            <button
+              className=" text-sm font-bold pl-10"
+              onClick={() => GoToUser()}
+            >
               {postDisplay.authorName}
             </button>
-            {((postDisplay.authorId == userContext.userInfo.UserId) || userContext.userInfo.IsAdmin) && (<>
-            <div className="flex">
-              <div className="flex space-x-2">
+            {(postDisplay.authorId == userContext.userInfo.UserId ||
+              userContext.userInfo.IsAdmin == "true") && (
+              <>
+                <div className="flex">
+                  <div className="flex space-x-2">
                     <button className="ml-auto mb-2" onClick={handleShowEdit}>
-                          <MdEdit size={22} />
-                        </button>
-                        <EditPostModal
-                                        Mshow={showEditModal}
-                                        onHide={handleShowEdit}
-                                        post={postDisplay}
-                        />
-              <button className="ml-auto mb-2">
-                <TiDelete size={22} onClick={handleDelete} />
-              </button>
-                      </div></div></>
+                      <MdEdit size={22} />
+                    </button>
+                    <EditPostModal
+                      Mshow={showEditModal}
+                      onHide={handleShowEdit}
+                      post={postDisplay}
+                    />
+                    <button className="ml-auto mb-2">
+                      <TiDelete size={22} onClick={handleDelete} />
+                    </button>
+                  </div>
+                </div>
+              </>
             )}
           </div>
 
@@ -80,22 +98,16 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
           >
             {postDisplay.title}
           </div>
-          
+
           <div className="relative  " />
           <div className="flex justify-evenly ">
-          {postDisplay.imageURL && (
-            <button
-              className=""
-              onClick={handelImage}
-            >
-              <img className="h-56 "
-                src={postDisplay.imageURL}
-
-              />
-            </button>
-          )}
+            {postDisplay.imageURL && (
+              <button className="" onClick={handelImage}>
+                <img className="h-56 " src={postDisplay.imageURL} />
+              </button>
+            )}
           </div>
-          
+
           <div className="p-0.5" />
           <div
             className={`${colors.TextBox}`}
@@ -120,29 +132,31 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
                   <HiLink size={22} />
                 </button>
               )}
-              {postDisplay.keyWords.length>0 && (
+              {postDisplay.keyWords.length > 0 && (
                 <button
                   className="pl-3"
-                  onClick={() => dialogs.showtext(postDisplay.keyWords.toString())}
+                  onClick={() =>
+                    dialogs.showtext(postDisplay.keyWords.toString())
+                  }
                 >
-                  <FaKey  size={22} />
+                  <FaKey size={22} />
                 </button>
               )}
-            
-            <div className="flex items-center pl-3">
-              <button
-                className={`{rounded-md m-1 p-1 }`}
-                onClick={handleShow}
-              >
-                <FaCommentMedical size={21} aria-description="add comment" />
-              </button>
 
-              <AddPostCommentModal
-                Mshow={showModal}
-                onHide={handleClose}
-                postId={postDisplay.id}
-              />
-            </div>
+              <div className="flex items-center pl-3">
+                <button
+                  className={`{rounded-md m-1 p-1 }`}
+                  onClick={handleShow}
+                >
+                  <FaCommentMedical size={21} aria-description="add comment" />
+                </button>
+
+                <AddPostCommentModal
+                  Mshow={showModal}
+                  onHide={handleClose}
+                  postId={postDisplay.id}
+                />
+              </div>
             </div>
             <div className="flex items-center">
               {!postDisplay.hasVoted && (
@@ -172,18 +186,18 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
           </div>
         </div>
         <div className="flex justify-between items-center">
-
-<div className={` font-bold ${colors.InteractionText} ml-16 -mt-2` }>
-{postDisplay.comments && postDisplay.comments.length>0  && postDisplay.comments.length}
-</div>
-        <div className="flex justify-end">
-        {postDisplay.datetime}</div>
+          <div className={` font-bold ${colors.InteractionText} ml-16 -mt-2`}>
+            {postDisplay.comments &&
+              postDisplay.comments.length > 0 &&
+              postDisplay.comments.length}
+          </div>
+          <div className="flex justify-end">{postDisplay.datetime}</div>
         </div>
       </ElementFrame>
-      
-              <div className="-mt-8 relative z-10 " >
-      <CommentList index={0} commmentList={postDisplay.comments} /></div>
 
+      <div className="-mt-8 relative z-10 ">
+        <CommentList index={0} commmentList={postDisplay.comments} />
+      </div>
     </>
   );
 };

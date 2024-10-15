@@ -28,7 +28,6 @@ namespace FinalProject3.Models
         {
             int UpVotes = 0;
             int DownVotes = 0;
-            int TotalVotes = 0;
             foreach (var vote in Votes)
             {
                 if (vote.Voted == 1)
