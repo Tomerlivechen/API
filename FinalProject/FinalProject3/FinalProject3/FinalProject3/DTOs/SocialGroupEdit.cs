@@ -10,6 +10,9 @@ namespace FinalProject3.DTOs
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string AdminId { get; set; } = string.Empty;
+
+        public string ImageURL { get; set; } = string.Empty;
+        public string BanerImageURL { get; set; } = string.Empty;
     }
 }
 

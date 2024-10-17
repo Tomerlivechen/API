@@ -2,14 +2,17 @@
 using FinalProject3.DTOs;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace FinalProject3.Mapping
 {
     public static class PostExtensionMethod 
     {
-        public static PostDisplay ToDisplay (this Post post, string userID)
+        public static async Task<PostDisplay> ToDisplay (this Post post, string userID , FP3Context _context)
         {
             var setPost = new PostDisplay()
             {
@@ -26,16 +29,17 @@ namespace FinalProject3.Mapping
                 Datetime = post.Datetime,
 
             };
-            foreach (Votes vote in post.Votes)
+            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == userID);
+            if (currentUser is not null)
             {
-                if (vote.Voter.Id == userID)
-                {
-                    setPost.hasVoted = true;
-                }
+                setPost.hasVoted = currentUser.votedOn.Contains(post.Id);
             }
-            foreach (Comment com in post.Comments)
+
+            setPost.Comments = new List<CommentDisplay>();
+            foreach (var comment in post.Comments)
             {
-                setPost.Comments.Add(com.ToDisplay(userID));
+                var commentDisplay = await comment.ToDisplayAsync(userID, _context);
+                setPost.Comments.Add(commentDisplay);
             }
             return setPost;
         }
@@ -61,7 +65,9 @@ namespace FinalProject3.Mapping
                 List<string> keyword = new List<string>();
                 foreach (var word in key)
                 {
+                    if (word.Length > 1) { 
                     keyword.Add(word.Capitelize());
+                }
                 }
                 setPost.KeyWords = keyword;
             }

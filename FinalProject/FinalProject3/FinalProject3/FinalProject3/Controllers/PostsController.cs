@@ -28,9 +28,16 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).ToListAsync();
 
-            return Ok(posts);
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in posts) {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                    postsDisplay.Add(postDisplay);
+            }
+            
+         
+            return Ok(postsDisplay);
         }
 
 
@@ -51,7 +58,7 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return Ok(post.ToDisplay(userId));
+            return Ok(post.ToDisplay(userId, _context));
         }
 
 
@@ -66,14 +73,20 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).Select(p => p.ToDisplay(userId)).ToListAsync();
+            var posts = await _context.Post.Where(p => p.KeyWords.Contains(KeyWord)).ToListAsync();
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in posts)
+            {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                postsDisplay.Add(postDisplay);
+            }
 
-            if (posts == null)
+            if (postsDisplay == null)
             {
                 return NotFound();
             }
 
-            return posts;
+            return postsDisplay;
         }
 
         [HttpGet("ByGroup/{GroupId}")]
@@ -85,14 +98,21 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).Include(p => p.Category).ToListAsync();
 
-            if (posts == null)
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in posts)
+            {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                postsDisplay.Add(postDisplay);
+            }
+
+            if (postsDisplay == null)
             {
                 return NotFound();
             }
 
-            return Ok(posts);
+            return Ok(postsDisplay);
         }
 
         [HttpGet("ByAuthor/{AuthorId}")]
@@ -104,14 +124,19 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Where(p => p.Author != null && p.Author.Id == AuthorId).Include(p => p.Category).Select(p => p.ToDisplay(userId)).ToListAsync();
-
-            if (posts == null)
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p => p.Author != null && p.Author.Id == AuthorId).Include(p => p.Category).ToListAsync();
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in posts)
+            {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                postsDisplay.Add(postDisplay);
+            }
+            if (postsDisplay == null)
             {
                 return NotFound();
             }
 
-            return Ok(posts);
+            return Ok(postsDisplay);
         }
 
         [HttpGet("ByUpVote/{UserID}")]
@@ -123,16 +148,19 @@ namespace FinalProject3.Controllers
                 return Unauthorized();
             }
             var posts = await _context.Post
-            .Where(p => p.Votes.Any(v => v.Voter != null && v.Voter.Id == UserID && v.Voted > 0))
-            .Select(p => p.ToDisplay(userId))
-            .ToListAsync();
-
-            if (posts == null)
+            .Where(p => p.Votes.Any(v => v.Voter != null && v.Voter.Id == UserID && v.Voted > 0)).ToListAsync();
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in posts)
+            {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                postsDisplay.Add(postDisplay);
+            }
+            if (postsDisplay == null)
             {
                 return NotFound();
             }
 
-            return Ok(posts);
+            return Ok(postsDisplay);
         }
 
         [HttpGet("ByDownVote/{UserID}")]
@@ -145,16 +173,19 @@ namespace FinalProject3.Controllers
                 return Unauthorized();
             }
             var posts = await _context.Post
-            .Where(p => p.Votes.Any(v => v.Voter != null && v.Voter.Id == UserID && v.Voted < 0))
-            .Select(p => p.ToDisplay(userId))
-            .ToListAsync();
-
-            if (posts == null)
+            .Where(p => p.Votes.Any(v => v.Voter != null && v.Voter.Id == UserID && v.Voted < 0)).ToListAsync();
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in posts)
+            {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                postsDisplay.Add(postDisplay);
+            }
+            if (postsDisplay == null)
             {
                 return NotFound();
             }
 
-            return Ok(posts);
+            return Ok(postsDisplay);
         }
 
         [HttpGet("FullById/{PostID}")]
@@ -242,9 +273,11 @@ namespace FinalProject3.Controllers
                         throw;
                     }
                 }
-            
 
-            return Ok(fullPost.ToDisplay(userId));
+
+            var postDisplay = await fullPost.ToDisplay(userId, _context);
+
+            return Ok(postDisplay);
         }
 
         // POST: api/Posts
@@ -282,8 +315,10 @@ namespace FinalProject3.Controllers
                         throw;
                     }
                 }
+            
+            var postDisplay = await post.ToDisplay(userId, _context);
 
-            return Created("Success",post.ToDisplay(userId));
+            return Created("Success", postDisplay);
         }
 
         // DELETE: api/Posts/5
@@ -306,30 +341,30 @@ namespace FinalProject3.Controllers
         [Authorize]
         public async Task<IActionResult> VoteOnPost(string PostId, [FromBody] VoteInput vote)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId is null)
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (currentUserId is null)
             {
                 return Unauthorized();
             }
-
+            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == currentUserId);
+            if (currentUser is null)
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var fullPost = await _context.Post.Include(p => p.Votes).Where(p => p.Id== PostId).FirstOrDefaultAsync();
+            var fullPost = await _context.Post.Include(p => p.Votes).Include(p => p.Author).Where(p => p.Id== PostId).FirstOrDefaultAsync();
             if (fullPost is null)
             {
                 return NotFound();
             }
-            var hasVoted = fullPost.Votes.Where(v => v?.Voter?.Id == userId).FirstOrDefault();
+
+            var hasVoted = currentUser.votedOn.Where(v => v == PostId);
             if (hasVoted is not null)
             {
                 return BadRequest("You have alredey voted");
-            }
-            var user = await userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return BadRequest("User Not Found");
             }
             if (vote.Vote > 0)
             {
@@ -340,7 +375,8 @@ namespace FinalProject3.Controllers
                 vote.Vote = -1;
             }
             Votes addedVote = new Votes();
-            addedVote.CreatVote(user, vote.Vote);
+            addedVote.CreatVote(currentUser, vote.Vote);
+            currentUser.votedOn.Add(PostId);
             fullPost.Votes.Add(addedVote);
             fullPost.calcVotes();
             _context.Update(fullPost);
@@ -359,7 +395,9 @@ namespace FinalProject3.Controllers
                     throw;
                 }
             }
-            return Ok(fullPost.ToDisplay(userId));
+
+            var postDisplay = await fullPost.ToDisplay(currentUserId, _context);
+            return Ok(postDisplay);
         }
         private bool PostExists(string id)
         {

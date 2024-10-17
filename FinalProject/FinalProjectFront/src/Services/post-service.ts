@@ -46,9 +46,15 @@ const getPosts = () =>
             method: "Get",
             data: null,
           });
-  
+          
+          const GetGroupPosts = ( GroupId: string) =>
+            request({
+              url: `${postURL}/ByGroup/${GroupId}`,
+              method: "Get",
+              data: null,
+            });
 
 
 export { getPosts, postPost, VoteOnPost , EditPost,DeletePost };
 
-export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost,GetAuthorPosts };
+export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost,GetAuthorPosts,GetGroupPosts };

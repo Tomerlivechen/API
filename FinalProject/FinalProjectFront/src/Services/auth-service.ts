@@ -57,6 +57,15 @@ const login = (email: string, password: string) =>
         method: "GET",
         data: null,
       });
+
+
+      const GetFollowingIds = () =>
+        request({
+          url: `${AuthURL}/GetFollowingIds`,
+          method: "GET",
+          data: null,
+        });
+
     
       const follow = (id: string) =>
         request({
@@ -107,5 +116,6 @@ export const auth = {
   unfollow,
   block,
   unBlock,
-  manage
+  manage,
+  GetFollowingIds
 };

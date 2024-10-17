@@ -51,7 +51,7 @@ const UserTabList: React.FC<UserTabListValues> = (
 
   return (
     <>
-      {!loading ? (
+      {!loading && sortedUsers ? (
         <div>
           {sortedUsers.map((user) => (
             <div className="p-2">

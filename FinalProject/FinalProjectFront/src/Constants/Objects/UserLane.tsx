@@ -77,7 +77,6 @@ const UserLane: React.FC<ProfileUserSectionProps> = ({ userId }) => {
             </div>
           </>
         )}
-        ;
       </div>
     </>
   );

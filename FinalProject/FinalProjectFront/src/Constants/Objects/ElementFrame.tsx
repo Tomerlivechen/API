@@ -13,9 +13,10 @@ type overflowtype = "visible" | "hidden" | "scroll" | "auto" | "clip";
 
 interface basicElements {
   children: ReactNode;
-  height: string;
-  width: string;
-  padding: string;
+  height?: string;
+  width?: string;
+  padding?: string;
+  tailwind?: string;
   position?: Position;
   top?: string;
   left?: string;
@@ -32,7 +33,7 @@ const ElementFrame = (props: basicElements) => {
   return (
     <>
       <div
-        className={` p-${props.padding} shadow-lg  ${
+        className={` p-${props.padding} ${props.tailwind}   ${
           !props.notRounded && " rounded-lg"
         } m-${props.margin || "-3"} ${colors.ElementFrame}`}
         style={{

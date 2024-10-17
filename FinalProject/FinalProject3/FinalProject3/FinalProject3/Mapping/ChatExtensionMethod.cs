@@ -51,9 +51,11 @@ namespace FinalProject3.Mapping
         public static MessageDisplay ToDisplay(this Message Fullmessage)
         {
             var DisplayMessage = new MessageDisplay() {
-            message = Fullmessage.message,
+                id = Fullmessage.Id,
+                message = Fullmessage.message,
             ChatId = Fullmessage.ChatId,
             UserName= Fullmessage.UserName,
+            UserId = Fullmessage.UserId,
             Datetime= Fullmessage.Datetime,
             };
             return DisplayMessage;

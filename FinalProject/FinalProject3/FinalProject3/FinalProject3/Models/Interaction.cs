@@ -39,7 +39,7 @@ namespace FinalProject3.Models
                     DownVotes++;
                 }
             }
-            TotalVotes = UpVotes + DownVotes;
+            TotalVotes = UpVotes - DownVotes;
         }
     }
 }

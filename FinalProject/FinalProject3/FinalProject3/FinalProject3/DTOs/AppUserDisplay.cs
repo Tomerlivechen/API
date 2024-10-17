@@ -23,6 +23,7 @@ namespace FinalProject3.DTOs
         public bool BlockedYou { get; set; } = false;
         public string LastActive {  get; set; } = string.Empty;
         public string ChatId { get; set; } = string.Empty;
+        public List<string> votedOn { get; set; } = [];
 
 
     }

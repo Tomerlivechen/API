@@ -38,6 +38,8 @@ namespace FinalProject3.Models
 
         public List<SocialGroup> SocialGroups { get; set; } = [];
 
+        public List<string> votedOn { get; set; } = [];
+
         public int VoteScore { get; set; } = 0;
 
         public List<Chat> Chats { get; set; } = new List<Chat>();

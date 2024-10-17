@@ -4,6 +4,7 @@ interface IMessage {
   userId: string;
   userName: string;
   message: string;
+  Datetime: string;
 }
 
 interface IChat {

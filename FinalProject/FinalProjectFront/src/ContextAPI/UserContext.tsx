@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 
-interface IUserValues {
+export interface IUserValues {
   userInfo: {
     UserId: string | null;
     UserName: string | null;
@@ -10,7 +10,7 @@ interface IUserValues {
   };
 }
 
-const initialValues: IUserValues = {
+export const initialValues: IUserValues = {
   userInfo: {
     UserId: null,
     UserName: null,
@@ -19,7 +19,7 @@ const initialValues: IUserValues = {
   },
 };
 
-interface IDecodedToken {
+export interface IDecodedToken {
   UserId: string;
   UserName: string;
   PermissionLevel: string;

@@ -13,6 +13,16 @@
   text-decoration: none;
 }
 
+.blackAndWhite {
+  @apply filter grayscale;
+}
+
+.setContrast {
+  @apply contrast-200
+}
+
+
+
 .modal {
   --bs-modal-zindex: 1055;
   --bs-modal-width: 500px;

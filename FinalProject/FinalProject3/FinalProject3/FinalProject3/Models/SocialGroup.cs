@@ -22,5 +22,8 @@ namespace FinalProject3.Models
 
         public List<Post> Posts { get; set; } = new List<Post>();
 
+        public string ImageURL { get; set; } = string.Empty;
+        public string BanerImageURL { get; set; } = string.Empty;
+
     }
 }

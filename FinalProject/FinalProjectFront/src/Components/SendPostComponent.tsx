@@ -228,7 +228,7 @@ function SendPostComponent() {
                     />
                   </div>
                   <div className="font-semibold flex justify-evenly items-center w-full mx-auto text-lg ">
-                    <ElementFrame height="100px" width="100px" padding="1">
+                    <div className="h-28 w-28 p-4">
                       Add Link
                       <button
                         type="button"
@@ -237,7 +237,7 @@ function SendPostComponent() {
                       >
                         <HiLink style={{ fontSize: "35px" }} />
                       </button>
-                    </ElementFrame>
+                    </div>
                     <div className="pl-10">
                       <p>Image Upload</p>
                       <div className="flex items-center pl-10 p-2 mt-1">

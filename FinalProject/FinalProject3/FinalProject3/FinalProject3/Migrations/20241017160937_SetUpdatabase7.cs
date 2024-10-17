@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalProject3.Migrations
 {
     /// <inheritdoc />
-    public partial class SetUpDatabase : Migration
+    public partial class SetUpdatabase7 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,6 +45,7 @@ namespace FinalProject3.Migrations
                     PermissionLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FollowingId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BlockedId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    votedOn = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VoteScore = table.Column<int>(type: "int", nullable: true),
                     ChatsId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastActive = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -210,7 +211,9 @@ namespace FinalProject3.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GroupCreatorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AdminId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    AdminId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BanerImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -478,17 +481,17 @@ namespace FinalProject3.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "8483482b-5759-4d89-b13c-434aa2eb06da", "Admin", "ADMIN" });
+                values: new object[] { "1", "5fc1eed6-0a08-46e2-980d-05d99b704be9", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ChatsId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "LastActive", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore" },
-                values: new object[] { "543455d9-2487-47b6-a47a-4fc4c92ec1a2", 0, "", "", "[]", "[]", "7ecdfc62-7eaa-4c8b-93cb-6a18cfca9eb5", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAEAEQ9lxRvSkc24HbCuyxvFWGN3ajmVOMauEV6Uj4LrnzCcLiTnInArcgPrcB/pbPpg==", "Admin", null, false, "Dr", "They", "7882d68a-043f-4ce7-82bd-65e7ed79e98d", false, "SysAdmin", 0 });
+                columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ChatsId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "LastActive", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore", "votedOn" },
+                values: new object[] { "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4", 0, "", "", "[]", "[]", "e71cffbd-b2a5-47bd-bfa5-c680ec8311d6", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAELWn4SgJM7ji4cHk2f9EP1WCbdjk6uStBRkz3DdkzuqAfszuVFHDFLPKdA6F4rKDsA==", "Admin", null, false, "Dr", "They", "28acfc2e-1564-4b31-acb3-a4268ef3cbe5", false, "SysAdmin", 0, "[]" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1", "543455d9-2487-47b6-a47a-4fc4c92ec1a2" });
+                values: new object[] { "1", "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUserSocialGroup_SocialGroupId",

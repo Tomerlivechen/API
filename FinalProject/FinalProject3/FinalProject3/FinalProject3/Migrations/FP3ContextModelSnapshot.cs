@@ -265,6 +265,10 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("BanerImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -272,6 +276,10 @@ namespace FinalProject3.Migrations
                     b.Property<string>("GroupCreatorId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -344,7 +352,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "8483482b-5759-4d89-b13c-434aa2eb06da",
+                            ConcurrencyStamp = "5fc1eed6-0a08-46e2-980d-05d99b704be9",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -513,7 +521,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "543455d9-2487-47b6-a47a-4fc4c92ec1a2",
+                            UserId = "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
                             RoleId = "1"
                         });
                 });
@@ -650,22 +658,26 @@ namespace FinalProject3.Migrations
                     b.Property<int>("VoteScore")
                         .HasColumnType("int");
 
+                    b.Property<string>("votedOn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasDiscriminator().HasValue("AppUser");
 
                     b.HasData(
                         new
                         {
-                            Id = "543455d9-2487-47b6-a47a-4fc4c92ec1a2",
+                            Id = "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7ecdfc62-7eaa-4c8b-93cb-6a18cfca9eb5",
+                            ConcurrencyStamp = "e71cffbd-b2a5-47bd-bfa5-c680ec8311d6",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAEQ9lxRvSkc24HbCuyxvFWGN3ajmVOMauEV6Uj4LrnzCcLiTnInArcgPrcB/pbPpg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELWn4SgJM7ji4cHk2f9EP1WCbdjk6uStBRkz3DdkzuqAfszuVFHDFLPKdA6F4rKDsA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7882d68a-043f-4ce7-82bd-65e7ed79e98d",
+                            SecurityStamp = "28acfc2e-1564-4b31-acb3-a4268ef3cbe5",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             BanerImageURL = "",
@@ -684,7 +696,8 @@ namespace FinalProject3.Migrations
                             PermissionLevel = "Admin",
                             Prefix = "Dr",
                             Pronouns = "They",
-                            VoteScore = 0
+                            VoteScore = 0,
+                            votedOn = "[]"
                         });
                 });
 

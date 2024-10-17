@@ -12,10 +12,16 @@ const Profile = () => {
 
   return (
     <>
-      <ProfileUserSection userId={userIdState} />
+      <div className="flex flex-wrap justify-center">
+        <div className="hidden lg:block lg:w-3/12 pr-2 pl-2"></div>
+        <div className="w-full lg:w-10/12 pr-2 pl-2 mx-auto">
+          <ProfileUserSection userId={userIdState} />
+        </div>
+      </div>
+
       <div className="flex flex-wrap justify-between">
-        <div className="lg:w-1/3  lg:block hidden pr-2 pl-2"></div>
-        <div className="lg:w-2/3 md:w-2/3 sm:w-full pl-2 pr-2">
+        <div className="hidden lg:block lg:w-5/12 pl-2 pr-2"></div>
+        <div className="w-full lg:w-7/12 pl-2 pr-2">
           <PostFrame />
         </div>
       </div>

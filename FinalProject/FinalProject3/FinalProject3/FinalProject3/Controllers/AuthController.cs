@@ -132,7 +132,10 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         foreach (var group in groups)
         {
             var Card = await group.ToCard(currentUserId, _context, userManager);
-            groupCards.Add(Card);
+            if (Card is not null)
+            {
+                groupCards.Add(Card);
+            }
         }
 
 
@@ -171,21 +174,41 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         
     }
 
-    [HttpPost("GetFullUser")]
+    [HttpGet("GetFullUser/{userId}")]
     [Authorize]
-    public async Task<ActionResult<AppUser>> GetFullUser([FromBody] string id)
+    public async Task<ActionResult<AppUser>> GetFullUser(string userId)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        var user = await userManager.Users.Include(u => u.Following).Include(u => u.Posts).FirstOrDefaultAsync(u => u.Id == id);
+        var user = await userManager.Users.Include(u => u.Following).Include(u => u.Posts).FirstOrDefaultAsync(u => u.Id == userId);
         if (user is not null)
         {
             return Ok(user);
         }
 
         return NotFound("User Not Found");
+
+    }
+
+    [HttpGet("GetFollowingIds")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<string>>> GetFollowingId( )
+    {
+        var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        var user = await userManager.Users.Include(u => u.Following).FirstOrDefaultAsync(u => u.Id == currentUserId);
+        if (user is null)
+        {
+            return Unauthorized();
+        }
+        var following = user.Following.Select(u => u.Id).ToList();
+        return Ok(following);
+        
 
     }
 

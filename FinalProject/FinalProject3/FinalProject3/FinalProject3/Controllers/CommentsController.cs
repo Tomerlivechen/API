@@ -29,14 +29,21 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var comments = await _context.Comment.Where(c => c.ParentPost != null && c.ParentPost.Id == PostID).Select(c => c.ToDisplay(userId)).ToListAsync();
+            var comments = await _context.Comment.Where(c => c.ParentPost != null && c.ParentPost.Id == PostID).ToListAsync();
 
-            if (comments == null)
+            var commentsDisplay = new List<CommentDisplay>();
+            foreach (var comment in comments)
+            {
+                var commentDisplay = await comment.ToDisplayAsync(userId, _context);
+                commentsDisplay.Add(commentDisplay);
+            }
+            if (commentsDisplay == null)
             {
                 return NotFound();
             }
 
-            return Ok(comments);
+
+            return Ok(commentsDisplay);
         }
 
         [HttpGet("ByPCommentId/{CommentID}")]
@@ -48,20 +55,28 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var comments = await _context.Comment.Where(c => c.ParentComment != null && c.ParentComment.Id == CommentID).Select(c => c.ToDisplay(userId)).ToListAsync();
+            var comments = await _context.Comment.Where(c => c.ParentComment != null && c.ParentComment.Id == CommentID).ToListAsync();
 
-            if (comments == null)
+            var commentsDisplay = new List<CommentDisplay>();
+            foreach (var comment in comments)
+            {
+                var commentDisplay = await comment.ToDisplayAsync(userId, _context);
+                commentsDisplay.Add(commentDisplay);
+            }
+            if (commentsDisplay == null)
             {
                 return NotFound();
             }
 
-            return Ok(comments);
+
+            return Ok(commentsDisplay);
         }
 
         [HttpGet("ByCommentId/{CommentID}")]
         [Authorize]
         public async Task<ActionResult<CommentDisplay>> GetCommentByCommentID(string CommentID)
         {
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId is null)
             {
@@ -74,7 +89,11 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            return comment.ToDisplay(userId);
+
+
+            var commentDisplay = await comment.ToDisplayAsync(userId, _context);
+
+            return commentDisplay;
         }
 
         [HttpGet("ById/{CommentID}")]
@@ -138,9 +157,9 @@ namespace FinalProject3.Controllers
                 {
                     return  Problem(ex.Message);
                 }
-            
 
-            return Created("Success",newComment.ToDisplay(userId));
+            var commentDisplay = await newComment.ToDisplayAsync(userId, _context);
+            return Created("Success", commentDisplay);
         }
 
         [HttpPut("{id}")]
@@ -198,9 +217,9 @@ namespace FinalProject3.Controllers
                         throw;
                     }
                 }
-            
+            var commentDisplay = await fullComment.ToDisplayAsync(userId, _context);
 
-            return Ok(fullComment.ToDisplay(userId));
+            return Ok(commentDisplay);
         }
 
         [HttpDelete("{id}")]
@@ -234,8 +253,13 @@ namespace FinalProject3.Controllers
         public async Task<IActionResult> VoteOnComment(string commentId,[FromBody]  int Vote )
         {
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId is null)
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (currentUserId is null)
+            {
+                return Unauthorized();
+            }
+            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == currentUserId);
+            if (currentUser is null)
             {
                 return Unauthorized();
             }
@@ -248,18 +272,14 @@ namespace FinalProject3.Controllers
             {
                 return NotFound();
             }
-            var hasVoted = fullComment.Votes.Where(v => v.Voter != null && v.Voter.Id == userId).FirstOrDefault();
+            var hasVoted = currentUser.votedOn.Where(v => v == commentId);
             if (hasVoted is not null)
             {
                 return BadRequest("You have alredey voted");
             }
-            var user =await userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return BadRequest("User Not Found");
-            }
             Votes addedVote = new Votes();
-            addedVote.CreatVote(user, Vote);
+            addedVote.CreatVote(currentUser, Vote);
+            currentUser.votedOn.Add(commentId);
             fullComment.Votes.Add(addedVote);
             fullComment.calcVotes();
             _context.Update(fullComment);
@@ -286,7 +306,9 @@ namespace FinalProject3.Controllers
                     throw;
                 }
             }
-            return Ok(fullComment.ToDisplay(userId));
+
+            var commentDisplay = await fullComment.ToDisplayAsync(currentUserId, _context);
+            return Ok(commentDisplay);
         }
 
         private bool CommentExists(string id)

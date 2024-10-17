@@ -15,6 +15,12 @@ import UserLane from "../Constants/Objects/UserLane";
 import { MessageComponent } from "../Constants/Objects/MessageComponent";
 import { IMessage } from "../Models/ChatModels";
 import { PostFrame } from "../Constants/Objects/PostFrame";
+import { AccessabilityPanel } from "../Constants/Objects/AccessabilityPanel";
+import {
+  ISendMessageComponent,
+  SendMessageComponent,
+} from "../Components/SendMessageComponent";
+import { ChatFrame, IChatFrameParams } from "../Constants/Objects/ChatFrame";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -337,19 +343,64 @@ const user1: IAppUserDisplay = {
 const message1: IMessage = {
   id: "sghsfsghf",
   chatId: "fghfghgfh",
-  userId: "fgshfghfgh",
-  userName: "UserName",
+  userId: "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+  userName: "SysAdmin",
   message: "this is a test message",
+  Datetime: "2024-10-12-10-12-06",
 };
 
 const message2: IMessage = {
+  id: "6710e34a-6828-8008-91a2-e60ab4dfb656",
+  chatId: "6710e34a-328y-8008-91a2-e60ab4dfb656",
+  userId: "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+  userName: "Diana",
+  message: "Hey, how are you?",
+  Datetime: "2024-10-17-08-30-15",
+};
+
+const message3: IMessage = {
+  id: "5728b27c-8823-4009-12b5-f47ef59d3f1d",
+  chatId: "5728b27c-328y-8008-91a2-f47ef59d3f1d",
+  userId: "5728b27c-6828-6789-91a2-f47ef59d3f1d",
+  userName: "Diana",
+  message: "Sure, let's meet at 2 PM tomorrow for the review session.",
+  Datetime: "2024-10-17-09-15-45",
+};
+
+const message4: IMessage = {
+  id: "fd73eb2c-8298-4927-83c4-a54fb69eabc9",
+  chatId: "fd73eb2c-328y-8008-91a2-a54fb69eabc9",
+  userId: "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+  userName: "SysAdmin",
+  message:
+    "Just wanted to let you know the project is on track and we should be able to deliver it by the end of the week. I'll keep you posted if there are any changes.",
+  Datetime: "2024-10-17-11-42-08",
+};
+
+const message5: IMessage = {
+  id: "2e76b38d-8820-4fa3-9199-6d2b2d5fbc88",
+  chatId: "2e76b38d-328y-8008-91a2-6d2b2d5fbc88",
+  userId: "2e76b38d-6828-6789-91a2-6d2b2d5fbc88",
+  userName: "Diana",
+  message: "Okay, sounds good. I'll be there!",
+  Datetime: "2024-10-17-14-05-22",
+};
+
+const message6: IMessage = {
   id: "sghsfsghf",
   chatId: "fghfghgfh",
-  userId: "fgshfghfgh",
-  userName: "UserName",
+  userId: "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+  userName: "SysAdmin",
   message:
     "thiis is a very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long test text message",
+  Datetime: "2024-10-12-10-13-16",
 };
+
+const messagesend: ISendMessageComponent = {
+  chatId: "2e76b38d-328y-8008-91a2-6d2b2d5fbc88",
+};
+
+const mesages = [message1, message2, message3, message4, message5, message6];
 
 const tabProps: UserTabProps = {
   UserDisplay: user1,
@@ -358,15 +409,23 @@ const tabProps: UserTabProps = {
   },
 };
 
+const chatBoxPorompt: IChatFrameParams = {
+  chatId: "eaf77a97-5fd8-4778-81a5-b3edfaaf6ab4",
+  user1Id: "eaf44a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+  user1name: "serte",
+  user2Id: "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+  user2name: "vvvfgdf",
+  messages: mesages,
+};
+
 function TestSpace() {
   return (
     <>
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
-      <div>
-        <PostFrame />
+      <div className="w-96">
+        <ChatFrame {...chatBoxPorompt} />
       </div>
-
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>

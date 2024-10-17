@@ -139,6 +139,8 @@ namespace FinalProject3.Data
 
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { RoleId = "1", UserId = user.Id });
 
+
+           // SeedData.SeedUsersAndPosts(builder);
         }
 
 

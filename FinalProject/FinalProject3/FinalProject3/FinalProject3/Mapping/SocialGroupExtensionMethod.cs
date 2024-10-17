@@ -3,6 +3,7 @@ using FinalProject3.DTOs;
 using FinalProject3.Models;
 using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Hosting;
 
 namespace FinalProject3.Mapping
 {
@@ -45,6 +46,14 @@ namespace FinalProject3.Mapping
                     group.groupAdmin = adminUser;
                     group.AdminId = adminUser.Id;
                 }
+            }
+            if (editGroup.BanerImageURL is not null)
+            {
+                group.BanerImageURL = editGroup.BanerImageURL;
+            }
+            if (editGroup.ImageURL is not null)
+            {
+                group.ImageURL = editGroup.ImageURL;
             }
             return group;
         }
@@ -92,9 +101,17 @@ namespace FinalProject3.Mapping
                 GroupCreator = await socialGroup.GroupCreator.UsertoDisplay(userManager, _context, currentUser),
                 Admin = await socialGroup.groupAdmin.UsertoDisplay(userManager, _context, currentUser),
                 Members = (await Task.WhenAll(socialGroup.Members.Select(u => u.UsertoDisplay(userManager, _context, currentUser)))).ToList(),
-                Posts = socialGroup.Posts.Select(p => p.ToDisplay(userId)).ToList(),
+                
 
             };
+            var postsDisplay = new List<PostDisplay>();
+            foreach (var post in socialGroup.Posts)
+            {
+                var postDisplay = await post.ToDisplay(userId, _context);
+                postsDisplay.Add(postDisplay);
+            }
+            display.Posts = postsDisplay;
+
             return display;
 
         }

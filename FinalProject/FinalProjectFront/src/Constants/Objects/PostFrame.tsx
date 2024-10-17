@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { colors, stringToPostDisplay } from "../Patterns";
+import { useLocation, useParams } from "react-router-dom";
+import { colors, getFlowingPosts, stringToPostDisplay } from "../Patterns";
 import {
   IPostOrderProps,
   IPostSortingProps,
@@ -20,11 +20,18 @@ import { useLogin } from "../../CustomHooks/useLogin";
 import { useUser } from "../../CustomHooks/useUser";
 import { IPostDisplay } from "../../Models/Interaction";
 
-const PostFrame = () => {
+interface IPostFrameParams {
+  UserList: string[];
+}
+const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
+  const location = useLocation();
   const userContex = useUser();
   const { userId } = useParams();
   const [userIdState, setUserIdState] = useState<string | null>(
     userId ? userId : null
+  );
+  const [usersIds, setusersIds] = useState<string[] | null>(
+    PostFrameParams?.UserList ? PostFrameParams?.UserList : null
   );
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [postList, setPostList] = useState<PostListValues | null>();
@@ -43,14 +50,50 @@ const PostFrame = () => {
     updatePostList();
   }, []);
 
+  useEffect(() => {
+    if (PostFrameParams) {
+      setusersIds(PostFrameParams.UserList);
+    }
+  }, [PostFrameParams]);
+
   const updatePostList = async () => {
     let curerntUserUserId: string | null;
-    if (userId) {
-      curerntUserUserId = userId;
-      console.log(curerntUserUserId);
+    if (location.pathname.startsWith("/Group") && userIdState) {
+      const groupPostData = await Posts.GetGroupPosts(userIdState);
+      let groupPosts;
+      if (groupPostData !== null) {
+        groupPosts = groupPostData.data;
+      } else {
+        groupPosts = null;
+      }
+      const parsedPosts = stringToPostDisplay(groupPosts);
+      if (parsedPosts !== postList?.posts) {
+        setMainPostList(
+          Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]
+        );
+      }
+      curerntUserUserId = null;
     } else {
-      curerntUserUserId = userContex.userInfo.UserId;
-      console.log(curerntUserUserId);
+      if (userId) {
+        curerntUserUserId = userId;
+        console.log(curerntUserUserId);
+      } else {
+        if (location.pathname == "/Feed") {
+          const following: IPostDisplay[] | null = await getFlowingPosts(
+            usersIds
+          );
+          const parsedPosts = stringToPostDisplay(following);
+          if (parsedPosts !== postList?.posts) {
+            setMainPostList(
+              Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]
+            );
+          }
+          curerntUserUserId = null;
+        } else {
+          curerntUserUserId = userContex.userInfo.UserId;
+          console.log(curerntUserUserId);
+        }
+      }
     }
 
     if (curerntUserUserId) {
@@ -205,7 +248,7 @@ const PostFrame = () => {
           tooltip="Sort descending"
         />
       </div>
-
+      {!userId && <SendPostComponent />}
       <div className="w-full">
         {!loadingPosts && <PostList {...postList} />}
       </div>
