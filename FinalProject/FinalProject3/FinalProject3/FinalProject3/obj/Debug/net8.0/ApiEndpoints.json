@@ -299,12 +299,22 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user2id",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "idInput",
+        "Type": "FinalProject3.DTOs.IdInput",
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "FinalProject3.Controllers.ChatController",

@@ -1,24 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Tooltip } from "react-bootstrap";
-import { useLocation, useParams } from "react-router-dom";
-import { colors, getFlowingPosts, stringToPostDisplay } from "../Patterns";
-import {
-  IPostOrderProps,
-  IPostSortingProps,
-  PostListValues,
-} from "../RoutrProtection/@types";
-import { FaCircleUp } from "react-icons/fa6";
-import { IoSparkles } from "react-icons/io5";
-import { GoCommentDiscussion } from "react-icons/go";
-import { MdCloudSync } from "react-icons/md";
-import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
-import SendPostComponent from "../../Components/SendPostComponent";
-import { useSearch } from "../../CustomHooks/useSearch";
-import { PostList } from "../../Components/PostList";
-import { Posts } from "../../Services/post-service";
-import { useLogin } from "../../CustomHooks/useLogin";
-import { useUser } from "../../CustomHooks/useUser";
-import { IPostDisplay } from "../../Models/Interaction";
+import { colors } from "../Patterns";
+
 import { IMessage } from "../../Models/ChatModels";
 import {
   ISendMessageComponent,

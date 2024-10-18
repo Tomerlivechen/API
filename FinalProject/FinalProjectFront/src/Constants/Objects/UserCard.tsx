@@ -91,57 +91,58 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
       });
   };
 
-if(UserDisplay.blockedYou && UserDisplay.HideBlocked){
-  return null;
-}
-else {
-
-  return (
-    <>
-      <ElementFrame height="60px" width="650px" padding="5">
-        <div className="flex">
-          <div className=" col-span-2">
-            <img
-              height={100}
-              width={60}
-              className="rounded-full border-2 shadow-2xl"
-              src={UserDisplay.imageURL}
-              aria-description={`Profile picture of ${UserDisplay.first_Name} ${UserDisplay.last_Name}`}
-            />
-          </div>
-          <div className=" ml-6 col-span-4 font-extrabold text-emerald-800 p-3">
-            
-            {UserDisplay.userName}
-          </div>{!UserDisplay.HideName &&
-          <div className=" ml-4 col-span-4 font-extrabold p-3">
-            {`${UserDisplay.prefix}. ${UserDisplay.first_Name} 
+  if (UserDisplay.blockedYou && UserDisplay.hideBlocked) {
+    return null;
+  } else {
+    return (
+      <>
+        <ElementFrame height="60px" width="650px" padding="5">
+          <div className="flex">
+            <div className=" col-span-2">
+              <img
+                height={100}
+                width={60}
+                className="rounded-full border-2 shadow-2xl"
+                src={UserDisplay.imageURL}
+                aria-description={`Profile picture of ${UserDisplay.first_Name} ${UserDisplay.last_Name}`}
+              />
+            </div>
+            <div className=" ml-6 col-span-4 font-extrabold text-emerald-800 p-3">
+              {UserDisplay.userName}
+            </div>
+            {!UserDisplay.hideName && (
+              <div className=" ml-4 col-span-4 font-extrabold p-3">
+                {`${UserDisplay.prefix}. ${UserDisplay.first_Name} 
           ${UserDisplay.last_Name} (${UserDisplay.pronouns})`}
-          </div>}
-          <div className=" ml-auto col-span-4 font-extrabold p-3 flex gap-3">
-            {!UserDisplay.blockedYou &&
-              userContext.userInfo.UserId !== UserDisplay.id && (
-                <>
-                  {following ? (
-                    <button onClick={handleUnfollow}>Unfollow</button>
-                  ) : (
-                    <button onClick={handleFollow}>Follow</button>
-                  )}
-                  {blocking ? (
-                    <button onClick={handleUnBlock}>Unblock</button>
-                  ) : (
-                    <button onClick={handleBlock}>Block</button>
-                  )}
-                </>
-              )}
-            {UserDisplay.blockedYou && (
-              <div className="text-sm text-zinc-600">You Have been blocked</div>
+              </div>
             )}
+            <div className=" ml-auto col-span-4 font-extrabold p-3 flex gap-3">
+              {!UserDisplay.blockedYou &&
+                userContext.userInfo.UserId !== UserDisplay.id && (
+                  <>
+                    {following ? (
+                      <button onClick={handleUnfollow}>Unfollow</button>
+                    ) : (
+                      <button onClick={handleFollow}>Follow</button>
+                    )}
+                    {blocking ? (
+                      <button onClick={handleUnBlock}>Unblock</button>
+                    ) : (
+                      <button onClick={handleBlock}>Block</button>
+                    )}
+                  </>
+                )}
+              {UserDisplay.blockedYou && (
+                <div className="text-sm text-zinc-600">
+                  You Have been blocked
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </ElementFrame>
-    </>
-  );
+        </ElementFrame>
+      </>
+    );
+  }
 };
-}
 
 export default UserCard;

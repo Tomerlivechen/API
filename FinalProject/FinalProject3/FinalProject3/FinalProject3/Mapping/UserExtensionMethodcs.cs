@@ -43,34 +43,41 @@ namespace FinalProject32.Mapping
                 HideEmail = user.HideEmail,
                 HideName = user.HideName,
                 LastActive = user.LastActive,
+                
             };
 
-            // Check if the current user is following this user
+            
             if (currentUser.FollowingId.Contains(user.Id))
             {
                 display.Following = true;
             }
 
-            // Check if the current user has blocked this user
+            
             if (currentUser.BlockedId.Contains(user.Id))
             {
                 display.Blocked = true;
             }
 
-            // Load users with chat and blocked lists (asynchronously)
+            
             var userFull = await _context.Users.Include(u => u.Chats)
                 .Include(u => u.Blocked).AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Id == user.Id);
 
-            // Check if this user has blocked the current user
+            
             if (userFull is not null && userFull.Blocked.Any(u => u.Id == currentUser.Id))
             {
                 display.BlockedYou = true;
+            } 
+
+            Chat? chatWithUser = null;
+            foreach (var chat in userFull.Chats)
+            {
+                if (chat.User1Id == currentUser.Id || chat.User2Id == currentUser.Id)
+                {
+                    chatWithUser = chat;
+                }
             }
 
-            // Check if there is an existing chat with the user
-            var chatWithUser = currentUser.Chats
-                .FirstOrDefault(c => c.Users.Contains(currentUser));
 
             if (chatWithUser != null)
             {

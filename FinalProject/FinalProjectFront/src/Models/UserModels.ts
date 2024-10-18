@@ -19,6 +19,9 @@ interface IAppUserDisplay {
   hideEmail:boolean;
   hideName: boolean;
   hideBlocked : boolean
+  lastActive: string;
+  chatId : string;
+  votedOn: string[];
 }
 
 interface IEditUser {

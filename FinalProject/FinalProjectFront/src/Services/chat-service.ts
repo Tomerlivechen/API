@@ -17,4 +17,19 @@ const sendMessage = (newMessage: INewMessage) =>
   });
 
 
-  export const Chat = {sendMessage}
+const getChat = (ChatID: string) =>
+    request({
+      url: `${ChatURL}/ByChatId/${ChatID}`,
+      method: "GET",
+      data: null,
+  });
+
+
+  const CreatChat = (userid: string) =>
+    request({
+      url: `${ChatURL}`,
+      method: "POST",
+      data: {id:userid},
+  });
+
+  export const Chat = {sendMessage, getChat, CreatChat}

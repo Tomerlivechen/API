@@ -1,4 +1,4 @@
-interface IMessage {
+export interface IMessage {
   id: string;
   chatId: string;
   userId: string;
@@ -7,7 +7,7 @@ interface IMessage {
   Datetime: string;
 }
 
-interface IChat {
+export interface IChat {
   id: string;
   user1Id: string;
   user1Name: string;

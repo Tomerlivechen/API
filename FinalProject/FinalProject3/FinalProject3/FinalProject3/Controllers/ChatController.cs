@@ -21,8 +21,9 @@ namespace FinalProject3.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult> CreatNewChat (string user2id)
+        public async Task<ActionResult<string>> CreatNewChat ([FromBody] IdInput idInput)
         {
+            var user2id = idInput.id;
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId is null)
             {
@@ -38,6 +39,12 @@ namespace FinalProject3.Controllers
             {
                 return BadRequest();
             }
+            var exists = await _context.Chat.FindAsync(upChat);
+            if (exists is not null)
+            {
+                return BadRequest("Chat exists");
+            }
+
             await _context.Chat.AddAsync(upChat);
             var user1 = await _context.Users.FindAsync(userId);
             var user2 = await _context.Users.FindAsync (user2id);
@@ -48,7 +55,7 @@ namespace FinalProject3.Controllers
             user1.Chats.Add(upChat);
             user2.Chats.Add(upChat);
             await _context.SaveChangesAsync();
-            return Ok();
+            return Ok(upChat.Id);
 
         }
 
