@@ -5,7 +5,6 @@ import { Chat } from "../Services/chat-service";
 interface ChatValues {
   chatInfo: IChat | null;
   isOpen?: boolean;
-  windowSize?: "min" | "mid" | "closed";
 }
 
 export interface IChatContext {
@@ -15,83 +14,47 @@ export interface IChatContext {
   loading: boolean;
   toggleWindowSize: () => void;
   creatChat: (id: string) => Promise<string>;
+  chatId: string;
 }
 
-const ChatContext = createContext<IChatContext | null>(null);
-const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [chatId, setChatId] = useState<string>("");
-  const [chatValues, setChatValues] = useState<IChat | null>(null);
-  const [chatBoxValues, setchatBoxValues] = useState<ChatValues | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+export interface IChatService {
+  addChat: (chatId: string) => boolean;
+  chatIds: string[];
+  closeChat: (chatId: string) => void;
+  creatChat: (id: string) => Promise<string>;
+}
 
-  const getChatValues = async () => {
-    if (chatId) {
-      await Chat.getChat(chatId).then((respons) => setChatValues(respons.data));
+const ChatContext = createContext<IChatService | null>(null);
+const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [chatIds, setChatIds] = useState<string[]>([]);
+
+  const addChat = (chatId: string) => {
+    if (chatIds.includes(chatId)) {
+      return false;
     }
+    if (chatIds.length < 5) {
+      setChatIds((prev) => [...prev, chatId]);
+      return true;
+    }
+    return false;
+  };
+
+  const closeChat = (chatId: string) => {
+    setChatIds((prev) => prev.filter((id) => id !== chatId));
   };
 
   const creatChat = async (id: string) => {
     const respons = await Chat.CreatChat(id);
-    setChatId(respons.data);
     return respons.data;
-  };
-
-  useEffect(() => {
-    if (chatValues) {
-      setchatBoxValues({
-        chatInfo: chatValues,
-        isOpen: true,
-        windowSize: "mid",
-      });
-    }
-  }, [chatValues]);
-
-  useEffect(() => {
-    if (chatId) {
-      getChatValues();
-    }
-  }, [chatId]);
-
-  useEffect(() => {
-    if (chatBoxValues?.isOpen) {
-      setLoading(false);
-    }
-  }, [chatBoxValues?.isOpen]);
-
-  const closeChat = () => {
-    setchatBoxValues({ chatInfo: null, isOpen: false, windowSize: "closed" });
-    setChatId("");
-  };
-
-  const contact = (id: string) => {
-    setChatId(id);
-    setLoading(true);
-  };
-
-  const toggleWindowSize = () => {
-    if (chatBoxValues?.windowSize == "mid")
-      setchatBoxValues((prev) => ({
-        ...prev,
-        windowSize: "min",
-        chatInfo: prev?.chatInfo ?? null,
-      }));
-    if (chatBoxValues?.windowSize == "min")
-      setchatBoxValues((prev) => ({
-        ...prev,
-        windowSize: "mid",
-        chatInfo: prev?.chatInfo ?? null,
-      }));
   };
 
   return (
     <ChatContext.Provider
       value={{
-        chatBoxValues,
-        closeChat,
-        contact,
-        loading,
-        toggleWindowSize,
         creatChat,
+        addChat,
+        chatIds,
+        closeChat,
       }}
     >
       {children}

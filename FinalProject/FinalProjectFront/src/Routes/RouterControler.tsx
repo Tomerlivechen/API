@@ -21,6 +21,8 @@ import UserSettings from "./UserSettings";
 import { AccessabilityPanel } from "../Constants/Objects/AccessabilityPanel";
 import BackGround from "./BackGround";
 import { ChatProvider } from "../ContextAPI/ChatContex";
+import { ChatFrame } from "../Constants/Objects/ChatFrame";
+import { FooterBar } from "../Bars/Footer";
 
 function RouterControler() {
   return (
@@ -106,6 +108,8 @@ function RouterControler() {
                       </Routes>
                     </BackGround>
                   </Router>
+
+                  <FooterBar />
                 </ChatProvider>
               </PostsProvider>
             </SearchProvider>

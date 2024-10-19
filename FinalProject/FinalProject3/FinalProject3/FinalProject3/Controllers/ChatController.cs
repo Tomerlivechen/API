@@ -39,7 +39,7 @@ namespace FinalProject3.Controllers
             {
                 return BadRequest();
             }
-            var exists = await _context.Chat.FindAsync(upChat);
+            var exists = await _context.Chat.FindAsync(upChat.Id);
             if (exists is not null)
             {
                 return BadRequest("Chat exists");

@@ -31,6 +31,10 @@ const UserTab: React.FC<UserTabProps> = (TabProps: UserTabProps) => {
     setUserInfo((prev) => ({ ...prev, chatId: chatID }));
   };
 
+  const openNewChat = async () => {
+    chatContext.addChat(userInfo.chatId);
+  };
+
   useEffect(() => {
     setUserInfo(TabProps.UserDisplay);
   }, []);
@@ -57,7 +61,10 @@ const UserTab: React.FC<UserTabProps> = (TabProps: UserTabProps) => {
               {userInfo.userName}
 
               {userInfo.chatId ? (
-                <button className="flex items-center">
+                <button
+                  className="flex items-center"
+                  onClick={() => openNewChat()}
+                >
                   <GiChatBubble size={24} />
                 </button>
               ) : (

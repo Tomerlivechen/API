@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { colors } from "../Patterns";
 
-import { IMessage } from "../../Models/ChatModels";
+import { IChat, IMessage } from "../../Models/ChatModels";
 import {
   ISendMessageComponent,
   SendMessageComponent,
@@ -10,23 +10,21 @@ import { MdOpenInNew } from "react-icons/md";
 import { MessageComponent } from "./MessageComponent";
 import { GrClose } from "react-icons/gr";
 import { HiMiniMinus } from "react-icons/hi2";
-
-export interface IChatFrameParams {
-  chatId: string;
-  user1Id: string;
-  user1name: string;
-  user2Id: string;
-  user2name: string;
-  messages: IMessage[];
-}
-
+import { useChat } from "../../CustomHooks/useChat";
+import { Chat } from "../../Services/chat-service";
+import { AiOutlineLoading } from "react-icons/ai";
+import { VscLoading } from "react-icons/vsc";
 interface IChatFrameButtonProps {
   icon: React.ComponentType<{ size: number }>;
   activeHook: boolean;
   size: "min" | "mid" | "closed";
 }
-
-const ChatFrame: React.FC<IChatFrameParams | null> = (ChatFrameParams) => {
+interface ChatFrameProps {
+  chatID: string;
+}
+const ChatFrame: React.FC<ChatFrameProps> = ({ chatID }) => {
+  const chatContext = useChat();
+  const [loading, setLoading] = useState(true);
   const [size, setSize] = useState({
     min: false,
     mid: true,
@@ -35,23 +33,49 @@ const ChatFrame: React.FC<IChatFrameParams | null> = (ChatFrameParams) => {
   const [frameHeight, setFrameHeight] = useState<"hidden" | "h-96">("h-96");
 
   const [sendMessage, setSendMessage] = useState<ISendMessageComponent>({
-    chatId: "",
+    chatId: chatID,
   });
-  const [messages, setMessages] = useState<IMessage[] | null>(null);
+  const [chatInfo, setChatInfo] = useState<IChat | null>(null);
+  const [chatRespons, setChatRespons] = useState(null);
+  const [userNames, setUserNames] = useState<string>("");
+
+  const getChatValues = async (chatId: string) => {
+    const chatValues = await Chat.getChat(chatId);
+    setChatRespons(chatValues.data);
+  };
 
   useEffect(() => {
-    if (ChatFrameParams?.chatId) {
-      setSendMessage({ chatId: ChatFrameParams.chatId });
-      setMessages(ChatFrameParams.messages);
+    if (chatID) {
+      getChatValues(chatID);
     }
-  }, [ChatFrameParams]);
+  }, [chatID]);
 
   useEffect(() => {
-    if (size.min || size.closed) {
+    if (chatRespons != chatInfo) {
+      setLoading(true);
+      setChatInfo(chatRespons);
+    }
+  }, [chatRespons]);
+
+  useEffect(() => {
+    if (chatInfo) {
+      setLoading(false);
+      if (userNames.length < 1) {
+        setUserNames(`${chatInfo.user1Name} , ${chatInfo.user2Name}`);
+      }
+    }
+  }, [chatInfo]);
+
+  useEffect(() => {
+    if (size.min) {
       setFrameHeight("hidden");
     }
     if (size.mid) {
       setFrameHeight("h-96");
+    }
+    if (size.closed) {
+      setFrameHeight("hidden");
+      chatContext.closeChat(chatID);
     }
   }, [size]);
 
@@ -71,7 +95,7 @@ const ChatFrame: React.FC<IChatFrameParams | null> = (ChatFrameParams) => {
       scrollableDivRef.current.scrollTop =
         scrollableDivRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [chatInfo]);
 
   return (
     <>
@@ -81,7 +105,11 @@ const ChatFrame: React.FC<IChatFrameParams | null> = (ChatFrameParams) => {
             className={`${colors.ElementFrame} h-14 p-4 pb-4 gap-4 rounded-b-xl flex justify-between items-center `}
           >
             <div className="flex justify-center items-center pl-8">
-              {` ${ChatFrameParams?.user1name} , ${ChatFrameParams?.user2name}`}
+              {!loading ? (
+                ` ${userNames}`
+              ) : (
+                <AiOutlineLoading className=" animate-spin" size={25} />
+              )}
             </div>
             <div className="ml-auto flex gap-4">
               <button onClick={() => toggleBoolean("min")} disabled={size.min}>
@@ -105,10 +133,15 @@ const ChatFrame: React.FC<IChatFrameParams | null> = (ChatFrameParams) => {
             ref={scrollableDivRef}
             className={`${colors.ElementFrame} ${frameHeight}   pb-4 gap-4 rounded-b-xl overflow-y-auto`}
           >
-            {messages &&
-              messages.map((message) => (
+            {chatInfo?.messages ? (
+              chatInfo.messages.map((message) => (
                 <MessageComponent key={message.id} {...message} />
-              ))}
+              ))
+            ) : (
+              <div className="flex items-center justify-center h-full">
+                <VscLoading className="animate-spin" size={35} />
+              </div>
+            )}
           </div>
           {size.mid && <SendMessageComponent {...sendMessage} />}
         </>
