@@ -66,6 +66,18 @@ const login = (email: string, password: string) =>
           data: null,
         });
 
+        const GetUsersFollowing = (userId : string) =>
+          request({
+            url: `${AuthURL}/GetFollowingIds/${userId}`,
+            method: "GET",
+            data: null,
+          });
+          const GetUsersGroups = (userId : string) =>
+            request({
+              url: `${AuthURL}/GroupsByUser/${userId}`,
+              method: "GET",
+              data: null,
+            });
     
       const follow = (id: string) =>
         request({
@@ -104,7 +116,7 @@ const login = (email: string, password: string) =>
                 });
               
 
-export { register, login, validate, getUser, follow, unfollow, block, unBlock,manage };
+export { register, login, validate, getUser, follow, unfollow, block, unBlock,manage,GetUsersFollowing };
 
 export const auth = {
   register,
@@ -117,5 +129,7 @@ export const auth = {
   block,
   unBlock,
   manage,
-  GetFollowingIds
+  GetFollowingIds,
+  GetUsersFollowing,
+  GetUsersGroups
 };
