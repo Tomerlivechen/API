@@ -38,12 +38,19 @@ const ChatFrame: React.FC<ChatFrameProps> = ({ chatID }) => {
   const [chatInfo, setChatInfo] = useState<IChat | null>(null);
   const [chatRespons, setChatRespons] = useState(null);
   const [userNames, setUserNames] = useState<string>("");
-
+  const intervalTime = 10000;
   const getChatValues = async (chatId: string) => {
     const chatValues = await Chat.getChat(chatId);
     setChatRespons(chatValues.data);
   };
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (chatID) {
+        getChatValues(chatID);
+      }
+    }, intervalTime);
+    return () => clearInterval(interval);
+  }, []);
   useEffect(() => {
     if (chatID) {
       getChatValues(chatID);
