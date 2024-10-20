@@ -5,10 +5,38 @@ import { auth } from "../Services/auth-service";
 import { useParams } from "react-router-dom";
 import { useUser } from "../CustomHooks/useUser";
 import { PostFrame } from "../Constants/Objects/PostFrame";
+import ResizableFrame from "../Constants/Objects/ResizableFrame";
+import { UserTabList } from "../Components/UserTabList";
+import { IAppUserDisplay } from "../Models/UserModels";
 
 const Profile = () => {
+  const userContext = useUser();
   const { userId } = useParams();
-  const [userIdState, setUserIdState] = useState<string | null>(userId);
+  const [userIdState, setUserIdState] = useState<string | null>(null);
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [usersList, setUsersList] = useState<IAppUserDisplay[]|null>(null);
+
+
+const GetFollowing = async (profileId : string) => {
+  const response= await auth.GetUsersFollowing(profileId)
+  setUsersList(response.data)
+}
+
+
+useEffect(() => {
+if (userId){
+  GetFollowing(userId)
+  setUserIdState(userId)
+}else if (userContext.userInfo.UserId){
+  GetFollowing(userContext.userInfo.UserId)
+}
+ },[userId])
+
+ useEffect(() => {
+  if (usersList){
+  setLoadingUsers(false)
+  }
+   },[usersList])
 
   return (
     <>
@@ -20,11 +48,29 @@ const Profile = () => {
       </div>
 
       <div className="flex flex-wrap justify-between">
-        <div className="hidden lg:block lg:w-5/12 pl-2 pr-2"></div>
+        <div className="hidden lg:block lg:w-5/12 pl-2 pr-2">
+        {(!loadingUsers && usersList) && (
+            <>
+              <ResizableFrame
+                whidth={"100%"}
+                title={"Following"}
+                show={true}
+                tailwindProps=" h-full"
+              >
+                <UserTabList
+                  users={usersList}
+                  
+                />
+              </ResizableFrame>
+            </>
+          )}
+        
+        </div>
         <div className="w-full lg:w-7/12 pl-2 pr-2">
-          <PostFrame />
+          <PostFrame UserList={[]} />
         </div>
       </div>
+
     </>
   );
 };
