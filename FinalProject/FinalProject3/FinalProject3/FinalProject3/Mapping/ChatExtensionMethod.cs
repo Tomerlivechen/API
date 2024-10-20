@@ -1,6 +1,9 @@
-﻿using FinalProject3.DTOs;
+﻿using FinalProject3.Data;
+using FinalProject3.DTOs;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.Intrinsics.X86;
 
 namespace FinalProject3.Mapping
@@ -14,6 +17,39 @@ namespace FinalProject3.Mapping
             string ToNotify = chat.User1Id == user1? user1 : chat.User2Id;
             return ToNotify;
         }
+
+
+        public static async Task<Notification> CreatMessageNotification (this Message message, Chat chat, string UserId, FP3Context context)
+        {
+            var newNotification = new NotificationNew()
+            {
+                NotifierId = UserId,
+                NotifiedId = getOtherUse(chat, UserId),
+                Type = "Message",
+                ReferenceId = chat.Id,
+            };
+            Notification notification = await newNotification.AddNotification(context);
+            return notification;
+        }
+
+
+
+        public static string getOtherUse (this Chat chat, string UserId)
+        {
+            if (chat.User1Id == UserId)
+            {
+                return chat.User2Id;
+            }
+            if (chat.User2Id == UserId)
+            {
+                return chat.User1Id;
+            }
+            else
+            {
+                return "error";
+            }
+        }
+
 
         public static Message MakeMessage(this MessageNew newMessage, string userId, string userName) 
         {

@@ -15,8 +15,9 @@
 
         public string ReferenceId {  get; set; } = string.Empty;
 
-        public AppUser user { get; set; } = null;
+        public AppUser Notifier { get; set; } = null;
 
+        public AppUser Notified { get; set; } = null;
         public void Viewed()
         {
             Seen = true;

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 
 namespace FinalProject3.Controllers
@@ -23,38 +24,39 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<NotificationDisplay>>> GetNotifications()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var notifications = await _context.Notification.Where(n => n.user.Id == userId && !n.Hidden).Select(n => n.toDisplay()).ToListAsync();
+            var notifications = await _context.Notification.Where(n => n.Notifier.Id == userId && !n.Hidden).Select(n => n.toDisplay()).ToListAsync();
 
             return (notifications);
 
         }
 
+
         [HttpPost]
-        public async Task<ActionResult> PostNotification(string type, string ActionId)
+        public async Task<ActionResult> PostNotification(NotificationNew notificationNew)
         {
-            if (!ModelState.IsValid || string.IsNullOrEmpty(ActionId))
+            if (!ModelState.IsValid || string.IsNullOrEmpty(notificationNew.ReferenceId))
             {
                 return BadRequest(ModelState);
             }
-            Notification notification = new Notification();
+            Notification notification = await notificationNew.AddNotification(context);
             AppUser? notified = null;
             Interaction? interaction = null;
-            interaction = await _context.Comment.FindAsync(ActionId);
+            interaction = await _context.Comment.FindAsync(notificationNew.ReferenceId);
             if (interaction is null)
             {
-                interaction = await _context.Post.FindAsync(ActionId);
+                interaction = await _context.Post.FindAsync(notificationNew.ReferenceId);
             }
             if (interaction is null)
             {
                 return NotFound("Comment not found");
             }
-                switch (type)
+                switch (notificationNew.Type)
             {
                 case "Comment":
                     notified = await userManager.FindByIdAsync(interaction.Author.Id);
                     break;
                 case "Message":
-                    Chat? chat = await _context.Chat.FindAsync(ActionId);
+                    Chat? chat = await _context.Chat.FindAsync(notificationNew.ReferenceId);
                     if (chat == null) return NotFound("Chat not found");
                     notified = await userManager.FindByIdAsync(chat.NotificatioToWho());
                     break;
@@ -65,7 +67,6 @@ namespace FinalProject3.Controllers
             {
                 return NotFound("User Not found");
             }
-            notification.AddNotification(type, ActionId, notified);
             await _context.Notification.AddAsync(notification);
             notified.Notifications.Add(notification);
             await userManager.UpdateAsync(notified);
@@ -78,7 +79,7 @@ namespace FinalProject3.Controllers
                 return Problem(ex.Message);
             }
 
-            return Ok(new { notified.Id, ActionId });
+            return Ok(notification.toDisplay());
         }
 
         [HttpPut]

@@ -20,7 +20,7 @@ namespace FinalProject3.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController(FP3Context context, ILogger<AuthController> logger, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService, IOptions<JWTSettings> options) : Controller
+public class AuthController(FP3Context context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtTokenService jwtTokenService) : Controller
 {
     private readonly FP3Context _context = context;
     [HttpPost("register")]
@@ -34,7 +34,7 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
             if (result.Succeeded)
             {
                 await signInManager.SignInAsync(user, isPersistent: true);
-                AppUserLogin userLogin = new AppUserLogin(register.Email, register.Password);
+                AppUserLogin userLogin = new(register.Email, register.Password);
                 await LogIn(userLogin);
                 return Ok(result);
             }
@@ -109,7 +109,7 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
         return Ok(followingDsplay);
     }
 
-    [HttpGet("GroupsByUser/{UserId}")]
+    [HttpGet("GroupsByUser/{userId}")]
     [Authorize]
     public async Task<ActionResult<IEnumerable<SocialGroupCard>>> GetGroups(string userId)
     {
@@ -214,7 +214,7 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
 
 
     [HttpPost("login")]
-    public async Task<IActionResult> LogIn([FromBody] AppUserLogin login, string ReturnUrl = "/")
+    public async Task<IActionResult> LogIn([FromBody] AppUserLogin login)
     {
         if (ModelState.IsValid)
         {
@@ -380,10 +380,7 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
             return BadRequest("User not found");
         }
         user.Following.Add(follow);
-        if (user.FollowingId is null)
-        {
-            user.FollowingId = new List<string>();
-        }
+        user.FollowingId ??= [];
         user.FollowingId.Add(follow.Id.ToString());
 
         var result = await userManager.UpdateAsync(user);
@@ -396,7 +393,7 @@ public class AuthController(FP3Context context, ILogger<AuthController> logger, 
 
     [HttpPut("unfollow")]
     [Authorize]
-    public async Task<IActionResult> unFollow([FromBody] AppUserIdRequest unfollowId)
+    public async Task<IActionResult> UnFollow([FromBody] AppUserIdRequest unfollowId)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         

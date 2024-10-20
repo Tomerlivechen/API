@@ -16,7 +16,9 @@ namespace FinalProject3.DTOs
 
         public string ReferenceId { get; set; } = string.Empty;
 
-        public string userid { get; set; } = string.Empty;
+        public string NotifierId { get; set; } = string.Empty;
+
+        public string NotifiedId { get; set; } = string.Empty;
 
 
     }

@@ -124,31 +124,32 @@ namespace FinalProject3.Controllers
             }
             comment.AuthorId = userId;
                 var newComment = await comment.NewCommentToComment(userManager);
-
                 _context.Comment.Add(newComment);
             Interaction? parent;
-            Notification notification = new Notification();
-            string Ntype;
             if (!string.IsNullOrEmpty(comment.ParentPostId))
             {
                 parent = await _context.Post.FindAsync(comment.ParentPostId);
-                Ntype = "CommentOnPost";
-
             }
             else
             {
                 parent = await _context.Comment.FindAsync(comment.ParentCommentId);
-                Ntype = "CommentOnComment";
             }
             if (parent is null)
             {
                 return BadRequest(!string.IsNullOrEmpty(comment.ParentPostId) ? "Post not found" : "Comment not found");
             }
-            var nUser = parent.Author;
-            notification.AddNotification(Ntype, comment.Id, nUser);
-            await _context.Notification.AddAsync(notification);
             parent.Comments.Add(newComment);
-            nUser.Notifications.Add(notification);
+
+            var Notified = parent.Author;
+            var newNotification = new NotificationNew();
+            newNotification.NotifierId= userId;
+            newNotification.NotifiedId = Notified.Id;
+            newNotification.Type = "Comment";
+            newNotification.ReferenceId = newComment.Id;
+            Notification notification = await newNotification.AddNotification(_context);
+            await _context.Notification.AddAsync(notification);
+            Notified.Notifications.Add(notification);
+
                 try
                 {
                     await _context.SaveChangesAsync();

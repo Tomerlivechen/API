@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Globalization;
 using System.Security.Claims;
 
 namespace FinalProject3.Controllers
@@ -90,14 +91,31 @@ namespace FinalProject3.Controllers
                 return BadRequest(ModelState);
             }
             var user = await _context.Users.Include(u => u.Chats).FirstOrDefaultAsync(u => u.Id == userId);
+            if (user is null) return NotFound("User not found");
             Message newMessage = newmesage.MakeMessage(userId, userName);
             var chat = await _context.Chat.FindAsync(newmesage.ChatId);
-            if (chat is null)
-            {
-                return BadRequest();
-            }
-            await _context.Message.AddAsync(newMessage);
+            if (chat is null) return BadRequest("Chat not found");
             chat.messages.Add(newMessage);
+            await _context.Message.AddAsync(newMessage);
+
+            var secondUser = chat.getOtherUse(userId);
+            var user2 = await _context.Users.FirstOrDefaultAsync(u => u.Id == secondUser);
+            if (user2?.LastActive != null)
+            {
+                DateTime lastActiveDateTime;
+                bool parsed = DateTime.TryParseExact(user2.LastActive, "yyyy-MM-dd-HH-mm",
+                                                     null, DateTimeStyles.None, out lastActiveDateTime);
+                if (parsed)
+                {
+                    TimeSpan timeDifference = DateTime.UtcNow - lastActiveDateTime;
+                    if (timeDifference.TotalMinutes >= 10)
+                    {
+                        var notification = await newMessage.CreatMessageNotification(chat, userId, _context);
+                        await _context.Notification.AddAsync(notification);
+                        user2.Notifications.Add(notification);
+                    }
+                }
+            }
             await _context.SaveChangesAsync();
             return Ok(newMessage);
         }
