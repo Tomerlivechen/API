@@ -1,6 +1,7 @@
 ﻿using FinalProject3.Data;
 using FinalProject3.DTOs;
 using FinalProject3.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,7 @@ namespace FinalProject32.Mapping
 
         }
 
-        public static async Task<AppUserDisplay> UsertoDisplay(this AppUser user, UserManager<AppUser> userManager, FP3Context _context, AppUser currentUser)
+        public static async Task<AppUserDisplay?> UsertoDisplay(this AppUser user, UserManager<AppUser> userManager, FP3Context _context, AppUser currentUser)
         {
             var display = new AppUserDisplay()
             {
@@ -63,18 +64,23 @@ namespace FinalProject32.Mapping
                 .Include(u => u.Blocked).AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Id == user.Id);
 
-            
+            if (userFull is null) return null;
+
+
             if (userFull is not null && userFull.Blocked.Any(u => u.Id == currentUser.Id))
             {
                 display.BlockedYou = true;
             } 
 
             Chat? chatWithUser = null;
-            foreach (var chat in userFull.Chats)
+            if (userFull.Chats.Any())
             {
-                if (chat.User1Id == currentUser.Id || chat.User2Id == currentUser.Id)
+                foreach (var chat in userFull.Chats)
                 {
-                    chatWithUser = chat;
+                    if (chat.User1Id == currentUser.Id || chat.User2Id == currentUser.Id)
+                    {
+                        chatWithUser = chat;
+                    }
                 }
             }
 

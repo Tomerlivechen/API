@@ -21,6 +21,8 @@ import {
   SendMessageComponent,
 } from "../Components/SendMessageComponent";
 import { ChatFrame, IChatFrameParams } from "../Constants/Objects/ChatFrame";
+import { INotificationDisplay } from "../Modals/NotificationMedels";
+import { NotificationObject } from "../Constants/Objects/NotificationObject";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -418,13 +420,37 @@ const chatBoxPorompt: IChatFrameParams = {
   messages: mesages,
 };
 
+const not1: INotificationDisplay = {
+  id: "67152ba4-a298-8008-bd9b-32e595943c96",
+  type: "Comment",
+  date: "2024-10-18-09-25",
+  seen: false,
+  hidden: false,
+  referenceId: "6a02a93a-81b0-44e8-9531-1cac20fb7281",
+  notifierId: "58119e4b-b525-4727-9f5e-d58db8110a60",
+  notifiedId: "6a02a93a-21b0-44e8-9531-1cac20fb7281",
+};
+
+const not2: INotificationDisplay = {
+  id: "67152ba4-a298-8008-bd9b-32e595943c96",
+  type: "Message",
+  date: "2024-10-19-18-10",
+  seen: false,
+  hidden: false,
+  referenceId: "6a02a93a-21b0-44e2-9531-1cac20fb7281",
+  notifierId: "6a02a93a-21b0-44e8-9531-1cac20fb7281",
+  notifiedId: "58119e4b-b525-4727-9f5e-d58db8110a60",
+};
+
 function TestSpace() {
   return (
     <>
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
-      <div className="w-96">
-        <ChatFrame {...chatBoxPorompt} />
+      <div className="flex">
+        <div className="w-1/4"></div>
+        <NotificationObject NotificationData={not1} />
+        <NotificationObject NotificationData={not2} />
       </div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>

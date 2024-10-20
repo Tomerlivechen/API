@@ -101,6 +101,10 @@ namespace FinalProject3.Mapping
         {
             var user1 = await userManager.FindByIdAsync(chat.User1Id);
             var user2 = await userManager.FindByIdAsync(chat.User2Id);
+            if (user1 is null || user2 is null || user1.UserName is null || user2.UserName is null)
+            {
+                return null;
+            }
             Chat? chatWithUser;
             foreach (var oldChat in user1.Chats)
             {
@@ -110,9 +114,7 @@ namespace FinalProject3.Mapping
                     return chatWithUser;
                 }
             }
-            if (user1 is null || user2 is null || user1.UserName is null || user2.UserName is null) { 
-            return null;
-            }
+
             if (user1 is not null && user2 is not null)
             {
                 var newChat = new Chat()

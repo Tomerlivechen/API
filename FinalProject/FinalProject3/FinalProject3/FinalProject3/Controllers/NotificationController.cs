@@ -24,7 +24,7 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<NotificationDisplay>>> GetNotifications()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var notifications = await _context.Notification.Where(n => n.Notifier.Id == userId && !n.Hidden).Select(n => n.toDisplay()).ToListAsync();
+            var notifications = await _context.Notification.Where(n => n.NotifierId == userId && !n.Hidden).Select(n => n.toDisplay()).ToListAsync();
 
             return (notifications);
 
@@ -82,10 +82,13 @@ namespace FinalProject3.Controllers
             return Ok(notification.toDisplay());
         }
 
-        [HttpPut]
-        public async Task<ActionResult> EditNotification(string NotificationId, bool seen = true, bool hide = false)
+        [HttpPut("Update/{notificationID}")]
+        [Authorize]
+        public async Task<ActionResult> EditNotification(string notificationID, [FromBody] BoolInput remove)
         {
-            var notification = await _context.Notification.FindAsync(NotificationId);
+            bool seen = true;
+            bool hide = remove.Input;
+            var notification = await _context.Notification.FindAsync(notificationID);
             if (notification == null)
             {
                 return NotFound();

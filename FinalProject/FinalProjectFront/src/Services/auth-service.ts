@@ -68,7 +68,7 @@ const login = (email: string, password: string) =>
 
         const GetUsersFollowing = (userId : string) =>
           request({
-            url: `${AuthURL}/GetFollowingIds/${userId}`,
+            url: `${AuthURL}/GetFollowing/${userId}`,
             method: "GET",
             data: null,
           });

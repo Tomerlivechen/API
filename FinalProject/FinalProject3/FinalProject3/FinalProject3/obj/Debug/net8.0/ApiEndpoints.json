@@ -60,7 +60,7 @@
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
     "Method": "GetFollowing",
-    "RelativePath": "api/Auth/GetFollowing{userId}",
+    "RelativePath": "api/Auth/GetFollowing/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -152,7 +152,7 @@
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
     "Method": "GetGroups",
-    "RelativePath": "api/Auth/GroupsByUser/{UserId}",
+    "RelativePath": "api/Auth/GroupsByUser/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -187,11 +187,6 @@
         "Name": "login",
         "Type": "FinalProject3.DTOs.AppUserLogin",
         "IsRequired": true
-      },
-      {
-        "Name": "ReturnUrl",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -266,7 +261,7 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
-    "Method": "unFollow",
+    "Method": "UnFollow",
     "RelativePath": "api/Auth/unfollow",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -575,14 +570,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "type",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ActionId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "notificationNew",
+        "Type": "FinalProject3.DTOs.NotificationNew",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -590,25 +580,20 @@
   {
     "ContainingType": "FinalProject3.Controllers.NotificationController",
     "Method": "EditNotification",
-    "RelativePath": "api/Notification",
+    "RelativePath": "api/Notification/Update/{notificationID}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "NotificationId",
+        "Name": "notificationID",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
-        "Name": "seen",
-        "Type": "System.Boolean",
-        "IsRequired": false
-      },
-      {
-        "Name": "hide",
-        "Type": "System.Boolean",
-        "IsRequired": false
+        "Name": "remove",
+        "Type": "FinalProject3.DTOs.BoolInput",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

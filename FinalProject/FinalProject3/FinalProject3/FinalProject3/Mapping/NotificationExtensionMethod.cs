@@ -17,15 +17,11 @@ namespace FinalProject3.Mapping
             notification.Hidden = false;
             notification.Type = newNotification.Type;
             notification.Date= DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
+            notification.NotifierId = newNotification.NotifierId;
             var Notified = await _context.Users.FindAsync(newNotification.NotifiedId);
-            var Notifier = await _context.Users.FindAsync(newNotification.NotifierId);
             if (Notified != null)
             {
-                notification.Notifier = Notified;
-            }
-            if (Notifier != null)
-            {
-                notification.Notifier = Notifier;
+                notification.Notified = Notified;
             }
             return notification;
         }
@@ -40,7 +36,7 @@ namespace FinalProject3.Mapping
                 Hidden = notification.Hidden,
                 Type = notification.Type,
                 Date = notification.Date,
-                NotifierId = notification.Notifier.Id,
+                NotifierId = notification.NotifierId,
             };
 
             return Displaynotification;

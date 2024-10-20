@@ -175,6 +175,13 @@ namespace FinalProject3.Migrations
                     b.Property<bool>("Hidden")
                         .HasColumnType("bit");
 
+                    b.Property<string>("NotifiedId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("NotifierId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ReferenceId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -186,12 +193,9 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("userId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("NotifiedId");
 
                     b.ToTable("Notification");
                 });
@@ -352,7 +356,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "5fc1eed6-0a08-46e2-980d-05d99b704be9",
+                            ConcurrencyStamp = "67138233-050d-4728-ada9-77e74cfddea8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -521,7 +525,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+                            UserId = "6a02a93a-21b0-44e8-9531-1cac20fb7281",
                             RoleId = "1"
                         });
                 });
@@ -667,17 +671,17 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4",
+                            Id = "6a02a93a-21b0-44e8-9531-1cac20fb7281",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e71cffbd-b2a5-47bd-bfa5-c680ec8311d6",
+                            ConcurrencyStamp = "2b24f15e-3f31-41b5-94b3-43ab1cff08f1",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELWn4SgJM7ji4cHk2f9EP1WCbdjk6uStBRkz3DdkzuqAfszuVFHDFLPKdA6F4rKDsA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOSe4WQJn6BWW8/Zb/YRCCxtO0iQqGZEL7joDD6yF145PujZ9V39m37qBswUUbcTDA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "28acfc2e-1564-4b31-acb3-a4268ef3cbe5",
+                            SecurityStamp = "952c0bea-53b5-41cc-a1c1-cf8a90230343",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             BanerImageURL = "",
@@ -750,11 +754,11 @@ namespace FinalProject3.Migrations
 
             modelBuilder.Entity("FinalProject3.Models.Notification", b =>
                 {
-                    b.HasOne("FinalProject3.Models.AppUser", "user")
+                    b.HasOne("FinalProject3.Models.AppUser", "Notified")
                         .WithMany("Notifications")
-                        .HasForeignKey("userId");
+                        .HasForeignKey("NotifiedId");
 
-                    b.Navigation("user");
+                    b.Navigation("Notified");
                 });
 
             modelBuilder.Entity("FinalProject3.Models.Post", b =>

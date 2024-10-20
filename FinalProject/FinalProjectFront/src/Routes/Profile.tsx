@@ -8,35 +8,34 @@ import { PostFrame } from "../Constants/Objects/PostFrame";
 import ResizableFrame from "../Constants/Objects/ResizableFrame";
 import { UserTabList } from "../Components/UserTabList";
 import { IAppUserDisplay } from "../Models/UserModels";
+import { useChat } from "../CustomHooks/useChat";
 
 const Profile = () => {
   const userContext = useUser();
   const { userId } = useParams();
   const [userIdState, setUserIdState] = useState<string | null>(null);
   const [loadingUsers, setLoadingUsers] = useState(true);
-  const [usersList, setUsersList] = useState<IAppUserDisplay[]|null>(null);
+  const [usersList, setUsersList] = useState<IAppUserDisplay[] | null>(null);
 
+  const GetFollowing = async (profileId: string) => {
+    const response = await auth.GetUsersFollowing(profileId);
+    setUsersList(response.data);
+  };
 
-const GetFollowing = async (profileId : string) => {
-  const response= await auth.GetUsersFollowing(profileId)
-  setUsersList(response.data)
-}
+  useEffect(() => {
+    if (userId) {
+      GetFollowing(userId);
+      setUserIdState(userId);
+    } else if (userContext.userInfo.UserId) {
+      GetFollowing(userContext.userInfo.UserId);
+    }
+  }, [userId]);
 
-
-useEffect(() => {
-if (userId){
-  GetFollowing(userId)
-  setUserIdState(userId)
-}else if (userContext.userInfo.UserId){
-  GetFollowing(userContext.userInfo.UserId)
-}
- },[userId])
-
- useEffect(() => {
-  if (usersList){
-  setLoadingUsers(false)
-  }
-   },[usersList])
+  useEffect(() => {
+    if (usersList) {
+      setLoadingUsers(false);
+    }
+  }, [usersList]);
 
   return (
     <>
@@ -48,8 +47,10 @@ if (userId){
       </div>
 
       <div className="flex flex-wrap justify-between">
-        <div className="hidden lg:block lg:w-5/12 pl-2 pr-2">
-        {(!loadingUsers && usersList) && (
+        <div className="hidden lg:block lg:w-1/12 pl-2 pr-2"></div>
+        <div className="hidden lg:block lg:w-2/12 pl-2 pr-2"></div>
+        <div className="hidden lg:block lg:w-2/12 pl-2 pr-2 h-1/2">
+          {!loadingUsers && usersList && (
             <>
               <ResizableFrame
                 whidth={"100%"}
@@ -57,20 +58,15 @@ if (userId){
                 show={true}
                 tailwindProps=" h-full"
               >
-                <UserTabList
-                  users={usersList}
-                  
-                />
+                <UserTabList users={usersList} />
               </ResizableFrame>
             </>
           )}
-        
         </div>
         <div className="w-full lg:w-7/12 pl-2 pr-2">
           <PostFrame UserList={[]} />
         </div>
       </div>
-
     </>
   );
 };

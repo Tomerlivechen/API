@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalProject3.Migrations
 {
     /// <inheritdoc />
-    public partial class SetUpdatabase7 : Migration
+    public partial class SetUpDatabase8 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -242,14 +242,15 @@ namespace FinalProject3.Migrations
                     Seen = table.Column<bool>(type: "bit", nullable: false),
                     Hidden = table.Column<bool>(type: "bit", nullable: false),
                     ReferenceId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    userId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    NotifierId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NotifiedId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Notification", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Notification_AspNetUsers_userId",
-                        column: x => x.userId,
+                        name: "FK_Notification_AspNetUsers_NotifiedId",
+                        column: x => x.NotifiedId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
@@ -481,17 +482,17 @@ namespace FinalProject3.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "5fc1eed6-0a08-46e2-980d-05d99b704be9", "Admin", "ADMIN" });
+                values: new object[] { "1", "67138233-050d-4728-ada9-77e74cfddea8", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BanerImageURL", "Bio", "BlockedId", "ChatsId", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "First_Name", "FollowingId", "HideBlocked", "HideEmail", "HideName", "ImageAlt", "ImageURL", "LastActive", "Last_Name", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PermissionLevel", "PhoneNumber", "PhoneNumberConfirmed", "Prefix", "Pronouns", "SecurityStamp", "TwoFactorEnabled", "UserName", "VoteScore", "votedOn" },
-                values: new object[] { "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4", 0, "", "", "[]", "[]", "e71cffbd-b2a5-47bd-bfa5-c680ec8311d6", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAELWn4SgJM7ji4cHk2f9EP1WCbdjk6uStBRkz3DdkzuqAfszuVFHDFLPKdA6F4rKDsA==", "Admin", null, false, "Dr", "They", "28acfc2e-1564-4b31-acb3-a4268ef3cbe5", false, "SysAdmin", 0, "[]" });
+                values: new object[] { "6a02a93a-21b0-44e8-9531-1cac20fb7281", 0, "", "", "[]", "[]", "2b24f15e-3f31-41b5-94b3-43ab1cff08f1", "AppUser", "TomerLiveChen@gmail.com", false, "Tomer", "[]", false, false, false, "", "https://i.imgur.com/1nKIWjB.gif", "", "Chen", false, null, "TOMERLIVECHEN@GMAIL.COM", "SYSADMIN", "AQAAAAIAAYagAAAAEOSe4WQJn6BWW8/Zb/YRCCxtO0iQqGZEL7joDD6yF145PujZ9V39m37qBswUUbcTDA==", "Admin", null, false, "Dr", "They", "952c0bea-53b5-41cc-a1c1-cf8a90230343", false, "SysAdmin", 0, "[]" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1", "eaf77a97-5fd8-4a48-81a5-b3edfaaf6ab4" });
+                values: new object[] { "1", "6a02a93a-21b0-44e8-9531-1cac20fb7281" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUserSocialGroup_SocialGroupId",
@@ -568,9 +569,9 @@ namespace FinalProject3.Migrations
                 column: "ChatId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notification_userId",
+                name: "IX_Notification_NotifiedId",
                 table: "Notification",
-                column: "userId");
+                column: "NotifiedId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Post_AuthorId",

@@ -66,14 +66,17 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         foreach (var user in users)
         {
             var display = await user.UsertoDisplay(userManager, _context, currentUser);
-            usersDisplay.Add(display);
+            if (display is not null)
+            {
+                usersDisplay.Add(display);
+            }
         }
         currentUser.LastActive = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");
         await userManager.UpdateAsync(currentUser);
         return Ok(usersDisplay);
     }
 
-    [HttpGet("GetFollowing{userId}")]
+    [HttpGet("GetFollowing/{userId}")]
     [Authorize]
     public async Task<ActionResult<IEnumerable<AppUserDisplay>>> GetFollowing(string userId)
     {
@@ -102,7 +105,10 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         foreach (var follower in following)
         {
             var display = await follower.UsertoDisplay(userManager, _context, currentUser);
-            followingDsplay.Add(display);
+            if (display is not null)
+            {
+                followingDsplay.Add(display);
+            }
         }
 
 
