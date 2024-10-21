@@ -57,8 +57,8 @@ namespace FinalProject3.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(post.ToDisplay(userId, _context));
+            var dispalyPost = await post.ToDisplay(userId, _context);
+            return Ok(dispalyPost);
         }
 
 

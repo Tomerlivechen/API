@@ -24,10 +24,29 @@ namespace FinalProject3.Controllers
         public async Task<ActionResult<List<NotificationDisplay>>> GetNotifications()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var notifications = await _context.Notification.Where(n => n.NotifierId == userId && !n.Hidden).Select(n => n.toDisplay()).ToListAsync();
-
+            var notifications = await _context.Notification.Where(n => n.Notified != null && n.Notified.Id == userId && !n.Hidden).Select(n => n.ToDisplay()).ToListAsync();
             return (notifications);
+        }
 
+        [HttpPatch]
+        [Authorize]
+        public async Task<ActionResult> AgeOutNotifications()
+        {
+            var notificationsToAgeOut = await _context.Notification.ToListAsync();
+            foreach (var notification in notificationsToAgeOut)
+            {
+                notification.AgeOut(); 
+            }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Problem(ex.Message);
+            }
+
+            return Ok();
         }
 
 
@@ -79,7 +98,7 @@ namespace FinalProject3.Controllers
                 return Problem(ex.Message);
             }
 
-            return Ok(notification.toDisplay());
+            return Ok(notification.ToDisplay());
         }
 
         [HttpPut("Update/{notificationID}")]
