@@ -73,7 +73,7 @@ const NotificationObject: React.FC<{
   return (
     <>
       <div>
-        <div className={`${colors.ElementFrame} h-16 w-48 p-2 m-1 relative`}>
+        <div className={`${colors.ElementFrame} h-20 w-48 p-2 m-1 relative`}>
           <div className="absolute top-1 right-0">
             <button
               className={`${colors.CommentColors}`}
@@ -95,6 +95,7 @@ const NotificationObject: React.FC<{
           >
             {actionPathName}
           </button>
+          <div className="text-xs absolute right-0">{notification?.date}</div>
         </div>
       </div>
     </>

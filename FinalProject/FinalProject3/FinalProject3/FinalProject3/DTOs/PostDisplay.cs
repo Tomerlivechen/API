@@ -16,7 +16,7 @@ namespace FinalProject3.DTOs
         public bool hasVoted { get; set; }
 
         public required string Title { get; set; }
-        public Category? Category { get; set; }
+        public int CategoryId { get; set; }
 
         public List<string> KeyWords { get; set; } = [];
         public string Datetime { get; set; } = string.Empty;

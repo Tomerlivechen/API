@@ -15,7 +15,7 @@ namespace FinalProject3.DTOs
         public string Text { get; set; } = string.Empty;
         public string AuthorId { get; set; } = string.Empty;
 
-        public Category? Category { get; set; }
+        public int CategoryId { get; set; }
 
         public string? GroupId { get; set; }
 

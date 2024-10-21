@@ -36,7 +36,7 @@ interface INewPost {
   imageURL: string;
   text: string;
   authorId: string;
-  category?: ICategory;
+  categoryId?: number;
   group: string;
   keyWords: string;
   datetime: string;
@@ -52,7 +52,7 @@ interface IPostDisplay {
   totalVotes: number;
   title: string;
   hasVoted: boolean;
-  category?: ICategory | null ;
+  categoryId?: number;
   keyWords: string[];
   datetime: string;
   comments?: ICommentDisplay[] | null;

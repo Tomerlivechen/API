@@ -10,7 +10,7 @@ const VoteOnComment = (Id: string, vote: number) =>
   request({
     url: `${CommentURL}/VoteById/${Id}`,
     method: "PUT",
-    data: vote,
+    data: {vote},
   });
 
   const DeleteComment = (Id: string) =>

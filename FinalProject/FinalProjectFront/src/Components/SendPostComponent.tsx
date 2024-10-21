@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { dialogs } from "../Constants/AlertsConstant";
 
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import { ICategory, INewPost } from "../Models/Interaction";
+import { INewPost } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
 import { catchError, categories, colors } from "../Constants/Patterns";
@@ -18,7 +18,7 @@ import { useLocation, useParams } from "react-router-dom";
 
 function SendPostComponent() {
   const location = useLocation();
-  const {params} = useParams()
+  const { params } = useParams();
   const [userIdState, setUserIdState] = useState<string | null>(null);
   const [groupId, setGroupId] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
@@ -43,14 +43,11 @@ function SendPostComponent() {
     setUrl(getUrl);
   };
 
-
-useEffect(() => {
-  if (location.pathname.startsWith("/Group") && params) {
-    setGroupId(params)
-  }
-},[params]);
-
-
+  useEffect(() => {
+    if (location.pathname.startsWith("/Group") && params) {
+      setGroupId(params);
+    }
+  }, [params]);
 
   const NewPost: INewPost = {
     id: "",
@@ -59,12 +56,11 @@ useEffect(() => {
     imageURL: "",
     text: "",
     authorId: "",
-    category: { id: 0, name: "Uncategorized" },
-    group: groupId?? "",
+    categoryId: 0,
+    group: groupId ?? "",
     keyWords: "",
     datetime: "",
   };
-
 
   const [postValues, setPostValues] = useState<INewPost>(NewPost);
 
@@ -207,25 +203,30 @@ useEffect(() => {
                     />
                   </div>
                   <div className="font-extralight form-group flex justify-between gap-8 w-1/2 mx-auto text-lg mt-1 ">
-            <label htmlFor="category" className="font-bold pt-2 -ml-8 ">Category:</label>
-            <Field
-              className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
-              id="category"
-              name="category.id"
-              as="select"
-            >
-  {categories.map((category) => (
-    <option key={category.id} value={category.id}>
-      {category.name}
-    </option>
-  ))}
-            </Field>
-            <ErrorMessage
-              name="category"
-              component="div"
-              className="text-red-500"
-            />
-          </div>
+                    <label
+                      htmlFor="categoryId"
+                      className="font-bold pt-2 -ml-8 "
+                    >
+                      Category:
+                    </label>
+                    <Field
+                      className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
+                      id="categoryId"
+                      name="categoryId"
+                      as="select"
+                    >
+                      {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage
+                      name="category"
+                      component="div"
+                      className="text-red-500"
+                    />
+                  </div>
                   <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
                     <Field
                       className="rounded-md hover:border-2 border-2 px-2 py-2"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearch } from "../CustomHooks/useSearch";
+import { colors } from "../Constants/Patterns";
 
 function SearchTitleComponent() {
   const SearchContext = useSearch();
@@ -50,8 +51,10 @@ function SearchTitleComponent() {
 
   return (
     <>
-      <div className="flex flex-col items-center p-4 bg-gray-100 rounded-md shadow-md">
-        <div className="text-4xl font-bold text-gray-800 mb-2">{mainTitle}</div>
+      <div
+        className={`flex flex-col items-center p-4 ${colors.ElementFrame} rounded-md shadow-md`}
+      >
+        <div className={`text-4xl font-bold mb-2`}>{mainTitle}</div>
         <div className="w-full text-3xl max-w-md">{searchElement}</div>
       </div>
     </>

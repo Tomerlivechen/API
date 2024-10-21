@@ -28,7 +28,7 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).ToListAsync();
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).ToListAsync();
 
             var postsDisplay = new List<PostDisplay>();
             foreach (var post in posts) {
@@ -51,7 +51,7 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var post = await _context.Post.FindAsync(id);
+            var post = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).FirstOrDefaultAsync(p => p.Id == id);
 
             if (post == null)
             {
@@ -98,7 +98,7 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).Include(p => p.Category).ToListAsync();
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).ToListAsync();
 
             var postsDisplay = new List<PostDisplay>();
             foreach (var post in posts)
@@ -124,7 +124,7 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p => p.Author != null && p.Author.Id == AuthorId).Include(p => p.Category).ToListAsync();
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p => p.Author != null && p.Author.Id == AuthorId).ToListAsync();
             var postsDisplay = new List<PostDisplay>();
             foreach (var post in posts)
             {
@@ -224,7 +224,7 @@ namespace FinalProject3.Controllers
                 return BadRequest();
             }
 
-            var fullPost = await _context.Post.Include(p => p.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
+            var fullPost = await _context.Post.Include(p => p.Comments).Include(p => p.Votes).Include(p => p.Author).Include(p => p.Group).Where(p => p.Id == id).FirstOrDefaultAsync();
 
             if (fullPost is null)
             {
@@ -326,14 +326,24 @@ namespace FinalProject3.Controllers
         [Authorize]
         public async Task<IActionResult> DeletePost(string id)
         {
-            var post = await _context.Post.FindAsync(id);
+            var post = await _context.Post.Include(c => c.Votes).FirstOrDefaultAsync(c => c.Id == id);
             if (post == null)
             {
                 return NotFound();
             }
 
+            post.Votes.Clear();
             _context.Post.Remove(post);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Problem(ex.Message);
+            }
+
 
             return Ok();
         }
@@ -346,7 +356,7 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == currentUserId);
+            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == currentUserId);
             if (currentUser is null)
             {
                 return Unauthorized();
@@ -361,8 +371,8 @@ namespace FinalProject3.Controllers
                 return NotFound();
             }
 
-            var hasVoted = currentUser.votedOn.Where(v => v == PostId);
-            if (hasVoted is not null)
+            var hasVoted = currentUser.votedOn.Contains(PostId);
+            if (hasVoted is true)
             {
                 return BadRequest("You have alredey voted");
             }

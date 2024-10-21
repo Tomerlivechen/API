@@ -38,7 +38,7 @@ function SearchPage() {
         </div>
       )}
       <div className=" flex flex-col items-center">
-        <ElementFrame height="50%" width="45%" padding="2" overflowY="auto">
+        <ElementFrame tailwind={`h-2/3 w-2/3 `} padding="2" overflowY="auto">
           {activeSearch == "user" && (
             <div className=" flex flex-col items-center">
               {searchContext.filterUserList.map((user) => (

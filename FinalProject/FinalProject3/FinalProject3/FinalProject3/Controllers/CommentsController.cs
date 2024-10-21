@@ -145,7 +145,7 @@ namespace FinalProject3.Controllers
             newNotification.NotifierId= userId;
             newNotification.NotifiedId = Notified.Id;
             newNotification.Type = "Comment";
-            newNotification.ReferenceId = newComment.Id;
+            newNotification.ReferenceId = parent.Id;
             Notification notification = await newNotification.AddNotification(_context);
             await _context.Notification.AddAsync(notification);
             Notified.Notifications.Add(notification);
@@ -227,12 +227,12 @@ namespace FinalProject3.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteComment(string id)
         {
-            var comment = await _context.Comment.FindAsync(id);
+            var comment = await _context.Comment.Include(c => c.Votes).FirstOrDefaultAsync(c => c.Id == id);
             if (comment is null)
             {
                 return NotFound();
             }
-
+            comment.Votes.Clear();
             _context.Comment.Remove(comment);
 
             try
@@ -251,15 +251,15 @@ namespace FinalProject3.Controllers
 
         [HttpPut("VoteById/{commentId}")]
         [Authorize]
-        public async Task<IActionResult> VoteOnComment(string commentId,[FromBody]  int Vote )
+        public async Task<IActionResult> VoteOnComment(string commentId, [FromBody] VoteInput vote)
         {
-
+            var Vote = vote.Vote;
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (currentUserId is null)
             {
                 return Unauthorized();
             }
-            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == currentUserId);
+            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == currentUserId);
             if (currentUser is null)
             {
                 return Unauthorized();
@@ -273,8 +273,8 @@ namespace FinalProject3.Controllers
             {
                 return NotFound();
             }
-            var hasVoted = currentUser.votedOn.Where(v => v == commentId);
-            if (hasVoted is not null)
+            var hasVoted = currentUser.votedOn.Contains(commentId);
+            if (hasVoted is true)
             {
                 return BadRequest("You have alredey voted");
             }

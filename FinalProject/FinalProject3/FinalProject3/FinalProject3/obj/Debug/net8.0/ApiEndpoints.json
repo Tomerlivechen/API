@@ -534,8 +534,8 @@
         "IsRequired": true
       },
       {
-        "Name": "Vote",
-        "Type": "System.Int32",
+        "Name": "vote",
+        "Type": "FinalProject3.DTOs.VoteInput",
         "IsRequired": true
       }
     ],
@@ -560,6 +560,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.NotificationController",
+    "Method": "AgeOutNotifications",
+    "RelativePath": "api/Notification",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FinalProject3.Controllers.NotificationController",

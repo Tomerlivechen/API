@@ -6,7 +6,7 @@ namespace FinalProject3.Models
     {
         [Required, MinLength(2), MaxLength(55)]
         public required string Title { get; set; }
-        public Category? Category { get; set; }
+        public int CategoryId { get; set; }
 
         public SocialGroup? Group { get; set; }
 

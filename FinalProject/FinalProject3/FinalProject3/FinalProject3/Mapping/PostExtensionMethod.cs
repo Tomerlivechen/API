@@ -19,7 +19,7 @@ namespace FinalProject3.Mapping
                 Id = post.Id,
                 Title = post.Title,
                 Text = post.Text,
-                Category = post.Category,
+                CategoryId = post.CategoryId,
                 KeyWords = post.KeyWords,
                 Link = post.Link,
                 ImageURL = post.ImageURL,
@@ -29,7 +29,8 @@ namespace FinalProject3.Mapping
                 Datetime = post.Datetime,
 
             };
-            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == userID);
+            var currentUser = await _context.Users.
+                FirstOrDefaultAsync(u => u.Id == userID);
             if (currentUser is not null)
             {
                 setPost.hasVoted = currentUser.votedOn.Contains(post.Id);
@@ -52,7 +53,7 @@ namespace FinalProject3.Mapping
                 Id = Guid.NewGuid().ToString(),
                 Title = Newpost.Title,
                 Text = Newpost.Text,
-                Category = Newpost.Category,
+                CategoryId = Newpost.CategoryId,
                 Link = Newpost.Link,
                 ImageURL = Newpost.ImageURL,
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId),

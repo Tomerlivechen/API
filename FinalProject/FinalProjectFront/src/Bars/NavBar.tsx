@@ -105,11 +105,16 @@ function NavBar() {
           </>
         )}
         {isLoggedin && (
-          <button className="p-3" onClick={handelLogout}>
-            <Tooltip title="Log out">
-              <LuLogOut size={24} />
-            </Tooltip>
-          </button>
+          <>
+            <div className="mr-6">
+              <NotificationAlert />
+            </div>
+            <button className="p-3" onClick={handelLogout}>
+              <Tooltip title="Log out">
+                <LuLogOut size={24} />
+              </Tooltip>
+            </button>
+          </>
         )}
         <button onClick={toggleTheme} className="rounded-lg p-2">
           {Theme == "dark" ? (

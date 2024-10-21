@@ -21,6 +21,7 @@ namespace FinalProject3.Data
         public DbSet<Message> Message { get; set; } = default!;
 
         public DbSet<SocialGroup> Group { get; set; } = default!;
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

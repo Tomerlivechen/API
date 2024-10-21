@@ -42,7 +42,6 @@ namespace FinalProject3.Mapping
                 Type = notification.Type,
                 Date = notification.Date,
                 NotifierId = notification.NotifierId,
-                NotifiedId = notification.Notified.Id,
             };
             return Displaynotification;
 

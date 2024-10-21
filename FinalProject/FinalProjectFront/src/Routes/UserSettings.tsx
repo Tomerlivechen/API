@@ -1,8 +1,5 @@
 import {  useEffect, useState } from "react";
-import ProfileUserSection from "../Constants/Objects/ProfileUserSection";
 import { auth } from "../Services/auth-service";
-
-import { useParams } from "react-router-dom";
 import { useUser } from "../CustomHooks/useUser";
 import EditUserComponent from "../Components/EditUserComponent";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";

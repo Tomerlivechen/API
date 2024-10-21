@@ -32,7 +32,7 @@ namespace FinalProject3.Mapping
             {
                 setcomment.ParentCommentId = comment.ParentPost.Id;
             }
-            var currentUser = await _context.Users.Include(u => u.votedOn).FirstOrDefaultAsync(u => u.Id == userID);
+            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == userID);
             if (currentUser is not null)
             {
                 setcomment.hasVoted = currentUser.votedOn.Contains(setcomment.Id);

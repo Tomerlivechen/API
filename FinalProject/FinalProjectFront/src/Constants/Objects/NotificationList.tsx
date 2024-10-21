@@ -5,42 +5,39 @@ import { Notification } from "../../Services/notification-service";
 import { NotificationObject } from "./NotificationObject";
 
 const NotificationList = () => {
-const UserContext = useUser()
-const [notifications, setNotifications] = useState<INotificationDisplay[]|null>(null);
-const [loading, setLoading] = useState(true);
-const getNotificatins = async () => { 
-    const noteList = await Notification.GetNotification()
-    setNotifications(noteList)
-}
+  const UserContext = useUser();
+  const [notifications, setNotifications] = useState<
+    INotificationDisplay[] | null
+  >(null);
+  const [loading, setLoading] = useState(true);
+  const getNotificatins = async () => {
+    const noteList = await Notification.GetNotification();
+    setNotifications(noteList.data);
+  };
 
+  useEffect(() => {
+    getNotificatins();
+  }, []);
 
+  useEffect(() => {
+    if (notifications) {
+      setLoading(false);
+    }
+  }, [notifications]);
 
-useEffect(()=>{
-    getNotificatins()
-    },[]);
-
-
-useEffect(()=>{
-if (notifications){
-    setLoading(false)
-}
-
-},[notifications]);
-
-return (
+  return (
     <>
-{(!loading && notifications) && (
-  <div>
-    {notifications.map((notification) => (
-      <div key={notification.id}>
-        <NotificationObject NotificationData={notification} />
-      </div>
-    ))}
-  </div>
-)}
+      {!loading && notifications && (
+        <div>
+          {notifications.map((notification) => (
+            <div key={notification.id}>
+              <NotificationObject NotificationData={notification} />
+            </div>
+          ))}
+        </div>
+      )}
     </>
-)
+  );
+};
 
-  }
-
-export {NotificationList}
+export { NotificationList };

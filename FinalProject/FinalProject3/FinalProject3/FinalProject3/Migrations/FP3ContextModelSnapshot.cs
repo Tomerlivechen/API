@@ -37,23 +37,6 @@ namespace FinalProject3.Migrations
                     b.ToTable("AppUserSocialGroup");
                 });
 
-            modelBuilder.Entity("FinalProject3.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Category");
-                });
-
             modelBuilder.Entity("FinalProject3.Models.Chat", b =>
                 {
                     b.Property<string>("Id")
@@ -209,7 +192,7 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Datetime")
@@ -252,8 +235,6 @@ namespace FinalProject3.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("GroupId");
 
@@ -356,7 +337,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "67138233-050d-4728-ada9-77e74cfddea8",
+                            ConcurrencyStamp = "03082a42-b36a-4119-ad05-d4a0963fe732",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -525,7 +506,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "6a02a93a-21b0-44e8-9531-1cac20fb7281",
+                            UserId = "26170a1e-af39-448f-8cab-be382cbc823f",
                             RoleId = "1"
                         });
                 });
@@ -671,17 +652,17 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6a02a93a-21b0-44e8-9531-1cac20fb7281",
+                            Id = "26170a1e-af39-448f-8cab-be382cbc823f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2b24f15e-3f31-41b5-94b3-43ab1cff08f1",
+                            ConcurrencyStamp = "b77fe56d-0336-469e-b5fe-fb0879792c01",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOSe4WQJn6BWW8/Zb/YRCCxtO0iQqGZEL7joDD6yF145PujZ9V39m37qBswUUbcTDA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIiAmBPxUucG0ED0pw2xhoRf8yoN4GEhMV1MR0/CQ9zvniUSqSlIHSInUMmBLz2ahA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "952c0bea-53b5-41cc-a1c1-cf8a90230343",
+                            SecurityStamp = "775b7c8d-3abf-4af3-a862-5598762e134e",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             BanerImageURL = "",
@@ -769,17 +750,11 @@ namespace FinalProject3.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FinalProject3.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("FinalProject3.Models.SocialGroup", "Group")
                         .WithMany("Posts")
                         .HasForeignKey("GroupId");
 
                     b.Navigation("Author");
-
-                    b.Navigation("Category");
 
                     b.Navigation("Group");
                 });

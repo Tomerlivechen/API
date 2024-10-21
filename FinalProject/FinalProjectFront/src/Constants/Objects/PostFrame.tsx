@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
-import { categories, colors, getFlowingPosts, stringToPostDisplay } from "../Patterns";
+import {
+  categories,
+  colors,
+  getFlowingPosts,
+  stringToPostDisplay,
+} from "../Patterns";
 import {
   IPostOrderProps,
   IPostSortingProps,
@@ -13,13 +18,11 @@ import { GoCommentDiscussion } from "react-icons/go";
 import { MdCloudSync } from "react-icons/md";
 import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
 import SendPostComponent from "../../Components/SendPostComponent";
-import { useSearch } from "../../CustomHooks/useSearch";
 import { PostList } from "../../Components/PostList";
 import { Posts } from "../../Services/post-service";
-import { useLogin } from "../../CustomHooks/useLogin";
 import { useUser } from "../../CustomHooks/useUser";
 import { IPostDisplay } from "../../Models/Interaction";
-import { Field } from "formik";
+import ClipSpinner from "../../Spinners/ClipSpinner";
 
 interface IPostFrameParams {
   UserList: string[];
@@ -36,7 +39,7 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [postList, setPostList] = useState<PostListValues | null>();
   const [mainPostList, setMainPostList] = useState<IPostDisplay[] | null>();
-  const [catFilter, setCatFilter] = useState<number|null>(NaN);
+  const [catFilter, setCatFilter] = useState<number>(0);
   const [feedSort, setFeedSort] = useState({
     totalVotes: false,
     datetime: true,
@@ -58,12 +61,15 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
   }, [PostFrameParams]);
 
   const updatePostList = async () => {
-    let currentProfileUserId: string | null = userIdState || userContex.userInfo.UserId;
-  
-    const updatePostListIfChanged = (posts: IPostDisplay[] ) => {
+    let currentProfileUserId: string | null =
+      userIdState || userContex.userInfo.UserId;
+
+    const updatePostListIfChanged = (posts: IPostDisplay[]) => {
       const parsedPosts = stringToPostDisplay(posts);
       if (parsedPosts !== postList?.posts) {
-        setMainPostList(Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]);
+        setMainPostList(
+          Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]
+        );
       }
     };
 
@@ -73,6 +79,10 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
       currentProfileUserId = null;
     } else if (location.pathname === "/Feed" && !params) {
       const followingPosts = await getFlowingPosts(usersIds);
+      updatePostListIfChanged(followingPosts);
+      currentProfileUserId = null;
+    } else if (location.pathname.startsWith("/Feed") && params) {
+      const followingPosts = await Posts.getPostById(params);
       updatePostListIfChanged(followingPosts);
       currentProfileUserId = null;
     }
@@ -85,11 +95,10 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
 
   useEffect(() => {
     if (params) {
-      if(location.pathname.startsWith("/Profile")){
-      setUserIdState(params);
-      }
-      else if(location.pathname.startsWith("/Group")){
-        setGroupIdState(params)
+      if (location.pathname.startsWith("/Profile")) {
+        setUserIdState(params);
+      } else if (location.pathname.startsWith("/Group")) {
+        setGroupIdState(params);
       }
     } else {
       setUserIdState(null);
@@ -171,14 +180,14 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
           : "comments",
         orderBy: feedDirection.ascending ? "asc" : "desc",
         posts: mainPostList,
-        filter:(Number.isNaN(catFilter) ? null : catFilter),
+        filter: catFilter == 0 ? null : catFilter,
       };
 
       if (JSON.stringify(newPostList) !== JSON.stringify(postList)) {
         setPostList(newPostList);
       }
     }
-  }, [feedDirection, feedSort, mainPostList,catFilter]);
+  }, [feedDirection, feedSort, mainPostList, catFilter]);
 
   useEffect(() => {
     if (postList && postList.posts.length > 0) {
@@ -188,64 +197,73 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
 
   return (
     <>
-    <div className="flex flex-col">
-      <div
-        className={`${colors.ElementFrame} h-14 w-fit flex justify-between p-4 pb-4  gap-4 rounded-b-xl `}
-      >
-        <IconSortButton
-          icon={FaCircleUp}
-          activeHook={feedSort.totalVotes}
-          type="totalVotes"
-          tooltip="Sort by popular"
-        />
-        <IconSortButton
-          icon={IoSparkles}
-          activeHook={feedSort.datetime}
-          type="datetime"
-          tooltip="Sort by recent"
-        />
-        <IconSortButton
-          icon={GoCommentDiscussion}
-          activeHook={feedSort.comments}
-          type="comments"
-          tooltip="Sort by comments"
-        />
-        <div className="flex-1 w-32"></div>
-        <button onClick={() => updatePostList()}>
-          <Tooltip title="Sync">
-            <MdCloudSync size={26} />
-          </Tooltip>
-        </button>
-        <IconDirectionButton
-          icon={FaAngleDoubleUp}
-          activeHook={feedDirection.ascending}
-          type="ascending"
-          tooltip="Sort ascending"
-        />
-        <IconDirectionButton
-          icon={FaAngleDoubleDown}
-          activeHook={feedDirection.descending}
-          type="descending"
-          tooltip="Sort descending"
-        />
-      </div>
-            <select
-              className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.ElementFrame} font-bold`}
-              id="category"
-              name="category"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>)=> (setCatFilter(Number(e.target.value)))}
+      <div className="flex flex-col">
+        <div
+          className={`${colors.ElementFrame} h-14 w-fit flex justify-between p-4 pb-4  gap-4 rounded-b-xl `}
+        >
+          <IconSortButton
+            icon={FaCircleUp}
+            activeHook={feedSort.totalVotes}
+            type="totalVotes"
+            tooltip="Sort by popular"
+          />
+          <IconSortButton
+            icon={IoSparkles}
+            activeHook={feedSort.datetime}
+            type="datetime"
+            tooltip="Sort by recent"
+          />
+          <IconSortButton
+            icon={GoCommentDiscussion}
+            activeHook={feedSort.comments}
+            type="comments"
+            tooltip="Sort by comments"
+          />
+          <div className="flex-1 w-32"></div>
+          <button onClick={() => updatePostList()}>
+            <Tooltip title="Sync">
+              <MdCloudSync size={26} />
+            </Tooltip>
+          </button>
+          <IconDirectionButton
+            icon={FaAngleDoubleUp}
+            activeHook={feedDirection.ascending}
+            type="ascending"
+            tooltip="Sort ascending"
+          />
+          <IconDirectionButton
+            icon={FaAngleDoubleDown}
+            activeHook={feedDirection.descending}
+            type="descending"
+            tooltip="Sort descending"
+          />
+        </div>
+        <select
+          className={`rounded-md border-2 px-2 py-2  ${colors.ElementFrame} font-bold w-[25rem] `}
+          id="category"
+          name="category"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+            setCatFilter(Number(e.target.value))
+          }
+        >
+          <option value={0} className={`${colors.ElementFrame} font-bold`}>
+            Category filter
+          </option>
+          {categories.map((category) => (
+            <option
+              className={`${colors.ElementFrame} font-bold`}
+              key={category.id}
+              value={category.id}
             >
-              <option value="false" className={`${colors.ElementFrame} font-bold`}>Category filter</option>
-  {categories.map((category) => (
-    <option className={`${colors.ElementFrame} font-bold`} key={category.id} value={category.id}>
-      {category.name}
-    </option>
-  ))}
-            </select>
-      {!userId && <SendPostComponent />}
-      <div className="w-full">
-        {(!loadingPosts && postList) && <PostList postListValue={postList}  />}
-      </div>
+              {category.name}
+            </option>
+          ))}
+        </select>
+        {!userIdState && <SendPostComponent />}
+        <div className="w-full">
+          {!loadingPosts && postList && <PostList postListValue={postList} />}
+          {loadingPosts && <ClipSpinner />}
+        </div>
       </div>
     </>
   );
