@@ -21,6 +21,7 @@ export interface IPostSortingProps {
   
   export interface PostListValues {
     sortElement?: keyof IPostDisplay;
-    orderBy?: string;
+    orderBy?: "asc"|"desc";
     posts: IPostDisplay[];
+    filter?: number|null;
   }

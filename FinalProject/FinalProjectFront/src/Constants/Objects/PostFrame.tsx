@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
-import { colors, getFlowingPosts, stringToPostDisplay } from "../Patterns";
+import { categories, colors, getFlowingPosts, stringToPostDisplay } from "../Patterns";
 import {
   IPostOrderProps,
   IPostSortingProps,
@@ -19,6 +19,7 @@ import { Posts } from "../../Services/post-service";
 import { useLogin } from "../../CustomHooks/useLogin";
 import { useUser } from "../../CustomHooks/useUser";
 import { IPostDisplay } from "../../Models/Interaction";
+import { Field } from "formik";
 
 interface IPostFrameParams {
   UserList: string[];
@@ -26,16 +27,16 @@ interface IPostFrameParams {
 const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
   const location = useLocation();
   const userContex = useUser();
-  const { userId } = useParams();
-  const [userIdState, setUserIdState] = useState<string | null>(
-    userId ? userId : null
-  );
+  const { params } = useParams();
+  const [userIdState, setUserIdState] = useState<string | null>(null);
+  const [groupIdState, setGroupIdState] = useState<string | null>(null);
   const [usersIds, setusersIds] = useState<string[] | null>(
     PostFrameParams?.UserList ? PostFrameParams?.UserList : null
   );
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [postList, setPostList] = useState<PostListValues | null>();
   const [mainPostList, setMainPostList] = useState<IPostDisplay[] | null>();
+  const [catFilter, setCatFilter] = useState<number|null>(NaN);
   const [feedSort, setFeedSort] = useState({
     totalVotes: false,
     datetime: true,
@@ -57,68 +58,46 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
   }, [PostFrameParams]);
 
   const updatePostList = async () => {
-    let curerntUserUserId: string | null;
-    if (location.pathname.startsWith("/Group") && userIdState) {
-      const groupPostData = await Posts.GetGroupPosts(userIdState);
-      let groupPosts;
-      if (groupPostData !== null) {
-        groupPosts = groupPostData.data;
-      } else {
-        groupPosts = null;
-      }
-      const parsedPosts = stringToPostDisplay(groupPosts);
+    let currentProfileUserId: string | null = userIdState || userContex.userInfo.UserId;
+  
+    const updatePostListIfChanged = (posts: IPostDisplay[] ) => {
+      const parsedPosts = stringToPostDisplay(posts);
       if (parsedPosts !== postList?.posts) {
-        setMainPostList(
-          Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]
-        );
+        setMainPostList(Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]);
       }
-      curerntUserUserId = null;
-    } else {
-      if (userId) {
-        curerntUserUserId = userId;
-        console.log(curerntUserUserId);
-      } else {
-        if (location.pathname == "/Feed") {
-          const following: IPostDisplay[] | null = await getFlowingPosts(
-            usersIds
-          );
-          const parsedPosts = stringToPostDisplay(following);
-          if (parsedPosts !== postList?.posts) {
-            setMainPostList(
-              Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]
-            );
-          }
-          curerntUserUserId = null;
-        } else {
-          curerntUserUserId = userContex.userInfo.UserId;
-          console.log(curerntUserUserId);
-        }
-      }
+    };
+
+    if (location.pathname.startsWith("/Group") && groupIdState) {
+      const groupPosts = await Posts.GetGroupPosts(groupIdState);
+      updatePostListIfChanged(groupPosts?.data);
+      currentProfileUserId = null;
+    } else if (location.pathname === "/Feed" && !params) {
+      const followingPosts = await getFlowingPosts(usersIds);
+      updatePostListIfChanged(followingPosts);
+      currentProfileUserId = null;
     }
 
-    if (curerntUserUserId) {
-      await Posts.GetAuthorPosts(curerntUserUserId).then((response) => {
-        console.log("respons", response);
-        const parsedPosts = stringToPostDisplay(response.data);
-        if (parsedPosts !== postList?.posts) {
-          setMainPostList(
-            Array.isArray(parsedPosts) ? parsedPosts : [parsedPosts]
-          );
-        }
-      });
+    if (currentProfileUserId) {
+      const userPosts = await Posts.GetAuthorPosts(currentProfileUserId);
+      updatePostListIfChanged(userPosts?.data);
     }
   };
 
   useEffect(() => {
-    if (userId) {
-      setUserIdState(userId);
+    if (params) {
+      if(location.pathname.startsWith("/Profile")){
+      setUserIdState(params);
+      }
+      else if(location.pathname.startsWith("/Group")){
+        setGroupIdState(params)
+      }
     } else {
       setUserIdState(null);
     }
   }, []);
 
   useEffect(() => {
-    if (mainPostList && !userId) {
+    if (mainPostList && !params) {
       const newPostList = mainPostList;
       if (newPostList.length !== postList?.posts.length) {
         setPostList((prevPostList) => ({
@@ -192,13 +171,14 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
           : "comments",
         orderBy: feedDirection.ascending ? "asc" : "desc",
         posts: mainPostList,
+        filter:(Number.isNaN(catFilter) ? null : catFilter),
       };
 
       if (JSON.stringify(newPostList) !== JSON.stringify(postList)) {
         setPostList(newPostList);
       }
     }
-  }, [feedDirection, feedSort, mainPostList]);
+  }, [feedDirection, feedSort, mainPostList,catFilter]);
 
   useEffect(() => {
     if (postList && postList.posts.length > 0) {
@@ -208,6 +188,7 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
 
   return (
     <>
+    <div className="flex flex-col">
       <div
         className={`${colors.ElementFrame} h-14 w-fit flex justify-between p-4 pb-4  gap-4 rounded-b-xl `}
       >
@@ -248,9 +229,23 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
           tooltip="Sort descending"
         />
       </div>
+            <select
+              className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.ElementFrame} font-bold`}
+              id="category"
+              name="category"
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>)=> (setCatFilter(Number(e.target.value)))}
+            >
+              <option value="false" className={`${colors.ElementFrame} font-bold`}>Category filter</option>
+  {categories.map((category) => (
+    <option className={`${colors.ElementFrame} font-bold`} key={category.id} value={category.id}>
+      {category.name}
+    </option>
+  ))}
+            </select>
       {!userId && <SendPostComponent />}
       <div className="w-full">
-        {!loadingPosts && <PostList {...postList} />}
+        {(!loadingPosts && postList) && <PostList postListValue={postList}  />}
+      </div>
       </div>
     </>
   );

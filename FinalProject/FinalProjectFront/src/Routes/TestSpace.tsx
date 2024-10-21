@@ -557,7 +557,7 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className="flex">
         <div className="w-1/4"></div>
-        <SendPostComponent/>
+        <PostFrame UserList={[]}/>
       </div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
