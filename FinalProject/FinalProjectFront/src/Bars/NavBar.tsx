@@ -14,6 +14,7 @@ import { FaUser } from "react-icons/fa6";
 import { GiSoapExperiment } from "react-icons/gi";
 import { FaInfo } from "react-icons/fa";
 import { CgFeed } from "react-icons/cg";
+import { NotificationAlert } from "../Components/NotificationAlert";
 function NavBar() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState(false);

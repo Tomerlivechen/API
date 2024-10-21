@@ -12,4 +12,11 @@ const notificationURL = "/Notification";
       data: {input:hide},
     });
 
-  export const Notification = {UpdateNotification}
+    const GetNotification = () =>
+      request({
+        url: `${notificationURL}`,
+        method: "Get",
+        data: null,
+      });
+
+  export const Notification = {UpdateNotification, GetNotification}

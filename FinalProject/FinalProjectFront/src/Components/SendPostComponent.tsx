@@ -55,6 +55,22 @@ function SendPostComponent() {
     keyWords: "",
     datetime: "",
   };
+
+  const categories: ICategory[] = [
+    { id: 0, name: "Uncategorized" },
+    { id: 1, name: "Educational" },
+    { id: 2, name: "Personal" },
+    { id: 3, name: "Inspirational" },
+    { id: 4, name: "Entertainment" },
+    { id: 5, name: "Promotional" },
+    { id: 6, name: "News" },
+    { id: 7, name: "Interactive" },
+    { id: 8, name: "Visuals" },
+    { id: 9, name: "Advocacy" },
+    { id: 10, name: "Health" },
+    { id: 11, name: "AI" },
+  ];
+
   const [postValues, setPostValues] = useState<INewPost>(NewPost);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,7 +139,7 @@ function SendPostComponent() {
     <>
       {open ? (
         <>
-          <ElementFrame height="490px" width="400px" padding="1">
+          <ElementFrame height="auto" width="400px" padding="1">
             <Formik
               initialValues={NewPost}
               validationSchema={validationScheme}
@@ -195,7 +211,26 @@ function SendPostComponent() {
                       className="text-red-500"
                     />
                   </div>
-
+                  <div className="font-extralight form-group flex justify-between gap-8 w-1/2 mx-auto text-lg mt-1 ">
+            <label htmlFor="category" className="font-bold pt-2 -ml-8 ">Category:</label>
+            <Field
+              className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
+              id="category"
+              name="category"
+              as="select"
+            >
+  {categories.map((category) => (
+    <option key={category.id} value={category.id}>
+      {category.name}
+    </option>
+  ))}
+            </Field>
+            <ErrorMessage
+              name="category"
+              component="div"
+              className="text-red-500"
+            />
+          </div>
                   <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
                     <Field
                       className="rounded-md hover:border-2 border-2 px-2 py-2"
