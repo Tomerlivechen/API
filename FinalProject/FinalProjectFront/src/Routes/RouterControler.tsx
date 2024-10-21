@@ -49,6 +49,14 @@ function RouterControler() {
                             </ProtectedRoute>
                           }
                         />
+                          <Route
+                          path="Feed/:postId"
+                          element={
+                            <ProtectedRoute>
+                              <Feed />
+                            </ProtectedRoute>
+                          }
+                        />
                         <Route
                           path="UsersPage"
                           element={

@@ -1,4 +1,4 @@
-import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
+import { ICategory, ICommentDisplay, IPostDisplay } from "../Models/Interaction";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { dialogs } from "./AlertsConstant";
 import { MYFormikValues } from "./FormikElementBuilder";
@@ -31,6 +31,21 @@ const colors = {
     "font-extralight form-group flex flex-col gap-2 mx-auto text-lg mt-5",
   ForkikField: "rounded-md hover:border-2 border-2 px-2 py-2",
 };
+export const categories: ICategory[] = [
+  { id: 0, name: "Uncategorized" },
+  { id: 1, name: "Educational" },
+  { id: 2, name: "Personal" },
+  { id: 3, name: "Inspirational" },
+  { id: 4, name: "Entertainment" },
+  { id: 5, name: "Promotional" },
+  { id: 6, name: "News" },
+  { id: 7, name: "Interactive" },
+  { id: 8, name: "Visuals" },
+  { id: 9, name: "Advocacy" },
+  { id: 10, name: "Health" },
+  { id: 11, name: "AI" },
+];
+
 
 export const linkFieldValues: MYFormikValues = {
   element: "link",

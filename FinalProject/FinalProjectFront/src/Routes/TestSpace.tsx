@@ -23,6 +23,8 @@ import {
 import { ChatFrame, IChatFrameParams } from "../Constants/Objects/ChatFrame";
 import { INotificationDisplay } from "../Modals/NotificationMedels";
 import { NotificationObject } from "../Constants/Objects/NotificationObject";
+import { NotificationList } from "../Constants/Objects/NotificationList";
+import { NotificationAlert } from "../Components/NotificationAlert";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -442,6 +444,112 @@ const not2: INotificationDisplay = {
   notifiedId: "58119e4b-b525-4727-9f5e-d58db8110a60",
 };
 
+const notes : INotificationDisplay[] = [
+  {
+    id: "0a0469e6-bed9-46d1-83b0-484bfd2662de",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "d721f202-5757-4af9-933e-34f6ed45db2e",
+    notifierId: "0ca34b95-1d9a-44c0-8781-86c95b73f61e",
+    notifiedId: "ac1eb5d3-6d65-4408-9246-9e8055b77e1c",
+  },
+  {
+    id: "146849d1-0e79-46ab-a1a2-c558f3535e34",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "254eaf27-ef10-4c2a-a74b-5225853d0b0d",
+    notifierId: "683c71e7-6496-4d98-bb80-b3622474816f",
+    notifiedId: "08c6fa84-f849-4a2d-bea1-318fe292f807",
+  },
+  {
+    id: "ccdcd489-63d2-43b0-8742-a7703cc7d0a7",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "5c9644eb-9473-4685-a3c0-7a06bc4e783a",
+    notifierId: "aa07f1e4-5904-4202-8678-11c22e71d44f",
+    notifiedId: "5e779231-3316-48a0-b727-543ab5e7cb54",
+  },
+  {
+    id: "74c98f2e-c32c-4ac2-a438-7cfe5361fc37",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "18d2b2f1-80f1-40e5-9435-6ecf31f85a5c",
+    notifierId: "49e9c950-f599-4686-beb1-fb4bffced75c",
+    notifiedId: "3c52ec45-9df9-4252-9baf-6cb2f73cd227",
+  },
+  {
+    id: "8fa14aeb-f8d9-4fde-81f4-612c2b31eeea",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "e537481d-3326-4b28-b99a-2fdbd9a9e6f4",
+    notifierId: "68e5f4c4-42f3-4a33-a571-149e6a9899b6",
+    notifiedId: "95e2d7e6-8149-49ff-87b6-58fc01de6ee7",
+  },
+  {
+    id: "70bc8867-b1ab-41bd-95f4-4a68d71c77d7",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "30399ad8-dc04-46c9-a9ab-40d7a745cd8e",
+    notifierId: "e18621c5-582e-41b0-a8fa-3cb94abf20a5",
+    notifiedId: "2c2389a5-9df0-4801-bb58-c4c57170f162",
+  },
+  {
+    id: "5bf799b3-42eb-4330-b661-8bfcd4d2cc29",
+    type: "Comment",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "dc04d811-bea3-47b1-b880-74c79ff982e2",
+    notifierId: "41af66cc-8f41-40a6-acd7-8b9f123ddacc",
+    notifiedId: "f028ec13-555f-4718-9021-cb397f7af536",
+  },
+  {
+    id: "a7668624-8a87-4248-a045-e6448f7e3bdf",
+    type: "Comment",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "dbd8008e-3cd9-4132-808d-7312f640cc0c",
+    notifierId: "91c70b76-2427-4108-9b57-e052d5f46cac",
+    notifiedId: "756f76a3-4a55-46f3-bd88-19fcdab6898c",
+  },
+  {
+    id: "90a0bb5e-d529-4901-838b-0ec73ce55fc3",
+    type: "Message",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "bcdfe87c-736d-4a76-bd83-2bf5dd3004f2",
+    notifierId: "f91ec742-efde-4b5c-ba29-4d172e9f2378",
+    notifiedId: "bb22797c-15ce-48ac-bfc6-166942958838",
+  },
+  {
+    id: "b64f5917-c396-4156-8062-240c177c0b2d",
+    type: "Comment",
+    date: "2024-10-21-07-10",
+    seen: false,
+    hidden: false,
+    referenceId: "a6901cf2-d5d0-4896-aeaa-61e37a141f04",
+    notifierId: "e10af8c3-0f05-44ad-9517-ab68f8491f00",
+    notifiedId: "a8e75dab-02aa-4826-9351-d6d74f9452bf",
+  }
+];
+
+
+
+
 function TestSpace() {
   return (
     <>
@@ -449,8 +557,7 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className="flex">
         <div className="w-1/4"></div>
-        <NotificationObject NotificationData={not1} />
-        <NotificationObject NotificationData={not2} />
+        <PostFrame UserList={[]}/>
       </div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>

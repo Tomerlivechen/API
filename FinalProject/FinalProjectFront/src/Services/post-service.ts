@@ -12,6 +12,13 @@ const getPosts = () =>
     data: null,
   });
 
+  const getPostById = (Id: string) =>
+    request({
+      url: `${postURL}/ById/${Id}`,
+      method: "GET",
+      data: null,
+    });
+
   const postPost = (Post: INewPost) =>
     request({
       url: `${postURL}`,
@@ -57,4 +64,4 @@ const getPosts = () =>
 
 export { getPosts, postPost, VoteOnPost , EditPost,DeletePost };
 
-export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost,GetAuthorPosts,GetGroupPosts };
+export const Posts = { getPosts, postPost, VoteOnPost , EditPost, DeletePost,GetAuthorPosts,GetGroupPosts,getPostById };

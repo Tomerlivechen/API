@@ -2,17 +2,15 @@ import { useEffect, useState } from "react";
 import { IPostDisplay } from "../Models/Interaction";
 import { sortByProperty } from "../Constants/Patterns";
 import PostView from "../Constants/Objects/PostView";
+import { PostListValues } from "../Constants/RoutrProtection/@types";
 
-export interface PostListValues {
-  sortElement?: keyof IPostDisplay;
-  orderBy?: string;
-  posts: IPostDisplay[];
-}
 
-const PostList: React.FC<PostListValues> = (postListValue: PostListValues) => {
+
+const PostList: React.FC<{ postListValue: PostListValues }> = ({ postListValue })  => {
   const [posts, setPosts] = useState<IPostDisplay[]>(postListValue.posts);
   const order = postListValue.orderBy;
   const sort = postListValue.sortElement;
+  const filterId = postListValue.filter;
   const [sortedPosts, setSortedPosts] = useState<IPostDisplay[]>(
     postListValue.posts
   );
@@ -20,10 +18,18 @@ const PostList: React.FC<PostListValues> = (postListValue: PostListValues) => {
     if (order && sort) {
       const sorted = postListValue.posts.sort(sortByProperty(sort, order));
       setSortedPosts(sorted);
+      if (filterId){
+       const filtered = sorted.filter(post => post.category?.id === filterId)
+       setSortedPosts(filtered);
+      }
       console.log(postListValue.posts);
       console.log(sorted);
     } else {
       setSortedPosts(posts);
+      if (filterId){
+        const filtered = posts.filter(post => post.category?.id === filterId)
+        setSortedPosts(filtered);
+       }
     }
   }, [postListValue]);
 

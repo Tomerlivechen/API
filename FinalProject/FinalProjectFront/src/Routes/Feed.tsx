@@ -4,9 +4,25 @@ import { UserTabList } from "../Components/UserTabList";
 import { useSearch } from "../CustomHooks/useSearch";
 import UserLane from "../Constants/Objects/UserLane";
 import { PostFrame } from "../Constants/Objects/PostFrame";
+import { useParams } from "react-router-dom";
+import { IPostDisplay } from "../Models/Interaction";
+import { Posts } from "../Services/post-service";
+import PostView from "../Constants/Objects/PostView";
 
 const Feed = () => {
+  const {postId} = useParams();
   const searchContext = useSearch();
+  const [singularPost, setSingularPost] = useState<IPostDisplay|null>(null)
+
+  useEffect(() => {
+    const getSinglePost = async () =>{
+    if (postId) {
+    const SinglePost= await Posts.getPostById(postId)
+    setSingularPost(SinglePost.data)
+    }
+  }
+  getSinglePost();
+  }, [postId]);
 
   useEffect(() => {
     if (searchContext.userList.length > 0) {
@@ -26,7 +42,8 @@ const Feed = () => {
         <div className="xl:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
         <div className="  lg:w-4/12 pl-2 pr-2  md:w-1/2 sm:w-full">
           <div>
-            <PostFrame UserList={[]} />
+          {!postId &&  <PostFrame UserList={[]} />}
+          {(postId && singularPost) &&  <PostView {...singularPost} />}
           </div>
         </div>
         <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>

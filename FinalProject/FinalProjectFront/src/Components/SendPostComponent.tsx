@@ -8,14 +8,19 @@ import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { ICategory, INewPost } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
 import { useLogin } from "../CustomHooks/useLogin";
-import { catchError, colors } from "../Constants/Patterns";
+import { catchError, categories, colors } from "../Constants/Patterns";
 import { HiLink } from "react-icons/hi2";
 
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
+import { useLocation, useParams } from "react-router-dom";
 
 function SendPostComponent() {
+  const location = useLocation();
+  const {params} = useParams()
+  const [userIdState, setUserIdState] = useState<string | null>(null);
+  const [groupId, setGroupId] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
@@ -38,10 +43,14 @@ function SendPostComponent() {
     setUrl(getUrl);
   };
 
-  const category: ICategory = {
-    id: 0,
-    name: "",
-  };
+
+useEffect(() => {
+  if (location.pathname.startsWith("/Group") && params) {
+    setGroupId(params)
+  }
+},[params]);
+
+
 
   const NewPost: INewPost = {
     id: "",
@@ -50,11 +59,13 @@ function SendPostComponent() {
     imageURL: "",
     text: "",
     authorId: "",
-    category: category,
-    group: "",
+    category: { id: 0, name: "Uncategorized" },
+    group: groupId?? "",
     keyWords: "",
     datetime: "",
   };
+
+
   const [postValues, setPostValues] = useState<INewPost>(NewPost);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,7 +134,7 @@ function SendPostComponent() {
     <>
       {open ? (
         <>
-          <ElementFrame height="490px" width="400px" padding="1">
+          <ElementFrame height="auto" width="400px" padding="1">
             <Formik
               initialValues={NewPost}
               validationSchema={validationScheme}
@@ -195,7 +206,26 @@ function SendPostComponent() {
                       className="text-red-500"
                     />
                   </div>
-
+                  <div className="font-extralight form-group flex justify-between gap-8 w-1/2 mx-auto text-lg mt-1 ">
+            <label htmlFor="category" className="font-bold pt-2 -ml-8 ">Category:</label>
+            <Field
+              className={`rounded-md hover:border-2 border-2 px-2 py-2  ${colors.TextBox}`}
+              id="category"
+              name="category.id"
+              as="select"
+            >
+  {categories.map((category) => (
+    <option key={category.id} value={category.id}>
+      {category.name}
+    </option>
+  ))}
+            </Field>
+            <ErrorMessage
+              name="category"
+              component="div"
+              className="text-red-500"
+            />
+          </div>
                   <div className="font-extralight form-group flex flex-col gap-2 w-full mx-auto text-lg">
                     <Field
                       className="rounded-md hover:border-2 border-2 px-2 py-2"
