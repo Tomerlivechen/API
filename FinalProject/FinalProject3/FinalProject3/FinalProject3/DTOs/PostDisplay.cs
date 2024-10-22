@@ -21,6 +21,6 @@ namespace FinalProject3.DTOs
         public List<string> KeyWords { get; set; } = [];
         public string Datetime { get; set; } = string.Empty;
 
-        public List<CommentDisplay>? Comments { get; set; } = new List<CommentDisplay>();
+        public List<CommentDisplay>? Comments { get; set; } = [];
     }
 }

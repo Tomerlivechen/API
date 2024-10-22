@@ -34,13 +34,35 @@ namespace FinalProject3.Controllers
                 return Unauthorized();
             }
             var SG = await _context.Group.Include(g => g.Members).ToListAsync();
-            var SGCards = await Task.WhenAll(SG.Select(sg => sg.ToCard(currentUserId,_context ,userManager)).ToList());
+
+            var SGCards = new List<SocialGroupCard>();
+            foreach (var group in SG)
+            {
+               var card = await group.ToCard(currentUserId, _context);
+                if (card is not null)
+                {
+                    SGCards.Add(card);
+                }
+
+            }
             return Ok(SGCards);
         }
         [HttpGet("ById/{GroupId}")]
+        [Authorize]
         public async Task<ActionResult<SocialGroup>> GetGroupbyId(string GroupId)
         {
-            var fullGroup = await _context.Group.Include(g => g.Members).Include(g => g.Posts).FirstOrDefaultAsync(g => g.Id == GroupId);
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (currentUserId is null)
+            {
+                return Unauthorized();
+            }
+            var fullGroup = await _context.Group.Include(g => g.Members).ThenInclude(u => u.Blocked).Include(g => g.Posts).Include(g => g.groupAdmin).Include(g => g).FirstOrDefaultAsync(g => g.Id == GroupId);
+            if (fullGroup is null)
+            {
+                return NotFound();
+            }
+            var displayGroup = fullGroup.ToDisplay(currentUserId, context);
+
             return Ok(fullGroup);
         }
 
@@ -64,9 +86,16 @@ namespace FinalProject3.Controllers
                 return NotFound("Gruop not found");
             }
                 var members = group.Members.ToList();
-            var memberUsersDisplay = await Task.WhenAll(members.Select(u => u.UsertoDisplay(userManager, _context, currentUser)));
+            var memberUsersDisplay = new List<AppUserDisplay>();
 
-
+            foreach (var member in members)
+            {
+                var memberDisplay = await member.UsertoDisplay(_context, currentUser);
+                if (memberDisplay is not null)
+                {
+                    memberUsersDisplay.Add(memberDisplay);
+                }
+            }
             return Ok(memberUsersDisplay);
             
                 
@@ -99,7 +128,7 @@ namespace FinalProject3.Controllers
                 return Conflict(ex);
             }
 
-            return Ok(await group.ToDisplay(currentUserId, _context, userManager));
+            return Ok(await group.ToDisplay(currentUserId, _context));
         }
 
         [HttpPut("AddMember/{groupId}")]
@@ -152,9 +181,12 @@ namespace FinalProject3.Controllers
 
 
 
-        [HttpPut("RemoveMember/{UserId}")]
-        public async Task<ActionResult> RemoveMember(string groupId, string UserId)
+        [HttpPut("RemoveMember/{groupId}")]
+        [Authorize]
+        public async Task<ActionResult> RemoveMember(string groupId,[FromBody] IdInput userIdInput) 
         {
+
+            string UserId = userIdInput.id;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -189,8 +221,14 @@ namespace FinalProject3.Controllers
             return Ok(group);
         }
         [HttpPut("EditGroup")]
+        [Authorize]
         public async Task<ActionResult> EditGroup(SocialGroupEdit editGroup)
         {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (currentUserId is null)
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -201,8 +239,11 @@ namespace FinalProject3.Controllers
             {
                 return NotFound("Group Not Found");
             }
+            if (currentUserId != group.AdminId)
+            {
+                return Unauthorized();
+            }
             await group.UpdateGroup(editGroup, userManager);
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -212,6 +253,30 @@ namespace FinalProject3.Controllers
                 return Conflict(ex);
             }
             return Ok(group);
+        }
+
+        [HttpDelete("/{groupId}")]
+        [Authorize]
+        public async Task<ActionResult> DeleteGroup(string groupId)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentUserPremission = User.FindFirstValue("PermissionLevel");
+            var group = await _context.Group.FindAsync(groupId);
+            if (currentUserId is null)
+            {
+                return Unauthorized();
+            }
+            if (group is null)
+            {
+                return NotFound("Group Not Found");
+            }
+            if (currentUserId != group.AdminId || currentUserPremission == "Admin")
+            {
+                return Unauthorized();
+            }
+            await 
+
+
         }
 
     }

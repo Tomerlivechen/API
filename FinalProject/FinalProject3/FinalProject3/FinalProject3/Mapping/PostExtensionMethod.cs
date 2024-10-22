@@ -36,7 +36,7 @@ namespace FinalProject3.Mapping
                 setPost.hasVoted = currentUser.votedOn.Contains(post.Id);
             }
 
-            setPost.Comments = new List<CommentDisplay>();
+            setPost.Comments = [];
             foreach (var comment in post.Comments)
             {
                 var commentDisplay = await comment.ToDisplayAsync(userID, _context);
@@ -47,7 +47,7 @@ namespace FinalProject3.Mapping
 
         public async static Task<Post> NewPostToPost(this PostNew Newpost, UserManager<AppUser> userManager, FP3Context context)
         {
-            char[] delimiters = { ',', ';', '|',' ' };
+            char[] delimiters = [',', ';', '|',' '];
             var setPost = new Post()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -63,7 +63,7 @@ namespace FinalProject3.Mapping
             if (Newpost.KeyWords.Trim().Length > 1)
             {
                 var key = Newpost.KeyWords.Split(delimiters).Select(x => x.Trim()).ToList();
-                List<string> keyword = new List<string>();
+                List<string> keyword = [];
                 foreach (var word in key)
                 {
                     if (word.Length > 1) { 

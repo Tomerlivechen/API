@@ -26,7 +26,7 @@ namespace FinalProject32.Mapping
 
         }
 
-        public static async Task<AppUserDisplay?> UsertoDisplay(this AppUser user, UserManager<AppUser> userManager, FP3Context _context, AppUser currentUser)
+        public static async Task<AppUserDisplay?> UsertoDisplay(this AppUser user, FP3Context _context, AppUser currentUser)
         {
             var display = new AppUserDisplay()
             {
@@ -73,7 +73,7 @@ namespace FinalProject32.Mapping
             } 
 
             Chat? chatWithUser = null;
-            if (userFull.Chats.Any())
+            if (userFull.Chats.Count != 0)
             {
                 foreach (var chat in userFull.Chats)
                 {
