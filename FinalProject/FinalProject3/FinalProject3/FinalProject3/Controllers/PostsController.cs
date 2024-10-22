@@ -98,11 +98,9 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-<<<<<<< Updated upstream
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Votes).ThenInclude(v => v.Voter).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).ToListAsync();
-=======
-            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).Include(p => p.Category).ToListAsync();
->>>>>>> Stashed changes
+
+            var posts = await _context.Post.Include(p => p.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).ThenInclude(c => c.Comments).Include(p => p.Author).Include(p => p.Group).Where(p=>p.Group != null && p.Group.Id == GroupId).ToListAsync();
+
 
             var postsDisplay = new List<PostDisplay>();
             foreach (var post in posts)

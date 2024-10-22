@@ -274,7 +274,17 @@ namespace FinalProject3.Controllers
             {
                 return Unauthorized();
             }
-            await 
+            group.Posts.Clear();
+            _context.Group.Remove(group);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                return Problem(ex.Message);
+            }
+            return Ok();
 
 
         }
