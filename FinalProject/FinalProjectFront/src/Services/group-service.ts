@@ -1,4 +1,5 @@
 
+import { INewSocialGroup } from "../Models/SocialGroup";
 import { request } from "../Utils/Axios-Interceptor";
 
 const GroupURL = "/SocialGroup";
@@ -39,5 +40,13 @@ const GroupURL = "/SocialGroup";
                   method: "DELETE",
                   data: null,
                 });
+                const CreateGroup = (NewGroup: INewSocialGroup) =>
+                    request({
+                      url: `${GroupURL}`,
+                      method: "POST",
+                      data: NewGroup,
+                    });
 
-  export const Groups = {GetGroupbyId, GetGroups,JoinGroup,RemoveMember,DeleteGroup}
+
+        
+  export const Groups = {GetGroupbyId, GetGroups,JoinGroup,RemoveMember,DeleteGroup,CreateGroup}

@@ -25,5 +25,8 @@ interface ISocialGroupCard {
   isMemember: boolean;
 }
 
-
-export type { ISocialGroup,ISocialGroupCard };
+interface INewSocialGroup {
+  name: string;
+  description: string;
+}
+export type { ISocialGroup,ISocialGroupCard,INewSocialGroup };
