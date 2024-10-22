@@ -65,7 +65,7 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         var usersDisplay = new List<AppUserDisplay>();
         foreach (var user in users)
         {
-            var display = await user.UsertoDisplay(userManager, _context, currentUser);
+            var display = await user.UsertoDisplay(_context, currentUser);
             if (display is not null)
             {
                 usersDisplay.Add(display);
@@ -104,7 +104,7 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         var followingDsplay = new List<AppUserDisplay>();
         foreach (var follower in following)
         {
-            var display = await follower.UsertoDisplay(userManager, _context, currentUser);
+            var display = await follower.UsertoDisplay(_context, currentUser);
             if (display is not null)
             {
                 followingDsplay.Add(display);
@@ -137,7 +137,7 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         var groupCards = new List<SocialGroupCard>();
         foreach (var group in groups)
         {
-            var Card = await group.ToCard(currentUserId, _context, userManager);
+            var Card = await group.ToCard(currentUserId, _context);
             if (Card is not null)
             {
                 groupCards.Add(Card);
@@ -172,7 +172,7 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
             var user = await userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
         if (user is not null)
         {
-            var usersDisplay = await user.UsertoDisplay(userManager, _context, currentUser);
+            var usersDisplay = await user.UsertoDisplay(_context, currentUser);
             return Ok(usersDisplay);
         }
 
@@ -356,11 +356,11 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         if (changed)
         {
             await userManager.UpdateAsync(currentUser);
-            var returnUser = await currentUser.UsertoDisplay(userManager, _context, currentUser);
+            var returnUser = await currentUser.UsertoDisplay(_context, currentUser);
             return Ok(returnUser);
         }
         ModelState.AddModelError("No Changes", "No changes made");
-        var returnEmptyUser = await currentUser.UsertoDisplay(userManager, _context, currentUser);
+        var returnEmptyUser = await currentUser.UsertoDisplay(_context, currentUser);
         return Ok(returnEmptyUser);
     }
 

@@ -3,6 +3,7 @@ using FinalProject3.DTOs;
 using FinalProject3.Models;
 using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
 namespace FinalProject3.Mapping
@@ -58,10 +59,9 @@ namespace FinalProject3.Mapping
             return group;
         }
 
-        public async static Task<SocialGroupCard?> ToCard(this SocialGroup socialGroup, string userId, FP3Context _context, UserManager<AppUser> userManager)
+        public async static Task<SocialGroupCard?> ToCard(this SocialGroup socialGroup, string userId, FP3Context _context)
         {
-            var currentUser = await userManager.FindByIdAsync(userId);
-
+            var currentUser = await _context.Users.Include(u => u.Blocked).FirstOrDefaultAsync(u => u.Id == userId);
             if (currentUser is null || socialGroup.GroupCreator is null || socialGroup.groupAdmin is null)
             {
                 return default;
@@ -77,17 +77,18 @@ namespace FinalProject3.Mapping
                 Id = socialGroup.Id,
                 Name = socialGroup.Name,
                 Description = socialGroup.Description,
-                Admin = await socialGroup.groupAdmin.UsertoDisplay(userManager, _context, currentUser),
-                IsMemember = member
+                Admin = await socialGroup.groupAdmin.UsertoDisplay(_context, currentUser),
+                IsMemember = member,
+                BanerImageURL = socialGroup.BanerImageURL,
             };
             return card;
 
         }
 
 
-        public async static Task<SocialGroupDisplay?> ToDisplay(this SocialGroup socialGroup, string userId ,FP3Context _context, UserManager<AppUser> userManager)
+        public async static Task<SocialGroupDisplay?> ToDisplay(this SocialGroup socialGroup, string userId ,FP3Context _context)
         {
-            var currentUser = await userManager.FindByIdAsync(userId);
+            var currentUser = await _context.Users.Include(u => u.Blocked).Include(u => u.Following).FirstOrDefaultAsync(u => u.Id == userId);
 
             if (currentUser is null || socialGroup.GroupCreator is null || socialGroup.groupAdmin is null)
             {
@@ -98,12 +99,17 @@ namespace FinalProject3.Mapping
                 Id = socialGroup.Id,
                 Name = socialGroup.Name,
                 Description = socialGroup.Description,
-                GroupCreator = await socialGroup.GroupCreator.UsertoDisplay(userManager, _context, currentUser),
-                Admin = await socialGroup.groupAdmin.UsertoDisplay(userManager, _context, currentUser),
-                Members = (await Task.WhenAll(socialGroup.Members.Select(u => u.UsertoDisplay(userManager, _context, currentUser)))).ToList(),
-                
-
+                GroupCreator = await socialGroup.GroupCreator.UsertoDisplay( _context, currentUser),
+                Admin = await socialGroup.groupAdmin.UsertoDisplay( _context, currentUser),
             };
+            var memberDisplay = new List<AppUserDisplay>();
+            foreach (var member in socialGroup.Members) {
+                var displayMember = await member.UsertoDisplay(_context, currentUser);
+                if (displayMember is not null) {
+                    memberDisplay.Add(displayMember);
+                }
+            }
+            display.Members = memberDisplay;
             var postsDisplay = new List<PostDisplay>();
             foreach (var post in socialGroup.Posts)
             {
@@ -111,6 +117,14 @@ namespace FinalProject3.Mapping
                 postsDisplay.Add(postDisplay);
             }
             display.Posts = postsDisplay;
+
+            var isMember = socialGroup.Members.Where(m => m.Id == userId).First();
+            bool aMember = false;
+            if (isMember is not null)
+            {
+                aMember = true;
+            }
+            display.IsMemember = aMember;
 
             return display;
 

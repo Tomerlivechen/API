@@ -12,14 +12,16 @@ namespace FinalProject3.DTOs
         public string ImageURL { get; set; } = string.Empty;
         public string BanerImageURL { get; set; } = string.Empty;
 
+        public bool IsMemember { get; set; }
+
 
         public AppUserDisplay GroupCreator { get; set; } = new AppUserDisplay();
 
         public AppUserDisplay Admin { get; set; } = new AppUserDisplay();
 
 
-        public List<AppUserDisplay> Members { get; set; } = new List<AppUserDisplay>();
+        public List<AppUserDisplay> Members { get; set; } = [];
 
-        public List<PostDisplay> Posts { get; set; } = new List<PostDisplay>();
+        public List<PostDisplay> Posts { get; set; } = [];
     }
 }
