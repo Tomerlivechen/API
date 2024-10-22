@@ -952,6 +952,22 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.SocialGroupController",
+    "Method": "DeleteGroup",
+    "RelativePath": "api/SocialGroup/{groupId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.SocialGroupController",
     "Method": "AddMember",
     "RelativePath": "api/SocialGroup/AddMember/{groupId}",
     "HttpMethod": "PUT",
@@ -1037,7 +1053,7 @@
   {
     "ContainingType": "FinalProject3.Controllers.SocialGroupController",
     "Method": "RemoveMember",
-    "RelativePath": "api/SocialGroup/RemoveMember/{UserId}",
+    "RelativePath": "api/SocialGroup/RemoveMember/{groupId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1045,11 +1061,11 @@
       {
         "Name": "groupId",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
-        "Name": "UserId",
-        "Type": "System.String",
+        "Name": "userIdInput",
+        "Type": "FinalProject3.DTOs.IdInput",
         "IsRequired": true
       }
     ],

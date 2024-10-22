@@ -23,6 +23,7 @@ import { Posts } from "../../Services/post-service";
 import { useUser } from "../../CustomHooks/useUser";
 import { IPostDisplay } from "../../Models/Interaction";
 import ClipSpinner from "../../Spinners/ClipSpinner";
+import { isEqual } from "lodash";
 
 interface IPostFrameParams {
   UserList: string[];
@@ -30,9 +31,12 @@ interface IPostFrameParams {
 const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
   const location = useLocation();
   const userContex = useUser();
-  const { params } = useParams();
+  const { userId } = useParams();
+  const { postId } = useParams();
+  const { groupId } = useParams();
   const [userIdState, setUserIdState] = useState<string | null>(null);
   const [groupIdState, setGroupIdState] = useState<string | null>(null);
+  const [postIdState, setPostIdState] = useState<string | null>(null);
   const [usersIds, setusersIds] = useState<string[] | null>(
     PostFrameParams?.UserList ? PostFrameParams?.UserList : null
   );
@@ -61,9 +65,6 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
   }, [PostFrameParams]);
 
   const updatePostList = async () => {
-    let currentProfileUserId: string | null =
-      userIdState || userContex.userInfo.UserId;
-
     const updatePostListIfChanged = (posts: IPostDisplay[]) => {
       const parsedPosts = stringToPostDisplay(posts);
       if (parsedPosts !== postList?.posts) {
@@ -76,44 +77,43 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
     if (location.pathname.startsWith("/Group") && groupIdState) {
       const groupPosts = await Posts.GetGroupPosts(groupIdState);
       updatePostListIfChanged(groupPosts?.data);
-      currentProfileUserId = null;
-    } else if (location.pathname === "/Feed" && !params) {
+    } else if (location.pathname === "/Feed" && !postIdState) {
       const followingPosts = await getFlowingPosts(usersIds);
       updatePostListIfChanged(followingPosts);
-      currentProfileUserId = null;
-    } else if (location.pathname.startsWith("/Feed") && params) {
-      const followingPosts = await Posts.getPostById(params);
-      updatePostListIfChanged(followingPosts);
-      currentProfileUserId = null;
-    }
-
-    if (currentProfileUserId) {
-      const userPosts = await Posts.GetAuthorPosts(currentProfileUserId);
+    } else if (location.pathname.startsWith("/Feed") && postIdState) {
+      const PostbyId = await Posts.getPostById(postIdState);
+      updatePostListIfChanged(PostbyId.data);
+    } else if (location.pathname.startsWith("/Profile") && userIdState) {
+      const ProfilePosts = await Posts.GetAuthorPosts(userIdState);
+      updatePostListIfChanged(ProfilePosts.data);
+    } else if (
+      location.pathname.startsWith("/Profile") &&
+      !userIdState &&
+      userContex.userInfo.UserId
+    ) {
+      const userPosts = await Posts.GetAuthorPosts(userContex.userInfo.UserId);
       updatePostListIfChanged(userPosts?.data);
     }
   };
 
   useEffect(() => {
-    if (params) {
-      if (location.pathname.startsWith("/Profile")) {
-        setUserIdState(params);
-      } else if (location.pathname.startsWith("/Group")) {
-        setGroupIdState(params);
-      }
-    } else {
-      setUserIdState(null);
+    if (location.pathname.startsWith("/Profile") && userId) {
+      setUserIdState(userId);
+    }
+    if (location.pathname.startsWith("/Group") && groupId) {
+      setGroupIdState(groupId);
+    }
+    if (location.pathname.startsWith("/Feed") && postId) {
+      setPostIdState(postId);
     }
   }, []);
 
   useEffect(() => {
-    if (mainPostList && !params) {
-      const newPostList = mainPostList;
-      if (newPostList.length !== postList?.posts.length) {
-        setPostList((prevPostList) => ({
-          ...prevPostList,
-          posts: newPostList,
-        }));
-      }
+    if (mainPostList && !isEqual(mainPostList, postList?.posts)) {
+      setPostList((prevPostList) => ({
+        ...prevPostList,
+        posts: mainPostList,
+      }));
     }
   }, [mainPostList]);
 
@@ -262,7 +262,11 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
         {!userIdState && <SendPostComponent />}
         <div className="w-full">
           {!loadingPosts && postList && <PostList postListValue={postList} />}
-          {loadingPosts && <ClipSpinner />}
+          {loadingPosts && (
+            <div className="flex ml-40 ">
+              <ClipSpinner />
+            </div>
+          )}
         </div>
       </div>
     </>

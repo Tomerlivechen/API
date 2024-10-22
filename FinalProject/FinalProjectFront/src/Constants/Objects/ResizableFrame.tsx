@@ -9,6 +9,7 @@ interface ResizableFrameProps {
   children: ReactNode;
   whidth: string;
   tailwindProps?: string;
+  overflowX?: boolean;
   title: string;
   show: boolean;
 }
@@ -122,7 +123,7 @@ const ResizableFrame: React.FC<ResizableFrameProps> = (
             height={frameHeight}
             width={props.whidth}
             padding="0 rounded-b-xl"
-            overflowX="auto"
+            overflowX={props.overflowX ? "auto" : "hidden"}
             notRounded={true}
           >
             <div>{props.children}</div>

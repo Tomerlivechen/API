@@ -21,7 +21,7 @@ interface ISocialGroupCard {
   name: string;
   description: string;
   banerImageURL : string;
-  groupAdmin: IAppUserDisplay;
+  admin: IAppUserDisplay;
   isMemember: boolean;
 }
 

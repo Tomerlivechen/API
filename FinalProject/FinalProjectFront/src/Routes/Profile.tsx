@@ -9,6 +9,7 @@ import ResizableFrame from "../Constants/Objects/ResizableFrame";
 import { UserTabList } from "../Components/UserTabList";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { useChat } from "../CustomHooks/useChat";
+import { ProfileGroupsList } from "../Constants/Objects/ProfileGroupsList";
 
 const Profile = () => {
   const userContext = useUser();
@@ -40,7 +41,6 @@ const Profile = () => {
   return (
     <>
       <div className="flex flex-wrap justify-center">
-        <div className="hidden lg:block lg:w-3/12 pr-2 pl-2"></div>
         <div className="w-full lg:w-10/12 pr-2 pl-2 mx-auto">
           <ProfileUserSection userId={userIdState} />
         </div>
@@ -48,7 +48,19 @@ const Profile = () => {
 
       <div className="flex flex-wrap justify-between">
         <div className="hidden lg:block lg:w-1/12 pl-2 pr-2"></div>
-        <div className="hidden lg:block lg:w-2/12 pl-2 pr-2"></div>
+        <div className="hidden lg:block lg:w-2/12 pl-2 pr-2  ">
+          <>
+            <ResizableFrame
+              whidth={"auto"}
+              title={"Groups"}
+              show={true}
+              overflowX={false}
+              tailwindProps="  h-full"
+            >
+              <ProfileGroupsList />
+            </ResizableFrame>
+          </>
+        </div>
         <div className="hidden lg:block lg:w-2/12 pl-2 pr-2 h-1/2">
           {!loadingUsers && usersList && (
             <>

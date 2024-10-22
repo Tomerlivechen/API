@@ -23,6 +23,7 @@ import BackGround from "./BackGround";
 import { ChatProvider } from "../ContextAPI/ChatContex";
 import { ChatFrame } from "../Constants/Objects/ChatFrame";
 import { FooterBar } from "../Bars/Footer";
+import { Group } from "./Group";
 
 function RouterControler() {
   return (
@@ -49,7 +50,7 @@ function RouterControler() {
                             </ProtectedRoute>
                           }
                         />
-                          <Route
+                        <Route
                           path="Feed/:postId"
                           element={
                             <ProtectedRoute>
@@ -94,6 +95,22 @@ function RouterControler() {
                           element={
                             <ProtectedRoute>
                               <UserSettings />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="Group"
+                          element={
+                            <ProtectedRoute>
+                              <Group />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="Group/:groupId"
+                          element={
+                            <ProtectedRoute>
+                              <Group />
                             </ProtectedRoute>
                           }
                         />

@@ -15,6 +15,7 @@ import { GiSoapExperiment } from "react-icons/gi";
 import { FaInfo } from "react-icons/fa";
 import { CgFeed } from "react-icons/cg";
 import { NotificationAlert } from "../Components/NotificationAlert";
+import { FaPeopleGroup } from "react-icons/fa6";
 function NavBar() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState(false);
@@ -68,6 +69,12 @@ function NavBar() {
           <Tooltip title="Test Space">
             <GiSoapExperiment className="md:hidden" size={24} />
             <p className="hidden md:block">Test Space</p>
+          </Tooltip>
+        </NavLink>
+        <NavLink className="p-3" to="Group">
+          <Tooltip title="Group">
+            <FaPeopleGroup className="md:hidden" size={24} />
+            <p className="hidden md:block">Group</p>
           </Tooltip>
         </NavLink>
         {isLoggedin && (

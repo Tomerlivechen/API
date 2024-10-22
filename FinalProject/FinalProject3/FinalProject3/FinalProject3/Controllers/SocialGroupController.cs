@@ -255,7 +255,7 @@ namespace FinalProject3.Controllers
             return Ok(group);
         }
 
-        [HttpDelete("/{groupId}")]
+        [HttpDelete("{groupId}")]
         [Authorize]
         public async Task<ActionResult> DeleteGroup(string groupId)
         {
