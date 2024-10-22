@@ -70,7 +70,7 @@ if (groupCardData && groupFilter){
 return (
     <>
     {(!loading && filteredGroupCardData) &&
-    <div className="flex flex-wrap w-3/4">
+    <div>
     {filteredGroupCardData.map((group) => (
           <div className="p-2" key={group.id}>
             <GroupCard GroupCardData={group} />
