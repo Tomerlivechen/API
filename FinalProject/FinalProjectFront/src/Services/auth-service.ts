@@ -51,6 +51,8 @@ const login = (email: string, password: string) =>
     });
 
 
+    
+
     const getUsers = () =>
       request({
         url: `${AuthURL}/GetUsers`,
@@ -131,5 +133,5 @@ export const auth = {
   manage,
   GetFollowingIds,
   GetUsersFollowing,
-  GetUsersGroups
+  GetUsersGroups,
 };

@@ -25,6 +25,7 @@ import { INotificationDisplay } from "../Modals/NotificationMedels";
 
 import { GroupCard } from "../Constants/Objects/GroupCard";
 import { ISocialGroupCard } from "../Models/SocialGroup";
+import { GroupCreation } from "../Constants/Objects/GroupCreation";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -557,7 +558,7 @@ function TestSpace() {
       <div>---------------------------</div>
       <div className="flex">
         <div className="w-1/4"></div>
-        <GroupCard GroupCardData={SGC} />
+        <GroupCreation />
       </div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>

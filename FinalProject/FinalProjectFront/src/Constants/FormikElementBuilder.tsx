@@ -35,7 +35,7 @@ const FormikElementBuilder = (initalValues: MYFormikValues) => {
           <label htmlFor={initalValues.element}>{initalValues.Title}</label>
         )}
         <Field
-          className={`${fieldClassName}${
+          className={`${fieldClassName} ${
             initalValues.textbox && textboxParams
           } ${initalValues.classes}`}
           id={initalValues.element}
