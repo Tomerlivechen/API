@@ -31,28 +31,28 @@ namespace FinalProject3.Mapping
 
         public async static Task<SocialGroup> UpdateGroup(this SocialGroup group, SocialGroupEdit editGroup, UserManager<AppUser> userManager)
         {
-            if (editGroup.Name is not null)
+            if (editGroup.Name != group.Name)
             {
                 group.Name = editGroup.Name;
             }
-            if (editGroup.Description is not null)
+            if (editGroup.Description != group.Description)
             {
                 group.Description = editGroup.Description;
             }
-            if (editGroup.AdminId is not null)
+            if (editGroup.NewAdminEmail is not null)
             {
-                var adminUser = await userManager.FindByIdAsync(editGroup.AdminId);
+                var adminUser = await userManager.FindByEmailAsync(editGroup.NewAdminEmail);
                 if (adminUser is not null)
                 {
                     group.groupAdmin = adminUser;
                     group.AdminId = adminUser.Id;
                 }
             }
-            if (editGroup.BanerImageURL is not null)
+            if (editGroup.BanerImageURL != group.BanerImageURL)
             {
                 group.BanerImageURL = editGroup.BanerImageURL;
             }
-            if (editGroup.ImageURL is not null)
+            if (editGroup.ImageURL != group.ImageURL)
             {
                 group.ImageURL = editGroup.ImageURL;
             }

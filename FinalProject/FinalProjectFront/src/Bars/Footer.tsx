@@ -14,7 +14,7 @@ const FooterBar = () => {
 
   return (
     <>
-      <div className="relative bottom-0 right-0 flex gap-4">
+      <div className="fixed bottom-0 right-0 flex gap-4">
         {chats.map((chat, index) => (
           <div
             key={chat}

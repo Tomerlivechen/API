@@ -126,6 +126,7 @@ namespace FinalProject3.Controllers
                 var newComment = await comment.NewCommentToComment(userManager);
                 _context.Comment.Add(newComment);
             Interaction? parent;
+            bool flag = false;
             if (!string.IsNullOrEmpty(comment.ParentPostId))
             {
                 parent = await _context.Post.FindAsync(comment.ParentPostId);
@@ -133,22 +134,26 @@ namespace FinalProject3.Controllers
             else
             {
                 parent = await _context.Comment.FindAsync(comment.ParentCommentId);
+                flag = true;
+
             }
             if (parent is null)
             {
                 return BadRequest(!string.IsNullOrEmpty(comment.ParentPostId) ? "Post not found" : "Comment not found");
             }
             parent.Comments.Add(newComment);
-
-            var Notified = parent.Author;
-            var newNotification = new NotificationNew();
-            newNotification.NotifierId= userId;
-            newNotification.NotifiedId = Notified.Id;
-            newNotification.Type = "Comment";
-            newNotification.ReferenceId = parent.Id;
-            Notification notification = await newNotification.AddNotification(_context);
-            await _context.Notification.AddAsync(notification);
-            Notified.Notifications.Add(notification);
+            if (!flag)
+            {
+                var Notified = parent.Author;
+                var newNotification = new NotificationNew();
+                newNotification.NotifierId = userId;
+                newNotification.NotifiedId = Notified.Id;
+                newNotification.Type = "Comment";
+                newNotification.ReferenceId = parent.Id;
+                Notification notification = await newNotification.AddNotification(_context);
+                await _context.Notification.AddAsync(notification);
+                Notified.Notifications.Add(notification);
+            }
 
                 try
                 {

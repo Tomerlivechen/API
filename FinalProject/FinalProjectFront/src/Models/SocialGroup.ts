@@ -38,8 +38,18 @@ interface ISocialGroupCard {
   isMemember: boolean;
 }
 
+interface ISocialGroupEdit {
+  id?: string;
+  name?: string;
+  description?: string;
+  banerImageURL ?: string;
+  imageURL?: string;
+  newAdminEmail ?:string;
+}
+
+
 interface INewSocialGroup {
   name: string;
   description: string;
 }
-export type { ISocialGroup,ISocialGroupCard,INewSocialGroup,ISocialGroupDisplay };
+export type { ISocialGroup,ISocialGroupCard,INewSocialGroup,ISocialGroupDisplay,ISocialGroupEdit };

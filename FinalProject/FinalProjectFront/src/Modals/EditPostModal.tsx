@@ -44,8 +44,7 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
   const navigate = useNavigate();
-  const [imageUrl, file, setImageURL, clear] = useCloudinary();
-  const [holdFile, setHoldFile] = useState<File | null>();
+  const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const PostToEdit: IPostDisplay = post;
   const handleclose = () => {
     setPostValues(PostToEdit);
@@ -91,20 +90,23 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
 
   const postPost = async (values) => {
     // eslint-disable-next-line no-debugger
-    debugger; // Execution will pause here
+    debugger;
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
-      values.keyWords = processKeywords(postValues.keyWords.toString());
-
+      let updatedValues;
+      if (postValues.keyWords.length > 0) {
+        const parsedKeyWords = processKeywords(postValues.keyWords.toString());
+        updatedValues = { ...values, keyWords: parsedKeyWords };
+      }
       if (holdFile) {
-        values.imageURL = imageUrl;
+        updatedValues = { ...values, imageURL: imageUrl };
       }
 
       try {
         clear();
-        console.log("Form submitted with values: ", values);
-        const response = await Posts.EditPost(values);
+        console.log("Form submitted with values: ", updatedValues);
+        const response = await Posts.EditPost(updatedValues);
         console.log(response);
         dialogs.success("Comment Sent");
       } catch (error) {

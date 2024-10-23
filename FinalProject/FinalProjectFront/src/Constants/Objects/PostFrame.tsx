@@ -108,6 +108,14 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
     }
   }, []);
 
+  const intervalTime = 10000;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updatePostList();
+    }, intervalTime);
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
     if (mainPostList && !isEqual(mainPostList, postList?.posts)) {
       setPostList((prevPostList) => ({

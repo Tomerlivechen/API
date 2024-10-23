@@ -152,17 +152,22 @@ const EditUserComponent: React.FC<{ userInfo: IAppUserDisplay }> = ({
     show: false,
   });
   const [userValues, setUserValues] = useState<IAppUserEdit>(initalValues);
-  const [HoldImage, setHoldImage] = useState();
-  const [HoldBanner, setHoldBanner] = useState();
-  const [imageUrl, file, setImageURL, clear] = useCloudinary();
+
+  const [
+    imageUrl,
+    HoldImage,
+    setHoldImage,
+    setImageURL,
+    clear,
+  ] = useCloudinary();
   const [
     bannerImageUrl,
-    bannerfile,
+    HoldBanner,
+    setHoldBanner,
     setbannerImageURL,
     clearbanner,
   ] = useCloudinary();
   const LoggedInContext = useLogin();
-
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 

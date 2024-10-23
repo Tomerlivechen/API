@@ -39,8 +39,8 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
   const navigate = useNavigate();
-  const [imageUrl, file, setImageURL, clear] = useCloudinary();
-  const [holdFile, setHoldFile] = useState<File | null>();
+  const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
+  const [,] = useState<File | null>();
 
   const handleclose = () => {
     onHide();

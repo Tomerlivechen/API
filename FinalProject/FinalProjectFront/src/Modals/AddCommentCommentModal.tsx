@@ -40,10 +40,9 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
 
-  const [imageUrl, file, setImageURL, clear] = useCloudinary();
+  const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const linkValues = linkFieldValues;
   const imageValues = imageFieldValues;
-  const [holdFile, setHoldFile] = useState<File | null>();
 
   const handleclose = () => {
     setShow(false);

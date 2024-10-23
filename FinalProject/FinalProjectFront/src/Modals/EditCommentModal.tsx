@@ -41,8 +41,7 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
   const navigate = useNavigate();
-  const [imageUrl, file, setImageURL, clear] = useCloudinary();
-  const [holdFile, setHoldFile] = useState<File | null>();
+  const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const CommentToEdit: ICommentDisplay = comment;
   const handleclose = () => {
     setCommentValues(CommentToEdit);

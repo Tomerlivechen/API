@@ -27,8 +27,7 @@ function SendPostComponent() {
   const loggedInContext = useLogin();
   const [Url, setUrl] = useState("");
 
-  const [imageUrl, , setImageURL, clear] = useCloudinary();
-  const [holdFile, setHoldFile] = useState<File | null>();
+  const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const toggelOpen = () => {
     setOpen((prevOpen) => !prevOpen);
   };
