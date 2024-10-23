@@ -55,7 +55,7 @@ const Profile = () => {
               title={"Groups"}
               show={true}
               overflowX={false}
-              tailwindProps="  h-full"
+              tailwindProps="  h-auto"
             >
               <ProfileGroupsList />
             </ResizableFrame>

@@ -14,14 +14,11 @@ namespace FinalProject3.DTOs
 
         public bool IsMemember { get; set; }
 
+        public string GroupCreatorId { get; set; } = string.Empty;
 
-        public AppUserDisplay GroupCreator { get; set; } = new AppUserDisplay();
+        public string AdminId { get; set; } = string.Empty;
+        public string AdminName { get; set; } = string.Empty;
 
-        public AppUserDisplay Admin { get; set; } = new AppUserDisplay();
 
-
-        public List<AppUserDisplay> Members { get; set; } = [];
-
-        public List<PostDisplay> Posts { get; set; } = [];
     }
 }

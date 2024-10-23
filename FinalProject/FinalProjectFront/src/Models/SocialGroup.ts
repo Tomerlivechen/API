@@ -16,6 +16,19 @@ interface ISocialGroup {
   isMemember: boolean;
 }
 
+interface ISocialGroupDisplay {
+  id: string;
+  name: string;
+  description: string;
+  imageURL: string;
+  banerImageURL : string;
+  groupCreatorId: string;
+  adminId: string;
+  AdminName: string;
+  isMemember: boolean;
+}
+
+
 interface ISocialGroupCard {
   id: string;
   name: string;
@@ -29,4 +42,4 @@ interface INewSocialGroup {
   name: string;
   description: string;
 }
-export type { ISocialGroup,ISocialGroupCard,INewSocialGroup };
+export type { ISocialGroup,ISocialGroupCard,INewSocialGroup,ISocialGroupDisplay };

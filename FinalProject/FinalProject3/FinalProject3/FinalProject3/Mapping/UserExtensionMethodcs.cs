@@ -28,6 +28,12 @@ namespace FinalProject32.Mapping
 
         public static async Task<AppUserDisplay?> UsertoDisplay(this AppUser user, FP3Context _context, AppUser currentUser)
         {
+            var userFull = await _context.Users
+              .Include(u => u.Chats)
+                 .Include(u => u.Blocked)
+                 .FirstOrDefaultAsync(u => u.Id == user.Id);
+            if (userFull is null) return null;
+
             var display = new AppUserDisplay()
             {
                 Id = user.Id,
@@ -59,12 +65,10 @@ namespace FinalProject32.Mapping
                 display.Blocked = true;
             }
 
-            
-            var userFull = await _context.Users.Include(u => u.Chats)
-                .Include(u => u.Blocked).AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Id == user.Id);
 
-            if (userFull is null) return null;
+
+
+            
 
 
             if (userFull is not null && userFull.Blocked.Any(u => u.Id == currentUser.Id))

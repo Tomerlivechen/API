@@ -20,12 +20,14 @@ import {
   ISendMessageComponent,
   SendMessageComponent,
 } from "../Components/SendMessageComponent";
-import { ChatFrame, } from "../Constants/Objects/ChatFrame";
+import { ChatFrame } from "../Constants/Objects/ChatFrame";
 import { INotificationDisplay } from "../Modals/NotificationMedels";
 
 import { GroupCard } from "../Constants/Objects/GroupCard";
 import { ISocialGroupCard } from "../Models/SocialGroup";
 import { GroupCreation } from "../Constants/Objects/GroupCreation";
+import GroupProfileSection from "../Constants/Objects/GroupProfileSection";
+import GroupPage from "../Constants/Objects/GroupPage";
 
 const commentsArray3: ICommentDisplay[] = [
   {
@@ -330,19 +332,22 @@ const user1: IAppUserDisplay = {
   last_Name: "Levi",
   userName: "tomerlevi87",
   email: "tomer.levi@artbioscience.com",
-  imageURL: "https://res.cloudinary.com/dhle9hj3n/image/upload/v1728074215/ucdbrgjng0fssqqot8ue.jpg",
+  imageURL:
+    "https://res.cloudinary.com/dhle9hj3n/image/upload/v1728074215/ucdbrgjng0fssqqot8ue.jpg",
   following: true,
   blocked: false,
   blockedYou: false,
   pronouns: "he/him",
-  bio: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
-  banerImageURL: "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
+  bio:
+    "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
+  banerImageURL:
+    "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
   hideEmail: false,
   hideName: false,
   hideBlocked: false,
   lastActive: "",
   chatId: "",
-  votedOn: []
+  votedOn: [],
 };
 
 const message1: IMessage = {
@@ -414,8 +419,6 @@ const tabProps: UserTabProps = {
   },
 };
 
-
-
 const not1: INotificationDisplay = {
   id: "67152ba4-a298-8008-bd9b-32e595943c96",
   type: "Comment",
@@ -438,7 +441,7 @@ const not2: INotificationDisplay = {
   notifiedId: "58119e4b-b525-4727-9f5e-d58db8110a60",
 };
 
-const notes : INotificationDisplay[] = [
+const notes: INotificationDisplay[] = [
   {
     id: "0a0469e6-bed9-46d1-83b0-484bfd2662de",
     type: "Message",
@@ -538,28 +541,27 @@ const notes : INotificationDisplay[] = [
     referenceId: "a6901cf2-d5d0-4896-aeaa-61e37a141f04",
     notifierId: "e10af8c3-0f05-44ad-9517-ab68f8491f00",
     notifiedId: "a8e75dab-02aa-4826-9351-d6d74f9452bf",
-  }
+  },
 ];
 
-const SGC : ISocialGroupCard = {
+const SGC: ISocialGroupCard = {
   id: "a6901cf2-d5d0-4896-aeaa-61e37a141f04",
   name: "The Social Group",
   description: "string",
-  banerImageURL : "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
+  banerImageURL:
+    "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?t=st=1728568993~exp=1728572593~hmac=2908d0da32e0a3b6215998c0ccb4d581a9af827c194f714586d302efb63015ac&w=1380",
   groupAdmin: user1,
   isMemember: false,
-}
+};
 
+const gId: string = "82c4605f-8c3e-4326-9e46-034a1b2a0991";
 
 function TestSpace() {
   return (
     <>
       <div>Test Space Elemens</div>
       <div>---------------------------</div>
-      <div className="flex">
-        <div className="w-1/4"></div>
-        <GroupCreation />
-      </div>
+      <div className="flex"></div>
       <div>---------------------------</div>
       <div>Test Space Elemens</div>
     </>

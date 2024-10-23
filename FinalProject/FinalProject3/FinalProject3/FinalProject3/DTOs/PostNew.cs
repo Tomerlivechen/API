@@ -17,7 +17,7 @@ namespace FinalProject3.DTOs
 
         public int CategoryId { get; set; }
 
-        public string? GroupId { get; set; }
+        public string? Group { get; set; }
 
         public string KeyWords { get; set; } = string.Empty;
         public string Datetime = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm");

@@ -131,7 +131,11 @@ namespace FinalProject3.Controllers
             foreach (var post in posts)
             {
                 var postDisplay = await post.ToDisplay(userId, _context);
+                if (postDisplay != null && string.IsNullOrEmpty(postDisplay.GroupId))
+                {
                 postsDisplay.Add(postDisplay);
+                }
+               
             }
             if (postsDisplay == null)
             {

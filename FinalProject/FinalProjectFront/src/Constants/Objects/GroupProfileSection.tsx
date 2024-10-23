@@ -6,64 +6,84 @@ import { colors } from "../Patterns";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FaHandHolding } from "react-icons/fa";
 import { FaHandHoldingHeart } from "react-icons/fa";
-import { ISocialGroup } from "../../Models/SocialGroup";
+import { ISocialGroup, ISocialGroupDisplay } from "../../Models/SocialGroup";
 import { Groups } from "../../Services/group-service";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { BsPersonFillDash } from "react-icons/bs";
+import { IAppUserDisplay } from "../../Models/UserModels";
+import { auth } from "../../Services/auth-service";
 
+const GroupProfileSection = ({ groupId }) => {
+  // const { groupId } = useParams();
+  const [groupInfo, SetGroupInfo] = useState<ISocialGroupDisplay | null>();
+  const [loading, setLoading] = useState(true);
+  const userContext = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [groupAdmin, setGroupAdmin] = useState<IAppUserDisplay | null>(null);
 
+  const getGroupInfo = async (GroupId: string) => {
+    const response = await Groups.GetGroupbyId(GroupId);
+    SetGroupInfo(response.data);
+  };
 
-const GroupProfileSection = () => {
-const {params} = useParams()
-const [groupInfo , SetGroupInfo]= useState<ISocialGroup | null>()
-const [loading , setLoading] = useState(true)
-const userContext = useUser()
-const navigate = useNavigate();
-const location = useLocation();
+  const getAdmin = async (AdminId: string) => {
+    const respons = await auth.getUser(AdminId);
+    setGroupAdmin(respons.data);
+  };
 
-const getGroupInfo = async(GroupId:string) =>{
-const response = await Groups.GetGroupbyId(GroupId)
-SetGroupInfo(response.data)
-}
+  useEffect(() => {
+    if (groupId) {
+      getGroupInfo(groupId);
+    }
+  }, [groupId]);
 
-useEffect(()=>{
-if(params){
-  getGroupInfo(params)
-}
-},[params])
+  useEffect(() => {
+    if (groupInfo) {
+      getAdmin(groupInfo.adminId);
+    }
+  }, [groupInfo]);
 
-useEffect(()=>{
-  if(groupInfo){
-    setLoading(false)
-  }
-  },[groupInfo])
+  useEffect(() => {
+    if (groupAdmin) {
+      setLoading(false);
+    }
+  }, [groupAdmin]);
 
-const toggleFollow = async ()=>{
-if(groupInfo && groupInfo.isMemember == false){
-  const response = await Groups.JoinGroup(groupInfo.id);
-  if (response.status === 'success' ){
-    SetGroupInfo((prev) => {
-      if (!prev) return prev; return {...prev, isMemember: true  };
-    });
-  }
-  }
-else if (groupInfo && groupInfo.isMemember == false && userContext.userInfo.UserId) {
-  const response = await Groups.RemoveMember(groupInfo.id, userContext.userInfo.UserId);
-  if (response.status === 'success' ){
-    SetGroupInfo((prev) => {
-      if (!prev) return prev; return {...prev, isMemember: false  };
-    });
-  }
-}
-}
-
-
+  const toggleJoin = async () => {
+    console.log("toggle join");
+    if (groupInfo && groupInfo.isMemember == false) {
+      const response = await Groups.JoinGroup(groupInfo.id);
+      if (response.status === "success") {
+        SetGroupInfo((prev) => {
+          if (!prev) return prev;
+          return { ...prev, isMemember: true };
+        });
+      }
+    } else if (
+      groupInfo &&
+      groupInfo.isMemember == true &&
+      userContext.userInfo.UserId
+    ) {
+      console.log("toggle join");
+      const response = await Groups.RemoveMember(
+        groupInfo.id,
+        userContext.userInfo.UserId
+      );
+      if (response.status === "success") {
+        SetGroupInfo((prev) => {
+          if (!prev) return prev;
+          return { ...prev, isMemember: false };
+        });
+      }
+    }
+  };
 
   return (
     <>
       <div className="p-1">
         {loading && <ClimbBoxSpinner />}
-        {!loading && groupInfo && !groupInfo.groupAdmin.blockedYou && (
+        {!loading && groupInfo && !groupAdmin?.blockedYou && (
           <>
             <div
               className={`${colors.ElementFrame} shadow-lg rounded-lg overflow-hidden w-2/3`}
@@ -77,7 +97,7 @@ else if (groupInfo && groupInfo.isMemember == false && userContext.userInfo.User
                 <div className="absolute -bottom-12 left-6 flex items-center space-x-4">
                   <img
                     src={groupInfo.imageURL}
-                    alt="User profile"
+                    alt="Group image"
                     className="w-24 h-24 rounded-full border-4 border-white shadow-md"
                   />
                   <p
@@ -100,13 +120,13 @@ else if (groupInfo && groupInfo.isMemember == false && userContext.userInfo.User
                     }`}
                   >
                     <div className=" ml-auto flex gap-3">
-                      {!groupInfo.groupAdmin.blockedYou &&
-                        userContext.userInfo.UserId !== groupInfo.groupAdmin.id && (
+                      {!groupAdmin?.blockedYou &&
+                        userContext.userInfo.UserId !== groupInfo.adminId && (
                           <>
                             {groupInfo.isMemember ? (
                               <button
-                                className={`${colors.ElementFrame}  p-2 rounded-xl flex items-center gap-2`}
-                                onClick={toggleFollow}
+                                className={`${colors.ElementFrame} mt-2 p-2 rounded-xl flex items-center gap-2`}
+                                onClick={toggleJoin}
                               >
                                 <BsPersonFillDash size={25} />
                                 <span> Leave</span>
@@ -114,7 +134,7 @@ else if (groupInfo && groupInfo.isMemember == false && userContext.userInfo.User
                             ) : (
                               <button
                                 className={`${colors.ElementFrame} ${colors.ActiveText} p-2 rounded-xl flex items-center gap-2 hover:animate-bounce`}
-                                onClick={toggleFollow}
+                                onClick={toggleJoin}
                               >
                                 <BsPersonFillAdd size={25} />
                                 <span> Join Group</span>
@@ -141,7 +161,3 @@ else if (groupInfo && groupInfo.isMemember == false && userContext.userInfo.User
 };
 
 export default GroupProfileSection;
-function useProps(): { props: any; } {
-    throw new Error("Function not implemented.");
-}
-

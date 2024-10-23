@@ -56,7 +56,7 @@ const PostFrame: React.FC<IPostFrameParams | null> = (PostFrameParams) => {
 
   useEffect(() => {
     updatePostList();
-  }, []);
+  }, [userIdState, groupIdState, postIdState]);
 
   useEffect(() => {
     if (PostFrameParams) {

@@ -31,6 +31,11 @@ namespace FinalProject3.Mapping
             };
             var currentUser = await _context.Users.
                 FirstOrDefaultAsync(u => u.Id == userID);
+            if (post.Group != null)
+            {
+                setPost.GroupId = post.Group.Id;
+            }
+
             if (currentUser is not null)
             {
                 setPost.hasVoted = currentUser.votedOn.Contains(post.Id);
@@ -58,7 +63,7 @@ namespace FinalProject3.Mapping
                 ImageURL = Newpost.ImageURL,
                 Author = await userManager.FindByIdAsync(Newpost.AuthorId),
                 Datetime = Newpost.Datetime,
-                Group = await context.Group.FindAsync(Newpost.GroupId)
+                Group = await context.Group.FindAsync(Newpost.Group)
             };
             if (Newpost.KeyWords.Trim().Length > 1)
             {

@@ -18,9 +18,10 @@ import { useLocation, useParams } from "react-router-dom";
 
 function SendPostComponent() {
   const location = useLocation();
-  const { params } = useParams();
+  const { groupId } = useParams();
+  const { userId } = useParams();
   const [userIdState, setUserIdState] = useState<string | null>(null);
-  const [groupId, setGroupId] = useState<string | null>(null);
+  const [groupIdState, setGroupIdState] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
@@ -44,10 +45,10 @@ function SendPostComponent() {
   };
 
   useEffect(() => {
-    if (location.pathname.startsWith("/Group") && params) {
-      setGroupId(params);
+    if (location.pathname.startsWith("/Group") && groupId) {
+      setGroupIdState(groupId);
     }
-  }, [params]);
+  }, [groupId]);
 
   const NewPost: INewPost = {
     id: "",
@@ -57,7 +58,7 @@ function SendPostComponent() {
     text: "",
     authorId: "",
     categoryId: 0,
-    group: groupId ?? "",
+    group: groupIdState ?? "",
     keyWords: "",
     datetime: "",
   };

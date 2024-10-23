@@ -49,21 +49,21 @@ namespace FinalProject3.Controllers
         }
         [HttpGet("ById/{GroupId}")]
         [Authorize]
-        public async Task<ActionResult<SocialGroup>> GetGroupbyId(string GroupId)
+        public async Task<ActionResult<SocialGroupDisplay>> GetGroupbyId(string GroupId)
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (currentUserId is null)
             {
                 return Unauthorized();
             }
-            var fullGroup = await _context.Group.Include(g => g.Members).ThenInclude(u => u.Blocked).Include(g => g.Posts).Include(g => g.groupAdmin).Include(g => g).FirstOrDefaultAsync(g => g.Id == GroupId);
+            var fullGroup = await _context.Group.Include(sg => sg.groupAdmin).Include(sg=> sg.Members).FirstOrDefaultAsync(g => g.Id == GroupId);
             if (fullGroup is null)
             {
                 return NotFound();
             }
-            var displayGroup = fullGroup.ToDisplay(currentUserId, context);
+            var displayGroup = await fullGroup.ToDisplay(currentUserId, context);
 
-            return Ok(fullGroup);
+            return Ok(displayGroup);
         }
 
         [HttpGet("GetMembers/{GroupId}")]

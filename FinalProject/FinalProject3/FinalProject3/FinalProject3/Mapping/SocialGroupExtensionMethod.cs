@@ -99,24 +99,10 @@ namespace FinalProject3.Mapping
                 Id = socialGroup.Id,
                 Name = socialGroup.Name,
                 Description = socialGroup.Description,
-                GroupCreator = await socialGroup.GroupCreator.UsertoDisplay( _context, currentUser),
-                Admin = await socialGroup.groupAdmin.UsertoDisplay( _context, currentUser),
+                GroupCreatorId = socialGroup.GroupCreatorId,
+                AdminId = socialGroup.AdminId,
+                AdminName = socialGroup.groupAdmin.UserName,
             };
-            var memberDisplay = new List<AppUserDisplay>();
-            foreach (var member in socialGroup.Members) {
-                var displayMember = await member.UsertoDisplay(_context, currentUser);
-                if (displayMember is not null) {
-                    memberDisplay.Add(displayMember);
-                }
-            }
-            display.Members = memberDisplay;
-            var postsDisplay = new List<PostDisplay>();
-            foreach (var post in socialGroup.Posts)
-            {
-                var postDisplay = await post.ToDisplay(userId, _context);
-                postsDisplay.Add(postDisplay);
-            }
-            display.Posts = postsDisplay;
 
             var isMember = socialGroup.Members.Where(m => m.Id == userId).First();
             bool aMember = false;

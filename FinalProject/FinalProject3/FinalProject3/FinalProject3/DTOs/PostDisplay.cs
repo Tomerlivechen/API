@@ -17,6 +17,7 @@ namespace FinalProject3.DTOs
 
         public required string Title { get; set; }
         public int CategoryId { get; set; }
+        public string GroupId { get; set; } = string.Empty;
 
         public List<string> KeyWords { get; set; } = [];
         public string Datetime { get; set; } = string.Empty;

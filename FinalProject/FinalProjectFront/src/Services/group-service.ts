@@ -8,8 +8,8 @@ const GroupURL = "/SocialGroup";
 
   const GetGroupbyId = (GroupId: string) =>
     request({
-      url: `${GroupURL}/ById/${GroupId}")`,
-      method: "Put",
+      url: `${GroupURL}/ById/${GroupId}`,
+      method: "GET",
       data: null,
     });
 
@@ -19,6 +19,13 @@ const GroupURL = "/SocialGroup";
         method: "Get",
         data: null,
       });
+
+      const GetGroupMembers = (GroupId: string) =>
+        request({
+          url: `${GroupURL}/GetMembers/${GroupId}`,
+          method: "Get",
+          data: null,
+        });
 
       const JoinGroup = (GroupId: string) =>
         request({
@@ -49,4 +56,4 @@ const GroupURL = "/SocialGroup";
 
 
         
-  export const Groups = {GetGroupbyId, GetGroups,JoinGroup,RemoveMember,DeleteGroup,CreateGroup}
+  export const Groups = {GetGroupbyId, GetGroups,JoinGroup,RemoveMember,DeleteGroup,CreateGroup,GetGroupMembers}

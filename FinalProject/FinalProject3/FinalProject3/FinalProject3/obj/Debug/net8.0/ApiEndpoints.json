@@ -998,7 +998,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FinalProject3.Models.SocialGroup",
+        "Type": "FinalProject3.DTOs.SocialGroupDisplay",
         "MediaTypes": [
           "text/plain",
           "application/json",
