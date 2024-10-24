@@ -24,6 +24,12 @@ const getChat = (ChatID: string) =>
       data: null,
   });
 
+  const GetNotFollowingChats = () =>
+    request({
+      url: `${ChatURL}/notFollowingChats`,
+      method: "GET",
+      data: null,
+  });
 
   const CreatChat = (userid: string) =>
     request({
@@ -32,4 +38,4 @@ const getChat = (ChatID: string) =>
       data: {id:userid},
   });
 
-  export const Chat = {sendMessage, getChat, CreatChat}
+  export const Chat = {sendMessage, getChat, CreatChat, GetNotFollowingChats}

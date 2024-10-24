@@ -51,16 +51,7 @@ const GroupProfileSection = ({ groupId }) => {
   }, [groupAdmin]);
 
   const toggleJoin = async () => {
-    console.log("toggle join");
-    if (groupInfo && groupInfo.isMemember == false) {
-      const response = await Groups.JoinGroup(groupInfo.id);
-      if (response.status === "success") {
-        SetGroupInfo((prev) => {
-          if (!prev) return prev;
-          return { ...prev, isMemember: true };
-        });
-      }
-    } else if (
+    if (
       groupInfo &&
       groupInfo.isMemember == true &&
       userContext.userInfo.UserId
@@ -76,6 +67,7 @@ const GroupProfileSection = ({ groupId }) => {
           return { ...prev, isMemember: false };
         });
       }
+      navigate(`/Feed`);
     }
   };
 
@@ -107,11 +99,16 @@ const GroupProfileSection = ({ groupId }) => {
                   </p>
                 </div>
                 <div className="absolute right-0 p-2">
-                  <button
-                    onClick={() => navigate(`/GroupSettings/${groupInfo.id}`)}
-                  >
-                    <FaUserGear className={`${colors.ButtonFont}`} size={25} />
-                  </button>
+                  {userContext.userInfo.UserId == groupInfo.adminId && (
+                    <button
+                      onClick={() => navigate(`/GroupSettings/${groupInfo.id}`)}
+                    >
+                      <FaUserGear
+                        className={`${colors.ButtonFont}`}
+                        size={25}
+                      />
+                    </button>
+                  )}
                 </div>
               </div>
               <div className={` pt-16 px-6 pb-6 ${colors.ButtonFont}`}>
@@ -125,23 +122,13 @@ const GroupProfileSection = ({ groupId }) => {
                       {!groupAdmin?.blockedYou &&
                         userContext.userInfo.UserId !== groupInfo.adminId && (
                           <>
-                            {groupInfo.isMemember ? (
-                              <button
-                                className={`${colors.ElementFrame} mt-2 p-2 rounded-xl flex items-center gap-2`}
-                                onClick={toggleJoin}
-                              >
-                                <BsPersonFillDash size={25} />
-                                <span> Leave</span>
-                              </button>
-                            ) : (
-                              <button
-                                className={`${colors.ElementFrame} ${colors.ActiveText} p-2 rounded-xl flex items-center gap-2 hover:animate-bounce`}
-                                onClick={toggleJoin}
-                              >
-                                <BsPersonFillAdd size={25} />
-                                <span> Join Group</span>
-                              </button>
-                            )}
+                            <button
+                              className={`${colors.ElementFrame} mt-2 p-2 rounded-xl flex items-center gap-2`}
+                              onClick={toggleJoin}
+                            >
+                              <BsPersonFillDash size={25} />
+                              <span> Leave</span>
+                            </button>
                           </>
                         )}
                     </div>

@@ -4,6 +4,7 @@ import { Groups } from "../../Services/group-service";
 import { GroupCard } from "./GroupCard";
 import { auth } from "../../Services/auth-service";
 import { useUser } from "../../CustomHooks/useUser";
+import { isEqual } from "lodash";
 
 export interface IGroupCardListProps {
   GroupFilter: string | null;
@@ -36,25 +37,40 @@ const GroupCardList: React.FC<{
     }
   };
 
+  const getGroupCards = async () => {
+    if (
+      GroupCardListProps.GroupFilter?.length &&
+      GroupCardListProps.GroupFilter.length > 1 &&
+      !GroupCardListProps.usersGroups
+    ) {
+      await GetGroupCards();
+      setGroupFilter(GroupCardListProps.GroupFilter);
+    } else if (GroupCardListProps.usersGroups) {
+      await GetUserGroups();
+      setGroupFilter(GroupCardListProps.GroupFilter);
+      setuserGroup(GroupCardListProps.usersGroups);
+    } else if (
+      (!GroupCardListProps.GroupFilter ||
+        GroupCardListProps.GroupFilter.length < 1) &&
+      !GroupCardListProps.usersGroups
+    ) {
+      await GetGroupCards();
+      setGroupFilter(GroupCardListProps.GroupFilter);
+      setuserGroup(GroupCardListProps.usersGroups);
+    }
+  };
+
+  const intervalTime = 10000;
   useEffect(() => {
-    const getGroupCards = async () => {
-      if (GroupCardListProps.GroupFilter && !GroupCardListProps.usersGroups) {
-        await GetGroupCards();
-        setGroupFilter(GroupCardListProps.GroupFilter);
-      }
-      if (GroupCardListProps.usersGroups) {
-        await GetUserGroups();
-        setGroupFilter(GroupCardListProps.GroupFilter);
-        setuserGroup(GroupCardListProps.usersGroups);
-      }
-      if (!GroupCardListProps.GroupFilter && !GroupCardListProps.usersGroups) {
-        await GetGroupCards();
-        setGroupFilter(GroupCardListProps.GroupFilter);
-        setuserGroup(GroupCardListProps.usersGroups);
-      }
-    };
+    const interval = setInterval(() => {
+      getGroupCards();
+    }, intervalTime);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     getGroupCards();
-  }, [GroupCardListProps]);
+  }, [GroupCardListProps.GroupFilter, GroupCardListProps.usersGroups]);
 
   useEffect(() => {
     if (groupCardData && groupFilter) {
@@ -62,12 +78,16 @@ const GroupCardList: React.FC<{
         const filtered = groupCardData.filter((card) =>
           card.name.toLowerCase().includes(groupFilter.toLowerCase())
         );
-        setFilteredGroupCardData(filtered);
-        setLoading(false);
+        if (!isEqual(filtered, filteredGroupCardData)) {
+          setFilteredGroupCardData(filtered);
+          setLoading(false);
+        }
       }
     } else {
-      setFilteredGroupCardData(groupCardData);
-      setLoading(false);
+      if (!isEqual(groupCardData, filteredGroupCardData)) {
+        setFilteredGroupCardData(groupCardData);
+        setLoading(false);
+      }
     }
   }, [groupCardData, groupFilter]);
 

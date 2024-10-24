@@ -9,12 +9,30 @@ import { IPostDisplay } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
 import PostView from "../Constants/Objects/PostView";
 import { ProfileGroupsList } from "../Constants/Objects/ProfileGroupsList";
+import { IAppUserDisplay } from "../Models/UserModels";
+import { Chat } from "../Services/chat-service";
+import { auth } from "../Services/auth-service";
+import { useUser } from "../CustomHooks/useUser";
+import { isEqual } from "lodash";
+import { colors } from "../Constants/Patterns";
 
 const Feed = () => {
   const { postId } = useParams();
   const searchContext = useSearch();
+  const userContext = useUser();
   const [singularPost, setSingularPost] = useState<IPostDisplay | null>(null);
-
+  const [tempFollowingUsers, setTempFollowingUsers] = useState<
+    IAppUserDisplay[] | null
+  >(null);
+  const [tempChattingUsers, setTempChattingUsers] = useState<
+    IAppUserDisplay[] | null
+  >(null);
+  const [followingUsers, setFollowingUsers] = useState<
+    IAppUserDisplay[] | null
+  >(null);
+  const [chattingUsers, setChattingUsers] = useState<IAppUserDisplay[] | null>(
+    null
+  );
   useEffect(() => {
     const getSinglePost = async () => {
       if (postId) {
@@ -25,20 +43,42 @@ const Feed = () => {
     getSinglePost();
   }, [postId]);
 
-  useEffect(() => {
-    if (searchContext.userList.length > 0) {
-      setLoadingUsers(false);
-    }
-  }, [searchContext.userList]);
+  useEffect(() => {}, []);
 
-  const [loadingUsers, setLoadingUsers] = useState(true);
+  const intervalTime = 10000;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getInteractingUsersLists();
+    }, intervalTime);
+    return () => clearInterval(interval);
+  }, []);
+
+  const getInteractingUsersLists = async () => {
+    if (userContext.userInfo.UserId) {
+      const response = await Chat.GetNotFollowingChats();
+      setTempChattingUsers(response.data);
+      const fRespons = await auth.GetUsersFollowing(
+        userContext.userInfo.UserId
+      );
+      setTempFollowingUsers(fRespons.data);
+    }
+  };
+
+  useEffect(() => {
+    if (!isEqual(tempFollowingUsers, followingUsers)) {
+      setFollowingUsers(tempFollowingUsers);
+    }
+    if (!isEqual(tempChattingUsers, chattingUsers)) {
+      setChattingUsers(tempChattingUsers);
+    }
+  }, [chattingUsers, followingUsers, tempChattingUsers, tempFollowingUsers]);
 
   return (
     <>
       <div className="flex flex-wrap justify-between">
         <div className="xl:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
         <div className="lg:w-3/12 xl:w-2/12 hidden lg:block pr-2 pl-2">
-          <UserLane />
+          <UserLane userId={null} />
           <ResizableFrame
             whidth={"auto"}
             title={"Groups"}
@@ -58,21 +98,26 @@ const Feed = () => {
         </div>
         <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>
         <div className=" lg:w-3/12 xl:w-2/12 hidden md:block md:w-1/2  w-0/12 pr-2 pl-2">
-          {!loadingUsers && (
-            <>
-              <ResizableFrame
-                whidth={"100%"}
-                title={"Following"}
-                show={true}
-                tailwindProps=" h-full"
-              >
-                <UserTabList
-                  users={searchContext.userList}
-                  filter="following"
-                />
-              </ResizableFrame>
-            </>
-          )}
+          <>
+            <ResizableFrame
+              whidth={"100%"}
+              title={"People"}
+              show={true}
+              tailwindProps=" h-full"
+            >
+              <div className={`${colors.ActiveText} text-center`}>
+                Following
+              </div>
+
+              {followingUsers && <UserTabList users={followingUsers} />}
+
+              <div className={`${colors.ActiveText} text-center`}>
+                Open Chats
+              </div>
+
+              {chattingUsers && <UserTabList users={chattingUsers} />}
+            </ResizableFrame>
+          </>
         </div>
         <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>
       </div>

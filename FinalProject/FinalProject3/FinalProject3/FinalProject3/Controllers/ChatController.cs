@@ -2,6 +2,7 @@
 using FinalProject3.DTOs;
 using FinalProject3.Mapping;
 using FinalProject3.Models;
+using FinalProject32.Mapping;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -72,6 +73,51 @@ namespace FinalProject3.Controllers
             return Ok(chat.ToDisplay());
         }
 
+        [HttpGet("notFollowingChats")]
+        [Authorize]
+        public async Task<ActionResult<AppUserDisplay>> GetNotFollowedChats()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId is null)
+            {
+                return Unauthorized();
+            }
+
+            var user = await _context.Users.Include(u => u.Chats).FirstOrDefaultAsync(u => u.Id == userId);
+            if (user is null)
+            {
+                return Unauthorized();
+            }
+
+            var chattingWith = user.Chats.Select(c => c.getOtherUser(userId)).ToList();
+            var Following = user.FollowingId;
+            var chatNotFollowedId = new List<string>();
+            foreach (var chat in chattingWith)
+            {
+                if (!Following.Contains(chat))
+                {
+                    chatNotFollowedId.Add(chat);
+                }
+            }
+            var chatNotFollowed = new List<AppUserDisplay>();
+            foreach (var id in chatNotFollowedId)
+            {
+                var chatter = await _context.Users.Include(u => u.Chats).FirstOrDefaultAsync(u => u.Id == id);
+                if (chatter is not null)
+                {
+                    var userDisplay = await chatter.UsertoDisplay(_context, user);
+                    if (userDisplay is not null)
+                    {
+                        chatNotFollowed.Add(userDisplay);
+                    }
+                }
+            }
+            return Ok(chatNotFollowed);
+        }
+
+
+
+
         [HttpPost("Message")]
         [Authorize]
         public async Task<ActionResult> SendMessage([FromBody] MessageNew newmesage)
@@ -98,7 +144,7 @@ namespace FinalProject3.Controllers
             chat.messages.Add(newMessage);
             await _context.Message.AddAsync(newMessage);
 
-            var secondUser = chat.getOtherUse(userId);
+            var secondUser = chat.getOtherUser(userId);
             var user2 = await _context.Users.FirstOrDefaultAsync(u => u.Id == secondUser);
             if (user2?.LastActive != null)
             {

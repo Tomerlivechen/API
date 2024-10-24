@@ -48,7 +48,7 @@ const GroupPage = () => {
             <>
               <ResizableFrame
                 whidth={"100%"}
-                title={"Following"}
+                title={"Members"}
                 show={true}
                 tailwindProps=" h-full"
               >

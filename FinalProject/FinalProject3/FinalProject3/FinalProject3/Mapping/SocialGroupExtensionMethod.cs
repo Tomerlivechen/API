@@ -56,6 +56,10 @@ namespace FinalProject3.Mapping
             {
                 group.ImageURL = editGroup.ImageURL;
             }
+            if (editGroup.GroupRules != group.GroupRules)
+            {
+                group.GroupRules = editGroup.GroupRules;
+            }
             return group;
         }
 
@@ -66,7 +70,7 @@ namespace FinalProject3.Mapping
             {
                 return default;
             }
-            var isMember =  socialGroup.Members.Where(m => m.Id == userId).First();
+            var isMember = socialGroup.Members.Where(m => m.Id == userId).FirstOrDefault();
             bool member = false;
             if (isMember is not null) {
                 member = true;
@@ -80,6 +84,7 @@ namespace FinalProject3.Mapping
                 Admin = await socialGroup.groupAdmin.UsertoDisplay(_context, currentUser),
                 IsMemember = member,
                 BanerImageURL = socialGroup.BanerImageURL,
+                GroupRules = socialGroup.GroupRules,
             };
             return card;
 
@@ -102,9 +107,12 @@ namespace FinalProject3.Mapping
                 GroupCreatorId = socialGroup.GroupCreatorId,
                 AdminId = socialGroup.AdminId,
                 AdminName = socialGroup.groupAdmin.UserName,
+                GroupRules = socialGroup.GroupRules,
+                ImageURL = socialGroup.ImageURL,
+                BanerImageURL = socialGroup.BanerImageURL,
             };
 
-            var isMember = socialGroup.Members.Where(m => m.Id == userId).First();
+            var isMember = socialGroup.Members.Where(m => m.Id == userId).FirstOrDefault();
             bool aMember = false;
             if (isMember is not null)
             {

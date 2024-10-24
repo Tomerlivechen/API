@@ -10,6 +10,9 @@ import { FaHandshakeSlash } from "react-icons/fa";
 import { FaHandshake } from "react-icons/fa";
 import { FaHandHolding } from "react-icons/fa";
 import { FaHandHoldingHeart } from "react-icons/fa";
+import { GiChatBubble } from "react-icons/gi";
+import { PiPlugsFill } from "react-icons/pi";
+import { useChat } from "../../CustomHooks/useChat";
 
 interface ProfileUserSectionProps {
   userId: string | null;
@@ -22,6 +25,7 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
   const navigate = useNavigate();
   const userdata = useUser();
   const [yours, setYours] = useState(false);
+  const chatContext = useChat();
   useEffect(() => {
     if (userId) {
       getUser(userId);
@@ -86,6 +90,21 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
       }
     }
   };
+  const setUpChat = async () => {
+    if (user) {
+      const chatID = await chatContext.creatChat(user.id);
+      setUser((prev) => {
+        if (!prev) return prev;
+        return { ...prev, chatId: chatID };
+      });
+    }
+  };
+
+  const openNewChat = async () => {
+    if (user) {
+      chatContext.addChat(user.chatId);
+    }
+  };
 
   return (
     <>
@@ -134,7 +153,7 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
                       userId && "-mt-10"
                     }`}
                   >
-                    <div className=" ml-auto flex gap-3">
+                    <div className=" flex flex-col items-end space-y-4 ml-auto ">
                       {!user.blockedYou &&
                         userContex.userInfo.UserId !== user.id && (
                           <>
@@ -172,6 +191,25 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
                                 <span>Block</span>
                               </button>
                             )}
+                            <div>
+                              {user.chatId ? (
+                                <button
+                                  className={`${colors.ElementFrame} ${colors.ActiveText} p-2 rounded-xl flex items-center gap-2 `}
+                                  onClick={() => openNewChat()}
+                                >
+                                  Chat
+                                  <GiChatBubble size={24} />
+                                </button>
+                              ) : (
+                                <button
+                                  className={`${colors.ElementFrame} ${colors.ActiveText} p-2 rounded-xl flex items-center gap-2 `}
+                                  onClick={() => setUpChat()}
+                                >
+                                  Make contact
+                                  <PiPlugsFill size={24} />
+                                </button>
+                              )}
+                            </div>
                           </>
                         )}
                       {user.blockedYou && (

@@ -8,14 +8,18 @@ import { colors } from "../Patterns";
 import { useUser } from "../../CustomHooks/useUser";
 import { Groups } from "../../Services/group-service";
 import { useNavigate } from "react-router-dom";
+import { dialogs, IConfirmJoinGoupProps } from "../AlertsConstant";
 
 const GroupCard: React.FC<{
   GroupCardData: ISocialGroupCard;
 }> = ({ GroupCardData }) => {
   const [GroupCard, setGroupCard] = useState<ISocialGroupCard | null>(null);
   const [loading, setLoading] = useState(true);
+  const [modalProps, setModalProps] = useState<IConfirmJoinGoupProps | null>(
+    null
+  );
   const userContext = useUser();
-  const navagate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (GroupCardData) {
@@ -26,6 +30,16 @@ const GroupCard: React.FC<{
   useEffect(() => {
     if (GroupCard) {
       setLoading(false);
+      setModalProps({
+        title: `Join Group ${GroupCard?.name}`,
+        text: `
+    Description: <br/> ${GroupCard?.description} <br/><br/>
+    Rules: <br/> ${GroupCard?.groupRules} <br/><br/>
+    By joining this group you agree to all the rules above.
+  `,
+        buttonText: "I confirm",
+        groupId: `${GroupCard?.id}`,
+      });
     }
   }, [GroupCard]);
 
@@ -36,7 +50,18 @@ const GroupCard: React.FC<{
   };
 
   const goToGroup = () => {
-    navagate(`/Group/${GroupCard?.id}`);
+    if (GroupCard?.isMemember) {
+      navigate(`/Group/${GroupCard?.id}`);
+    }
+  };
+
+  const OpenJoinGroup = async () => {
+    if (modalProps) {
+      const respons = await dialogs.ConfirmJoinGroup(modalProps);
+      if (respons) {
+        navigate(`/Group/${GroupCard?.id}`);
+      }
+    }
   };
 
   return (
@@ -61,13 +86,27 @@ const GroupCard: React.FC<{
                   </button>
                 </div>
               )}
-              <div>
-                <img src={GroupCard.banerImageURL} className={`p-3`} />
+              <div className="h-1/2 w-full relative overflow-hidden">
+                <img
+                  src={GroupCard.banerImageURL}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="font-bold">{GroupCard.name}</div>
-              <div>
-                {GroupCard.isMemember && (
-                  <div className="text-xs">You are a member</div>
+              <div className="flex flex-col justify-between h-2/4">
+                {GroupCard.isMemember ? (
+                  <div
+                    className={`font-bold ${colors.ElementFrame}  p-2 rounded-xl mt-auto mb-4`}
+                  >
+                    You are a member
+                  </div>
+                ) : (
+                  <button
+                    className={`font-bold ${colors.ElementFrame} border-2 border-amber-700 p-2 rounded-xl mt-auto mb-4`}
+                    onClick={OpenJoinGroup}
+                  >
+                    More
+                  </button>
                 )}
               </div>
             </ElementFrame>

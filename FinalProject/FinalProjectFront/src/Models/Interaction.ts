@@ -50,6 +50,7 @@ interface IPostDisplay {
   authorName: string;
   authorId: string;
   totalVotes: number;
+  groupId : string;
   title: string;
   hasVoted: boolean;
   categoryId?: number;

@@ -354,6 +354,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FinalProject3.Controllers.ChatController",
+    "Method": "GetNotFollowedChats",
+    "RelativePath": "api/Chat/notFollowingChats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FinalProject3.DTOs.AppUserDisplay",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FinalProject3.Controllers.CommentsController",
     "Method": "PostComment",
     "RelativePath": "api/Comments",

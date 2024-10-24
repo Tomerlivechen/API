@@ -24,7 +24,7 @@ const UserTab: React.FC<UserTabProps> = (TabProps: UserTabProps) => {
   );
   const chatContext = useChat();
 
-  const navagate = useNavigate();
+  const navigate = useNavigate();
 
   const setUpChat = async () => {
     const chatID = await chatContext.creatChat(userInfo.id);
@@ -51,7 +51,7 @@ const UserTab: React.FC<UserTabProps> = (TabProps: UserTabProps) => {
             <img
               className="rounded-full border-2 h-14 w-14 shadow-2xl p-1 "
               src={userInfo.imageURL}
-              onClick={() => navagate(`/profile/${userInfo.id}`)}
+              onClick={() => navigate(`/profile/${userInfo.id}`)}
               aria-description={`Profile picture of ${userInfo.first_Name} ${userInfo.last_Name}`}
             />
 

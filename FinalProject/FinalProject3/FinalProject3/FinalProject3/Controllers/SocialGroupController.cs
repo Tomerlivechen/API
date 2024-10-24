@@ -174,7 +174,7 @@ namespace FinalProject3.Controllers
             {
                return Conflict(ex);
             }
-            return Ok(group);
+            return Ok();
         }
 
         
@@ -218,7 +218,7 @@ namespace FinalProject3.Controllers
             {
                 return Conflict(ex);
             }
-            return Ok(group);
+            return Ok();
         }
         [HttpPut("EditGroup")]
         [Authorize]
@@ -252,7 +252,7 @@ namespace FinalProject3.Controllers
             {
                 return Conflict(ex);
             }
-            return Ok(group);
+            return Ok();
         }
 
         [HttpDelete("{groupId}")]

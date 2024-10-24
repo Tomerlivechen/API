@@ -44,6 +44,17 @@ const GroupDescriptionValues: MYFormikValues = {
   as: "textarea",
   tailwind: "resize-none",
 };
+const GroupRulesValues: MYFormikValues = {
+  Title: "Rules",
+  element: "groupRules",
+  type: "text",
+  placeholder: "Group Rules",
+  textbox: true,
+  required: false,
+  hidden: false,
+  width: "full",
+  as: "textarea",
+};
 const GroupNewAdminEmailValues: MYFormikValues = {
   Title: "Change Admin",
   element: "newAdminEmail",
@@ -111,6 +122,7 @@ const GroupEditComponent = () => {
           description: initialGroupData.description,
           banerImageURL: initialGroupData.banerImageURL,
           imageURL: initialGroupData.imageURL,
+          groupRules: initialGroupData.groupRules,
           newAdminEmail: "",
         });
       }
@@ -125,6 +137,7 @@ const GroupEditComponent = () => {
         description: initialGroupData.description,
         banerImageURL: initialGroupData.banerImageURL,
         imageURL: initialGroupData.imageURL,
+        groupRules: initialGroupData.groupRules,
         newAdminEmail: "",
       });
     }
@@ -184,9 +197,26 @@ const GroupEditComponent = () => {
     }
   };
 
+  useEffect(() => {
+    if (
+      (imageFile && imageUrl && bannerFile && bannerImageUrl) ||
+      (!imageFile && !imageUrl && bannerFile && bannerImageUrl) ||
+      (imageFile && imageUrl && !bannerFile && !bannerImageUrl)
+    ) {
+      updateGroup();
+    }
+  }, [bannerFile, bannerImageUrl, imageFile, imageUrl]);
+
   const updateGroup = async () => {
     if (newGroupData) {
-      await Groups.EditGroup(newGroupData);
+      const updateGroupData = newGroupData;
+      if (imageUrl) {
+        updateGroupData.imageURL = imageUrl;
+      }
+      if (bannerImageUrl) {
+        updateGroupData.banerImageURL = bannerImageUrl;
+      }
+      await Groups.EditGroup(updateGroupData);
       navigate(`/Group/${groupId}`);
     } else {
       initializeGroupData();
@@ -252,11 +282,11 @@ const GroupEditComponent = () => {
                   />
                 </div>
 
-                <div className="flex flex-wrap justify-between">
+                <div className="flex flex-wrap justify-center">
                   <div className="w-1/2 pr-2 pl-2">
                     <p>Profile Picture</p>
 
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 justify-center">
                       {newGroupData.imageURL || imageFile ? (
                         <>
                           <FcEditImage
@@ -297,7 +327,7 @@ const GroupEditComponent = () => {
 
                   <div className="w-1/2 pl-2 pr-2">
                     <p>Banner Picture</p>
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 justify-center">
                       {newGroupData.banerImageURL || bannerFile ? (
                         <>
                           <FcEditImage
@@ -334,6 +364,15 @@ const GroupEditComponent = () => {
                         />
                       )}
                     </div>
+                  </div>
+                </div>
+                <div className="flex flex-wrap justify-center">
+                  <div className="w-full pr-2 pl-2">
+                    <FormikElementBuilder
+                      {...GroupRulesValues}
+                      value={newGroupData.groupRules}
+                      onChange={(e) => toggleChange(e, "groupRules")}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-wrap justify-center">

@@ -24,7 +24,7 @@ namespace FinalProject3.Mapping
             var newNotification = new NotificationNew()
             {
                 NotifierId = UserId,
-                NotifiedId = getOtherUse(chat, UserId),
+                NotifiedId = getOtherUser(chat, UserId),
                 Type = "Message",
                 ReferenceId = chat.Id,
             };
@@ -34,7 +34,7 @@ namespace FinalProject3.Mapping
 
 
 
-        public static string getOtherUse (this Chat chat, string UserId)
+        public static string getOtherUser (this Chat chat, string UserId)
         {
             if (chat.User1Id == UserId)
             {

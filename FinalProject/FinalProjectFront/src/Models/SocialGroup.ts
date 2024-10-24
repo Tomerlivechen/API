@@ -8,6 +8,7 @@ interface ISocialGroup {
   imageURL: string;
   banerImageURL : string;
   groupCreatorId: string;
+  groupRules :string;
   groupCreator: IAppUserDisplay;
   adminId: string;
   groupAdmin: IAppUserDisplay;
@@ -23,8 +24,9 @@ interface ISocialGroupDisplay {
   imageURL: string;
   banerImageURL : string;
   groupCreatorId: string;
+  groupRules :string;
   adminId: string;
-  AdminName: string;
+  adminName: string;
   isMemember: boolean;
 }
 
@@ -34,6 +36,7 @@ interface ISocialGroupCard {
   name: string;
   description: string;
   banerImageURL : string;
+  groupRules :string;
   admin: IAppUserDisplay;
   isMemember: boolean;
 }
@@ -43,6 +46,7 @@ interface ISocialGroupEdit {
   name?: string;
   description?: string;
   banerImageURL ?: string;
+  groupRules? :string;
   imageURL?: string;
   newAdminEmail ?:string;
 }

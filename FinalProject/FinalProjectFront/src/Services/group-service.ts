@@ -36,7 +36,7 @@ const GroupURL = "/SocialGroup";
 
         const RemoveMember = (GroupId: string, userId : string) =>
             request({
-              url: `${GroupURL}/AddMember/${GroupId}`,
+              url: `${GroupURL}/RemoveMember/${GroupId}`,
               method: "Put",
               data: {id:userId},
             });

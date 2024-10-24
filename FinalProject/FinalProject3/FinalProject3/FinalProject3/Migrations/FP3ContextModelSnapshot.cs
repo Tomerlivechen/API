@@ -262,6 +262,10 @@ namespace FinalProject3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("GroupRules")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -337,7 +341,7 @@ namespace FinalProject3.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "03082a42-b36a-4119-ad05-d4a0963fe732",
+                            ConcurrencyStamp = "233c841e-6135-42b5-9723-e06c104c2c8e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -506,7 +510,7 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "26170a1e-af39-448f-8cab-be382cbc823f",
+                            UserId = "911f31bb-eefc-42a1-9777-bb8e718949a0",
                             RoleId = "1"
                         });
                 });
@@ -652,17 +656,17 @@ namespace FinalProject3.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "26170a1e-af39-448f-8cab-be382cbc823f",
+                            Id = "911f31bb-eefc-42a1-9777-bb8e718949a0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b77fe56d-0336-469e-b5fe-fb0879792c01",
+                            ConcurrencyStamp = "b217b8a0-593a-4313-a0d7-31f5008d36b5",
                             Email = "TomerLiveChen@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOMERLIVECHEN@GMAIL.COM",
                             NormalizedUserName = "SYSADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIiAmBPxUucG0ED0pw2xhoRf8yoN4GEhMV1MR0/CQ9zvniUSqSlIHSInUMmBLz2ahA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKAVhVka6izwR7cHAp9QLLzskiHz2wCykZPI/ccEivSE6XiBiAD/2+++GExvNkP4rQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "775b7c8d-3abf-4af3-a862-5598762e134e",
+                            SecurityStamp = "997d747c-6226-499b-9b70-948245aea505",
                             TwoFactorEnabled = false,
                             UserName = "SysAdmin",
                             BanerImageURL = "",

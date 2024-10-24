@@ -52,7 +52,9 @@ const GroupSearch = () => {
               onChange={(e) => setGroupFilter(e.target.value)}
               value={groupCardListProps.GroupFilter ?? ""}
             />
-            <button onClick={clearSearch}>Clear</button>
+            <button className="p-3" onClick={clearSearch}>
+              Clear
+            </button>
             <div className="pl-8"></div>
             <button
               onClick={toggleUserGroups}

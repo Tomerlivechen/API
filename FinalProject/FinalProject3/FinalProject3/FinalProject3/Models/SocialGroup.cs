@@ -11,6 +11,7 @@ namespace FinalProject3.Models
         public string Description { get; set; } = string.Empty;
 
         public string GroupCreatorId { get; set; } = string.Empty;
+        public string GroupRules { get; set; } = string.Empty;
 
         public AppUser? GroupCreator { get; set; }
 

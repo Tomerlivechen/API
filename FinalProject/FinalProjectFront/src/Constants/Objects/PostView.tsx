@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiLink } from "react-icons/hi2";
 
 import { BiSolidUpvote } from "react-icons/bi";
@@ -21,12 +21,15 @@ import EditPostModal from "../../Modals/EditPostModal";
 import { MdEdit } from "react-icons/md";
 import { Posts } from "../../Services/post-service";
 import { useNavigate } from "react-router-dom";
+import { ISocialGroupDisplay } from "../../Models/SocialGroup";
+import { Groups } from "../../Services/group-service";
 
 const PostView: React.FC<IPostDisplay> = (postDisplay) => {
   const navagate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-
+  const [groupInfo, setGroupInfo] = useState<ISocialGroupDisplay | null>(null);
+  const [groupAdminId, setGroupAdminId] = useState("");
   const handleShow = () => setShowModal((prevshowModal) => !prevshowModal);
 
   const handleClose = () => setShowModal(false);
@@ -51,6 +54,20 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
     navagate(`/profile/${postDisplay.authorId}`);
   };
 
+  const getGroupInfo = async (groupId: string) => {
+    const response = await Groups.GetGroupbyId(groupId);
+    setGroupInfo(response.data);
+  };
+
+  useEffect(() => {
+    if (postDisplay && postDisplay.groupId.length > 0) {
+      getGroupInfo(postDisplay.groupId);
+    }
+    if (groupInfo) {
+      setGroupAdminId(groupInfo.adminId);
+    }
+  }, []);
+
   return (
     <>
       <ElementFrame
@@ -67,7 +84,8 @@ const PostView: React.FC<IPostDisplay> = (postDisplay) => {
               {postDisplay.authorName}
             </button>
             {(postDisplay.authorId == userContext.userInfo.UserId ||
-              userContext.userInfo.IsAdmin == "true") && (
+              userContext.userInfo.IsAdmin == "true" ||
+              groupAdminId == userContext.userInfo.UserId) && (
               <>
                 <div className="flex">
                   <div className="flex space-x-2">

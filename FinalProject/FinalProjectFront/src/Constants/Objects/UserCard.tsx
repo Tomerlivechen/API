@@ -7,6 +7,7 @@ import { useLogin } from "../../CustomHooks/useLogin";
 import { dialogs } from "../AlertsConstant";
 import { catchError } from "../Patterns";
 import { useUser } from "../../CustomHooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 interface UserCardProps {
   UserDisplay: IAppUserDisplay;
@@ -17,6 +18,7 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
   const [blocking, setblocking] = useState(UserDisplay.blocked);
   const loginContext = useLogin();
   const userContext = useUser();
+  const navigate = useNavigate();
   const handleFollow = () => {
     console.log(loginContext.token ?? "", UserDisplay.id);
     auth
@@ -104,6 +106,7 @@ const UserCard: React.FC<UserCardProps> = ({ UserDisplay }) => {
                 width={60}
                 className="rounded-full border-2 shadow-2xl"
                 src={UserDisplay.imageURL}
+                onClick={() => navigate(`/profile/${UserDisplay.id}`)}
                 aria-description={`Profile picture of ${UserDisplay.first_Name} ${UserDisplay.last_Name}`}
               />
             </div>
