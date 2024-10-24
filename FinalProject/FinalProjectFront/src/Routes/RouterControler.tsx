@@ -24,6 +24,7 @@ import { ChatProvider } from "../ContextAPI/ChatContex";
 import { ChatFrame } from "../Constants/Objects/ChatFrame";
 import { FooterBar } from "../Bars/Footer";
 import { Group } from "./Group";
+import GroupSettings from "./GroupSettings";
 
 function RouterControler() {
   return (
@@ -112,6 +113,14 @@ function RouterControler() {
                           element={
                             <ProtectedRoute>
                               <Group />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="GroupSettings/:groupId"
+                          element={
+                            <ProtectedRoute>
+                              <GroupSettings />
                             </ProtectedRoute>
                           }
                         />

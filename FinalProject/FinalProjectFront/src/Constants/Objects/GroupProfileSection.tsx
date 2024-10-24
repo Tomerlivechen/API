@@ -107,7 +107,9 @@ const GroupProfileSection = ({ groupId }) => {
                   </p>
                 </div>
                 <div className="absolute right-0 p-2">
-                  <button onClick={() => navigate("/settings")}>
+                  <button
+                    onClick={() => navigate(`/GroupSettings/${groupInfo.id}`)}
+                  >
                     <FaUserGear className={`${colors.ButtonFont}`} size={25} />
                   </button>
                 </div>

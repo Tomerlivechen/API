@@ -1,5 +1,5 @@
 
-import { INewSocialGroup } from "../Models/SocialGroup";
+import { INewSocialGroup, ISocialGroupEdit } from "../Models/SocialGroup";
 import { request } from "../Utils/Axios-Interceptor";
 
 const GroupURL = "/SocialGroup";
@@ -29,17 +29,24 @@ const GroupURL = "/SocialGroup";
 
       const JoinGroup = (GroupId: string) =>
         request({
-          url: `${GroupURL}AddMember/${GroupId}`,
+          url: `${GroupURL}/AddMember/${GroupId}`,
           method: "Put",
           data: null,
         });
 
         const RemoveMember = (GroupId: string, userId : string) =>
             request({
-              url: `${GroupURL}AddMember/${GroupId}`,
+              url: `${GroupURL}/AddMember/${GroupId}`,
               method: "Put",
               data: {id:userId},
             });
+
+            const EditGroup = (GruopEdit: ISocialGroupEdit) =>
+              request({
+                url: `${GroupURL}/EditGroup/`,
+                method: "Put",
+                data: GruopEdit,
+              });   
 
             const DeleteGroup = (GroupId: string) =>
                 request({
@@ -56,4 +63,4 @@ const GroupURL = "/SocialGroup";
 
 
         
-  export const Groups = {GetGroupbyId, GetGroups,JoinGroup,RemoveMember,DeleteGroup,CreateGroup,GetGroupMembers}
+  export const Groups = {GetGroupbyId, GetGroups,JoinGroup,RemoveMember,DeleteGroup,CreateGroup,GetGroupMembers, EditGroup}

@@ -30,7 +30,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "FinalProject3\\Controllers\\CommentsController.cs",
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\FinalProject\\FinalProject3\\FinalProject3\\FinalProject3\\Controllers\\CommentsController.cs",
               "RelativeToolTip": "FinalProject3\\Controllers\\CommentsController.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAcwI8AAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAcwJoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T22:14:22.587Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "FinalProject3\\DTOs\\SocialGroupEdit.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T20:38:57.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T20:38:57.177Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "FinalProject3\\Controllers\\SocialGroupController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T20:37:58.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T20:37:58.364Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "ToolTip": "C:\\Users\\tomer\\Documents\\Dot_Net course\\API\\FinalProject\\FinalProject3\\FinalProject3\\FinalProject3\\FinalProject3.csproj",
               "RelativeToolTip": "FinalProject3\\FinalProject3.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-23T20:24:41.657Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T20:24:41.657Z"
             }
           ]
         }

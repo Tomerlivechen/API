@@ -6,7 +6,7 @@ interface ICloudinaryValues {
   imageUrl: string;
   file: File | null;
   holdFile: (file: File) => void;
-  handleSetImageURL: (file: File) => Promise<void>;
+  handleSetImageURL: (file: File | null) => Promise<void>;
   clear: () => void;
 }
 
@@ -14,7 +14,7 @@ const useCloudinary = (): [
   string,
   File | null,
   (file: File) => void,
-  (file: File) => Promise<void>,
+  (file: File | null) => Promise<void>,
   () => void
 ] => {
   const [imageUrl, setImageURL] = useState("");
@@ -44,9 +44,14 @@ const useCloudinary = (): [
     }
   };
 
-  const handleSetImageURL = async (file: File) => {
-    setFile(file);
-    await uploadToCloudinary(file);
+  const handleSetImageURL = async (setfile: File | null) => {
+    if (setfile) {
+      setFile(setfile);
+      await uploadToCloudinary(setfile);
+      if (setfile == null && file) {
+        await uploadToCloudinary(file);
+      }
+    }
   };
 
   const holdFile = (file: File) => {

@@ -17,6 +17,7 @@ export interface MYFormikValues {
   classes?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   initalValues?: string;
+  tailwind?: string;
 }
 
 const FormikElementBuilder = (initalValues: MYFormikValues) => {
@@ -35,7 +36,7 @@ const FormikElementBuilder = (initalValues: MYFormikValues) => {
           <label htmlFor={initalValues.element}>{initalValues.Title}</label>
         )}
         <Field
-          className={`${fieldClassName} ${
+          className={`${fieldClassName} ${initalValues.tailwind} ${
             initalValues.textbox && textboxParams
           } ${initalValues.classes}`}
           id={initalValues.element}
