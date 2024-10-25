@@ -7,7 +7,7 @@ import { HiMiniMinus } from "react-icons/hi2";
 import { colors } from "../Patterns";
 interface ResizableFrameProps {
   children: ReactNode;
-  whidth: string;
+  whidth?: string;
   tailwindProps?: string;
   overflowX?: boolean;
   title: string;
@@ -77,7 +77,7 @@ const ResizableFrame: React.FC<ResizableFrameProps> = (
         disabled={e.activeHook}
         onClick={() => toggleBoolean(e.size)}
       >
-        <e.icon size={24} />
+        <e.icon size={18} />
       </button>
     );
   };

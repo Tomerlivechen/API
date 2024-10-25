@@ -47,10 +47,13 @@ function NavBar() {
     <>
       <Navbar
         id="app-navbar"
-        className={`flex-row md:shadow-2xl shadow-slate-800  text-black flex gap-3 ${colors.Nav} ${colors.NavText}`}
+        className={` fixed z-40 w-full flex-row md:shadow-2xl shadow-slate-800  text-black flex gap-3 ${colors.Nav} ${colors.NavText}`}
       >
-        <NavLink className="p-3" to="/">
-          Main
+        <NavLink className="p-3" to="Feed">
+          <Tooltip title="Feed">
+            <CgFeed className="md:hidden" size={24} />
+            <p className="hidden md:block">Feed</p>
+          </Tooltip>
         </NavLink>
         <NavLink className="p-3" to="About">
           <Tooltip title="About">
@@ -65,12 +68,6 @@ function NavBar() {
             <p className="hidden md:block">Profile</p>
           </Tooltip>
         </NavLink>
-        <NavLink className="p-3" to="Test">
-          <Tooltip title="Test Space">
-            <GiSoapExperiment className="md:hidden" size={24} />
-            <p className="hidden md:block">Test Space</p>
-          </Tooltip>
-        </NavLink>
         <NavLink className="p-3" to="Group">
           <Tooltip title="Group">
             <FaPeopleGroup className="md:hidden" size={24} />
@@ -79,12 +76,6 @@ function NavBar() {
         </NavLink>
         {isLoggedin && (
           <>
-            <NavLink className="p-3" to="Feed">
-              <Tooltip title="Feed">
-                <CgFeed className="md:hidden" size={24} />
-                <p className="hidden md:block">Feed</p>
-              </Tooltip>
-            </NavLink>
             <Tooltip title="Search">
               <button
                 className={` rounded-lg m-2 p-1  ${

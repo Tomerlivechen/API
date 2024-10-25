@@ -16,7 +16,7 @@ const colors = {
   NavBarText: "dark:text-gray-100 text-gray-900",
 
   Nav: "bg-blue-300 dark:bg-gray-800", // Blue for professionalism and trust, with a neutral dark gray for dark mode
-  Filter: "bg-orange-400 dark:bg-gray-700", // Orange adds energy and warmth to the more serious blue, creating contrast
+  Filter: "bg-blue-300  dark:bg-gray-700", // Orange adds energy and warmth to the more serious blue, creating contrast
   NavText: "dark:text-gray-100 text-gray-900", // Gray tones for text to remain neutral and readable
   SearchButtonActive:
     "bg-blue-500 text-white font-bold dark:bg-orange-500 dark:text-gray-100", // Blue for active states, switching to vibrant orange in dark mode

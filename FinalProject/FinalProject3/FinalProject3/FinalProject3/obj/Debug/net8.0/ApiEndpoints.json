@@ -245,6 +245,58 @@
   },
   {
     "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "GetUserPassword",
+    "RelativePath": "api/Auth/ResetPassword/{userEmail}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
+    "Method": "SetNewPassword",
+    "RelativePath": "api/Auth/SetNewPassword",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "passwordDTO",
+        "Type": "FinalProject3.DTOs.ReNewPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinalProject3.Controllers.AuthController",
     "Method": "UnBlock",
     "RelativePath": "api/Auth/unblock",
     "HttpMethod": "PUT",

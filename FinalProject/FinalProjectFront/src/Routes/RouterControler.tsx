@@ -36,9 +36,8 @@ function RouterControler() {
               <PostsProvider>
                 <ChatProvider>
                   <Router>
+                    <NavBar />
                     <BackGround>
-                      <NavBar />
-
                       <AccessabilityPanel />
                       <Routes>
                         <Route path="/" element={<MainPage />} />

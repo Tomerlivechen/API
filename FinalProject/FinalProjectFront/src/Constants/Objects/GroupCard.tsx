@@ -92,7 +92,15 @@ const GroupCard: React.FC<{
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="font-bold">{GroupCard.name}</div>
+              <Tooltip title={GroupCard.name}>
+                {
+                  <div className="font-bold">
+                    {GroupCard.name.slice(0, 30)}
+                    {GroupCard.name.length > 30 && "..."}
+                  </div>
+                }
+              </Tooltip>
+
               <div className="flex flex-col justify-between h-2/4">
                 {GroupCard.isMemember ? (
                   <div

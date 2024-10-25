@@ -15,6 +15,7 @@ import { auth } from "../Services/auth-service";
 import { useUser } from "../CustomHooks/useUser";
 import { isEqual } from "lodash";
 import { colors } from "../Constants/Patterns";
+import ClipSpinner from "../Spinners/ClipSpinner";
 
 const Feed = () => {
   const { postId } = useParams();
@@ -45,7 +46,7 @@ const Feed = () => {
 
   useEffect(() => {}, []);
 
-  const intervalTime = 10000;
+  const intervalTime = 5000;
   useEffect(() => {
     const interval = setInterval(() => {
       getInteractingUsersLists();
@@ -108,13 +109,21 @@ const Feed = () => {
               <div className={`${colors.ActiveText} text-center`}>
                 Following
               </div>
-
+              {!followingUsers && (
+                <div className=" flex items-center justify-center">
+                  <ClipSpinner />
+                </div>
+              )}
               {followingUsers && <UserTabList users={followingUsers} />}
 
               <div className={`${colors.ActiveText} text-center`}>
                 Open Chats
               </div>
-
+              {!chattingUsers && (
+                <div className=" flex items-center justify-center">
+                  <ClipSpinner />
+                </div>
+              )}
               {chattingUsers && <UserTabList users={chattingUsers} />}
             </ResizableFrame>
           </>

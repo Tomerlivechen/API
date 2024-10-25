@@ -82,7 +82,7 @@ const AccessabilityPanel = () => {
   };
   return (
     <>
-      <button className="absolute top-40 left-0  ">
+      <button className="absolute top-40 left-0  z-50 ">
         <Tooltip
           title="Accessibility"
           aria-description="Accessibility Panel"

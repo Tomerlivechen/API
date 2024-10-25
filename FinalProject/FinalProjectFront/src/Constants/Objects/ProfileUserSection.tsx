@@ -20,6 +20,7 @@ interface ProfileUserSectionProps {
 
 const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
   const userContex = useUser();
+  const [bioMore, setBioMore] = useState(false);
   const [user, setUser] = useState<IAppUserDisplay | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -44,6 +45,10 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
         setUser(response.data);
       })
       .finally(() => setLoading(false));
+  };
+
+  const toggleBioMore = () => {
+    setBioMore((prev) => !prev);
   };
 
   const toggleFollow = async () => {
@@ -134,29 +139,55 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
                   </p>
                 </div>
                 <div className="absolute right-0 p-2">
-                  <button onClick={() => navigate("/settings")}>
-                    <FaUserGear className={`${colors.ButtonFont}`} size={25} />
-                  </button>
+                  {userContex.userInfo.UserId == user.id && (
+                    <button onClick={() => navigate("/settings")}>
+                      <FaUserGear
+                        className={`${colors.ButtonFont}`}
+                        size={25}
+                      />
+                    </button>
+                  )}
                 </div>
               </div>
               <div className={` pt-16 px-6 pb-6 ${colors.ButtonFont}`}>
-                <div className="text-center">
-                  {!user.hideName && (
-                    <h2 className="text-xl font-bold text-left">{`${user.prefix}. ${user.first_Name} ${user.last_Name}`}</h2>
-                  )}
-                  {!user.hideEmail && (
-                    <p className=" text-left">{user.email}</p>
-                  )}
+                <div className="flex flex-row">
+                  <div className="w-9/12 pr-4 ">
+                    <div className="text-center">
+                      {!user.hideName && (
+                        <h2 className="text-xl font-bold text-left">{`${user.prefix}. ${user.first_Name} ${user.last_Name}`}</h2>
+                      )}
+                      {!user.hideEmail && (
+                        <p className=" text-left">{user.email}</p>
+                      )}
 
-                  <div
-                    className={`flex justify-between items-center ${
-                      userId && "-mt-10"
-                    }`}
-                  >
-                    <div className=" flex flex-col items-end space-y-4 ml-auto ">
-                      {!user.blockedYou &&
-                        userContex.userInfo.UserId !== user.id && (
-                          <>
+                      <div className=" text-left mt-4">
+                        <h1 className="text-2xl font-bold">About</h1>
+                      </div>
+                      <p
+                        className={` text-left mt-2 ${
+                          bioMore ? "h-fit" : "h-12"
+                        }  overflow-hidden `}
+                      >
+                        {user.bio}
+                      </p>
+                    </div>
+                    {user.bio.length > 200 && (
+                      <div>
+                        <p className={` text-left mt-2  `}> </p>
+                        <button
+                          onClick={toggleBioMore}
+                          className={`${colors.ElementFrame} font-extrabold`}
+                        >
+                          {bioMore ? "Less" : "More"}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <div className=" flex flex-col items-end space-y-4 ml-auto ">
+                    {!user.blockedYou &&
+                      userContex.userInfo.UserId !== user.id && (
+                        <>
+                          <div className="w-3/12 flex flex-col items-end space-y-4 ml-auto">
                             {user.following ? (
                               <button
                                 className={`${colors.ElementFrame}  p-2 rounded-xl flex items-center gap-2`}
@@ -202,7 +233,7 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
                                 </button>
                               ) : (
                                 <button
-                                  className={`${colors.ElementFrame} ${colors.ActiveText} p-2 rounded-xl flex items-center gap-2 `}
+                                  className={`${colors.ElementFrame} ${colors.ActiveText} w-40 p-2 rounded-xl flex items-center gap-2`}
                                   onClick={() => setUpChat()}
                                 >
                                   Make contact
@@ -210,21 +241,15 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
                                 </button>
                               )}
                             </div>
-                          </>
-                        )}
-                      {user.blockedYou && (
-                        <div className="text-sm text-zinc-600">
-                          You Have been blocked
-                        </div>
+                          </div>
+                        </>
                       )}
-                    </div>
+                    {user.blockedYou && (
+                      <div className="text-sm text-zinc-600">
+                        You Have been blocked
+                      </div>
+                    )}
                   </div>
-                  <div className="text-left">
-                    <div className="mt-4">
-                      <h1 className="text-2xl font-bold">About</h1>
-                    </div>
-                  </div>
-                  <p className=" text-left ">{user.bio}</p>
                 </div>
               </div>
             </div>

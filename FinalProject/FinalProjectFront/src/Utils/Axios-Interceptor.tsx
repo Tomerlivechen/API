@@ -11,13 +11,11 @@ const client = axios.create({
 
 const OnSuccess = (type: string, response) => {
   console.log(type, response);
-  dialogs.success(type);
   return response;
 };
 
 const OnError = (type: string, error) => {
   console.error(type, error);
-  dialogs.error(type);
   return error;
 };
 

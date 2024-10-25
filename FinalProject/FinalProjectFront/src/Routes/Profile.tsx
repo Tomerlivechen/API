@@ -40,43 +40,43 @@ const Profile = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-center">
-        <div className="w-full lg:w-10/12 pr-2 pl-2 mx-auto">
-          <ProfileUserSection userId={userIdState} />
-        </div>
-      </div>
+      <div className="flex flex-wrap ">
+        <div className="w-16 pl-2 pr-2"></div>
+        <div className="w-11/12 lg:block lg:w-11/12 pl-2 pr-2">
+          <div className="w-full min-w-[40rem] pr-2 pl-2">
+            <ProfileUserSection userId={userIdState} />
+          </div>
 
-      <div className="flex flex-wrap justify-between">
-        <div className="hidden lg:block lg:w-1/12 pl-2 pr-2"></div>
-        <div className="hidden lg:block lg:w-2/12 pl-2 pr-2  ">
-          <>
-            <ResizableFrame
-              whidth={"auto"}
-              title={"Groups"}
-              show={true}
-              overflowX={false}
-              tailwindProps="  h-auto"
-            >
-              <ProfileGroupsList />
-            </ResizableFrame>
-          </>
-        </div>
-        <div className="hidden lg:block lg:w-2/12 pl-2 pr-2 h-1/2">
-          {!loadingUsers && usersList && (
-            <>
-              <ResizableFrame
-                whidth={"100%"}
-                title={"Following"}
-                show={true}
-                tailwindProps=" h-full"
-              >
-                <UserTabList users={usersList} />
-              </ResizableFrame>
-            </>
-          )}
-        </div>
-        <div className="w-full lg:w-7/12 pl-2 pr-2">
-          <PostFrame UserList={[]} />
+          <div className="flex  justify-between w-8/12 ">
+            <div className="hidden lg:block lg:w-fit pl-2 pr-2 h-1/2">
+              <>
+                <ResizableFrame
+                  title={"Groups"}
+                  show={true}
+                  overflowX={false}
+                  tailwindProps="w-fit h-full"
+                >
+                  <ProfileGroupsList />
+                </ResizableFrame>
+              </>
+            </div>
+            <div className="hidden xl:block lg:w-fit pl-2 ">
+              {!loadingUsers && usersList && (
+                <>
+                  <ResizableFrame
+                    title={"Following"}
+                    show={true}
+                    tailwindProps="w-fit h-full"
+                  >
+                    <UserTabList users={usersList} />
+                  </ResizableFrame>
+                </>
+              )}
+            </div>
+            <div className="w-fit lg:w-fit pl-2 pr-2">
+              <PostFrame UserList={[]} />
+            </div>
+          </div>
         </div>
       </div>
     </>

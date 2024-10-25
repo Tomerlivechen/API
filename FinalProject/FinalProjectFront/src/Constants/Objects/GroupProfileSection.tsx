@@ -12,9 +12,11 @@ import { BsPersonFillAdd } from "react-icons/bs";
 import { BsPersonFillDash } from "react-icons/bs";
 import { IAppUserDisplay } from "../../Models/UserModels";
 import { auth } from "../../Services/auth-service";
+import { Tooltip } from "react-bootstrap";
 
 const GroupProfileSection = ({ groupId }) => {
-  // const { groupId } = useParams();
+  const [bioMore, setBioMore] = useState(false);
+
   const [groupInfo, SetGroupInfo] = useState<ISocialGroupDisplay | null>();
   const [loading, setLoading] = useState(true);
   const userContext = useUser();
@@ -32,6 +34,9 @@ const GroupProfileSection = ({ groupId }) => {
     setGroupAdmin(respons.data);
   };
 
+  const toggleBioMore = () => {
+    setBioMore((prev) => !prev);
+  };
   useEffect(() => {
     if (groupId) {
       getGroupInfo(groupId);
@@ -95,7 +100,10 @@ const GroupProfileSection = ({ groupId }) => {
                   <p
                     className={`text-2xl font-bold text-left mt-5 ${colors.ButtonFont}`}
                   >
-                    {groupInfo.name}
+                    <Tooltip title={groupInfo.name}>
+                      {groupInfo.name.slice(0, 30)}
+                      {groupInfo.name.length > 30 && "..."}
+                    </Tooltip>
                   </p>
                 </div>
                 <div className="absolute right-0 p-2">
@@ -138,8 +146,26 @@ const GroupProfileSection = ({ groupId }) => {
                       <h1 className="text-2xl font-bold">Description</h1>
                     </div>
                   </div>
-                  <p className=" text-left ">{groupInfo.description}</p>
+
+                  <p
+                    className={` text-left mt-2 ${
+                      bioMore ? "h-fit" : "h-12"
+                    }  overflow-hidden `}
+                  >
+                    {groupInfo.description}
+                  </p>
                 </div>
+                {groupInfo.description.length > 200 && (
+                  <div>
+                    <p className={` text-left mt-2  `}> </p>
+                    <button
+                      onClick={toggleBioMore}
+                      className={`${colors.ElementFrame} font-extrabold`}
+                    >
+                      {bioMore ? "Less" : "More"}
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </>

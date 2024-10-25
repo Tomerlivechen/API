@@ -65,7 +65,7 @@ function LoginPage() {
     <>
       <div className="flex justify-center">
         <ElementFrame
-          height="500px"
+          tailwind="h-fit"
           width="700px"
           overflowY="auto"
           padding="0 pb-4"

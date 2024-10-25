@@ -144,10 +144,9 @@ const GroupEditComponent = () => {
   };
 
   const validationScheme = Yup.object({
-    name: Yup.string().min(2).max(25).required("The group name is required"),
+    name: Yup.string().min(2).required("The group name is required"),
     description: Yup.string()
       .min(2)
-      .max(200)
       .required("The group description is required"),
   });
 
