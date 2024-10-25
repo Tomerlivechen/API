@@ -115,6 +115,39 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         return Ok(followingDsplay);
     }
 
+    [HttpPut("ResetPassword/{userEmail}")]
+    public async Task<ActionResult<string>> GetUserPassword(string userEmail)
+    {
+        var currentUser = await userManager.FindByEmailAsync(userEmail);
+        if (currentUser is null)
+        {
+            return NotFound($"user {userEmail} not found ");
+        }
+        var token = await userManager.GeneratePasswordResetTokenAsync(currentUser);
+        return Ok(token);
+    }
+
+    [HttpPut("SetNewPassword")]
+    public async Task<ActionResult<string>> SetNewPassword(ReNewPasswordDTO passwordDTO)
+    {
+        var currentUser = await userManager.FindByEmailAsync(passwordDTO.userEmail);
+        if (currentUser is null)
+        {
+            return NotFound($"user {passwordDTO.userEmail} not found ");
+        }
+        var result = await userManager.ResetPasswordAsync(currentUser, passwordDTO.token, passwordDTO.newPassword);
+        if (result.Succeeded)
+        {
+           return Ok(result);
+        }
+        else
+        {
+            return BadRequest("Password reset error");
+        }
+    }
+
+
+
     [HttpGet("GroupsByUser/{userId}")]
     [Authorize]
     public async Task<ActionResult<IEnumerable<SocialGroupCard>>> GetGroups(string userId)

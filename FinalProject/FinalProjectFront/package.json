@@ -16,6 +16,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "cloudinary": "^2.5.0",
+    "emailjs-com": "^3.2.0",
     "formik": "^2.4.6",
     "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
@@ -29,6 +30,7 @@
     "routing-controllers": "^0.10.4",
     "sass": "^1.79.3",
     "sweetalert2": "^11.14.1",
+    "uuidv4": "^6.2.13",
     "yup": "^1.4.0"
   },
   "devDependencies": {

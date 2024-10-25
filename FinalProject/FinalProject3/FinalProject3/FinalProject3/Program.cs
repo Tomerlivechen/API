@@ -4,7 +4,9 @@ using FinalProject3.Auth;
 using FinalProject3.Data;
 using FinalProject3.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -21,7 +23,8 @@ namespace FinalProject3
             Utils.setupJwt(builder);
 
 
-           builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
+
+            builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JwtSettings"));
             builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
 
