@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { Groups } from "../Services/group-service";
+import { IConfirmJoinGoupProps } from "../Types/@GroupTypes";
 
 const showErrorDialog = (message: string) =>
   Swal.fire({
@@ -15,13 +16,6 @@ const showSuccessDialog = (message: string) =>
     text: message,
     timer: 2000,
   });
-
-export interface IConfirmJoinGoupProps {
-  title: string;
-  text: string;
-  buttonText: string;
-  groupId: string;
-}
 
 const ConfirmJoinGroup = (joinData: IConfirmJoinGoupProps) =>
   Swal.fire({

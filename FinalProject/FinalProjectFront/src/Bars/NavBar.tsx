@@ -12,7 +12,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
 import { FaInfo } from "react-icons/fa";
 import { CgFeed } from "react-icons/cg";
-import { NotificationAlert } from "../Components/NotificationAlert";
+import { NotificationAlert } from "../Components/Objects/NotificationAlert";
 import { FaPeopleGroup } from "react-icons/fa6";
 function NavBar() {
   const navigate = useNavigate();

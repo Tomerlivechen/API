@@ -8,12 +8,10 @@ import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 import { colors } from "../Constants/Patterns";
-import ElementFrame from "../Constants/Objects/ElementFrame";
-import {
-  FormikElementBuilder,
-  MYFormikValues,
-} from "../Constants/FormikElementBuilder";
+import ElementFrame from "../Constructors/ElementFrame";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import { RxEyeClosed } from "react-icons/rx";
+import { MYFormikValues } from "../Types/@StructureTypes";
 
 const emailValues: MYFormikValues = {
   Title: "Email Address",

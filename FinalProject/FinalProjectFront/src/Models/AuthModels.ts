@@ -1,3 +1,5 @@
+import { IUserValues } from "../Types/@UserTypes";
+
 interface IAppUserRegister {
   email: string;
   userName: string;
@@ -26,3 +28,18 @@ const AppUserRegister: IAppUserRegister = {
 
 export { AppUserRegister };
 export type { IAppUserRegister };
+
+export const initialValues: IUserValues = {
+  userInfo: {
+    UserId: null,
+    UserName: null,
+    PermissionLevel: null,
+    IsAdmin: null,
+  },
+};
+
+export interface PasswordRecovery {
+  userEmail: string ;
+ token: string ;
+ newPassword: string ;
+}

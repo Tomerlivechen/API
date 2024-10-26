@@ -6,12 +6,9 @@ import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import ElementFrame from "../Constructors/ElementFrame";
 import { catchError, colors } from "../Constants/Patterns";
-import {
-  FormikElementBuilder,
-  MYFormikValues,
-} from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 import { IAppUserDisplay, IAppUserEdit } from "../Models/UserModels";
@@ -19,88 +16,18 @@ import { useLogin } from "../CustomHooks/useLogin";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { useUser } from "../CustomHooks/useUser";
 import { FcKey } from "react-icons/fc";
-import {
-  AdvancedSettingsComponent,
-  AdvancedSettingsComponentProps,
-} from "./AdvancedSettingsComponent";
+import { AdvancedSettingsComponent } from "./Objects/AdvancedSettingsComponent";
 import { AxiosError } from "axios";
-
-const emailValues: MYFormikValues = {
-  Title: "Email Address",
-  element: "email",
-  type: "text",
-  placeholder: "Email Address",
-  textbox: true,
-  required: false,
-  hidden: false,
-  width: "full",
-};
-
-const userNameValues: MYFormikValues = {
-  Title: "User Name",
-  element: "userName",
-  type: "text",
-  placeholder: "User Name",
-  textbox: true,
-  required: false,
-  hidden: false,
-  width: "full",
-};
-
-const prefixValues: MYFormikValues = {
-  Title: "Prefix",
-  element: "prefix",
-  type: "text",
-  textbox: true,
-  placeholder: "Prefix",
-  required: false,
-  hidden: false,
-  width: "full",
-};
-
-const firstNameValues: MYFormikValues = {
-  Title: "First Name",
-  element: "first_Name",
-  type: "text",
-  textbox: true,
-  placeholder: "First Name",
-  required: false,
-  hidden: false,
-  width: "full",
-};
-const lastNameValues: MYFormikValues = {
-  Title: "Last Name",
-  element: "last_Name",
-  type: "text",
-  textbox: true,
-  placeholder: "Last Name",
-  required: false,
-  hidden: false,
-  width: "full",
-};
-
-const pronounsValues: MYFormikValues = {
-  Title: "Pronouns",
-  element: "pronouns",
-  type: "text",
-  textbox: true,
-  placeholder: "Pronouns",
-  required: false,
-  hidden: false,
-  width: "full",
-};
-
-const bioValues: MYFormikValues = {
-  Title: "Bio",
-  element: "bio",
-  type: "text",
-  textbox: true,
-  placeholder: "Bio",
-  required: false,
-  hidden: false,
-  width: "full",
-  as: "textarea",
-};
+import {
+  bioValues,
+  emailValues,
+  firstNameValues,
+  lastNameValues,
+  prefixValues,
+  pronounsValues,
+  userNameValues,
+} from "../Models/FormikModels";
+import { AdvancedSettingsComponentProps } from "../Types/@UserTypes";
 
 const EditUserComponent: React.FC<{ userInfo: IAppUserDisplay }> = ({
   userInfo,

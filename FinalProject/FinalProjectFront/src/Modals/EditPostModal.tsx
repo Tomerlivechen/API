@@ -6,27 +6,26 @@ import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
 import { useLogin } from "../CustomHooks/useLogin";
-import {
-  catchError,
-  colors,
-  keyFieldValues,
-  linkFieldValues,
-  textFieldValues,
-  titleFieldValues,
-} from "../Constants/Patterns";
+import { catchError, colors } from "../Constants/Patterns";
 
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import ElementFrame from "../Constructors/ElementFrame";
 
 import { FcRemoveImage } from "react-icons/fc";
 import { FcEditImage } from "react-icons/fc";
 
-import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage } from "react-icons/fc";
 import { IPostDisplay } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
 import { AxiosError } from "axios";
+import {
+  keyFieldValues,
+  linkFieldValues,
+  textFieldValues,
+  titleFieldValues,
+} from "../Models/FormikModels";
 
 interface EditPostModalProps {
   Mshow: boolean;

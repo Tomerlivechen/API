@@ -6,20 +6,16 @@ import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
 import { useLogin } from "../CustomHooks/useLogin";
-import {
-  catchError,
-  colors,
-  linkFieldValues,
-  textFieldValues,
-} from "../Constants/Patterns";
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import { catchError, colors } from "../Constants/Patterns";
+import ElementFrame from "../Constructors/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
 import { CommentService } from "../Services/comment-service";
-import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 import { AxiosError } from "axios";
+import { linkFieldValues, textFieldValues } from "../Models/FormikModels";
 
 interface AddPostCommentModalProps {
   postId: string;

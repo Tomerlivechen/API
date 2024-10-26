@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import ResizableFrame from "../Constants/Objects/ResizableFrame";
-import { UserTabList } from "../Components/UserTabList";
-import UserLane from "../Constants/Objects/UserLane";
-import { PostFrame } from "../Constants/Objects/PostFrame";
+import ResizableFrame from "../Components/Objects/ResizableFrame";
+import { UserTabList } from "../Components/Objects/UserTabList";
+import UserLane from "../Components/UserLane";
+import { PostFrame } from "../Components/PostFrame";
 import { useParams } from "react-router-dom";
 import { IPostDisplay } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
-import PostView from "../Constants/Objects/PostView";
-import { ProfileGroupsList } from "../Constants/Objects/ProfileGroupsList";
+import PostView from "../Components/Objects/PostView";
+import { ProfileGroupsList } from "../Components/Objects/ProfileGroupsList";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { Chat } from "../Services/chat-service";
 import { auth } from "../Services/auth-service";
@@ -74,59 +74,59 @@ const Feed = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between">
-        <div className="xl:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
-        <div className="lg:w-3/12 xl:w-2/12 hidden lg:block pr-2 pl-2">
-          <UserLane userId={null} />
-          <ResizableFrame
-            whidth={"auto"}
-            title={"Groups"}
-            show={true}
-            overflowX={false}
-            tailwindProps="  h-auto"
-          >
-            <ProfileGroupsList />
-          </ResizableFrame>
-        </div>
-        <div className="xl:w-1/12 hidden lg:block w-0/12 pr-2 pl-2"></div>
-        <div className="  lg:w-4/12 pl-2 pr-2  md:w-1/2 sm:w-full">
-          <div>
-            {!postId && <PostFrame UserList={[]} />}
-            {postId && singularPost && <PostView {...singularPost} />}
+      <div className="flex  ">
+        <div className="w-16 "></div>
+        <div className="flex flex-wrap w-11/12 justify-between ">
+          <div className="hidden lg:block lg:w-fit xl:w-fit pr-2 pl-2">
+            <UserLane userId={null} />
+            <ResizableFrame
+              whidth={"auto"}
+              title={"Groups"}
+              show={true}
+              overflowX={false}
+              tailwindProps="  h-auto"
+            >
+              <ProfileGroupsList />
+            </ResizableFrame>
+          </div>
+          <div className="w-full sm:w-full md:w-1/2 lg:w-4/12 xl:w-4/12 pl-2 pr-2">
+            <div>
+              {!postId && <PostFrame UserList={[]} />}
+              {postId && singularPost && <PostView {...singularPost} />}
+            </div>
+          </div>
+
+          <div className=" hidden md:block md:w-1/2 lg:w-fit xl:w-fit pr-2 pl-2">
+            <>
+              <ResizableFrame
+                whidth={"100%"}
+                title={"People"}
+                show={true}
+                tailwindProps=" h-full"
+              >
+                <div className={`${colors.ActiveText} text-center`}>
+                  Following
+                </div>
+                {!followingUsers && (
+                  <div className=" flex items-center justify-center">
+                    <ClipSpinner />
+                  </div>
+                )}
+                {followingUsers && <UserTabList users={followingUsers} />}
+
+                <div className={`${colors.ActiveText} text-center`}>
+                  Open Chats
+                </div>
+                {!chattingUsers && (
+                  <div className=" flex items-center justify-center">
+                    <ClipSpinner />
+                  </div>
+                )}
+                {chattingUsers && <UserTabList users={chattingUsers} />}
+              </ResizableFrame>
+            </>
           </div>
         </div>
-        <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>
-        <div className=" lg:w-3/12 xl:w-2/12 hidden md:block md:w-1/2  w-0/12 pr-2 pl-2">
-          <>
-            <ResizableFrame
-              whidth={"100%"}
-              title={"People"}
-              show={true}
-              tailwindProps=" h-full"
-            >
-              <div className={`${colors.ActiveText} text-center`}>
-                Following
-              </div>
-              {!followingUsers && (
-                <div className=" flex items-center justify-center">
-                  <ClipSpinner />
-                </div>
-              )}
-              {followingUsers && <UserTabList users={followingUsers} />}
-
-              <div className={`${colors.ActiveText} text-center`}>
-                Open Chats
-              </div>
-              {!chattingUsers && (
-                <div className=" flex items-center justify-center">
-                  <ClipSpinner />
-                </div>
-              )}
-              {chattingUsers && <UserTabList users={chattingUsers} />}
-            </ResizableFrame>
-          </>
-        </div>
-        <div className="xl:w-1/12 hidden lg:block pr-2 pl-2"></div>
       </div>
     </>
   );

@@ -1,31 +1,10 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
-import { ProviderProps } from "./LoggedInContext";
 
-export interface IUserValues {
-  userInfo: {
-    UserId: string | null;
-    UserName: string | null;
-    PermissionLevel: string | null;
-    IsAdmin: string | null;
-  };
-}
+import { IDecodedToken, IUserValues } from "../Types/@UserTypes";
+import { ProviderProps } from "../Types/@StructureTypes";
+import { initialValues } from "../Models/AuthModels";
 
-export const initialValues: IUserValues = {
-  userInfo: {
-    UserId: null,
-    UserName: null,
-    PermissionLevel: null,
-    IsAdmin: null,
-  },
-};
-
-export interface IDecodedToken {
-  UserId: string;
-  UserName: string;
-  PermissionLevel: string;
-  IsAdmin: string;
-}
 const UserContext = createContext(initialValues);
 
 const UserProvider: React.FC<ProviderProps> = ({ children }) => {

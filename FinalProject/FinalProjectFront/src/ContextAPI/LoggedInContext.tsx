@@ -1,13 +1,8 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
-
-export interface IAuthinitalValues {
-  isLoggedin: boolean;
-  token: string | null;
-  login: (token: string) => void;
-  logout: () => void;
-}
+import { IAuthinitalValues } from "../Types/@UserTypes";
+import { ProviderProps } from "../Types/@StructureTypes";
 
 const initialValues: IAuthinitalValues = {
   isLoggedin: !!localStorage.getItem("token"),
@@ -15,10 +10,6 @@ const initialValues: IAuthinitalValues = {
   login: () => {},
   logout: () => {},
 };
-
-export interface ProviderProps {
-  children: ReactNode;
-}
 
 const LoggedInContext = createContext(initialValues);
 const LoggedInProvider: React.FC<ProviderProps> = ({ children }) => {

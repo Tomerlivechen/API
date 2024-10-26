@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useChat } from "../CustomHooks/useChat";
-import { ChatFrame } from "../Constants/Objects/ChatFrame";
+import { ChatFrame } from "../Components/ChatFrame";
 
 const FooterBar = () => {
   const chatContex = useChat();

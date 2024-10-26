@@ -5,12 +5,12 @@ import {
 } from "../Models/Interaction";
 import { IAppUserDisplay } from "../Models/UserModels";
 import { dialogs } from "./AlertsConstant";
-import { MYFormikValues } from "./FormikElementBuilder";
 import { auth } from "../Services/auth-service";
 import { Posts } from "../Services/post-service";
 import { jwtDecode } from "jwt-decode";
-import { IDecodedToken, IUserValues } from "../ContextAPI/UserContext";
+
 import { AxiosError } from "axios";
+import { IDecodedToken, IUserValues } from "../Types/@UserTypes";
 
 const colors = {
   NavBarColor: "bg-blue-300 dark:bg-gray-800",
@@ -50,54 +50,6 @@ export const categories: ICategory[] = [
   { id: 11, name: "Health" },
   { id: 12, name: "AI" },
 ];
-
-export const linkFieldValues: MYFormikValues = {
-  element: "link",
-  type: "text",
-  placeholder: "Link (optional)",
-  required: false,
-  hidden: false,
-  textbox: true,
-  width: "full",
-};
-
-export const titleFieldValues: MYFormikValues = {
-  element: "title",
-  type: "text",
-  placeholder: "Title",
-  required: true,
-  hidden: false,
-  textbox: true,
-  width: "full",
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => e.target.value,
-};
-export const keyFieldValues: MYFormikValues = {
-  element: "keyWords",
-  type: "text",
-  placeholder: "Key Words (optional)",
-  required: false,
-  hidden: false,
-  textbox: true,
-  width: "full",
-};
-export const imageFieldValues: MYFormikValues = {
-  element: "imageURL",
-  type: "hidden",
-  placeholder: "",
-  required: false,
-  hidden: true,
-};
-
-export const textFieldValues: MYFormikValues = {
-  element: "text",
-  type: "text",
-  placeholder: "Text",
-  required: true,
-  hidden: false,
-  as: "textarea",
-  classes: `${colors.TextBox} h-20 overflow-y-auto whitespace-pre-wrap resize-none`,
-  width: "full",
-};
 
 export const sortByProperty = <T,>(
   property: keyof T,

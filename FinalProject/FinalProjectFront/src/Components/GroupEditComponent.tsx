@@ -4,58 +4,17 @@ import { ISocialGroupDisplay, ISocialGroupEdit } from "../Models/SocialGroup";
 import { Groups } from "../Services/group-service";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import * as Yup from "yup";
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import ElementFrame from "../Constructors/ElementFrame";
 import { Form, Formik } from "formik";
 import { colors } from "../Constants/Patterns";
-import {
-  FormikElementBuilder,
-  MYFormikValues,
-} from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
-
-const GroupNameValues: MYFormikValues = {
-  Title: "Group Name",
-  element: "name",
-  type: "text",
-  placeholder: "Group Name",
-  textbox: true,
-  required: true,
-  hidden: false,
-  width: "full",
-};
-const GroupDescriptionValues: MYFormikValues = {
-  Title: "Group Description",
-  element: "description",
-  type: "text",
-  placeholder: "Group Description",
-  textbox: true,
-  required: true,
-  hidden: false,
-  width: "full",
-  as: "textarea",
-  tailwind: "resize-none",
-};
-const GroupRulesValues: MYFormikValues = {
-  Title: "Rules",
-  element: "groupRules",
-  type: "text",
-  placeholder: "Group Rules",
-  textbox: true,
-  required: false,
-  hidden: false,
-  width: "full",
-  as: "textarea",
-};
-const GroupNewAdminEmailValues: MYFormikValues = {
-  Title: "Change Admin",
-  element: "newAdminEmail",
-  type: "text",
-  placeholder: "New Admin Email",
-  textbox: true,
-  required: false,
-  hidden: false,
-  width: "full",
-};
+import {
+  GroupDescriptionValues,
+  GroupNameValues,
+  GroupNewAdminEmailValues,
+  GroupRulesValues,
+} from "../Models/FormikModels";
 
 const GroupEditComponent = () => {
   const { groupId } = useParams();

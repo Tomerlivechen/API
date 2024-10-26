@@ -7,21 +7,17 @@ import * as Yup from "yup";
 import { dialogs } from "../Constants/AlertsConstant";
 
 import { useLogin } from "../CustomHooks/useLogin";
-import {
-  catchError,
-  colors,
-  linkFieldValues,
-  textFieldValues,
-} from "../Constants/Patterns";
+import { catchError, colors } from "../Constants/Patterns";
 
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import ElementFrame from "../Constructors/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
-import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import { CommentService } from "../Services/comment-service";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 import { AxiosError } from "axios";
+import { linkFieldValues, textFieldValues } from "../Models/FormikModels";
 
 interface AddCommentCommentModalProps {
   commentId: string;

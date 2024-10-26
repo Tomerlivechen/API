@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import ProfileUserSection from "../Constants/Objects/ProfileUserSection";
+import ProfileUserSection from "../Components/ProfileUserSection";
 import { auth } from "../Services/auth-service";
 
 import { useParams } from "react-router-dom";
 import { useUser } from "../CustomHooks/useUser";
-import { PostFrame } from "../Constants/Objects/PostFrame";
-import ResizableFrame from "../Constants/Objects/ResizableFrame";
-import { UserTabList } from "../Components/UserTabList";
+import { PostFrame } from "../Components/PostFrame";
+import ResizableFrame from "../Components/Objects/ResizableFrame";
+import { UserTabList } from "../Components/Objects/UserTabList";
 import { IAppUserDisplay } from "../Models/UserModels";
-import { ProfileGroupsList } from "../Constants/Objects/ProfileGroupsList";
+import { ProfileGroupsList } from "../Components/Objects/ProfileGroupsList";
 
 const Profile = () => {
   const userContext = useUser();

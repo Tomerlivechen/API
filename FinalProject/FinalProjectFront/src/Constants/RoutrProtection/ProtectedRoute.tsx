@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { FCP } from "./@types";
+import { FCP } from "../../Types/@types";
 import { useLogin } from "../../CustomHooks/useLogin";
 
 const ProtectedRoute: FCP = ({ children }) => {

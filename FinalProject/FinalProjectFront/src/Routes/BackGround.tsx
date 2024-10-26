@@ -5,7 +5,7 @@ const BackGround: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <div
-        className={` w-full h-12 bg-cover bg-center overflow-y-auto" ${colors.ElementFrame} `}
+        className={` w-full h-20 bg-cover bg-center overflow-y-auto" ${colors.ElementFrame} `}
       ></div>
       <div className="relative">
         <div

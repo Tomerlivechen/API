@@ -16,12 +16,13 @@ import NoAuthRoute from "../Constants/RoutrProtection/NoAuthRoute";
 import { SearchProvider } from "../ContextAPI/SearchContext";
 import { SearchPage } from "./SearchPage";
 import UserSettings from "./UserSettings";
-import { AccessabilityPanel } from "../Constants/Objects/AccessabilityPanel";
+import { AccessabilityPanel } from "../Components/AccessabilityPanel";
 import BackGround from "./BackGround";
 import { ChatProvider } from "../ContextAPI/ChatContex";
 import { FooterBar } from "../Bars/Footer";
 import { Group } from "./Group";
 import GroupSettings from "./GroupSettings";
+import PasswordRecoveryPage from "./PasswordRecovery";
 
 function RouterControler() {
   return (
@@ -118,6 +119,10 @@ function RouterControler() {
                             <Register />
                           </NoAuthRoute>
                         }
+                      />
+                      <Route
+                        path="Recover/:token"
+                        element={<PasswordRecoveryPage />}
                       />
                       <Route
                         path="Login"

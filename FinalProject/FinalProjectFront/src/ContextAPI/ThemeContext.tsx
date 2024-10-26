@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { ProviderProps } from "./LoggedInContext";
+import { ProviderProps } from "../Types/@StructureTypes";
 
 const initialValues = {
   Theme: localStorage.getItem("preferedmode")?.toString() ?? "light",

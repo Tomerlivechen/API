@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { GroupSearch } from "../Constants/Objects/GroupSearch";
-import GroupPage from "../Constants/Objects/GroupPage";
+import { GroupSearch } from "../Components/GroupSearch";
+import GroupPage from "../Components/GroupPage";
 
 const Group = () => {
   const { groupId } = useParams();

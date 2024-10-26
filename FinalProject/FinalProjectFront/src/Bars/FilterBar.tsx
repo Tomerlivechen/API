@@ -4,16 +4,8 @@ import { colors } from "../Constants/Patterns";
 import { useSearch } from "../CustomHooks/useSearch";
 import { FaSearch } from "react-icons/fa";
 
-interface IUserSelector {
-  UserName: boolean;
-  FirstName: boolean;
-  LastName: boolean;
-}
-interface IPostSelector {
-  UserName: boolean;
-  Title: boolean;
-  KeyWords: boolean;
-}
+import { IUserSelector } from "../Types/@UserTypes";
+import { IPostSelector } from "../Types/@StructureTypes";
 
 function FilterBar() {
   const [selectedUser, setSelectedUser] = useState(false);

@@ -4,7 +4,7 @@ import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 
 import { GroupEditComponent } from "../Components/GroupEditComponent";
 import { useParams } from "react-router-dom";
-import { MemberEditTabList } from "../Constants/Objects/MemberEditTabList";
+import { MemberEditTabList } from "../Components/MemberEditTabList";
 
 const GroupSettings = () => {
   const { groupId } = useParams();

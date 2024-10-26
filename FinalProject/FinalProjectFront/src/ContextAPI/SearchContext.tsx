@@ -9,15 +9,15 @@ import {
   stringToPostDisplay,
 } from "../Constants/Patterns";
 import { Posts } from "../Services/post-service";
-import { ProviderProps } from "./LoggedInContext";
+import { ProviderProps } from "../Types/@StructureTypes";
 
-interface IUserSelector {
+export interface IUserSelector {
   UserName: boolean;
   FirstName: boolean;
   LastName: boolean;
 }
 
-interface IPostSelector {
+export interface IPostSelector {
   UserName: boolean;
   Title: boolean;
   KeyWords: boolean;
@@ -35,7 +35,7 @@ const ValuesUser: IUserSelector = {
   LastName: false,
 };
 
-interface ISearchToggleFunctions {
+export interface ISearchToggleFunctions {
   toggleUserSearch: (key: keyof IUserSelector | null) => void;
   togglePostSearch: (key: keyof IPostSelector | null) => void;
 }
@@ -49,9 +49,7 @@ const defaultSearchToggle: ISearchToggleFunctions = {
   },
 };
 
-const searchTermBase = "";
-
-interface ISearchContext {
+export interface ISearchContext {
   postSearch: IPostSelector;
   userSearch: IUserSelector;
   searchToggleFunctions: ISearchToggleFunctions;
@@ -66,7 +64,7 @@ interface ISearchContext {
   filterPosts: () => void;
   loadingData: boolean;
 }
-
+const searchTermBase = "";
 const SearchContext = createContext<ISearchContext>({
   postSearch: ValuesPost,
   userSearch: ValuesUser,

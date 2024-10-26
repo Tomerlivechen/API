@@ -6,93 +6,21 @@ import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
-import ElementFrame from "../Constants/Objects/ElementFrame";
+import ElementFrame from "../Constructors/ElementFrame";
 import { colors } from "../Constants/Patterns";
-import {
-  FormikElementBuilder,
-  MYFormikValues,
-} from "../Constants/FormikElementBuilder";
+import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import { RxEyeClosed } from "react-icons/rx";
 import { IAppUserRegister } from "../Models/AuthModels";
-
-const emailValues: MYFormikValues = {
-  Title: "Email Address",
-  element: "email",
-  type: "text",
-  placeholder: "Email Address",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-
-const userNameValues: MYFormikValues = {
-  Title: "User Name",
-  element: "userName",
-  type: "text",
-  placeholder: "User Name",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-
-const confirmPasswordValues: MYFormikValues = {
-  Title: "Confirm Password",
-  element: "confirmPassword",
-  type: "text",
-  placeholder: "Confirm Password",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-
-const passwordValues: MYFormikValues = {
-  Title: "Password",
-  element: "password",
-  type: "text",
-  placeholder: "Password",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-
-const prefixValues: MYFormikValues = {
-  Title: "Prefix",
-  element: "prefix",
-  type: "text",
-  placeholder: "Prefix",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-
-const firstNameValues: MYFormikValues = {
-  Title: "First Name",
-  element: "first_Name",
-  type: "text",
-  placeholder: "First Name",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-const lastNameValues: MYFormikValues = {
-  Title: "Last Name",
-  element: "last_Name",
-  type: "text",
-  placeholder: "Last Name",
-  required: true,
-  hidden: false,
-  width: "full",
-};
-
-const pronounsValues: MYFormikValues = {
-  Title: "Pronouns",
-  element: "pronouns",
-  type: "text",
-  placeholder: "Pronouns",
-  required: true,
-  hidden: false,
-  width: "full",
-};
+import {
+  confirmPasswordValues,
+  emailValues,
+  firstNameValues,
+  lastNameValues,
+  passwordValues,
+  prefixValues,
+  pronounsValues,
+  userNameValues,
+} from "../Models/FormikModels";
 
 function Register() {
   const [viewPassword, setviewPassword] = useState("password");
