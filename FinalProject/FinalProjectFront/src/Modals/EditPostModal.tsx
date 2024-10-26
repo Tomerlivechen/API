@@ -1,7 +1,7 @@
 import { Modal } from "react-bootstrap";
 
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
@@ -10,7 +10,6 @@ import { useLogin } from "../CustomHooks/useLogin";
 import {
   catchError,
   colors,
-  imageFieldValues,
   keyFieldValues,
   linkFieldValues,
   textFieldValues,
@@ -21,13 +20,14 @@ import ElementFrame from "../Constants/Objects/ElementFrame";
 
 import { FcRemoveImage } from "react-icons/fc";
 import { FcEditImage } from "react-icons/fc";
-import { CommentService } from "../Services/comment-service";
+
 import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage } from "react-icons/fc";
-import { ICommentDisplay, IPostDisplay } from "../Models/Interaction";
+import { IPostDisplay } from "../Models/Interaction";
 import { Posts } from "../Services/post-service";
+import { AxiosError } from "axios";
 
 interface EditPostModalProps {
   Mshow: boolean;
@@ -43,7 +43,6 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
   const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
-  const navigate = useNavigate();
   const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const PostToEdit: IPostDisplay = post;
   const handleclose = () => {
@@ -59,9 +58,10 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
 
   const [postValues, setPostValues] = useState<IPostDisplay>(PostToEdit);
 
-  const handleFileChange = (event) => {
-    console.log("Form submitted with values: ");
-    setHoldFile(event.target.files[0]);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setHoldFile(event.target.files[0]);
+    }
   };
 
   const handleSubmit = async () => {
@@ -88,9 +88,7 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
     submitComment();
   }, [imageUrl]);
 
-  const postPost = async (values) => {
-    // eslint-disable-next-line no-debugger
-    debugger;
+  const postPost = async (values: IPostDisplay) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
@@ -106,11 +104,11 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
       try {
         clear();
         console.log("Form submitted with values: ", updatedValues);
-        const response = await Posts.EditPost(updatedValues);
+        const response = await Posts.EditPost(updatedValues as IPostDisplay);
         console.log(response);
         dialogs.success("Comment Sent");
       } catch (error) {
-        catchError(error, "Commenting");
+        catchError(error as AxiosError, "Commenting");
       } finally {
         setPostValues(postValues);
         handleclose();
@@ -151,7 +149,7 @@ const EditPostModal: React.FC<EditPostModalProps> = ({
   }, [Mshow]);
   return (
     <>
-      <Modal show={Mshow} onHide={handleclose} className="comment-modal">
+      <Modal show={show} onHide={handleclose} className="comment-modal">
         <>
           <ElementFrame height="460px" width="300px" padding="1">
             <>

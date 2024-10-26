@@ -1,21 +1,17 @@
 import { Modal } from "react-bootstrap";
 
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
-import { useNavigate } from "react-router-dom";
 import { useLogin } from "../CustomHooks/useLogin";
 import {
   catchError,
   colors,
-  imageFieldValues,
   linkFieldValues,
   textFieldValues,
 } from "../Constants/Patterns";
-import ImageUpload from "../Constants/ImageUploading";
-import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
 import { CommentService } from "../Services/comment-service";
@@ -23,6 +19,7 @@ import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
+import { AxiosError } from "axios";
 
 interface AddPostCommentModalProps {
   postId: string;
@@ -38,7 +35,6 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
   const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
-  const navigate = useNavigate();
   const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const [,] = useState<File | null>();
 
@@ -64,12 +60,13 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
 
   const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
-  const handleFileChange = (event) => {
-    console.log("Form submitted with values: ");
-    setHoldFile(event.target.files[0]);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setHoldFile(event.target.files[0]);
+    }
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values: INewComment) => {
     setCommentValues(values);
     if (loggedInContext.token) {
       if (holdFile) {
@@ -94,7 +91,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
     submitComment();
   }, [imageUrl]);
 
-  const postComment = async (values) => {
+  const postComment = async (values: INewComment) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
@@ -105,7 +102,7 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
         console.log(response);
         dialogs.success("Comment Sent");
       } catch (error) {
-        catchError(error, "Commenting");
+        catchError(error as AxiosError, "Commenting");
       } finally {
         setCommentValues(NewComment);
         handleclose();
@@ -126,11 +123,11 @@ const AddPostCommentModal: React.FC<AddPostCommentModalProps> = ({
       ...prevCommentValues,
       imageURL: "",
     }));
-    setHoldFile(null);
+    clear();
   };
   return (
     <>
-      <Modal show={Mshow} onHide={handleclose} className="comment-modal">
+      <Modal show={show} onHide={handleclose} className="comment-modal">
         <>
           <ElementFrame height="390px" width="300px" padding="1">
             <>

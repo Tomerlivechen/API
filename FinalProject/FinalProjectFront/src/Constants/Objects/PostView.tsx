@@ -8,7 +8,7 @@ import { dialogs } from "../AlertsConstant";
 import { TiDelete } from "react-icons/ti";
 
 import { useUser } from "../../CustomHooks/useUser";
-import { CommentService } from "../../Services/comment-service";
+
 import { useLogin } from "../../CustomHooks/useLogin";
 
 import { IPostDisplay } from "../../Models/Interaction";

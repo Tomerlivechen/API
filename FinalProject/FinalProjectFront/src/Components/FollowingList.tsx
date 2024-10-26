@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { IPostDisplay } from "../Models/Interaction";
-import { sortByProperty } from "../Constants/Patterns";
-import PostView from "../Constants/Objects/PostView";
 import { auth } from "../Services/auth-service";
 import UserTab from "../Constants/Objects/UserTab";
 import { IAppUserDisplay } from "../Models/UserModels";
@@ -21,8 +18,6 @@ const FollowingList = () => {
     getUsers();
   }, []);
 
-  const handleButtonClick = (id: string) => {};
-
   return (
     <>
       {users && (
@@ -31,11 +26,7 @@ const FollowingList = () => {
             <>
               {user.following && (
                 <div className="p-2">
-                  <UserTab
-                    key={user.id}
-                    UserDisplay={user}
-                    buttonAction={() => handleButtonClick(user.id)}
-                  />
+                  <UserTab key={user.id} UserDisplay={user} />
                 </div>
               )}
             </>

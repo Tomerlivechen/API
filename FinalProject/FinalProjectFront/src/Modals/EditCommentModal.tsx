@@ -1,16 +1,14 @@
 import { Modal } from "react-bootstrap";
 
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
-import { useNavigate } from "react-router-dom";
 import { useLogin } from "../CustomHooks/useLogin";
 import {
   catchError,
   colors,
-  imageFieldValues,
   linkFieldValues,
   textFieldValues,
 } from "../Constants/Patterns";
@@ -25,6 +23,7 @@ import ClipSpinner from "../Spinners/ClipSpinner";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage } from "react-icons/fc";
 import { ICommentDisplay } from "../Models/Interaction";
+import { AxiosError } from "axios";
 
 interface EditCommentModalProps {
   Mshow: boolean;
@@ -40,7 +39,6 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
   const [show, setShow] = useState(Mshow);
   const [isLoading, setIsLoading] = useState(false);
   const loggedInContext = useLogin();
-  const navigate = useNavigate();
   const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const CommentToEdit: ICommentDisplay = comment;
   const handleclose = () => {
@@ -57,12 +55,13 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
     CommentToEdit
   );
 
-  const handleFileChange = (event) => {
-    console.log("Form submitted with values: ");
-    setHoldFile(event.target.files[0]);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setHoldFile(event.target.files[0]);
+    }
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values: ICommentDisplay) => {
     setCommentValues(values);
     if (loggedInContext.token) {
       if (holdFile) {
@@ -87,9 +86,7 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
     submitComment();
   }, [imageUrl]);
 
-  const postComment = async (values) => {
-    // eslint-disable-next-line no-debugger
-    debugger;
+  const postComment = async (values: ICommentDisplay) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
@@ -103,7 +100,7 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
         console.log(response);
         dialogs.success("Comment Sent");
       } catch (error) {
-        catchError(error, "Commenting");
+        catchError(error as AxiosError, "Commenting");
       } finally {
         setCommentValues(commentValues);
         handleclose();
@@ -136,7 +133,7 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({
   }, [Mshow]);
   return (
     <>
-      <Modal show={Mshow} onHide={handleclose} className="comment-modal">
+      <Modal show={show} onHide={handleclose} className="comment-modal">
         <>
           <ElementFrame height="390px" width="300px" padding="1">
             <>

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useLogin } from "../CustomHooks/useLogin";
 import { useSearch } from "../CustomHooks/useSearch";
 import UserCard from "../Constants/Objects/UserCard";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
 import SearchTitleComponent from "../Components/SearchTitleComponent";
 import PostCard from "../Constants/Objects/PostCard";
 import ElementFrame from "../Constants/Objects/ElementFrame";
+import { colors } from "../Constants/Patterns";
+import { FaLongArrowAltUp } from "react-icons/fa";
 
 function SearchPage() {
-  const loggedInContext = useLogin();
   const searchContext = useSearch();
   const [activeSearch, setActiveSearch] = useState("");
 
@@ -35,6 +35,14 @@ function SearchPage() {
       {searchContext.loadingData && (
         <div className=" flex flex-col items-center">
           <ClimbBoxSpinner /> <br />
+        </div>
+      )}
+      {!activeSearch && (
+        <div
+          className={` absolute top-12 p-2 flex flex-row ${colors.ActiveText} animate-bounce`}
+        >
+          <FaLongArrowAltUp />
+          Select Search fields <FaLongArrowAltUp />
         </div>
       )}
       <div className=" flex flex-col items-center">

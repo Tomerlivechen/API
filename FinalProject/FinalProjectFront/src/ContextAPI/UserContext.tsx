@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
+import { ProviderProps } from "./LoggedInContext";
 
 export interface IUserValues {
   userInfo: {
@@ -27,7 +28,7 @@ export interface IDecodedToken {
 }
 const UserContext = createContext(initialValues);
 
-function UserProvider({ children }) {
+const UserProvider: React.FC<ProviderProps> = ({ children }) => {
   const [authState, setAuthState] = useState<IUserValues>(initialValues);
   useEffect(() => {
     const JWTtoken = localStorage.getItem("token");
@@ -48,6 +49,6 @@ function UserProvider({ children }) {
   return (
     <UserContext.Provider value={authState}>{children}</UserContext.Provider>
   );
-}
+};
 
 export { UserContext, UserProvider };

@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../../CustomHooks/useUser";
 import ClimbBoxSpinner from "../../Spinners/ClimbBoxSpinner";
 import { FaUserGear } from "react-icons/fa6";
 import { colors } from "../Patterns";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { FaHandHolding } from "react-icons/fa";
-import { FaHandHoldingHeart } from "react-icons/fa";
-import { ISocialGroup, ISocialGroupDisplay } from "../../Models/SocialGroup";
+import { useNavigate, useParams } from "react-router-dom";
+import { ISocialGroupDisplay } from "../../Models/SocialGroup";
 import { Groups } from "../../Services/group-service";
-import { BsPersonFillAdd } from "react-icons/bs";
 import { BsPersonFillDash } from "react-icons/bs";
 import { IAppUserDisplay } from "../../Models/UserModels";
 import { auth } from "../../Services/auth-service";
 import { Tooltip } from "react-bootstrap";
 
-const GroupProfileSection = ({ groupId }) => {
+const GroupProfileSection = () => {
+  const { groupId } = useParams();
   const [bioMore, setBioMore] = useState(false);
 
   const [groupInfo, SetGroupInfo] = useState<ISocialGroupDisplay | null>();
   const [loading, setLoading] = useState(true);
   const userContext = useUser();
   const navigate = useNavigate();
-  const location = useLocation();
   const [groupAdmin, setGroupAdmin] = useState<IAppUserDisplay | null>(null);
 
   const getGroupInfo = async (GroupId: string) => {
@@ -97,14 +94,14 @@ const GroupProfileSection = ({ groupId }) => {
                     alt="Group image"
                     className="w-24 h-24 rounded-full border-4 border-white shadow-md"
                   />
-                  <p
+                  <div
                     className={`text-2xl font-bold text-left mt-5 ${colors.ButtonFont}`}
                   >
                     <Tooltip title={groupInfo.name}>
                       {groupInfo.name.slice(0, 30)}
                       {groupInfo.name.length > 30 && "..."}
                     </Tooltip>
-                  </p>
+                  </div>
                 </div>
                 <div className="absolute right-0 p-2">
                   {userContext.userInfo.UserId == groupInfo.adminId && (

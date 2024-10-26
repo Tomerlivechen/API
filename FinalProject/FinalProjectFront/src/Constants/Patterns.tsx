@@ -10,6 +10,7 @@ import { auth } from "../Services/auth-service";
 import { Posts } from "../Services/post-service";
 import { jwtDecode } from "jwt-decode";
 import { IDecodedToken, IUserValues } from "../ContextAPI/UserContext";
+import { AxiosError } from "axios";
 
 const colors = {
   NavBarColor: "bg-blue-300 dark:bg-gray-800",
@@ -185,8 +186,9 @@ export const post1: IPostDisplay = {
   comments: [],
   hasVoted: false,
   title: "This is the last post",
-  category: null,
+  categoryId: 0,
   keyWords: [],
+  groupId: "",
 };
 
 const stringToAppUserDisplay = (
@@ -214,10 +216,13 @@ const stringToPostDisplay = (
     return postDisplay;
   }
 };
-
-const catchError = (error: any, action: string) => {
+interface ErrorResponse {
+  [key: string]: string[] | undefined;
+}
+const catchError = (error: AxiosError, action: string) => {
   if (error && error.response && error.response.data) {
-    const errorMessages = error.response.data[`${action} Failed`];
+    const data = error.response.data as ErrorResponse;
+    const errorMessages = data[`${action} Failed`];
     if (Array.isArray(errorMessages)) {
       const message = errorMessages.join(" & ");
       dialogs.error(message);

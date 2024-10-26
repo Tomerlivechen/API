@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IAppUserDisplay } from "../../Models/UserModels";
-
 import ElementFrame from "./ElementFrame";
-import { useLogin } from "../../CustomHooks/useLogin";
-import { dialogs } from "../AlertsConstant";
-import { useUser } from "../../CustomHooks/useUser";
 import { colors } from "../Patterns";
 import { useNavigate } from "react-router-dom";
 import { PiPlugsFill } from "react-icons/pi";
@@ -12,7 +8,6 @@ import { GiChatBubble } from "react-icons/gi";
 import { useChat } from "../../CustomHooks/useChat";
 export interface UserTabProps {
   UserDisplay: IAppUserDisplay;
-  buttonAction: (id: string) => void;
 }
 
 const UserTab: React.FC<UserTabProps> = (TabProps: UserTabProps) => {
@@ -37,6 +32,9 @@ const UserTab: React.FC<UserTabProps> = (TabProps: UserTabProps) => {
 
   useEffect(() => {
     setUserInfo(TabProps.UserDisplay);
+    setFollowings(TabProps.UserDisplay.following);
+    setblocking(TabProps.UserDisplay.blocked);
+    setblockedYou(TabProps.UserDisplay.blockedYou);
   }, []);
 
   return (

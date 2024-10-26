@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { ProviderProps } from "./LoggedInContext";
 
 const initialValues = {
   Theme: localStorage.getItem("preferedmode")?.toString() ?? "light",
@@ -7,7 +8,7 @@ const initialValues = {
 
 const ThemeContext = createContext(initialValues);
 
-function ThemeProvider({ children }) {
+const ThemeProvider: React.FC<ProviderProps> = ({ children }) => {
   useEffect(() => {
     if (Theme === "dark") {
       document.body.classList.toggle(Theme);
@@ -27,6 +28,6 @@ function ThemeProvider({ children }) {
       {children}
     </ThemeContext.Provider>
   );
-}
+};
 
 export { ThemeContext, ThemeProvider };

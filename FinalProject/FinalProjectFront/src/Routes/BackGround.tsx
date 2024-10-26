@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { colors } from "../Constants/Patterns";
 
-const BackGround = ({ children }) => {
+const BackGround: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <div

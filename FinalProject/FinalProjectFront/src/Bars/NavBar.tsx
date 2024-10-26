@@ -6,12 +6,10 @@ import { LuLogOut } from "react-icons/lu";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { BsFillLightbulbFill, BsFillLightbulbOffFill } from "react-icons/bs";
 import { colors } from "../Constants/Patterns";
-import { UserContext } from "../ContextAPI/UserContext";
 import { LoggedInContext } from "../ContextAPI/LoggedInContext";
 import FilterBar from "./FilterBar";
 import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
-import { GiSoapExperiment } from "react-icons/gi";
 import { FaInfo } from "react-icons/fa";
 import { CgFeed } from "react-icons/cg";
 import { NotificationAlert } from "../Components/NotificationAlert";
@@ -21,8 +19,7 @@ function NavBar() {
   const [filter, setFilter] = useState(false);
   const location = useLocation();
   const { Theme, toggleTheme } = useContext(ThemeContext);
-  const { isLoggedin, token, logout } = useContext(LoggedInContext);
-  const { userInfo } = useContext(UserContext);
+  const { isLoggedin, logout } = useContext(LoggedInContext);
   const handelLogout = () => {
     logout();
     navigate("/");

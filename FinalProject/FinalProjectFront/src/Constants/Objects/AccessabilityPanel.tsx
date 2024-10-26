@@ -6,7 +6,6 @@ import { colors } from "../Patterns";
 import ElementFrame from "./ElementFrame";
 import { GrZoomIn } from "react-icons/gr";
 import { GrZoomOut } from "react-icons/gr";
-import { MdFormatColorReset } from "react-icons/md";
 import { MdInvertColorsOff } from "react-icons/md";
 import { MdInvertColors } from "react-icons/md";
 import { IoColorPaletteOutline } from "react-icons/io5";

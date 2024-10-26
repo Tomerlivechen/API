@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ResizableFrame from "../Constants/Objects/ResizableFrame";
 import { UserTabList } from "../Components/UserTabList";
-import { useSearch } from "../CustomHooks/useSearch";
 import UserLane from "../Constants/Objects/UserLane";
 import { PostFrame } from "../Constants/Objects/PostFrame";
 import { useParams } from "react-router-dom";
@@ -19,7 +18,6 @@ import ClipSpinner from "../Spinners/ClipSpinner";
 
 const Feed = () => {
   const { postId } = useParams();
-  const searchContext = useSearch();
   const userContext = useUser();
   const [singularPost, setSingularPost] = useState<IPostDisplay | null>(null);
   const [tempFollowingUsers, setTempFollowingUsers] = useState<

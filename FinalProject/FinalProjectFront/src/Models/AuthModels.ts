@@ -8,7 +8,7 @@ interface IAppUserRegister {
   last_Name: string;
   pronouns: string;
   imageURL: string;
-  premissionLevel: string;
+  permissionlevel: string;
 }
 
 const AppUserRegister: IAppUserRegister = {
@@ -21,7 +21,7 @@ const AppUserRegister: IAppUserRegister = {
   last_Name: "",
   pronouns: "",
   imageURL: "",
-  premissionLevel: "",
+  permissionlevel: "",
 };
 
 export { AppUserRegister };

@@ -13,6 +13,7 @@ import {
   MYFormikValues,
 } from "../Constants/FormikElementBuilder";
 import { RxEyeClosed } from "react-icons/rx";
+import { IAppUserRegister } from "../Models/AuthModels";
 
 const emailValues: MYFormikValues = {
   Title: "Email Address",
@@ -125,11 +126,11 @@ function Register() {
     first_Name: Yup.string().min(2).max(25).required("First name is required"),
     last_Name: Yup.string().min(2).max(30).required("Last name is required"),
     pronouns: Yup.string().min(2).max(10),
-    permissionLevel: Yup.string()
+    permissionlevel: Yup.string()
       .required("Please select an option")
       .notOneOf([""], "Please select a valid option"),
   });
-  const initalValues = {
+  const initalValues: IAppUserRegister = {
     email: "",
     userName: "",
     password: "",
@@ -138,9 +139,22 @@ function Register() {
     first_Name: "",
     last_Name: "",
     pronouns: "",
-    imageURL: "",
-    permissionLevel: "",
+    imageURL:
+      "https://res.cloudinary.com/dhle9hj3n/image/upload/v1729955566/isdaejsdshqjsjmvdy14.jpg",
+    permissionlevel: "",
   };
+
+  const submiteRegister = async (user: IAppUserRegister) => {
+    setIsLoading(true);
+    const response = await auth.register(user);
+    if (response.status === 200) {
+      dialogs.success("Register Succefull").then(() => {
+        navigate("/Login/");
+      });
+    }
+    setIsLoading(false);
+  };
+
   return (
     <>
       <div className="flex justify-center">
@@ -159,43 +173,7 @@ function Register() {
             initialValues={initalValues}
             validationSchema={validationScheme}
             onSubmit={(o) => {
-              console.log(o);
-              setIsLoading(true);
-              auth
-                .register(
-                  o.email,
-                  o.userName,
-                  o.password,
-                  o.prefix,
-                  o.first_Name,
-                  o.last_Name,
-                  o.pronouns,
-                  "https://i.imgur.com/5O66TYJ.gif",
-                  o.permissionLevel
-                )
-                .then((response) => {
-                  dialogs.success("Register Succefull").then(() => {
-                    navigate("/");
-                  });
-                })
-                .catch((error) => {
-                  if (error && error.response && error.response.data) {
-                    const errorMessages =
-                      error.response.data["Register Failed"];
-                    if (Array.isArray(errorMessages)) {
-                      const message = errorMessages.join(" & ");
-                      dialogs.error(message);
-                    } else {
-                      dialogs.error("An unknown error occurred.");
-                    }
-                  } else {
-                    dialogs.error("An error occurred. Please try again.");
-                  }
-                })
-                .finally(() => {
-                  setIsLoading(false);
-                  console.log();
-                });
+              submiteRegister(o);
             }}
           >
             <Form className="mt-5">
@@ -240,11 +218,11 @@ function Register() {
                 </div>
               </div>
               <div className="font-extralight form-group flex flex-col gap-2 w-1/2 mx-auto text-lg mt-5">
-                <label htmlFor="premissionLevel">User Type</label>
+                <label htmlFor="permissionlevel">User Type</label>
                 <Field
                   className="rounded-md hover:border-2 border-2 px-2 py-2"
-                  id="permissionLevel"
-                  name="permissionLevel"
+                  id="permissionlevel"
+                  name="permissionlevel"
                   as="select"
                   required
                 >
@@ -253,7 +231,7 @@ function Register() {
                   <option value="PowerUser">Power User</option>
                 </Field>
                 <ErrorMessage
-                  name="permissionLevel"
+                  name="permissionlevel"
                   component="div"
                   className="text-red-500"
                 />

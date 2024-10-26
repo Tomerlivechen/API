@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ISocialGroupCard } from "../../Models/SocialGroup";
-import { Groups } from "../../Services/group-service";
+
 import { GroupCard } from "./GroupCard";
 import { auth } from "../../Services/auth-service";
 import { useUser } from "../../CustomHooks/useUser";

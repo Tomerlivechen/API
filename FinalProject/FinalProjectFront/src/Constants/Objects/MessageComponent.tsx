@@ -7,13 +7,14 @@ import { useUser } from "../../CustomHooks/useUser";
 const MessageComponent: React.FC<IMessage> = (MessageDisplay) => {
   const [yours, setYours] = useState(false);
   const userContext = useUser();
+
   useEffect(() => {
     if (userContext.userInfo.UserId == MessageDisplay.userId) {
       setYours(true);
     } else {
       setYours(false);
     }
-  });
+  }, []);
   return (
     <>
       <ElementFrame

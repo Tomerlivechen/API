@@ -1,7 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
-
 
 export interface IAuthinitalValues {
   isLoggedin: boolean;
@@ -17,8 +16,12 @@ const initialValues: IAuthinitalValues = {
   logout: () => {},
 };
 
+export interface ProviderProps {
+  children: ReactNode;
+}
+
 const LoggedInContext = createContext(initialValues);
-function LoggedInProvider({ children }) {
+const LoggedInProvider: React.FC<ProviderProps> = ({ children }) => {
   const [isLoggedin, setIsLoggedIn] = useState(initialValues.isLoggedin);
   const [token, setToken] = useState(initialValues.token);
 
@@ -62,6 +65,6 @@ function LoggedInProvider({ children }) {
       {children}
     </LoggedInContext.Provider>
   );
-}
+};
 
 export { LoggedInContext, LoggedInProvider };

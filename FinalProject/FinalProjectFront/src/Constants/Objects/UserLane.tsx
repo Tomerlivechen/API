@@ -3,7 +3,7 @@ import { IAppUserDisplay } from "../../Models/UserModels";
 import { auth } from "../../Services/auth-service";
 import { useUser } from "../../CustomHooks/useUser";
 import ClimbBoxSpinner from "../../Spinners/ClimbBoxSpinner";
-import { FaUserGear } from "react-icons/fa6";
+
 import { colors } from "../Patterns";
 import { useNavigate } from "react-router-dom";
 interface ProfileUserSectionProps {
@@ -13,10 +13,9 @@ interface ProfileUserSectionProps {
 const UserLane: React.FC<ProfileUserSectionProps> = ({ userId }) => {
   const [user, setUser] = useState<IAppUserDisplay | null>(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const userdata = useUser();
-  const [yours, setYours] = useState(false);
+  const [, setYours] = useState(false);
   useEffect(() => {
     if (userId) {
       getUser(userId);

@@ -2,20 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { dialogs } from "../Constants/AlertsConstant";
 
-interface ICloudinaryValues {
-  imageUrl: string;
-  file: File | null;
-  holdFile: (file: File) => void;
-  handleSetImageURL: (file: File | null) => Promise<void>;
-  clear: () => void;
-}
-
 const useCloudinary = (): [
-  string,
-  File | null,
-  (file: File) => void,
-  (file: File | null) => Promise<void>,
-  () => void
+  string, // imageUrl
+  File | null, // file
+  (file: File) => void, // holdFile
+  (file: File | null) => Promise<void>, // handleSetImageURL
+  () => void // clear
 ] => {
   const [imageUrl, setImageURL] = useState("");
   const [file, setFile] = useState<File | null>(null);

@@ -9,6 +9,7 @@ import {
   stringToPostDisplay,
 } from "../Constants/Patterns";
 import { Posts } from "../Services/post-service";
+import { ProviderProps } from "./LoggedInContext";
 
 interface IUserSelector {
   UserName: boolean;
@@ -39,34 +40,50 @@ interface ISearchToggleFunctions {
   togglePostSearch: (key: keyof IPostSelector | null) => void;
 }
 
-const SearchToggle: ISearchToggleFunctions = {
-  toggleUserSearch: function (key: keyof IUserSelector | null): void {
-    throw new Error("Function not implemented.");
+const defaultSearchToggle: ISearchToggleFunctions = {
+  toggleUserSearch: (key) => {
+    console.warn(`toggleUserSearch called with key: ${key}`);
   },
-  togglePostSearch: function (key: keyof IPostSelector | null): void {
-    throw new Error("Function not implemented.");
+  togglePostSearch: (key) => {
+    console.warn(`togglePostSearch called with key: ${key}`);
   },
 };
 
 const searchTermBase = "";
 
-const SearchContext = createContext({
+interface ISearchContext {
+  postSearch: IPostSelector;
+  userSearch: IUserSelector;
+  searchToggleFunctions: ISearchToggleFunctions;
+  searchValue: string;
+  setSearchValue: (searchTerm: string) => void;
+  userList: IAppUserDisplay[];
+  postList: IPostDisplay[];
+  filterUserList: IAppUserDisplay[];
+  filterPostList: IPostDisplay[];
+  fillLists: () => void;
+  filterUsers: () => void;
+  filterPosts: () => void;
+  loadingData: boolean;
+}
+
+const SearchContext = createContext<ISearchContext>({
   postSearch: ValuesPost,
   userSearch: ValuesUser,
-  searchToggleFunctions: SearchToggle,
+  searchToggleFunctions: defaultSearchToggle,
   searchValue: searchTermBase,
-  setSearchValue: (searchTerm: string) => {},
-  userList: [] as IAppUserDisplay[],
-  postList: [] as IPostDisplay[],
-  filterUserList: [] as IAppUserDisplay[],
-  filterPostList: [] as IPostDisplay[],
+  setSearchValue: () => {},
+  userList: [],
+  postList: [],
+  filterUserList: [],
+  filterPostList: [],
   fillLists: () => {},
   filterUsers: () => {},
   filterPosts: () => {},
   loadingData: false,
 });
 
-function SearchProvider({ children }) {
+const SearchProvider: React.FC<ProviderProps> = ({ children }) => {
   const [postSearch, setPostSearch] = useState(ValuesPost);
   const [userSearch, setUserSearch] = useState(ValuesUser);
   const [searchValue, setSearchValue] = useState(searchTermBase);
@@ -225,6 +242,6 @@ function SearchProvider({ children }) {
       {children}
     </SearchContext.Provider>
   );
-}
+};
 
 export { SearchContext, SearchProvider };

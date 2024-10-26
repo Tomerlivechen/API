@@ -11,7 +11,6 @@ import { IPostDisplay } from "../../Models/Interaction";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import { colors } from "../Patterns";
 import PostView from "./PostView";
-import { CommentService } from "../../Services/comment-service";
 import { Posts } from "../../Services/post-service";
 
 const PostCard: React.FC<IPostDisplay> = (postDisplay) => {

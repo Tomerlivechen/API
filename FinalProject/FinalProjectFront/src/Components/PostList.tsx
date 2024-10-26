@@ -34,6 +34,12 @@ const PostList: React.FC<{ postListValue: PostListValues }> = ({
     }
   }, [postListValue]);
 
+  useEffect(() => {
+    if (postListValue) {
+      setPosts(postListValue.posts);
+    }
+  }, []);
+
   return (
     <>
       <div>

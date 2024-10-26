@@ -171,13 +171,10 @@ function FilterBar() {
             placeholder="Search"
             aria-label="Search"
             onChange={(e) => searchFilter.setSearchValue(e.target.value)}
+            onKeyDown={handleKeyDown}
             value={searchFilter.searchValue}
           />
-          <button
-            className=" pl-3"
-            onKeyDown={handleKeyDown}
-            onClick={handleSearch}
-          >
+          <button className=" pl-3" onClick={handleSearch}>
             <FaSearch />
           </button>
         </div>

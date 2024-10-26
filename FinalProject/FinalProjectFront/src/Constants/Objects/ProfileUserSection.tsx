@@ -25,7 +25,7 @@ const ProfileUserSection: React.FC<ProfileUserSectionProps> = ({ userId }) => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const userdata = useUser();
-  const [yours, setYours] = useState(false);
+  const [, setYours] = useState(false);
   const chatContext = useChat();
   useEffect(() => {
     if (userId) {

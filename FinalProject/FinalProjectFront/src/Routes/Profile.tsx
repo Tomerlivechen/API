@@ -8,7 +8,6 @@ import { PostFrame } from "../Constants/Objects/PostFrame";
 import ResizableFrame from "../Constants/Objects/ResizableFrame";
 import { UserTabList } from "../Components/UserTabList";
 import { IAppUserDisplay } from "../Models/UserModels";
-import { useChat } from "../CustomHooks/useChat";
 import { ProfileGroupsList } from "../Constants/Objects/ProfileGroupsList";
 
 const Profile = () => {

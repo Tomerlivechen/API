@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useUser } from "../../CustomHooks/useUser";
+import { useEffect, useState } from "react";
+
 import { INotificationDisplay } from "../../Modals/NotificationMedels";
 import { Notification } from "../../Services/notification-service";
 import { NotificationObject } from "./NotificationObject";
 
 const NotificationList = () => {
-  const UserContext = useUser();
   const [notifications, setNotifications] = useState<
     INotificationDisplay[] | null
   >(null);

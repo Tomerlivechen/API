@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { IPostDisplay } from "../Models/Interaction";
+
 import { sortByProperty } from "../Constants/Patterns";
-import PostView from "../Constants/Objects/PostView";
+
 import { IAppUserDisplay } from "../Models/UserModels";
 import UserTab from "../Constants/Objects/UserTab";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
@@ -54,12 +54,8 @@ const UserTabList: React.FC<UserTabListValues> = (
       {!loading && sortedUsers ? (
         <div>
           {sortedUsers.map((user) => (
-            <div className="p-2">
-              <UserTab
-                UserDisplay={user}
-                buttonAction={UserListValue.Action || (() => {})}
-                key={user.id}
-              />
+            <div className="p-2" key={user.id}>
+              <UserTab UserDisplay={user} />
             </div>
           ))}
         </div>

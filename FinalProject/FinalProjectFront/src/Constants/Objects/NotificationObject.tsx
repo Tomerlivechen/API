@@ -5,7 +5,6 @@ import { auth } from "../../Services/auth-service";
 import { useNavigate } from "react-router-dom";
 import { useChat } from "../../CustomHooks/useChat";
 import { Notification } from "../../Services/notification-service";
-import { BiExit } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Tooltip } from "react-bootstrap";
 

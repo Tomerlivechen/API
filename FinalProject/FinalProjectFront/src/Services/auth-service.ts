@@ -1,32 +1,21 @@
 import axios from "axios";
 import { request } from "../Utils/Axios-Interceptor";
 import { IAppUserDisplay, IAppUserEdit, IEditUser } from "../Models/UserModels";
+import { IAppUserRegister } from "../Models/AuthModels";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
 const AuthURL = "/Auth";
-const register = (
-  email: string,
-  userName: string,
-  password: string,
-  prefix: string,
-  first_Name: string,
-  last_Name: string,
-  pronouns: string,
-  imageURL: string,
-  permissionLevel: string
-) =>
-  axios.post(`${baseURL}${AuthURL}/register`, {
-    email: email,
-    userName: userName,
-    password: password,
-    prefix: prefix,
-    first_Name: first_Name,
-    last_Name: last_Name,
-    pronouns: pronouns,
-    imageURL: imageURL,
-    permissionLevel: permissionLevel,
+
+
+const register = (user : IAppUserRegister) =>
+  request({
+    url: `${AuthURL}/register`,
+    method: "POST",
+    data: user,
   });
+
+
 const login = (email: string, password: string) =>
   axios.post(`${baseURL}${AuthURL}/login`, { email, password }).then((response) => {
     if (response.data.token) {

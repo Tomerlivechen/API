@@ -52,7 +52,6 @@ const SendMessageComponent: React.FC<ISendMessageComponent> = (chatInfo) => {
         <button
           className={`${colors.InteractionText} p-3`}
           disabled={text.length < 1}
-          onKeyDown={handleKeyDown}
           onClick={sendMessage}
         >
           <Tooltip title="Send Message">

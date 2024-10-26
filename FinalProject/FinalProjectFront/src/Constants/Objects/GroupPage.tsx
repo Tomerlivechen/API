@@ -12,7 +12,6 @@ import { ISocialGroupDisplay } from "../../Models/SocialGroup";
 
 const GroupPage = () => {
   const { groupId } = useParams();
-  const [groupIdState, setGroupIdState] = useState<string | null>(null);
   const [groupState, setGroupState] = useState<ISocialGroupDisplay | null>(
     null
   );
@@ -31,7 +30,6 @@ const GroupPage = () => {
   useEffect(() => {
     if (groupId) {
       GetMembers(groupId);
-      setGroupIdState(groupId);
       GetGroupInfo(groupId);
     }
   }, [groupId]);
@@ -48,7 +46,7 @@ const GroupPage = () => {
         <div className="w-16 pl-2 pr-2"></div>
         <div className="w-11/12 lg:block lg:w-11/12 pl-2 pr-2">
           <div className="w-full min-w-[40rem] pr-2 pl-2">
-            <GroupProfileSection groupId={groupId} />
+            <GroupProfileSection />
           </div>
 
           <div className="flex  justify-between w-8/12 ">

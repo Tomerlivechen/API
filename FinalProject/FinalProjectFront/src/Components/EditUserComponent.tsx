@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { FaRegEye } from "react-icons/fa";
+
 import { auth } from "../Services/auth-service";
 import { dialogs } from "../Constants/AlertsConstant";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import {
   FormikElementBuilder,
   MYFormikValues,
 } from "../Constants/FormikElementBuilder";
-import { RxEyeClosed } from "react-icons/rx";
+
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 import { IAppUserDisplay, IAppUserEdit } from "../Models/UserModels";
 import { useLogin } from "../CustomHooks/useLogin";
@@ -187,15 +187,18 @@ const EditUserComponent: React.FC<{ userInfo: IAppUserDisplay }> = ({
     pronouns: Yup.string().min(2).max(10),
   });
 
-  const handleImageChange = (event) => {
-    setHoldImage(event.target.files[0]);
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setHoldImage(event.target.files[0]);
+    }
+  };
+  const handleBannerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setHoldBanner(event.target.files[0]);
+    }
   };
 
-  const handleBannerChange = (event) => {
-    setHoldBanner(event.target.files[0]);
-  };
-
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values: IAppUserEdit) => {
     setUserValues(values);
     if (LoggedInContext.token) {
       if (HoldImage || HoldBanner) {
@@ -238,7 +241,7 @@ const EditUserComponent: React.FC<{ userInfo: IAppUserDisplay }> = ({
     submitUser();
   }, [bannerImageUrl, imageUrl]);
 
-  const PutUser = async (values) => {
+  const PutUser = async (values: IAppUserEdit) => {
     if (LoggedInContext.token) {
       console.log("sent", values);
       setIsLoading(true);
@@ -260,6 +263,7 @@ const EditUserComponent: React.FC<{ userInfo: IAppUserDisplay }> = ({
       } finally {
         setUserValues(userValues);
         setIsLoading(false);
+        navigate(`/Profile/${values.id}`);
       }
     } else {
       dialogs.error("Comment not sent user not logged in");

@@ -68,7 +68,7 @@ const showtext = (text: string) => {
   Swal.fire(text);
 };
 
-export {
+export default {
   showErrorDialog,
   showSuccessDialog,
   getText,

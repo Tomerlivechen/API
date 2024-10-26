@@ -5,18 +5,15 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import { dialogs } from "../Constants/AlertsConstant";
-import { useNavigate } from "react-router-dom";
 
 import { useLogin } from "../CustomHooks/useLogin";
 import {
   catchError,
   colors,
-  imageFieldValues,
   linkFieldValues,
   textFieldValues,
 } from "../Constants/Patterns";
 
-import { usePosts } from "../CustomHooks/usePosts";
 import ElementFrame from "../Constants/Objects/ElementFrame";
 import { INewComment } from "../Models/CommentModels";
 import { FormikElementBuilder } from "../Constants/FormikElementBuilder";
@@ -24,6 +21,7 @@ import { CommentService } from "../Services/comment-service";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import ClipSpinner from "../Spinners/ClipSpinner";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
+import { AxiosError } from "axios";
 
 interface AddCommentCommentModalProps {
   commentId: string;
@@ -42,7 +40,6 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
 
   const [imageUrl, holdFile, setHoldFile, setImageURL, clear] = useCloudinary();
   const linkValues = linkFieldValues;
-  const imageValues = imageFieldValues;
 
   const handleclose = () => {
     setShow(false);
@@ -67,11 +64,12 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
 
   const [commentValues, setCommentValues] = useState<INewComment>(NewComment);
 
-  const handleFileChange = (event) => {
-    console.log("Form submitted with values: ");
-    setHoldFile(event.target.files[0]);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setHoldFile(event.target.files[0]);
+    }
   };
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values: INewComment) => {
     setCommentValues(values);
     if (loggedInContext.token) {
       if (holdFile) {
@@ -96,7 +94,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
     submitComment();
   }, [imageUrl]);
 
-  const postComment = async (values) => {
+  const postComment = async (values: INewComment) => {
     if (loggedInContext.token) {
       console.log("Form submitted with values: ", values);
       setIsLoading(true);
@@ -107,7 +105,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
         console.log(response);
         dialogs.success("Comment Sent");
       } catch (error) {
-        catchError(error, "Commenting");
+        catchError(error as AxiosError, "Commenting");
       } finally {
         setCommentValues(NewComment);
         handleclose();
@@ -127,7 +125,7 @@ const AddCommentCommentModal: React.FC<AddCommentCommentModalProps> = ({
       ...prevCommentValues,
       imageURL: "",
     }));
-    setHoldFile(null);
+    clear();
   };
 
   return (

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { colors } from "../Patterns";
 
-import { IChat, IMessage } from "../../Models/ChatModels";
+import { IChat } from "../../Models/ChatModels";
 import {
   ISendMessageComponent,
   SendMessageComponent,
@@ -14,11 +14,7 @@ import { useChat } from "../../CustomHooks/useChat";
 import { Chat } from "../../Services/chat-service";
 import { AiOutlineLoading } from "react-icons/ai";
 import { VscLoading } from "react-icons/vsc";
-interface IChatFrameButtonProps {
-  icon: React.ComponentType<{ size: number }>;
-  activeHook: boolean;
-  size: "min" | "mid" | "closed";
-}
+
 interface ChatFrameProps {
   chatID: string;
 }
@@ -38,11 +34,13 @@ const ChatFrame: React.FC<ChatFrameProps> = ({ chatID }) => {
   const [chatInfo, setChatInfo] = useState<IChat | null>(null);
   const [chatRespons, setChatRespons] = useState(null);
   const [userNames, setUserNames] = useState<string>("");
-  const intervalTime = 10000;
+
   const getChatValues = async (chatId: string) => {
     const chatValues = await Chat.getChat(chatId);
     setChatRespons(chatValues.data);
   };
+
+  const intervalTime = 10000;
   useEffect(() => {
     const interval = setInterval(() => {
       if (chatID) {
@@ -51,6 +49,14 @@ const ChatFrame: React.FC<ChatFrameProps> = ({ chatID }) => {
     }, intervalTime);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (chatID)
+      setSendMessage({
+        chatId: chatID,
+      });
+  }, []);
+
   useEffect(() => {
     if (chatID) {
       getChatValues(chatID);

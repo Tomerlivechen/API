@@ -15,12 +15,11 @@ import ElementFrame from "../Constants/Objects/ElementFrame";
 import { useCloudinary } from "../CustomHooks/useCloudinary";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 import { useLocation, useParams } from "react-router-dom";
+import { AxiosError } from "axios";
 
 function SendPostComponent() {
   const location = useLocation();
   const { groupId } = useParams();
-  const { userId } = useParams();
-  const [userIdState, setUserIdState] = useState<string | null>(null);
   const [groupIdState, setGroupIdState] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -105,7 +104,7 @@ function SendPostComponent() {
         console.log(response);
         dialogs.success("Post Sent");
       } catch (error) {
-        catchError(error, "Posting");
+        catchError(error as AxiosError, "Posting");
       } finally {
         setPostValues(NewPost);
         setIsLoading(false);
@@ -123,7 +122,7 @@ function SendPostComponent() {
       ...prevPostValues,
       imageURL: "",
     }));
-    setHoldFile(null);
+    clear();
   };
 
   return (

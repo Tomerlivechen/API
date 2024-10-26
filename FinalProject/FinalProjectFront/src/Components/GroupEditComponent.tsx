@@ -13,15 +13,6 @@ import {
 } from "../Constants/FormikElementBuilder";
 import { FcAddImage, FcEditImage, FcRemoveImage } from "react-icons/fc";
 
-const groupService: ISocialGroupEdit = {
-  id: "",
-  name: "",
-  description: "",
-  banerImageURL: "",
-  imageURL: "",
-  newAdminEmail: "",
-};
-
 const GroupNameValues: MYFormikValues = {
   Title: "Group Name",
   element: "name",
@@ -163,14 +154,16 @@ const GroupEditComponent = () => {
     clearBanner();
   };
 
-  const handleImageChange = (event) => {
-    holdImageFile(event.target.files[0]);
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      holdImageFile(event.target.files[0]);
+    }
   };
-
-  const handleBannerChange = (event) => {
-    holdBannerFile(event.target.files[0]);
+  const handleBannerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      holdBannerFile(event.target.files[0]);
+    }
   };
-
   const handleSubmit = async () => {
     setSubbmiting(true);
     if (imageFile || bannerFile) {

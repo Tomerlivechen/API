@@ -11,9 +11,7 @@ import { RxEyeClosed } from "react-icons/rx";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { colors } from "../Constants/Patterns";
 import { useUser } from "../CustomHooks/useUser";
-import { dialogs } from "../Constants/AlertsConstant";
 import { auth } from "../Services/auth-service";
-import { useNavigate } from "react-router-dom";
 export interface AdvancedSettingsComponentProps {
   userToEdit: IAppUserEdit;
   show: boolean;
@@ -63,7 +61,6 @@ const AdvancedSettingsComponent: React.FC<AdvancedSettingsComponentProps> = (
   oldPasswordValues.type = viewPassword;
   const userContex = useUser();
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   const viewPass = () => {
     setviewPassword((prevviewPassword) =>
       prevviewPassword === "password" ? "text" : "password"
@@ -97,8 +94,6 @@ const AdvancedSettingsComponent: React.FC<AdvancedSettingsComponentProps> = (
       .notOneOf([""], "Please select a valid option"),
   });
   const handleClick = () => {
-    // eslint-disable-next-line no-debugger
-    debugger; // Execution will pause here
     console.log("Button clicked");
   };
 
@@ -108,10 +103,31 @@ const AdvancedSettingsComponent: React.FC<AdvancedSettingsComponentProps> = (
     permissionLevel: userContex.userInfo.PermissionLevel ?? "",
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values: IEditUser) => {
+    setIsLoading(true);
     console.log("Form submitted with values: ", values);
     handleClick();
-    await auth.manage(values);
+    const AdvancedUserEdit: IAppUserEdit = {
+      id: userToEdit.id,
+      userName: userToEdit.userName,
+      oldPassword: values.oldPassword ? values.oldPassword : "",
+      newPassword: values.newPassword ? values.newPassword : "",
+      bio: userToEdit.bio,
+      prefix: userToEdit.prefix,
+      hideEmail: userToEdit.hideEmail,
+      hideName: userToEdit.hideName,
+      hideBlocked: userToEdit.hideBlocked,
+      banerImageURL: userToEdit.banerImageURL,
+      first_Name: userToEdit.first_Name,
+      last_Name: userToEdit.last_Name,
+      pronouns: userToEdit.pronouns,
+      imageURL: userToEdit.imageURL,
+      permissionLevel: values.permissionLevel
+        ? values.permissionLevel
+        : userToEdit.permissionLevel,
+    };
+    await auth.manage(AdvancedUserEdit);
+    setIsLoading(false);
   };
 
   return (

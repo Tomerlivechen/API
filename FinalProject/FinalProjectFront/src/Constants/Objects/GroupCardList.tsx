@@ -23,7 +23,7 @@ const GroupCardList: React.FC<{
     ISocialGroupCard[] | null
   >(null);
   const [groupFilter, setGroupFilter] = useState<string | null>(null);
-  const [userGroup, setuserGroup] = useState(false);
+  const [, setuserGroup] = useState(false);
 
   const GetGroupCards = async () => {
     const response = await Groups.GetGroups();
@@ -36,6 +36,10 @@ const GroupCardList: React.FC<{
       setGroupCardData(response.data);
     }
   };
+
+  useEffect(() => {
+    getGroupCards();
+  }, [GroupCardListProps.GroupFilter, GroupCardListProps.usersGroups]);
 
   const getGroupCards = async () => {
     if (
@@ -69,10 +73,6 @@ const GroupCardList: React.FC<{
   }, []);
 
   useEffect(() => {
-    getGroupCards();
-  }, [GroupCardListProps.GroupFilter, GroupCardListProps.usersGroups]);
-
-  useEffect(() => {
     if (groupCardData && groupFilter) {
       if (groupFilter.length > 0) {
         const filtered = groupCardData.filter((card) =>
@@ -83,11 +83,9 @@ const GroupCardList: React.FC<{
           setLoading(false);
         }
       }
-    } else {
-      if (!isEqual(groupCardData, filteredGroupCardData)) {
-        setFilteredGroupCardData(groupCardData);
-        setLoading(false);
-      }
+    } else if (!isEqual(groupCardData, filteredGroupCardData)) {
+      setFilteredGroupCardData(groupCardData);
+      setLoading(false);
     }
   }, [groupCardData, groupFilter]);
 

@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { IChat } from "../Models/ChatModels";
 import { Chat } from "../Services/chat-service";
+import { ProviderProps } from "./LoggedInContext";
 
 interface ChatValues {
   chatInfo: IChat | null;
@@ -25,7 +26,7 @@ export interface IChatService {
 }
 
 const ChatContext = createContext<IChatService | null>(null);
-const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const ChatProvider: React.FC<ProviderProps> = ({ children }) => {
   const [chatIds, setChatIds] = useState<string[]>([]);
 
   const addChat = (chatId: string) => {
