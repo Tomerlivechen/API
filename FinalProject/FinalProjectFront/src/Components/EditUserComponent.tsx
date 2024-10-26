@@ -23,6 +23,7 @@ import {
   AdvancedSettingsComponent,
   AdvancedSettingsComponentProps,
 } from "./AdvancedSettingsComponent";
+import { AxiosError } from "axios";
 
 const emailValues: MYFormikValues = {
   Title: "Email Address",
@@ -259,7 +260,7 @@ const EditUserComponent: React.FC<{ userInfo: IAppUserDisplay }> = ({
         console.log(response);
         dialogs.success("Updated info");
       } catch (error) {
-        catchError(error, "Updating info");
+        catchError(error as AxiosError, "Updating info");
       } finally {
         setUserValues(userValues);
         setIsLoading(false);

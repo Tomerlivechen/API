@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./MainPage";
 import About from "./About";
 import TestSpace from "./TestSpace";
-import UsersPage from "./UsersPage";
+
 import Feed from "./Feed";
 import Profile from "./Profile";
 import NavBar from "../Bars/NavBar";
@@ -53,14 +53,6 @@ function RouterControler() {
                         element={
                           <ProtectedRoute>
                             <Feed />
-                          </ProtectedRoute>
-                        }
-                      />
-                      <Route
-                        path="UsersPage"
-                        element={
-                          <ProtectedRoute>
-                            <UsersPage />
                           </ProtectedRoute>
                         }
                       />

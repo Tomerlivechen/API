@@ -63,7 +63,7 @@ const GroupProfileSection = () => {
         groupInfo.id,
         userContext.userInfo.UserId
       );
-      if (response.status === "success") {
+      if (response.status === 200) {
         SetGroupInfo((prev) => {
           if (!prev) return prev;
           return { ...prev, isMemember: false };

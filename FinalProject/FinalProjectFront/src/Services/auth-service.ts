@@ -1,6 +1,6 @@
 import axios from "axios";
 import { request } from "../Utils/Axios-Interceptor";
-import { IAppUserDisplay, IAppUserEdit, IEditUser } from "../Models/UserModels";
+import {  IAppUserEdit } from "../Models/UserModels";
 import { IAppUserRegister } from "../Models/AuthModels";
 
 const baseURL = import.meta.env.VITE_BASE_URL;

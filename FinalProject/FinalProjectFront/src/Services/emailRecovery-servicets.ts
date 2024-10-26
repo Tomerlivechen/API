@@ -1,6 +1,7 @@
 import emailjs from "emailjs-com";
-import { v4 as uuidv4 } from "uuid";
+
 import { IAppUserDisplay } from "../Models/UserModels";
+
 
 export interface ReNewPasswordDTO {
     userEmail : string;
@@ -31,13 +32,13 @@ const SendEmail = async (paswwordReset : ReSetPassword) => {
       )
       .then(
         (response) => {
-          console.log("SUCCESS!");
+          console.log("SUCCESS!",response);
         },
         (error) => {
-          console.log("FAILED...");
+          console.log("FAILED...",error);
         }
       );
-  } catch (error) { /* empty */ }
+  } catch (error ) { console.log("FAILED...",error);}
 };
 
 export { SendEmail };

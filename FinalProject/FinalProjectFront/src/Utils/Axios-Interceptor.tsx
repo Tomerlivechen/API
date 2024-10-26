@@ -1,5 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { dialogs } from "../Constants/AlertsConstant";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const client = axios.create({
@@ -9,17 +8,17 @@ const client = axios.create({
   },
 });
 
-const OnSuccess = (type: string, response) => {
+const OnSuccess = (type: string, response: AxiosResponse) => {
   console.log(type, response);
   return response;
 };
 
-const OnError = (type: string, error) => {
+const OnError = (type: string, error: AxiosResponse) => {
   console.error(type, error);
   return error;
 };
 
-const SortResponse = (response) => {
+const SortResponse = (response: AxiosResponse) => {
   switch (response.status) {
     case 200:
       OnSuccess("Success", response);

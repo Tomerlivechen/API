@@ -5,7 +5,6 @@ import { useUser } from "../../CustomHooks/useUser";
 import ClimbBoxSpinner from "../../Spinners/ClimbBoxSpinner";
 
 import { colors } from "../Patterns";
-import { useNavigate } from "react-router-dom";
 interface ProfileUserSectionProps {
   userId: string | null;
 }
