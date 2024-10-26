@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearch } from "../CustomHooks/useSearch";
 import UserCard from "../Constants/Objects/UserCard";
 import ClimbBoxSpinner from "../Spinners/ClimbBoxSpinner";
