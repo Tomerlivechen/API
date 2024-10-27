@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dialogs } from "../Constants/AlertsConstant";
 
 const useCloudinary = (): [
@@ -16,6 +16,17 @@ const useCloudinary = (): [
     setImageURL("");
     setFile(null);
   };
+
+useEffect(()=>{
+if (file){
+  const fileSizeInBytes = file.size;
+  const fileSizeInMB = (fileSizeInBytes/1048576)
+  if (fileSizeInMB > 2){
+    dialogs.error ("File Larger than Limit (2MB)")
+    clear();
+  }
+}
+},[file])
 
   const uploadToCloudinary = async (file: File): Promise<void> => {
     const cloudname = import.meta.env.VITE_CLOUDINARY_CLOUD;
