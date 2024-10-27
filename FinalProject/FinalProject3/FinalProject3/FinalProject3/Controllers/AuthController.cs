@@ -115,7 +115,21 @@ public class AuthController(FP3Context context, SignInManager<AppUser> signInMan
         return Ok(followingDsplay);
     }
 
-    [HttpPut("ResetPassword/{userEmail}")]
+
+    [HttpGet("userByEmail/{userEmail}")]
+    public async Task<ActionResult<AppUserDisplay>> GetUserByEmail(string userEmail)
+    {
+        var currentUser = await userManager.FindByEmailAsync(userEmail);
+        if (currentUser is null)
+        {
+            return NotFound($"user {userEmail} not found ");
+        }
+        var currentUserDisplay = await currentUser.UsertoDisplay(_context, currentUser);
+        return Ok(currentUserDisplay);
+    }
+
+
+    [HttpGet("ResetPassword/{userEmail}")]
     public async Task<ActionResult<string>> GetUserPassword(string userEmail)
     {
         var currentUser = await userManager.FindByEmailAsync(userEmail);
