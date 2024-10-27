@@ -33,11 +33,11 @@ const ConfirmJoinGroup = (joinData: IConfirmJoinGoupProps) =>
     }
   });
 
-const getText = async (title: string) => {
+const getText = async (title: string, placeholder: string) => {
   const { value: url } = await Swal.fire({
     input: "url",
     inputLabel: `Submit ${title}`,
-    inputPlaceholder: "Enter the URL",
+    inputPlaceholder: placeholder,
     didOpen: () => {
       const popup = document.querySelector(".swal2-popup");
       if (popup) {

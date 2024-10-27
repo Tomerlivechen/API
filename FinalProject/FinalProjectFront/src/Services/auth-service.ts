@@ -2,6 +2,7 @@ import axios from "axios";
 import { request } from "../Utils/Axios-Interceptor";
 import {  IAppUserEdit } from "../Models/UserModels";
 import { IAppUserRegister } from "../Models/AuthModels";
+import { ReNewPasswordDTO } from "./emailRecovery-servicets";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -57,6 +58,14 @@ const login = (email: string, password: string) =>
           data: null,
         });
 
+        const GetUserByEmail = (Email : string) =>
+          request({
+            url: `${AuthURL}/userByEmail/${Email}`,
+            method: "GET",
+            data: null,
+          });
+  
+
         const GetUsersFollowing = (userId : string) =>
           request({
             url: `${AuthURL}/GetFollowing/${userId}`,
@@ -99,6 +108,20 @@ const login = (email: string, password: string) =>
                 data: {id},
               });
 
+              const ResetPassword = (Email : string) =>
+                request({
+                  url: `${AuthURL}/ResetPassword/${Email}`,
+                  method: "GET",
+                  data: null,
+                });
+  
+                const SetNewPassword = (ResetPasswordDTO : ReNewPasswordDTO) =>
+                  request({
+                    url: `${AuthURL}/SetNewPassword`,
+                    method: "GET",
+                    data: ResetPasswordDTO,
+                  });
+
               const manage = (AppUserEdit : IAppUserEdit) =>
                 request({
                   url: `${AuthURL}/manage`,
@@ -106,6 +129,8 @@ const login = (email: string, password: string) =>
                   data: AppUserEdit ,
                 });
               
+
+
 
 export { register, login, validate, getUser, follow, unfollow, block, unBlock,manage,GetUsersFollowing };
 
@@ -123,4 +148,7 @@ export const auth = {
   GetFollowingIds,
   GetUsersFollowing,
   GetUsersGroups,
+  GetUserByEmail,
+  ResetPassword,
+  SetNewPassword,
 };
