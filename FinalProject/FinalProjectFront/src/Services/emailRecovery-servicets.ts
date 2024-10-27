@@ -19,7 +19,7 @@ const SendEmail = async (paswwordReset : ReSetPassword) => {
   const templateParams = {
     to_name: paswwordReset.userInfo.first_Name,
     to_email: paswwordReset.userInfo.email,
-    message: `${paswwordReset.userInfo.first_Name} you have requested a reset passward for your account at Deinonychus , follow this link to reset your password`,
+    message: `${paswwordReset.userInfo.first_Name} you have requested a reset passward for your account at Deinonychus , follow this link to reset your password ${paswwordReset.tokenDTO.token}`,
     subject: `Password reset Deinonychus`,
   };
   try {

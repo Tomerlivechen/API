@@ -12,6 +12,7 @@ import ElementFrame from "../Constructors/ElementFrame";
 import { FormikElementBuilder } from "../Constructors/FormikElementBuilder";
 import { RxEyeClosed } from "react-icons/rx";
 import { MYFormikValues } from "../Types/@StructureTypes";
+import { ReNewPasswordDTO, ReSetPassword, SendEmail } from "../Services/emailRecovery-servicets";
 
 const emailValues: MYFormikValues = {
   Title: "Email Address",
@@ -59,6 +60,25 @@ function LoginPage() {
     email: "",
     password: "",
   };
+
+const forgotPassword = async () => {
+  const email = await dialogs.getText("your Email", "User Email");
+  const user = await auth.GetUserByEmail(email);
+  const token = await auth.ResetPassword(email);
+
+  const tokenDto : ReNewPasswordDTO = {
+    userEmail: email,
+    token: token.data,
+    newPassword: ""
+  }
+  const DTO : ReSetPassword = {
+    tokenDTO: tokenDto,
+    userInfo: user.data,
+  }
+
+  await SendEmail(DTO)
+}
+
   return (
     <>
       <div className="flex justify-center">
@@ -139,6 +159,7 @@ function LoginPage() {
                 >
                   Login
                 </button>
+                <button className={`${colors.ButtonFont}`} onClick={forgotPassword}> Forgot Password </button>
               </div>
             </Form>
           </Formik>
